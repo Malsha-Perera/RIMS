@@ -17,6 +17,9 @@ import { AppheaderComponent } from './components/appheader/appheader.component';
 import { AppmenuComponent } from './components/appmenu/appmenu.component';
 import { AppfooterComponent } from './components/appfooter/appfooter.component';
 import { AppcontentComponent } from './components/appcontent/appcontent.component';
+import { RecipieComponent } from './components/recipie/recipie.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { UnitCostComponent } from './components/unit-cost/unit-cost.component';
 
 const appRoutes:Routes=[
   {path:'item',component:ProductItemComponent},
@@ -24,6 +27,9 @@ const appRoutes:Routes=[
   {path:'',component: AppcontentComponent},
   {path:'cpo',component:CreatePoComponent},
   {path:'vpo',component:ViewPoComponent},
+  {path:'recipie',component:RecipieComponent},
+  {path:'menu',component:MenuComponent},
+  {path:'uc',component:UnitCostComponent},
 
     ]
 
@@ -41,6 +47,9 @@ const appRoutes:Routes=[
     AppmenuComponent,
     AppfooterComponent,
     AppcontentComponent,
+    RecipieComponent,
+    MenuComponent,
+    UnitCostComponent,
 
   ],
   imports: [
