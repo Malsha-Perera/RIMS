@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
-import {Routes, RouterModule} from "@angular/router";
+import {Routes, RouterModule} from '@angular/router';
 
 
 
@@ -21,17 +21,17 @@ import { RecipieComponent } from './components/recipie/recipie.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { UnitCostComponent } from './components/unit-cost/unit-cost.component';
 
-const appRoutes:Routes=[
-  {path:'item',component:ProductItemComponent},
-  {path:'po',component:PoMainComponent},
-  {path:'',component: AppcontentComponent},
-  {path:'cpo',component:CreatePoComponent},
-  {path:'vpo',component:ViewPoComponent},
-  {path:'recipie',component:RecipieComponent},
-  {path:'menu',component:MenuComponent},
-  {path:'uc',component:UnitCostComponent},
+const appRoutes: Routes = [
+  {path: 'item', component: ProductItemComponent},
+  {path: 'po', component: PoMainComponent},
+  {path: '', component: AppcontentComponent},
+  {path: 'cpo', component: CreatePoComponent},
+  {path: 'vpo', component: ViewPoComponent},
+  {path: 'recipie', component: RecipieComponent},
+  {path: 'menu', component: MenuComponent},
+  {path: 'uc', component: UnitCostComponent},
 
-    ]
+    ];
 
 
 
