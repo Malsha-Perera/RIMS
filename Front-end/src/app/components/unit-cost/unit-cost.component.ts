@@ -13,4 +13,3 @@ export class UnitCostComponent implements OnInit {
   }
 
 }
-//test 

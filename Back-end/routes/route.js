@@ -49,10 +49,7 @@ router.put('/item/:id',(req,res,next) =>{
             quantity:req.body.quantity,
             description:req.body.description,
 
-
         }
-
-
 
     },function (err,result) {
         if (err){
