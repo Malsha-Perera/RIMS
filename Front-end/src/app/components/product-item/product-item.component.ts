@@ -51,6 +51,7 @@ export class ProductItemComponent implements OnInit {
 
 
  addItem(){
+  
    const newItem = {
      itemname: this.itemname,
      quantity: this.quantity,
@@ -67,28 +68,29 @@ export class ProductItemComponent implements OnInit {
      });
  }
 showEditFrm(item){
-   this.selectedItem=item;
+   this.selectedItem = item;
    this.toggleForm=!this.toggleForm;
  }
-/*editproduct(form){
+editproduct(){ 
+  
    let newItem :Item={
      _id:this.selectedItem._id,
-     itemname:form.value.itemname,
-     quantity:form.value.quantity,
-     description:form.value.description,
-
-
-   };
-
+     itemname:this.selectedItem.itemname,
+     quantity:this.selectedItem.quantity,
+     description:this.selectedItem.description,
+    
+   };   
+   
   this.dataservice.updateproduct(newItem)
      .subscribe(result=>{
        console.log('original Item to be updated:'+result);
        this.getItems();
      });
    this.toggleForm=!this.toggleForm;
+  
 
  }
-*/
+
 
 
 

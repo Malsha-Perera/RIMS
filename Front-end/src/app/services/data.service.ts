@@ -16,6 +16,7 @@ export class DataService {
     headers.append('Content-Type','application/json');
     return this.http.post('http://localhost:3000/api/item',newItem,{headers:headers}).map(res=>res.json());
   }
+  
   deleteproduct(id)
   {
     return this.http.delete('http://localhost:3000/api/item/' + id)
@@ -25,7 +26,7 @@ export class DataService {
     let headers= new Headers();
     headers.append('Content-Type','application/json');
     return this.http.put('http://localhost:3000/api/item/'+ newItem._id,newItem,{headers:headers}).map(res=>res.json());
-
+    
 
   }
 
