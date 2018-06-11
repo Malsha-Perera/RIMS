@@ -5,7 +5,8 @@ const ImSchema= mongoose.Schema({
         required:true,
     },
     itemCode:{
-        type:String,        
+        type:String,
+        required:true,      
     },
     quantity:{
         type:Number,
@@ -18,9 +19,11 @@ const ImSchema= mongoose.Schema({
     unitCost:{
         type:Number,
         
+        
     },
     unitScale:{
         type:String,
+        
                 
     }
 
