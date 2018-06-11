@@ -3,7 +3,9 @@ export class Item{
   itemname:String;
   quantity:Number;
   description:String;
-  //unitCost:Number;  
-  //unitScale:String;            
+  unitCost:Number;  
+  unitScale:String;            
+  itemCode:String;
+  
 
 }

@@ -40,6 +40,7 @@
         "assets/bower_components/chart.js/Chart.js",
         "assets/dist/js/pages/dashboard2.js",
         "assets/dist/js/demo.js"
+        
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

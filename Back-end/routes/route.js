@@ -17,14 +17,29 @@ router.get('/items',function(req,res,next){
 
     });
 });
+
+//retieving data using itemCode
+
+router.get('/item/:itemCode', (req, res, next) => {
+    Item.find({ itemCode: req.params.itemCode }, function (err, result) {
+        if (err) {
+            res.json(err);
+        }
+        else {
+            res.json(result);
+        }
+    });
+});
+
     //inserting data
     router.post('/item',function(req,res,next){
        let newproduct=new Item({
            itemname:req.body.itemname,
            quantity:req.body.quantity,
            description:req.body.description,
-
-
+           itemCode:req.body.itemCode,
+           unitCost:req.body.unitCost, 
+           unitScale:req.body.unitScale,          
 
        });
         newproduct.save(function (err,item) {
@@ -48,7 +63,10 @@ router.put('/item/:id',(req,res,next) =>{
             itemname:req.body.itemname,
             quantity:req.body.quantity,
             description:req.body.description,
-
+            //thama me fields edit karanna deela nathi nisa hriyta balala fix karanna one
+            itemCode:req.body.itemCode,
+            unitCost:req.body.unitCost, 
+            //unitScale:req.body.unitScale,  
         }
 
     },function (err,result) {
