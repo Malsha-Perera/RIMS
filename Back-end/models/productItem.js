@@ -21,7 +21,13 @@ const ImSchema= mongoose.Schema({
         required:true,
     },
     unitCost:{
-        type:Number,
+
+        type:Number,         
+    },
+    
+    latestUpdate:{
+        type:Date,
+        
     },
     unitScale:{
         type:String,          
@@ -37,8 +43,8 @@ const ImSchema= mongoose.Schema({
     },
     date: {
         type: Number
-    }
 
+    }
 
 
 });
