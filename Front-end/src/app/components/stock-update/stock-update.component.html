@@ -4,6 +4,14 @@
 <div class="container-fluid">
 
   <form #itemForm1 = "ngForm" class="form-horizontal">
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" >Stock Update on:</label>
+      <div class="col-sm-6">
+        <input type="date" name="latestUpdate" [(ngModel)]="latestUpdate" class="form-control"  >
+      </div>  
+    </div> 
+
     <div class="form-group">
         <label class="control-label col-sm-2" >Item Code:</label>
       <div class="col-sm-6">
