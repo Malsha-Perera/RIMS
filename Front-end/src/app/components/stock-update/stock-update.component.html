@@ -26,7 +26,7 @@
 </div>
 
 
-<div class="container" >
+<div class="container-fluid" >
   <div class="col-sm-offset-1 col-sm-8">
     <table id="mytable" class=" table order-list" >
       <thead>
@@ -54,7 +54,7 @@
     &nbsp; &nbsp; 
     <div class="col-sm-offset-7 col-sm-8">
          
-      <button type="submit" onclick="addRow()" class="btn btn-primary" data-toggle="tooltip" title="Add vendor"><i class="fa fa-plus"></i></button>
+      <button id="addRow" type="submit" onclick="addRow()" class="btn btn-primary" data-toggle="tooltip" title="Add vendor"><i class="fa fa-plus"></i></button>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
         
       <button type="submit" onclick="getSum()" class="btn btn-success"data-toggle="tooltip" title="Calculate average unit price"><i class="fa fa-location-arrow"></i></button>
@@ -88,20 +88,31 @@
 </div>
 
 <br><br>
+<div class="col-sm-2">
+    <label >Item Name</label>
+  </div>
+  <div class="col-sm-2">   
+    <label >Quantity available</label>
+  </div>
+  <div class="col-sm-2">
+    <label>unit Cost(Rs.)</label> 
+  </div> 
+
+<br><br>
 
 <div *ngFor="let item of stockItemList" class="">
   <div class="list-group">
   <div class="list-group-item">
   <div class="row">
   
-  <div class="col-md-1">
+  <div class="col-sm-2">
   {{item.itemname}}
   </div>
-  <div class="col-md-1">
-    {{item. quantity}}
+  <div class="col-sm-2">
+    {{quantity}}
   </div>
-  <div class="col-md-5">
-    {{item.description}}
+  <div class="col-sm-2">
+    {{item.unitCost}}
   </div>
   <div class="col-md-1">
      
