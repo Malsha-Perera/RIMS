@@ -28,9 +28,9 @@
                   <tbody class="text-center">
                   <tr *ngFor=" let item of items | itemDetail:searchText">
                         <td>{{item._id}}</td>
-                        <td>{{item.name}}</td>
+                        <td>{{item.itemname}}</td>
                         <td>{{item.category}}</td>
-                        <td>{{item.unit}}</td>
+                        <td>{{item.unitScale}}</td>
                         <td class="text-right">{{item.reOrderLevel}}</td>
                         <td>
                               <button type="button" class='btn btn-light-blue' tooltip="edit re-order level">
@@ -75,7 +75,7 @@
                               <div class="form-group row">
                                     <label class="col-sm-3 control-label" for="example-search-input">Name:</label>
                                     <div class="col-sm-9">
-                                          <input class="form-control" type="text" name="name" value="" id="name" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.name" required>
+                                          <input class="form-control" type="text" name="name" value="" id="name" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemname" required>
                                     </div>
                               </div>
                               <div class="form-group row">
@@ -91,7 +91,7 @@
                               <div class="form-group row">
                                     <label class="col-sm-3 control-label pull-left" for="example-search-input">Unit:</label>
                                     <div class="col-sm-9">
-                                                <select class="form-control" type="text" name="unit" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.unit">
+                                                <select class="form-control" type="text" name="unit" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitScale">
                                                       <option>kg</option>
                                                       <option>liter</option>
                                                       <option value=""></option>
@@ -101,7 +101,7 @@
                               <div class="form-group row">
                                     <label class="col-sm-3 control-label" for="example-email-input">Price:</label>
                                     <div class="col-sm-9">
-                                          <input class="form-control" type="text" name="price" value="" id="price" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.price">
+                                          <input class="form-control" type="text" name="price" value="" id="price" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitCost">
                                     </div>
                               </div>
                               <div class="form-group row">

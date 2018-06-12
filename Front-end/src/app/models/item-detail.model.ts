@@ -7,6 +7,7 @@ export class Item {
   description: String;
   unitCost: Number;
   latestUpdate: Date;
+  unitScale: String;
   minimumLevel: Number;
   reOrderLevel: Number;
   maximumLevel: Number;

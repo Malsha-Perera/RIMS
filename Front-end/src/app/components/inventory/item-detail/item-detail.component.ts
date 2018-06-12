@@ -53,8 +53,8 @@ export class ItemDetailComponent implements OnInit {
     });
   }
 
-  onEdit(itemdetail: Item) {
-    this.itemDetailService.selectedItem = itemdetail;
+  onEdit(item: Item) {
+    this.itemDetailService.selectedItem = item;
   }
 
   onDelete(_id: string, form: NgForm) {
@@ -79,11 +79,12 @@ export class ItemDetailComponent implements OnInit {
     quantity: null,
     description: '',
     unitCost: null,
-    latestUpdate: '',
+    latestUpdate: null,
+    unitScale: '',
     minimumLevel: null,
     reOrderLevel: null,
     maximumLevel: null,
-    date: ''
+    date: null
 
     };
 
