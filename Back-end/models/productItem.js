@@ -33,6 +33,9 @@ const ImSchema= mongoose.Schema({
     },
     maximumLevel: {
          type: Number 
+    },
+    date: {
+        type: Number
     }
 
 

@@ -2,10 +2,10 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
-var { ItemDetail } = require('../models/inventoryItemModel');
+var { Item } = require('../models/productItem');
 
 router.get('/', (req, res) => {
-   ItemDetail.find((err, docs) => {
+   Item.find((err, docs) => {
       if(!err){
          res.send(docs);
       }
@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
    if(!ObjectId.isValid(req.params.id)){
       return res.status(400).send('No record with given id : ${req.params.id} ');
    }
-   ItemDetail.findById(req.params.id, (err, docs) =>{
+   Item.findById(req.params.id, (err, docs) =>{
       if(!err){
          res.send(docs);
       }
@@ -30,19 +30,21 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-   var itemdetail = new ItemDetail({
+   var item = new Item({
       
-      name: req.body.name,
+      itemname: req.body.name,
+      itemCode: req.body.itemCode,
       category: req.body.category,
-      unit: req.body.unit,
-      price: req.body.price,
+      quantity: req.body.quantity,
+      description: req.body.description,
+      unitCost: req.body.unitCost,
+      unitScale: req.body.unitScale,
       minimumLevel: req.body.minimumLevel,
       reOrderLevel: req.body.reOrderLevel,
       maximumLevel: req.body.maximumLevel,
-      quantity: req.body.quantity,
       date: req.body.date
    });
-   itemdetail.save((err, docs) => {
+   item.save((err, docs) => {
       if(!err){
          res.send(docs);
       }
@@ -56,19 +58,21 @@ router.put('/:id', (req, res) => {
    if(!ObjectId.isValid(req.params.id)){
       return res.status(400).send('No record with given id : ${req.params.id} ');
    }
-   var itemdetail = {
+   var item = {
       
-      name: req.body.name,
+      itemname: req.body.name,
+      itemCode: req.body.itemCode,
       category: req.body.category,
-      unit: req.body.unit,
-      price: req.body.price,
+      quantity: req.body.quantity,
+      description: req.body.description,
+      unitCost: req.body.unitCost,
+      unitScale: req.body.unitScale,
       minimumLevel: req.body.minimumLevel,
       reOrderLevel: req.body.reOrderLevel,
       maximumLevel: req.body.maximumLevel,
-      quantity: req.body.quantity,
       date: req.body.date
    }
-   ItemDetail.findByIdAndUpdate(req.params.id, { $set: itemdetail }, { new: true }, ( err, docs ) => {
+   Item.findByIdAndUpdate(req.params.id, { $set: item }, { new: true }, ( err, docs ) => {
       if(!err){
          res.send(docs);
       }
@@ -82,12 +86,12 @@ router.delete('/:id', (req, res) => {
    if(!ObjectId.isValid(req.params.id)){
       return res.status(400).send('No record with given id : ${req.params.id} ');
    }
-   ItemDetail.findByIdAndRemove(req.params.id, (err, docs) =>{
+   Item.findByIdAndRemove(req.params.id, (err, docs) =>{
       if(!err){
          res.send(docs);
       }
       else{
-         console.log('Error in Deleting ItemDetails :' + JSON.stringify(err, undefined, 2));
+         console.log('Error in Deleting Items :' + JSON.stringify(err, undefined, 2));
       }
    })
 })
