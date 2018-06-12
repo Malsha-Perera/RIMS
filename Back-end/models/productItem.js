@@ -26,7 +26,7 @@ const ImSchema= mongoose.Schema({
     
     latestUpdate:{
         type:Date,
-        type:Number,
+        
     },
     unitScale:{
         type:String,          
