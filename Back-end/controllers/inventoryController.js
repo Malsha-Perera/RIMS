@@ -2,7 +2,7 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
-var { Item } = require('../models/productItem');
+var Item = require('../models/productItem');
 
 router.get('/', (req, res) => {
    Item.find((err, docs) => {
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
    var item = new Item({
       
-      itemname: req.body.name,
+      itemname: req.body.itemname,
       itemCode: req.body.itemCode,
       category: req.body.category,
       quantity: req.body.quantity,
@@ -60,7 +60,7 @@ router.put('/:id', (req, res) => {
    }
    var item = {
       
-      itemname: req.body.name,
+      itemname: req.body.itemname,
       itemCode: req.body.itemCode,
       category: req.body.category,
       quantity: req.body.quantity,
