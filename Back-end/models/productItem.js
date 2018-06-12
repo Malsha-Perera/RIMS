@@ -20,6 +20,12 @@ const ImSchema= mongoose.Schema({
         required:true,
     },
     unitCost:{
+
+        type:Number,         
+    },
+    
+    latestUpdate:{
+        type:Date,
         type:Number,
     },
     unitScale:{
@@ -36,8 +42,8 @@ const ImSchema= mongoose.Schema({
     },
     date: {
         type: Number
-    }
 
+    }
 
 
 });

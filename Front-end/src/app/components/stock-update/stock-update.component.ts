@@ -24,6 +24,7 @@ export class StockUpdateComponent implements OnInit {
   description:String;
   selectedItem:Item;
   _id:number;
+  latestUpdate:Date;
 
   constructor(private dataservice:DataService) { }
   
@@ -36,7 +37,7 @@ export class StockUpdateComponent implements OnInit {
 
   }
 
-  addToStock(itemNew,quantity,unitCost){ 
+  addToStock(itemNew,quantity,unitCost,latestUpdate){ 
   
     let newItem = { //newItem:Item={}
       _id:itemNew._id,
@@ -46,6 +47,7 @@ export class StockUpdateComponent implements OnInit {
       description:itemNew.description,
       unitScale:itemNew.unitScale,
       unitCost:unitCost,
+      latestUpdate:latestUpdate,
 
      };  
      this.stockItemList.push(newItem) 
@@ -59,7 +61,7 @@ export class StockUpdateComponent implements OnInit {
   }    
    
   getItembyCode(form1: NgForm,form2: NgForm ){
-    
+    this.latestUpdate=form1.value.latestUpdate;
     this.itemCode=form1.value.itemCode;
     this.quantity = form2.value.quantity;
     this.unitCost = form2.value.unitCost;
@@ -76,7 +78,7 @@ export class StockUpdateComponent implements OnInit {
       for (var i = 0; i < this.productItemList.length; i++) {
         
         if (this.itemCode==this.productItemList[i].itemCode) {
-          this.addToStock(this.productItemList[i],this.quantity,this.unitCost);
+          this.addToStock(this.productItemList[i],this.quantity,this.unitCost,this.latestUpdate);
           this.getItems();
           alert(this.productItemList[i].itemname + " prevails in " + this.productItemList[i].quantity + " " +this.productItemList[i].unitScale +" quantity in the stock." );
           console.log(this.productItemList[i]);
