@@ -22,6 +22,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { UnitCostComponent } from './components/unit-cost/unit-cost.component';
 import { StockUpdateComponent } from './components/stock-update/stock-update.component';
 import { AddRecipieComponent } from './components/add-recipie/add-recipie.component';
+import { ItemDetailComponent } from './components/inventory/item-detail/item-detail.component';
+import { ItemDetailPipe } from './pipes/item-detail.pipe';
 
 const appRoutes: Routes = [
   {path: 'item', component: ProductItemComponent},
@@ -56,6 +58,8 @@ const appRoutes: Routes = [
     UnitCostComponent,
     StockUpdateComponent,
     AddRecipieComponent,
+    ItemDetailComponent,
+    ItemDetailPipe,
 
   ],
   imports: [
