@@ -42,8 +42,8 @@ const ImSchema= mongoose.Schema({
          type: Number 
     },
     date: {
-        type: Number
 
+        type: Date
     }
 
 

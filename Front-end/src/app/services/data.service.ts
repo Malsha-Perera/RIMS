@@ -12,7 +12,7 @@ export class DataService {
     return this.http.get('http://localhost:3000/api/items').map(res => res.json());
   }
   getItem(itemCode) {
-    return this.http.get('http://localhost:3000/api/item/'+itemCode).map(res => res.json());
+    return this.http.get('http://localhost:3000/api/item/' + itemCode).map(res => res.json());
   }
   addProductItem(newItem) {
     const headers = new Headers();
