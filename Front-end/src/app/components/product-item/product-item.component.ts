@@ -3,6 +3,7 @@ import {Item} from "./product";
 import {DataService} from "../../services/data.service";
 
 
+
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
@@ -14,12 +15,13 @@ export class ProductItemComponent implements OnInit {
   productitem:Item[]=[];
   itemname:String;
   itemitem:Item;
+  itemCode:String;
   quantity:number;
   description:String;
   selectedItem:Item;
-  _id:number
-  toggleForm:boolean=false
-
+  _id:number;
+  toggleForm:boolean=false;
+  
 
 
 
@@ -48,14 +50,19 @@ export class ProductItemComponent implements OnInit {
       })
   }
 
-
-
+ setCode(){
+   this.itemCode = this.itemname.substring(0,2) + this.count;
+   
+ }
+ count =0;
  addItem(){
+   this.setCode();
+   this.count = this.count +1;
    const newItem = {
      itemname: this.itemname,
      quantity: this.quantity,
      description:this.description,
-
+     itemCode:this.itemCode,     
    }
    this.dataservice.addProductItem(newItem)
      .subscribe(item => {
@@ -67,28 +74,29 @@ export class ProductItemComponent implements OnInit {
      });
  }
 showEditFrm(item){
-   this.selectedItem=item;
+   this.selectedItem = item;
    this.toggleForm=!this.toggleForm;
  }
-/*editproduct(form){
-   let newItem :Item={
+editproduct(){ 
+  
+   let newItem = { //newItem:Item={}
      _id:this.selectedItem._id,
-     itemname:form.value.itemname,
-     quantity:form.value.quantity,
-     description:form.value.description,
-
-
-   };
-
+     itemCode:this.selectedItem.itemCode,
+     itemname:this.selectedItem.itemname,
+     quantity:this.selectedItem.quantity,
+     description:this.selectedItem.description,
+    };   
+   
   this.dataservice.updateproduct(newItem)
      .subscribe(result=>{
        console.log('original Item to be updated:'+result);
        this.getItems();
      });
    this.toggleForm=!this.toggleForm;
+  
 
  }
-*/
+
 
 
 

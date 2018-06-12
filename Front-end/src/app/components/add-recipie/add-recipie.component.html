@@ -1,0 +1,35 @@
+<div class="container-fluid" >
+  <div class="col-sm-offset-1 col-sm-8">
+    <table id="mytable" class=" table order-list" >
+      <thead>
+        <tr>
+          <td>Ingredient</td>
+          <td>Quantity</td>
+          <td>Unit Cost (Rs)</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-sm-4">
+              <input type="text" name="id" class="form-control" />
+          </td>
+          <td class="col-sm-4">
+              <input type="number" id="totalQuantity"  class="form-control"/>
+          </td>
+          <td class="col-sm-3">
+              <input type="number" id="price"  class="form-control"/>
+          </td>            
+          <td class="col-sm-2"><a class="deleteRow"></a></td>
+        </tr>
+      </tbody>
+    </table>
+    &nbsp; &nbsp; 
+    <div class="col-sm-offset-7 col-sm-8">
+         
+      <button id="addRow" type="submit" onclick="addRow()" class="btn btn-primary" data-toggle="tooltip" title="Add vendor"><i class="fa fa-plus"></i></button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        
+      <button type="submit" onclick="getSum()" class="btn btn-success"data-toggle="tooltip" title="Calculate average unit price"><i class="fa fa-location-arrow"></i></button>
+    </div>
+  </div>
+</div>

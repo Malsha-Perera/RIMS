@@ -4,14 +4,27 @@ const ImSchema= mongoose.Schema({
         type:String,
         required:true,
     },
+    itemCode:{
+        type:String,
+        required:true,      
+    },
     quantity:{
         type:Number,
         required:true,
-
     },
     description:{
         type:String,
         required:true,
+    },
+    unitCost:{
+        type:Number,
+        
+        
+    },
+    unitScale:{
+        type:String,
+        
+                
     }
 
 
