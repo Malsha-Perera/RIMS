@@ -8,6 +8,9 @@ const ImSchema= mongoose.Schema({
         type:String,
         required:true,      
     },
+    category: {
+        type: String
+    },
     quantity:{
         type:Number,
         required:true,
@@ -17,13 +20,29 @@ const ImSchema= mongoose.Schema({
         required:true,
     },
     unitCost:{
+
         type:Number,         
     },
-    unitScale:{
-        type:String,                     
-    },
+    
     latestUpdate:{
         type:Date,
+        type:Number,
+    },
+    unitScale:{
+        type:String,          
+    },
+    minimumLevel: { 
+        type: Number 
+    },
+    reOrderLevel:{ 
+        type: Number 
+    },
+    maximumLevel: {
+         type: Number 
+    },
+    date: {
+        type: Number
+
     }
 
 
