@@ -66,7 +66,6 @@ router.put('/item/:id',(req,res,next) =>{
             //thama me fields edit karanna deela nathi nisa hriyta balala fix karanna one
             itemCode:req.body.itemCode,
             unitCost:req.body.unitCost, 
-            latestUpdate:req.body.latestUpdate,
             //unitScale:req.body.unitScale,  
         }
 

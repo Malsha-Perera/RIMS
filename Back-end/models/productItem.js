@@ -17,14 +17,16 @@ const ImSchema= mongoose.Schema({
         required:true,
     },
     unitCost:{
-        type:Number,         
+        type:Number,
+        
+        
     },
     unitScale:{
-        type:String,                     
-    },
-    latestUpdate:{
-        type:Date,
+        type:String,
+        
+                
     }
+
 
 
 });
