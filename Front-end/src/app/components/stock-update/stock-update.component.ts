@@ -26,6 +26,7 @@ export class StockUpdateComponent implements OnInit {
   _id:number;
 
   constructor(private dataservice:DataService) { }
+  
   getItems(){
     this.dataservice.getProductItems()
       .subscribe(items=>{
@@ -43,10 +44,11 @@ export class StockUpdateComponent implements OnInit {
       itemname:itemNew.itemname,
       quantity:itemNew.quantity + quantity,
       description:itemNew.description,
+      unitScale:itemNew.unitScale,
       unitCost:unitCost,
 
      };  
-      
+     this.stockItemList.push(newItem) 
     
    this.dataservice.updateproduct(newItem)
       .subscribe(result=>{
