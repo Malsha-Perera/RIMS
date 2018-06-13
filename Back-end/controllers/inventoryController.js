@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
          res.send(docs);
       }
       else{
-         console.log('Error in Retriving Employees :' + JSON.stringify(err, undefined, 2));
+         console.log('Error in Retriving items :' + JSON.stringify(err, undefined, 2));
       }
    });
 });
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-   var item = new Item({
+   var item = new Item ({
       
       itemname: req.body.itemname,
       itemCode: req.body.itemCode,
@@ -38,6 +38,7 @@ router.post('/', (req, res) => {
       quantity: req.body.quantity,
       description: req.body.description,
       unitCost: req.body.unitCost,
+      latestUpdate: req.body.latestUpdate,
       unitScale: req.body.unitScale,
       minimumLevel: req.body.minimumLevel,
       reOrderLevel: req.body.reOrderLevel,
@@ -66,6 +67,7 @@ router.put('/:id', (req, res) => {
       quantity: req.body.quantity,
       description: req.body.description,
       unitCost: req.body.unitCost,
+      latestUpdate: req.body.latestUpdate,
       unitScale: req.body.unitScale,
       minimumLevel: req.body.minimumLevel,
       reOrderLevel: req.body.reOrderLevel,

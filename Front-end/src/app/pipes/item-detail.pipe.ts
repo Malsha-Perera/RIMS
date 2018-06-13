@@ -4,7 +4,7 @@ import { ItemDetailService } from '../services/itemDetailService/item-detail.ser
 import { SlicePipe } from '@angular/common';
 
 @Pipe({
-  name: 'itemDetail'
+  name: 'item'
 })
 export class ItemDetailPipe implements PipeTransform {
 
