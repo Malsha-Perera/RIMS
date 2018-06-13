@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
+import { AppBootstrapModule } from './app-bootstrap.module';
 
 
 
@@ -24,6 +26,7 @@ import { StockUpdateComponent } from './components/stock-update/stock-update.com
 import { AddRecipieComponent } from './components/add-recipie/add-recipie.component';
 import { ItemDetailComponent } from './components/inventory/item-detail/item-detail.component';
 import { ItemDetailPipe } from './pipes/item-detail.pipe';
+import { ItemDetailService } from './services/itemDetailService/item-detail.service';
 
 const appRoutes: Routes = [
   {path: 'item', component: ProductItemComponent},
@@ -36,6 +39,7 @@ const appRoutes: Routes = [
   {path: 'uc', component: UnitCostComponent},
   {path: 'stockupdate', component: StockUpdateComponent},
   {path: 'addrecipie', component: AddRecipieComponent},
+  {path: 'items', component: ItemDetailComponent}
 
     ];
 
@@ -64,8 +68,10 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     HttpModule,
     FormsModule,
+    AppBootstrapModule,
     RouterModule.forRoot(appRoutes)
 
   ],
