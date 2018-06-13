@@ -8,7 +8,7 @@ var app = express();
 const route = require('./controllers/route');
 const route_1 = require('./controllers/inventoryController');
 //middleware
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:4200'}));
 app.use(bodyparser.json());
 app.use('/api',route);
 app.use('/items', route_1);
