@@ -17,11 +17,11 @@ export class ItemDetailService {
   constructor(private http: HttpClient) { }
 
   postItem(item: Item) {
-    return this.http.post(this.baseURL, item).subscribe(res => console.log(res));
+    return this.http.post(this.baseURL, item);
   }
 
   getItemList() {
-    return this.http.get(this.baseURL).subscribe(res => console.log(res));
+    return this.http.get(this.baseURL);
   }
 
   putItem(item: Item) {
