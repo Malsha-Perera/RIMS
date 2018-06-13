@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+// import { Http, Response, Headers } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -15,12 +16,12 @@ export class ItemDetailService {
 
   constructor(private http: HttpClient) { }
 
-  postItem(itemdetail: Item) {
-    return this.http.post(this.baseURL, itemdetail);
+  postItem(item: Item) {
+    return this.http.post(this.baseURL, item).subscribe(res => console.log(res));
   }
 
   getItemList() {
-    return this.http.get(this.baseURL);
+    return this.http.get(this.baseURL).subscribe(res => console.log(res));
   }
 
   putItem(item: Item) {

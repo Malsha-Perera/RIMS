@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Http, Response, Headers} from '@angular/http';
+// import { HttpHeaders, HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 
 @Injectable()
 export class DataService {
 
+  readonly baseURL = 'http://localhost:3000/api/items';
   constructor(private http: Http) { }
 
   getProductItems() {
