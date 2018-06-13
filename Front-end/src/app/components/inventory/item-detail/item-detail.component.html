@@ -72,7 +72,9 @@
             </table>
             <button class='btn btn-success' id="mybutton" (click)="openModal(template)"><i class='fa fa-plus-square fa-lg'></i></button>
             <script>
-              $('mytable').dataTable();
+             $(document).ready(function() {
+                $('#mytable').DataTable();
+            });
             </script>
             <!-- Modal -->
             <ng-template #template>
