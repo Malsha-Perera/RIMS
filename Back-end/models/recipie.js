@@ -5,16 +5,16 @@ const ImSchema= mongoose.Schema({
         type:String,
         required:true,
     },
-    recipieNo:{
+    recipieCode:{
         type:String,
         required:true,      
     },
     ingredient:{
-        type:Array,
+        type:String,
         required:true,
     },
     cost:{
-        type:String,
+        type:Number,
         required:true,
     },
     

@@ -50,7 +50,8 @@ export class StockUpdateComponent implements OnInit {
       latestUpdate:latestUpdate,
 
      };  
-     this.stockItemList.push(newItem) 
+     this.stockItemList.push(newItem) ;
+     console.log("stock list  : " + this.stockItemList );
     
    this.dataservice.updateproduct(newItem)
       .subscribe(result=>{
