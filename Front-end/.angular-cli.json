@@ -20,13 +20,14 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-       "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "assets/bower_components/bootstrap/dist/css/bootstrap.min.css",
         "assets/bower_components/font-awesome/css/font-awesome.min.css",
         "assets/bower_components/Ionicons/css/ionicons.min.css",
         "assets/bower_components/jvectormap/jquery-jvectormap.css",
         "assets/dist/css/AdminLTE.min.css",
-        "assets/dist/css/skins/_all-skins.min.css"
+        "assets/dist/css/skins/_all-skins.min.css",
+        "assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"
       ],
       "scripts": [
         "assets/bower_components/jquery/dist/jquery.min.js",
@@ -39,8 +40,10 @@
         "assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
         "assets/bower_components/chart.js/Chart.js",
         "assets/dist/js/pages/dashboard2.js",
-        "assets/dist/js/demo.js"
-        
+        "assets/dist/js/demo.js",
+        "assets/bower_components/datatables.net/js/jquery.dataTables.min.js",
+        "assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"
+
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

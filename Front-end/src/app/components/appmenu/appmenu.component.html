@@ -27,7 +27,7 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
       <li class="active treeview menu-open">
-        <a href="#">
+        <a href="" [routerLink]="['']">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -36,17 +36,17 @@
       </li>
 
       <li class="treeview">
-        <a href="#">
+        <a href="" [routerLink]="['menu']">
           <i class="fa fa-cutlery"></i>
           <span>Menu</span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Recepies & Menus</a></li>
+          <li><a href="" [routerLink]="['recipie']"><i class="fa fa-circle-o"></i> Recepies & Menus</a></li>
           <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>Menu Cost</a></li>
         </ul>
       </li>
       <li>
-        <a href="pages/widgets.html">
+        <a href="" [routerLink]="['items']">
           <i class="fa fa-line-chart"></i> <span>Inventory</span>
         </a>
       </li>
@@ -77,7 +77,7 @@
         <ul class="treeview-menu">
           <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i>Purchase Order Status</a></li>
           <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i>Order Requisition</a></li>
-          <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i>Purchase Order </a></li>
+          <li><a href="" [routerLink]="['po']"><i class="fa fa-circle-o"></i>Purchase Order </a></li>
           <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Good Received Note</a></li>
         </ul>
       </li>

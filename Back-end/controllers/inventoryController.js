@@ -2,7 +2,7 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
-var { Item } = require('../models/productItem');
+var Item = require('../models/productItem');
 
 router.get('/', (req, res) => {
    Item.find((err, docs) => {
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
          res.send(docs);
       }
       else{
-         console.log('Error in Retriving Employees :' + JSON.stringify(err, undefined, 2));
+         console.log('Error in Retriving items :' + JSON.stringify(err, undefined, 2));
       }
    });
 });
@@ -30,14 +30,15 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-   var item = new Item({
+   var item = new Item ({
       
-      itemname: req.body.name,
+      itemname: req.body.itemname,
       itemCode: req.body.itemCode,
       category: req.body.category,
       quantity: req.body.quantity,
       description: req.body.description,
       unitCost: req.body.unitCost,
+      latestUpdate: req.body.latestUpdate,
       unitScale: req.body.unitScale,
       minimumLevel: req.body.minimumLevel,
       reOrderLevel: req.body.reOrderLevel,
@@ -60,12 +61,13 @@ router.put('/:id', (req, res) => {
    }
    var item = {
       
-      itemname: req.body.name,
+      itemname: req.body.itemname,
       itemCode: req.body.itemCode,
       category: req.body.category,
       quantity: req.body.quantity,
       description: req.body.description,
       unitCost: req.body.unitCost,
+      latestUpdate: req.body.latestUpdate,
       unitScale: req.body.unitScale,
       minimumLevel: req.body.minimumLevel,
       reOrderLevel: req.body.reOrderLevel,
