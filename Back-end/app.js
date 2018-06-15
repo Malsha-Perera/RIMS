@@ -7,10 +7,12 @@ var app = express();
 
 const route = require('./controllers/route');
 const route_1 = require('./controllers/inventoryController');
+const route_2 = require('./controllers/recipieController');
 //middleware
 app.use(cors({ origin: 'http://localhost:4200'}));
 app.use(bodyparser.json());
 app.use('/api',route);
+app.use('/recipie',route_2);
 app.use('/items', route_1);
 
 //connect mongodb

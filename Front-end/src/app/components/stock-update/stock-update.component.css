@@ -16,9 +16,15 @@
 }
 .list-group-item:hover{
     background-color: lightblue;
+   
 }
 
 .list-group-item{
     max-width: 800pt;
     max-height: 40pt;
+}
+div.a {
+    border: 1px solid black;
+    margin: 20px ;
+    
 }
