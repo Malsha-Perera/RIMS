@@ -7,15 +7,21 @@
 }
 
 tbody {
-  background-color: rgb(208, 218, 245);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 125%;
 }
 th {
-  background-color: rgb(173, 180, 180);
-  font: bold;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 125%;
   text-align: center;
-  color: rgb(87, 85, 85);
+  background: linear-gradient(#49708f, #5d809b);
+  color: #fff;
+  text-transform: uppercase;
+}
+th,td {
+  vertical-align: middle;
+}
+
+tbody tr:nth-child(even) {
+  background: #f0f0f2;
 }
