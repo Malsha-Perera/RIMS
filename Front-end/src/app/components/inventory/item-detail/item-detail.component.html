@@ -6,13 +6,14 @@
                   <span class="input-group-addon"><i class="fas fa-search"></i></span>
             </div>
       </div>
+      <hr>
 
       <div class="row">
             <div class="col-sm">
-            <table class="table table-hover table-striped table-sm table-bordered" id="mytable">
-                  <thead class="thead-light">
+            <table class="table table-hover  table-sm" id="mytable">
+                  <thead class="">
                   <tr>
-                        <th>Item_Code</th>
+                        <th>Item Code</th>
                         <th>Name</th>
                         <th>Category</th>
                         <th>Unit</th>
@@ -38,7 +39,7 @@
                         </td>
                         <td class="text-right">{{item.quantity}}</td>
                         <td>
-                              <button class='btn btn-info' (click)="onEdit(item)">
+                              <button class='btn btn-info' (click)="onEdit(item) ; openModal(template)">
                               <i class="fa fa-edit" aria-hidden="true"></i>
                               </button>
 
@@ -55,20 +56,7 @@
                         </td>
                         </tr>
                   </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Item_Code</th>
-                      <th>Name</th>
-                      <th>Category</th>
-                      <th>Unit</th>
-                      <th>ROL</th>
-                      <th>Edit</th>
-                      <th>Quantity</th>
-                      <th>Update</th>
-                      <th>Delete</th>
-                      <th>View</th>
-                    </tr>
-                </tfoot>
+
             </table>
             <button class='btn btn-success' id="mybutton" (click)="openModal(template)"><i class='fa fa-plus-square fa-lg'></i></button>
             <script>
