@@ -1,0 +1,21 @@
+#mytable {
+    background: #e8edff;
+    border-bottom: 1px solid #fff;
+    color: #669;
+    border-top: 1px solid transparent;
+    padding: 8px;
+}
+
+tbody {
+  background-color: rgb(208, 218, 245);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 125%;
+}
+th {
+  background-color: rgb(173, 180, 180);
+  font: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 125%;
+  text-align: center;
+  color: rgb(87, 85, 85);
+}
