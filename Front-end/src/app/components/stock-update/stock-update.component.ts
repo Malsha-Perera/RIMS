@@ -38,20 +38,23 @@ export class StockUpdateComponent implements OnInit {
 
   }
 
-  addToStock(itemNew, quantity, unitCost, latestUpdate) {
 
-    const newItem = { // newItem:Item={}
-      _id: itemNew._id,
-      itemCode: itemNew.itemCode,
-      itemname: itemNew.itemname,
-      quantity: itemNew.quantity + quantity,
-      description: itemNew.description,
-      unitScale: itemNew.unitScale,
-      unitCost: unitCost,
-      latestUpdate: latestUpdate,
+  addToStock(itemNew,quantity,unitCost,latestUpdate){ 
+  
+    let newItem = { //newItem:Item={}
+      _id:itemNew._id,
+      itemCode:itemNew.itemCode,
+      itemname:itemNew.itemname,
+      quantity:itemNew.quantity + quantity,
+      description:itemNew.description,
+      unitScale:itemNew.unitScale,
+      unitCost:unitCost,
+      latestUpdate:latestUpdate,
 
-     };
-     this.stockItemList.push(newItem);
+     };  
+     this.stockItemList.push(newItem) ;
+     console.log("stock list  : " + this.stockItemList );
+    
 
    this.dataservice.updateproduct(newItem)
       .subscribe(result => {
