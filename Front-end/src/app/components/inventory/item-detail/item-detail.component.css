@@ -25,3 +25,12 @@ th,td {
 tbody tr:nth-child(even) {
   background: #f0f0f2;
 }
+
+.modal-header {
+  background-color: #5d809b;
+}
+
+.modal-body {
+  background-color: #c8d2da;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
