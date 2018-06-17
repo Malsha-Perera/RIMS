@@ -1,7 +1,8 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { SetRolComponent } from './set-rol/set-rol.component';
 
 import { ItemDetailService } from '../../../services/itemDetailService/item-detail.service';
 import { Item } from '../../../models/item-detail.model';
@@ -14,6 +15,8 @@ import { ItemDetailPipe } from '../../../pipes/item-detail.pipe';
   providers: [ ItemDetailService],
 })
 export class ItemDetailComponent implements OnInit {
+
+  @ViewChild(SetRolComponent) child;
 
   public modalRef: BsModalRef;
   searchText = '';
@@ -28,7 +31,15 @@ export class ItemDetailComponent implements OnInit {
   public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-md' }); // {3}
   }
+  public openSetROLModal(template2: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template2, {class: 'modal-md' }); // {3}
+  }
   closeFirstModal() {
+    this.modalRef.hide();
+    this.modalRef = null;
+  }
+
+  closeSetROLModal() {
     this.modalRef.hide();
     this.modalRef = null;
   }
@@ -54,6 +65,10 @@ export class ItemDetailComponent implements OnInit {
   }
 
   onEdit(item: Item) {
+    this.itemDetailService.selectedItem = item;
+  }
+
+  onEdit1(item: Item) {
     this.itemDetailService.selectedItem = item;
   }
 

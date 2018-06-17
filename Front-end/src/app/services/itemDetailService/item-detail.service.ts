@@ -11,7 +11,8 @@ import { Item } from '../../models/item-detail.model';
 export class ItemDetailService {
 
   selectedItem: Item;
-  // items: ItemDetail[];
+  oldItems: Item[];
+  sortItems: Item[];
   readonly baseURL = 'http://localhost:3000/items';
 
   constructor(private http: HttpClient) { }
@@ -30,6 +31,12 @@ export class ItemDetailService {
 
   deleteItemDetail(_id: string) {
     return this.http.delete(this.baseURL + `/${_id}`);
+  }
+
+  sortItem() {
+    this.getItemList().subscribe((res) => {
+      this.oldItems = res as Item[];
+    });
   }
 
 }
