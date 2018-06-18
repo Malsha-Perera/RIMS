@@ -4,6 +4,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationModule } from 'ngx-bootstrap';
+import { AlertModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -11,9 +12,10 @@ import { PaginationModule } from 'ngx-bootstrap';
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    AlertModule.forRoot()
   ],
-  exports: [BsDropdownModule, TooltipModule, ModalModule, PaginationModule],
+  exports: [BsDropdownModule, TooltipModule, ModalModule, PaginationModule, AlertModule],
   declarations: []
 })
 export class AppBootstrapModule { }
