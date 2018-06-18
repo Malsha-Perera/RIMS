@@ -1,12 +1,15 @@
 <hr>
 <div class="container">
-      <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="input-group col-sm-4">
-                  <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
-                  <span class="input-group-addon"><i class="fas fa-search"></i></span>
-            </div>
-      </div>
+    <div *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div>
+    <div class="row">
+          <div class="col-sm-4"></div>
+          <div class="input-group col-sm-4">
+                <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
+                <span class="input-group-addon"><i class="fas fa-search"></i></span>
+          </div>
+    </div>
       <hr>
 
       <div class="row">
@@ -163,7 +166,7 @@
                                </div>
                               <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-9">
-                                          <button type="submit" class="btn btn-primary" [disabled]="!itemForm.valid" (click)="modalRef.hide()">Submit</button>
+                                          <button type="submit" class="btn btn-primary" [disabled]="!itemForm.valid" (click)="modalRef.hide() ; addItemAlert()">Submit</button>
                                           <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>
                                           <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="resetForm(itemDetailForm)">Reset</button>
                                     </div>
@@ -205,7 +208,7 @@
 
                                 <div class="form-group">
                                   <div class="col-sm-offset-3 col-sm-9">
-                                        <button type="submit" class="btn btn-primary" [disabled]="!itemForm.valid" (click)="modalRef.hide()">Submit</button>
+                                        <button type="submit" class="btn btn-primary" [disabled]="!itemForm.valid" (click)="modalRef.hide() ;">Submit</button>
                                         <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>
                                   </div>
                             </div>

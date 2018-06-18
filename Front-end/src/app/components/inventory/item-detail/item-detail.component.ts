@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SetRolComponent } from './set-rol/set-rol.component';
+import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 
 import { ItemDetailService } from '../../../services/itemDetailService/item-detail.service';
 import { Item } from '../../../models/item-detail.model';
@@ -21,6 +22,7 @@ export class ItemDetailComponent implements OnInit {
   public modalRef: BsModalRef;
   searchText = '';
   items: Item[];
+  alerts: any[] = [];
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
 
   ngOnInit() {
@@ -104,6 +106,20 @@ export class ItemDetailComponent implements OnInit {
     };
 
   }
+
+  addItemAlert(): void {
+    this.alerts.push({
+      type: 'success',
+      msg: `Item is added successfully! (added: ${new Date().toLocaleTimeString()})`,
+      timeout: 3000
+    });
+  }
+
+  onClosed(dismissedAlert: AlertComponent): void {
+    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
+  }
+
+
 
 }
 
