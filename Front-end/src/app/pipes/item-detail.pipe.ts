@@ -1,10 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Item } from '../models/item-detail.model';
 import { ItemDetailService } from '../services/itemDetailService/item-detail.service';
-import { SlicePipe } from '@angular/common';
 
 @Pipe({
-  name: 'item'
+  name: 'itemFilter'
 })
 export class ItemDetailPipe implements PipeTransform {
 
