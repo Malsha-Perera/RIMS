@@ -26,7 +26,6 @@ import { StockUpdateComponent } from './components/stock-update/stock-update.com
 import { AddRecipieComponent } from './components/add-recipie/add-recipie.component';
 import { ItemDetailComponent } from './components/inventory/item-detail/item-detail.component';
 import { ItemDetailPipe } from './pipes/item-detail.pipe';
-import { ItemDetailService } from './services/itemDetailService/item-detail.service';
 import { SetRolComponent } from './components/inventory/item-detail/set-rol/set-rol.component';
 
 const appRoutes: Routes = [
