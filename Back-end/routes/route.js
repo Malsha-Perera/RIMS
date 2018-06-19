@@ -3,7 +3,7 @@ var express=require('express');
 var router= express.Router();
 
 const Item=require('../models/productItem');
-//const Po=require('../models/purchaseOrder')
+
 
 //retrieving data from database
 router.get('/items',function(req,res,next){
@@ -61,7 +61,7 @@ router.put('/item/:id',(req,res,next) =>{
         else{
             res.json(result);
         }
-
+        
     })
 });
     //deleting data
@@ -76,32 +76,5 @@ router.delete('/item/:id',function(req,res,next) {
 
     })
 });
-
-
-router.post('/po',function(req,res,next){
-    let newPo=new Po({
-        vendor:req.body.vendor,
-        poNo:req.body.poNo,
-        description:req.body.description,
-        comments:req.body.comments,
-        itemname:req.body.itemname,
-        pQuantity:req.body.pQuantity,
-        unitPr:req.body.unitPr,
-        total:req.body.total,
-
-
-
-    });
-    newPo.save(function (err,po) {
-        if (err) {
-            res.json(err);
-        }
-        else {
-            res.json({msg:'PO created succesfully'});
-        }
-
-    });
-});
-
 
 module.exports=router;

@@ -1,19 +1,9 @@
 .sp{
- /* margin-right: 40px;*/
-  margin-left: 160px;
+  margin-right: 40px;
+  margin-left: 40px;
 
 }
 .al{
   float: left;
 
 }
-.als{
-  margin-right: 0px;
-}
-.am{
-  margin-left: 30px;
-}
-.btn{
-  display: inline-block;
-}
-

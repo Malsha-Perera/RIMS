@@ -11,136 +11,129 @@
 </section>
 <div class="container">
 
-  <form (submit) = "createPo()">
+<form>
+  <br>
+  <br>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">PO_Id</label>
+    <div class="col-sm-10">
+    <input type="number"  name="PO_Id" class="form-control">
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Vendor</label>
+    <div class="col-sm-10">
+    <input type="text"  name="Vendor" class="form-control">
+  </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">PO Number</label>
+    <div class="col-sm-10">
+    <input type="number"  name="PO Number" class="form-control">
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">PO Description</label>
+    <div class="col-sm-10">
+    <input type="text"  name="PO Description" class="form-control">
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Comments</label>
+    <div class="col-sm-10">
+    <textarea rows="3"  name="PComments" class="form-control"></textarea>
+  </div>
+  </div>
+  <hr>
+
+
+
+</form>
+
+
+  <form class="form-inline al">
+    <div class="form-group">
+      <label >Select Item</label>
+      <select  class="form-control sp" id="itemselect" placeholder="Item"></select>
+    </div>
+    <div class="form-group">
+      <label >Quantity</label>
+      <input type="number" class="form-control sp" id="qty" placeholder="Qty">
+
+
+    </div>
+    <button type="submit" class="btn btn-primary">Add Item</button>
     <br>
     <br>
-
-
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Vendor</label>
-      <div class="col-sm-10">
-        <input type="text"  [(ngModel)]="vendor" name="vendor" class="form-control">
-      </div>
-    </div>
-
-
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label">PO Number</label>
-      <div class="col-sm-10">
-        <input type="number" [(ngModel)]="poNo" name="poNo" class="form-control">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label">PO Description</label>
-      <div class="col-sm-10">
-        <input type="text"  [(ngModel)]="description" name="description" class="form-control">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Comments</label>
-      <div class="col-sm-10">
-        <textarea rows="3"  [(ngModel)]="comments" name="comments" class="form-control"></textarea>
-      </div>
-    </div>
-    <hr>
-
-
-
-
-
-
-    <br>
     <br>
 
-    <form class="form-inline al">
-      <div class="form-group ">
-        <label  >Item</label>
-        <input type="text" [(ngModel)]="itemname" name="itemname" class="form-control sp als">
+
+  </form>
+  <br>
+  <br>
+
+  <table class="table table-hover">
+    <br>
+    <thead>
+    <tr>
+      <th scope="col">Item ID</th>
+      <th scope="col">Description</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Total</th>
+      <th scope="col"> </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Tomato sause</td>
+      <td>40</td>
+      <td>100</td>
+      <td>4000</td>
+      <td><button > <i class="fa fa-remove" style="color:red"></i></button></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Tomato sause</td>
+      <td>40</td>
+      <td>100</td>
+      <td>4000</td>
+      <td><button > <i class="fa fa-remove" style="color:red"></i></button></td>
+    </tr>
+
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <br>
+
+  <form class="form-inline">
+    <div class="form-group">
+
+    <div class="pull-right">
+      <a href="#" class="btn btn-app">
+      <i class="fa fa-check" style="color:green"></i>
+      </a>
+    </div>
+    <div class="pull-left">
+      <a href="#" class="btn btn-app">
+        <i class="fa fa-save" style="color:purple"></i>
+      </a>
+    </div>
+      <div class="pull-right">
+        <a href="#" class="btn btn-app">
+          <i class="fa fa-remove" style="color:red"></i>
+        </a>
       </div>
 
-      <div class="form-group ">
-        <label >Unit Price</label>
-        <input type="number"  [(ngModel)]="quantity" name="pQuantity" class="form-control als">
-      </div>
-      <div class="form-group ">
-        <label >qty</label>
-        <input type="number"  [(ngModel)]="unitPr" name="unitPr" class="form-control als">
-      </div>
-      <div class="form-group ">
-        <label >total</label>
-        <input type="number"  [(ngModel)]="total" name="total" class="form-control als ">
-      </div>
-      <div class="form-group">
-        <button class="btn btn-default " type="button" (click)="Additem()">
-          <i class="fa fa-plus" style="color:green"></i>
-        </button>
       </div>
     </form>
 
-    <br>
-    <br>
-    <br>
-    <div class="container">
-      <br>
-
-      <div *ngFor="let item of productitem" class="">
-        <div class="row">
-          <div class="col-md-1 sp">
-
-          </div>
-          <div class="col-md-2">
-            {{item.itemname}}
-          </div>
-          <div class="col-md-2">
-            {{item. quantity}}
-          </div>
-          <div class="col-md-2">
-            {{item.unitPr}}
-          </div>
-          <div class="col-md-2">
-            {{item.total}}
-          </div>
-
-          <div class="col-md-1 am">
-            <button type="button" class="btn btn-default" (click) ="deleteproduct(item._id)" value=" Delete " >
-              <i class="fa fa-remove" style="color:red"></i>
-            </button>
-
-            <br><br>
-          </div>
-
-
-
-        </div >
-
-      </div>
-    </div>
-
-
-    <div class="form-group">
-
-      <div class="pull-right">
-        <button type="submit" class="btn btn-app">
-          <i class="fa fa-check" style="color:green"></i>
-        </button>
-      </div>
-      <div class="pull-right">
-        <button type="button" class="btn btn-app">
-          <i class="fa fa-save" style="color:purple"></i>
-        </button>
-      </div>
-      <div class="pull-right">
-        <button type="button" class="btn btn-app">
-          <i class="fa fa-remove" style="color:red"></i>
-        </button>
-      </div>
-
-    </div>
-
-  </form>
-
 </div>
-
 
