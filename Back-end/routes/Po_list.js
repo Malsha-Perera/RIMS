@@ -2,48 +2,63 @@ var express=require('express');
 
 var router= express.Router();
 
-const Item=require('../models/productItem');
-//const Po=require('../models/purchaseOrder')
+const poItem=require('../models/POrderItem');
+const Po=require('../models/purchaseOrder');
 
 //retrieving data from database
 router.get('/items',function(req,res,next){
-    Item.find(function (err,items) {
+    poItem.find(function (err,items) {
         if (err) {
             res.json(err);
         }
         else {
-                res.json(items);
+            res.json(items);
         }
 
     });
 });
-    //inserting data
-    router.post('/item',function(req,res,next){
-       let newproduct=new Item({
-           itemname:req.body.itemname,
-           quantity:req.body.quantity,
-           description:req.body.description,
+/*
+ router.get('/items/:id',function(req,res,next){
+ Item.find({poNo:req.params.id},function (err,items) {
+ if (err) {
+ res.json(err);
+ }
+ else {
+ res.json(items);
+ }
+
+ });
+ });
+
+ */  //inserting data
+router.post('/item',function(req,res,next){
+    let newproduct=new poItem({
+        itemname:req.body.itemname,
+        quantity:req.body.quantity,
+        unitPr:req.body.unitPr,
+        total:req.body.total,
+        poNo:req.body.poNo,
 
 
 
-       });
-        newproduct.save(function (err,item) {
-            if (err) {
-                res.json(err);
-            }
-            else {
-                res.json({msg:'item added succesfully'});
-            }
+    });
+    newproduct.save(function (err,item) {
+        if (err) {
+            res.json(err);
+        }
+        else {
+            res.json({msg:'item added succesfully'});
+        }
 
-        });
+    });
 
-        });
+});
 
 
-    //updating data
+//updating data
 
 router.put('/item/:id',(req,res,next) =>{
-    Item.findOneAndUpdate({_id:req.params.id},{
+    poItem.findOneAndUpdate({_id:req.params.id},{
         $set:{
             itemname:req.body.itemname,
             quantity:req.body.quantity,
@@ -64,9 +79,9 @@ router.put('/item/:id',(req,res,next) =>{
 
     })
 });
-    //deleting data
+//deleting data
 router.delete('/item/:id',function(req,res,next) {
-    Item.remove({_id:req.params.id},function (err,result) {
+    poItem.remove({_id:req.params.id},function (err,result) {
         if (err){
             res.json(err);
         }
@@ -85,9 +100,10 @@ router.post('/po',function(req,res,next){
         description:req.body.description,
         comments:req.body.comments,
         itemname:req.body.itemname,
-        pQuantity:req.body.pQuantity,
+        quantity:req.body.quantity,
         unitPr:req.body.unitPr,
         total:req.body.total,
+
 
 
 

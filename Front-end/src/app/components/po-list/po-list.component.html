@@ -1,0 +1,85 @@
+
+
+
+<div class="container" >
+  <br>
+  <br>
+  <h2 class="page-header">Purchase Order Item List</h2>
+  <br><br>
+
+  <form (submit) = "editproduct()"  *ngIf="toggleForm" >
+    <h2 class="page-header">Edit Product</h2>
+    <div class="form-group">
+      <label>Item Name</label>
+      <input type="text" [(ngModel)]="selectedItem.itemname" name="itemname" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Quantity</label>
+      <input type="number" [(ngModel)]="selectedItem.quantity" name="quantity" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Unit Price</label>
+      <input type="text" [(ngModel)]="selectedItem.unitPr" name="description" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Total</label>
+      <input type="text" [(ngModel)]="selectedItem.total" name="description" class="form-control">
+    </div>
+
+    <input type="submit" class="btn btn-success" value="Save">
+
+  </form>
+</div>
+<br>
+
+<div class="container">
+  <br>
+  <div class="form-group ">
+    <label>Po No</label>
+    <label>Item Name</label>
+    <label>Quantity</label>
+    <label>Unit Price</label>
+    <label>Total</label>
+    </div>
+
+  <div *ngFor="let item of productItemList" class="">
+    <div class="row">
+
+      <div class="col-md-1">
+        {{item.poNo}}
+      </div>
+      <div class="col-md-1">
+        {{item.itemname}}
+      </div>
+      <div class="col-md-1">
+        {{item. quantity}}
+      </div>
+
+      <div class="col-md-1">
+        {{item.unitPr}}
+      </div>
+      <div class="col-md-1">
+        {{item.total}}
+      </div>
+
+      <div class="col-md-1 am">
+        <button type="button" class="btn btn-default" (click) ="deleteproduct(item._id)" value=" Delete " >
+          <i class="fa fa-remove" style="color:red"></i>
+        </button>
+
+      </div>
+      <div class="col-md-1">
+        <button type="button" (click)="showEditFrm(item)" class="btn btn-default" [disabled]="toggleForm">
+          <i class="fa fa-pencil-square-o" style="color:darkblue"></i>
+        </button>
+      </div>
+
+
+
+
+    </div >
+
+  </div>
+</div>

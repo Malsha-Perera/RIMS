@@ -20,6 +20,8 @@ import { AppcontentComponent } from './components/appcontent/appcontent.componen
 import { RecipieComponent } from './components/recipie/recipie.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { UnitCostComponent } from './components/unit-cost/unit-cost.component';
+import { PoListComponent } from './components/po-list/po-list.component';
+import {DDataService} from "./services/po-list.service";
 
 const appRoutes: Routes = [
   {path: 'item', component: ProductItemComponent},
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
   {path: 'recipie', component: RecipieComponent},
   {path: 'menu', component: MenuComponent},
   {path: 'uc', component: UnitCostComponent},
+  {path: 'pitem', component: PoListComponent},
 
     ];
 
@@ -50,6 +53,7 @@ const appRoutes: Routes = [
     RecipieComponent,
     MenuComponent,
     UnitCostComponent,
+    PoListComponent,
 
   ],
   imports: [
@@ -59,7 +63,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [DataService],
+  providers: [DataService,DDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
