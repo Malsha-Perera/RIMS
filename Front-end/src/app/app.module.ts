@@ -27,6 +27,8 @@ import { AddRecipieComponent } from './components/add-recipie/add-recipie.compon
 import { ItemDetailComponent } from './components/inventory/item-detail/item-detail.component';
 import { ItemDetailPipe } from './pipes/item-detail.pipe';
 import { SetRolComponent } from './components/inventory/item-detail/set-rol/set-rol.component';
+import { PoListComponent } from './components/po-list/po-list.component';
+import {DDataService} from "./services/po-list.service";
 
 const appRoutes: Routes = [
   {path: 'item', component: ProductItemComponent},
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
   {path: 'uc', component: UnitCostComponent},
   {path: 'stockupdate', component: StockUpdateComponent},
   {path: 'addrecipie', component: AddRecipieComponent},
-  {path: 'items', component: ItemDetailComponent}
+  {path: 'items', component: ItemDetailComponent},
+  {path: 'pitem', component: PoListComponent},
 
     ];
 
@@ -65,6 +68,7 @@ const appRoutes: Routes = [
     ItemDetailComponent,
     ItemDetailPipe,
     SetRolComponent,
+    PoListComponent,
 
   ],
   imports: [
@@ -76,7 +80,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [DataService],
+  providers: [DataService,DDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

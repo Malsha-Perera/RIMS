@@ -8,12 +8,16 @@ var app = express();
 const route = require('./controllers/route');
 const route_1 = require('./controllers/inventoryController');
 const route_2 = require('./controllers/recipieController');
+const Po_list=require('./controllers/Po_list');
+const Po_route=require('./controllers/Po_route');
 //middleware
 app.use(cors({ origin: 'http://localhost:4200'}));
 app.use(bodyparser.json());
 app.use('/api',route);
 app.use('/recipie',route_2);
 app.use('/items', route_1);
+app.use('/api/p',Po_route);
+app.use('/api/pi',Po_list);
 
 //connect mongodb
 mongoose.connect('mongodb://localhost:27017/ims');

@@ -68,3 +68,34 @@ body {
 @-webkit-keyframes pulsate {
   50% { color: #000; }
 }
+.round-icon{
+  text-align: center;
+  padding: 3px;
+  display: inline-block;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+  -moz-box-shadow: 0px 0px 2px #888;
+  -webkit-box-shadow: 0px 0px 2px #888;
+  box-shadow: 0px 0px 2px #888;
+}
+.round-icon {
+  background: #ffc0c0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100px;
+  vertical-align: middle;
+  padding: 30px;
+
+}
+.icon-background {
+  color:  #99ccff;
+}
+.icon-backgrounds {
+  color: #ffc0c0;
+}
+.al{
+  margin-left: 100px;
+}

@@ -1,0 +1,38 @@
+
+
+
+<div class="container" >
+  <br>
+  <br>
+  <h2 class="page-header">Purchase Order Item List</h2>
+  <br><br>
+
+
+<div class="row">
+  <div class="col-sm">
+    <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
+      <thead class="">
+      <tr>
+        <th>Po No</th>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Total</th>
+
+      </tr>
+      </thead>
+      <tbody class="text-center">
+      <tr *ngFor="let item of productItemList" class="">
+        <td>{{item.poNo}}</td>
+        <td>{{item.itemname}}</td>
+        <td>{{item. quantity}}</td>
+        <td>{{item.unitPr}}</td>
+        <td>{{item.total}}</td>
+
+      </tr>
+      </tbody>
+
+    </table>
+    </div>
+  </div>
+  </div>

@@ -90,18 +90,18 @@ export class ItemDetailComponent implements OnInit {
     }
     this.itemDetailService.selectedItem = {
       _id: '',
-    itemname: '',
-    itemCode: '',
-    category: '',
-    quantity: null,
-    description: '',
-    unitCost: null,
-    latestUpdate: null,
-    unitScale: '',
-    minimumLevel: null,
-    reOrderLevel: null,
-    maximumLevel: null,
-    date: null
+      itemname: '',
+      itemCode: '',
+      category: '',
+      quantity: null,
+      description: '',
+      unitCost: null,
+      latestUpdate: null,
+      unitScale: '',
+      minimumLevel: null,
+      reOrderLevel: null,
+      maximumLevel: null,
+      date: null
 
     };
 
