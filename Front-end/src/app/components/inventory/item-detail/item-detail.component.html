@@ -39,16 +39,16 @@
                         </td>
                         <td class="text-right">{{item.quantity}}</td>
                         <td>
-                              <button class='btn btn-info' (click)="onEdit(item) ; openModal(template)">
-                              <i class="fa fa-edit" aria-hidden="true"></i>Edit
+                              <button class='btn btn-info' (click)="onEdit(item) ; openModal(template)" tooltip="edit">
+                              <i class="fa fa-edit" aria-hidden="true"></i>
                               </button>
 
-                              <button class='btn btn-danger' (click)="onDelete(item._id, itemDetailForm)">
-                              <i class='fa fa-trash fa-lg'></i>Delete
+                              <button class='btn btn-danger' (click)="onDelete(item._id, itemDetailForm)" tooltip="delete">
+                              <i class='fa fa-trash fa-lg'></i>
                               </button>
 
                               <button class='btn btn-success'>
-                              <i class="fas fa-align-justify"></i>View
+                              <i class="fas fa-align-justify"></i>
                               </button>
                         </td>
                         </tr>
