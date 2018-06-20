@@ -14,10 +14,10 @@ export class PoMainComponent implements OnInit {
   }
 
   goCpo() {
-    this.router.navigate(['cpo']);
+    this.router.navigate(['po/cpo']);
   }
 
   goVpo() {
-    this.router.navigate(['vpo']);
+    this.router.navigate(['po/vpo']);
   }
 }
