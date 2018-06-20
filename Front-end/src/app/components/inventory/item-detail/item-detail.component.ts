@@ -29,7 +29,7 @@ export class ItemDetailComponent implements OnInit {
     this.resetForm();
     this.refreshItemList();
   }
-
+  // method for open modal
   public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-md' }); // {3}
   }
