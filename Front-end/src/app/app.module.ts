@@ -35,7 +35,7 @@ const appRoutes: Routes = [
   {path: '', component: AppcontentComponent},
   {path: 'cpo', component: CreatePoComponent},
   {path: 'vpo', component: ViewPoComponent},
-  {path: 'recipie', component: RecipieComponent},
+  {path: 'menu/recipie', component: RecipieComponent},
   {path: 'menu', component: MenuComponent},
   {path: 'uc', component: UnitCostComponent},
   {path: 'items/stockupdate', component: StockUpdateComponent},

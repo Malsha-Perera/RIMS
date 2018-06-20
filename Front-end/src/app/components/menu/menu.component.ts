@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Product } from '../../models/Product';
 import {ProductService} from "../../services/product.service";
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-menu',
@@ -22,8 +25,9 @@ export class MenuComponent implements OnInit {
   productCode:String;
   unitCost:number;
   foodCategory:String;
+  public modalRef: BsModalRef;
 
-  constructor(private productservice:ProductService) { }
+  constructor(private productservice:ProductService, public modalService: BsModalService) { }
 
   getProducts(){
     this.productservice.getProducts()
@@ -70,7 +74,13 @@ export class MenuComponent implements OnInit {
     }  
 
   }
-  
+  public openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-md' }); // {3}
+  }
+  closeFirstModal() {
+    this.modalRef.hide();
+    this.modalRef = null;
+  }
 
   ngOnInit() {
    this.getProducts();
