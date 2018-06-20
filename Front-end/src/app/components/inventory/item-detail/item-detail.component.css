@@ -31,3 +31,7 @@ th,td {
   background-color: #c8d2da;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+.info-box.icon {
+  background-color: #7cc7f3;
+}
