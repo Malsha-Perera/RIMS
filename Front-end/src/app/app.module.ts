@@ -28,6 +28,7 @@ import { ItemDetailComponent } from './components/inventory/item-detail/item-det
 import { ItemDetailPipe } from './pipes/item-detail.pipe';
 import { SetRolComponent } from './components/inventory/item-detail/set-rol/set-rol.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { SalesComponent } from './components/sales/sales.component';
 
 const appRoutes: Routes = [
   {path: 'item', component: ProductItemComponent},
@@ -68,6 +69,7 @@ const appRoutes: Routes = [
     ItemDetailPipe,
     SetRolComponent,
     CustomerComponent,
+    SalesComponent,
 
   ],
   imports: [
