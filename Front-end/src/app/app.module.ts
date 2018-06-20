@@ -27,6 +27,7 @@ import { AddRecipieComponent } from './components/add-recipie/add-recipie.compon
 import { ItemDetailComponent } from './components/inventory/item-detail/item-detail.component';
 import { ItemDetailPipe } from './pipes/item-detail.pipe';
 import { SetRolComponent } from './components/inventory/item-detail/set-rol/set-rol.component';
+import { CustomerComponent } from './components/customer/customer.component';
 
 const appRoutes: Routes = [
   {path: 'item', component: ProductItemComponent},
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
   {path: 'recipie', component: RecipieComponent},
   {path: 'menu', component: MenuComponent},
   {path: 'uc', component: UnitCostComponent},
+  {path: 'items/stockupdate', component: StockUpdateComponent},
   {path: 'stockupdate', component: StockUpdateComponent},
   {path: 'addrecipie', component: AddRecipieComponent},
   {path: 'items', component: ItemDetailComponent}
@@ -65,6 +67,7 @@ const appRoutes: Routes = [
     ItemDetailComponent,
     ItemDetailPipe,
     SetRolComponent,
+    CustomerComponent,
 
   ],
   imports: [

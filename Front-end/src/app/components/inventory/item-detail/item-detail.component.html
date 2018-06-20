@@ -1,5 +1,23 @@
 <hr>
 <div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <a [routerLink]="['stockupdate']">
+        <div class="info-box" tooltip="to update stock click here">
+            <span class="info-box-icon bg-yellow"><i class="fas fa-store-alt"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">STOCK UPDATE</span>
+              <i class="fas fa-hand-point-right fa-4x"></i>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+      </a>
+
+          <!-- /.info-box -->
+      </div>
+  </div>
+
     <div *ngFor="let alert of alerts">
       <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
     </div>
@@ -13,7 +31,7 @@
       <hr>
 
       <div class="row">
-            <div class="col-sm">
+            <div class="col-sm-12">
             <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
                   <thead class="">
                   <tr>
