@@ -15,8 +15,9 @@
           <div class="panel-body">
               <div class="list-group">
                   <div *ngFor="let item of setMenuList" class="">
-                      <a href="#" class="list-group-item">{{item.productName}}</a></div> 
-                  <button href="#" ><i class="fa fa-plus"></i></button>
+                      <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
+                    </div> 
+                  <button (click)="openModal(template)"><i class="fa fa-plus"></i></button>
                 </div>
           </div>
         </div>
@@ -33,8 +34,8 @@
           <div class="panel-body">
               <div class="list-group">
                   <div *ngFor="let item of shortEatsList" class="">
-                  <a href="#" class="list-group-item">{{item.productName}}</a></div>                               
-                <button href="#" ><i class="fa fa-plus"></i></button>
+                  <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a></div>                               
+                <button (click)="openModal(template)"><i class="fa fa-plus"></i></button>
                 </div>
           </div>
         </div>
@@ -51,8 +52,8 @@
           <div class="panel-body">
             <div class="list-group">
               <div *ngFor="let item of dessertList" class="">
-                <a href="#" class="list-group-item">{{item.productName}}</a></div> 
-        <button href="#" ><i class="fa fa-plus"></i></button>
+                <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a></div> 
+        <button (click)="openModal(template)"><i class="fa fa-plus"></i></button>
       </div>
           </div>
         </div>
@@ -69,8 +70,8 @@
             <div class="panel-body">
                 <div class="list-group">
                   <div *ngFor="let item of saladList" class="">
-                      <a href="#" class="list-group-item">{{item.productName}}</a></div> 
-                  <button href="#" ><i class="fa fa-plus"></i></button>
+                      <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a></div> 
+                  <button (click)="openModal(template)"><i class="fa fa-plus"></i></button>
                 </div>
           </div>
         </div>
@@ -87,8 +88,8 @@
             <div class="panel-body">
                 <div class="list-group">
                     <div *ngFor="let item of soupList" class="">
-                        <a href="#" class="list-group-item">{{item.productName}}</a></div> 
-                  <button href="#" ><i class="fa fa-plus"></i></button>
+                        <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a></div> 
+                  <button (click)="openModal(template)"><i class="fa fa-plus"></i></button>
                 </div>
           </div>
         </div>
@@ -105,8 +106,8 @@
             <div class="panel-body">
                 <div class="list-group">
                     <div *ngFor="let item of beveragesList" class="">
-                        <a href="#" class="list-group-item">{{item.productName}}</a></div> 
-                  <button href="#" ><i class="fa fa-plus"></i></button>
+                        <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a></div> 
+                  <button (click)="openModal(template)"><i class="fa fa-plus"></i></button>
                 </div>
           </div>
         </div>
@@ -123,8 +124,8 @@
             <div class="panel-body">
                 <div class="list-group">
                     <div *ngFor="let item of otherList" class="">
-                        <a href="#" class="list-group-item">{{item.productName}}</a></div> 
-                  <button href="#" ><i class="fa fa-plus"></i></button>
+                        <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a></div> 
+                  <button (click)="openModal(template)"><i class="fa fa-plus"></i></button>
                 </div>
           </div>
         </div>
@@ -133,9 +134,80 @@
     </div>
   
   </div>
-  
-      
-  
+ <!-- start of modal --> 
+  <ng-template #template>
+    <div class="row">
+      <div class="modal-header col-sm">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
+            <h4 class="modal-title pull-center" id="myModalLabel"><br><i class="fas fa-plus-square fa-3x"></i><label id="modId"> Add New Food item</label></h4>
+        </div>
+        <div class="col-sm-2">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+          <i class="fas fa-window-close fa-2x"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <!--modal body-->
+<div class="row">
+<div class="modal-body">
+  <form class="form-horizontal" #productForm = "ngForm" (ngSubmit)="onSubmit(productForm)">
+    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="productService.selectedItem._id">
+    
+    <div class="form-group row">
+      <label class="col-sm-3 control-label">Date:</label>
+      <div class="col-sm-9">
+            <input class="form-control" type="date" name="latestUpdate" value="" id="date" #name="ngModel" [(ngModel)]="productService.selectedItem.latestUpdate">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 control-label">Product Name:</label>
+      <div class="col-sm-9">
+        <input class="form-control" type="text" name="productName" value="" id="name" #name="ngModel" [(ngModel)]="productService.selectedItem.productName" required>
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label class="col-sm-3 control-label">Category:</label>
+      <div class="col-sm-9">
+        <select class="form-control" type="text" id="category" name="category" #name="ngModel" [(ngModel)]="productService.selectedItem.category">
+          <option>Set Menu</option>
+          <option>Short Eats</option>
+          <option>Desserts</option>
+          <option>Salad</option>
+          <option>Soup</option>
+          <option>Beverages</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label class="col-sm-3 control-label">Description:</label>
+      <div class="col-sm-9">
+        <input class="form-control" type="text" name="description" value="" id="descripiton" #name="ngModel" [(ngModel)]="productService.selectedItem.description">
+      </div>
+    </div>
+        
+        
+        
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" [disabled]="!itemForm.valid" (click)="modalRef.hide() ; addItemAlert()">Submit</button>
+        <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>
+        <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="resetForm(productForm)">Reset</button>
+      </div>
+    </div>
+  </form>
+  </div>
+  </div>
+</ng-template>   
+<!-- end of modal -->  
+
   
   
   
