@@ -11,6 +11,7 @@ import { AppBootstrapModule } from './app-bootstrap.module';
 import { AppComponent } from './app.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import {DataService} from './services/data.service';
+
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PoMainComponent } from './components/po-main/po-main.component';
 import { CreatePoComponent } from './components/create-po/create-po.component';
@@ -29,6 +30,7 @@ import { ItemDetailPipe } from './pipes/item-detail.pipe';
 import { SetRolComponent } from './components/inventory/item-detail/set-rol/set-rol.component';
 import { PoListComponent } from './components/po-list/po-list.component';
 import {DDataService} from "./services/po-list.service";
+import { ViewPoAllComponent } from './components/view-po-all/view-po-all.component';
 
 const appRoutes: Routes = [
   {path: 'item', component: ProductItemComponent},
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
   {path: 'addrecipie', component: AddRecipieComponent},
   {path: 'items', component: ItemDetailComponent},
   {path: 'pitem', component: PoListComponent},
+  {path: 'vpa', component: ViewPoAllComponent},
 
     ];
 
@@ -69,6 +72,7 @@ const appRoutes: Routes = [
     ItemDetailPipe,
     SetRolComponent,
     PoListComponent,
+    ViewPoAllComponent,
 
   ],
   imports: [

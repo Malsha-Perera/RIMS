@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {Po}from './cpo';
+//import {Po}from './vpa';
+import {Po}from'../create-po/cpo'
 import {poItem}from '../po-list/Po-item';
 import {DataService} from "../../services/po.service";
-//import {DDataService} from "../../services/data.service";
-
 
 @Component({
-  selector: 'app-create-po',
-  templateUrl: './create-po.component.html',
-  styleUrls: ['./create-po.component.css'],
+  selector: 'app-view-po-all',
+  templateUrl: './view-po-all.component.html',
+  styleUrls: ['./view-po-all.component.css'],
   providers:[DataService],
-  // providers:[DDataService],
 })
-export class CreatePoComponent implements OnInit {
+export class ViewPoAllComponent implements OnInit {
+
   PoList:Po[]=[];
   PurchaseOrder:Po[]=[];
   productitem:poItem[]=[];
@@ -24,9 +23,9 @@ export class CreatePoComponent implements OnInit {
   description:String;
   comments:String;
   itemname:String;
-  quantity:Number;
-  unitPr:Number;
-  total:Number;
+  quantity:number;
+  unitPr:number;
+  total:number;
 
   constructor(private dataservice:DataService) { }
   //constructor(private ddataservice:DDataService) { }
@@ -35,7 +34,7 @@ export class CreatePoComponent implements OnInit {
   getPo(){
     this.dataservice.getPo()
       .subscribe(pos=>{
-        this.PurchaseOrder=pos;
+        this.PoList=pos;
         //console.log('data from dataservice:'+this.productItemList[0].itemname);
       })
 
@@ -86,7 +85,7 @@ export class CreatePoComponent implements OnInit {
       itemname: this.itemname,
       quantity: this.quantity,
       unitPr:this.unitPr,
-      total:this.total,
+      total:this.unitPr*this.quantity,
       poNo:this.poNo,
 
     }
@@ -137,8 +136,10 @@ export class CreatePoComponent implements OnInit {
 
   }
 
+
   ngOnInit() {
     this.getItems();
+    this.getPo();
 
   }
 

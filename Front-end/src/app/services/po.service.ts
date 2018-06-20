@@ -8,13 +8,17 @@ export class DataService {
 
   constructor(private http: Http) { }
   getPo() {
-    return this.http.get('http://localhost:3000/api/p/po').map(res => res.json());
+    return this.http.get('http://localhost:3000/api/p/pos').map(res => res.json());
   }
 
   createPo(newPo) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/api/p/po', newPo, {headers: headers}).map(res => res.json());
+  }
+  deletepo(id) {
+    return this.http.delete('http://localhost:3000/api/p/po/' + id)
+      .map(res => res.json());
   }
   addProductItem(newItem) {
     const headers = new Headers();

@@ -1,0 +1,20 @@
+label {
+  width:100px;
+  display: inline-block;
+
+}
+tbody {
+  font-size: 125%;
+  font-family: Times, Times New Roman, Georgia, serif;
+}
+th {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size:100%;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #7cc7f3;
+}
+th,td {
+  vertical-align: middle;
+}
+

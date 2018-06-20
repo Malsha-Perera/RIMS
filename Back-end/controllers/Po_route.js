@@ -5,18 +5,6 @@ const Po=require('../models/purchaseOrder');
 
 router.post('/po',function(req,res,next){
 
-    router.get('/po',function(req,res,next){
-        Po.find(function (err,po) {
-            if (err) {
-                res.json(err);
-            }
-            else {
-                res.json(po);
-            }
-
-        });
-    });
-
     let newPo=new Po({
         vendor:req.body.vendor,
         poNo:req.body.poNo,
@@ -40,5 +28,27 @@ router.post('/po',function(req,res,next){
 
     });
 
+});
+router.get('/pos',function(req,res,next){
+    Po.find(function (err,po) {
+        if (err) {
+            res.json(err);
+        }
+        else {
+            res.json(po);
+        }
+
+    });
+});
+router.delete('/po/:id',function(req,res,next) {
+    Po.remove({_id:req.params.id},function (err,result) {
+        if (err){
+            res.json(err);
+        }
+        else{
+            res.json(result);
+        }
+
+    })
 });
 module.exports=router;
