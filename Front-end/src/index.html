@@ -28,8 +28,8 @@
         cols += '<td><input type="text" class="form-control" name="name' + counter + '"/></td>';
         cols += '<td><input type="number" class="form-control" name="mail' + counter + '"/></td>';
         cols += '<td><input type="number" class="form-control" name="phone' + counter + '"/></td>';
-
-        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
+        
+        cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete" data-toggle="tooltip" title="Delete Row"><i class="fa fa-close"></i></button></td>';
         newRow.append(cols);
         $("table.order-list").append(newRow);
         counter++;
