@@ -29,6 +29,9 @@ import { ItemDetailPipe } from './pipes/item-detail.pipe';
 import { SetRolComponent } from './components/inventory/item-detail/set-rol/set-rol.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { SalesComponent } from './components/sales/sales.component';
+import { PoListComponent } from './components/po-list/po-list.component';
+import {DDataService} from "./services/po-list.service";
+import { ViewPoAllComponent } from './components/view-po-all/view-po-all.component';
 
 const appRoutes: Routes = [
   {path: 'item', component: ProductItemComponent},
@@ -44,7 +47,9 @@ const appRoutes: Routes = [
   {path: 'addrecipie', component: AddRecipieComponent},
   {path: 'items', component: ItemDetailComponent},
   {path: 'sales', component: SalesComponent},
-  {path: 'customers', component: CustomerComponent}
+  {path: 'customers', component: CustomerComponent},
+  {path: 'pitem', component: PoListComponent},
+  {path: 'vpa', component: ViewPoAllComponent},
 
     ];
 
@@ -72,6 +77,8 @@ const appRoutes: Routes = [
     SetRolComponent,
     CustomerComponent,
     SalesComponent,
+    PoListComponent,
+    ViewPoAllComponent,
 
   ],
   imports: [
@@ -83,7 +90,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [DataService],
+  providers: [DataService,DDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
