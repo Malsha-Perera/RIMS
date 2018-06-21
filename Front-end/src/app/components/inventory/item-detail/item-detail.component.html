@@ -46,7 +46,7 @@
                   </thead>
                   <tbody class="text-center">
                   <tr *ngFor=" let item of items | itemFilter:searchText">
-                        <td>{{item._id}}</td>
+                        <td>{{item.itemCode}}</td>
                         <td>{{item.itemname}}</td>
                         <td>{{item.category}}</td>
                         <td>{{item.unitScale}}</td>
@@ -197,9 +197,9 @@
                   <!--Modal for the edit re oder level-->
                   <ng-template #template2>
                     <div class="modal-header">
-                          <h4 class="modal-title pull-left" id="myModalLabel"><i class="fas fa-caret-square-down fa-2x"></i><label> Add Item Here</label></h4>
+                          <h4 class="modal-title pull-left" id="myModalLabel"><i class="fas fa-caret-square-down fa-2x"></i><label>New Re Order Level</label></h4>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                                <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                           </button>
                     </div>
                     <!--modal body-->
@@ -217,7 +217,7 @@
 
                                 <div class="form-group row">
                                   <label class="col-sm-4 control-label">New Re Order Level:</label>
-                                  <div class="col-sm-8">
+                                  <div class="col-sm-4">
                                     <input class="form-control" type="text" name="reOrderLevel" value="" id="reOrderLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.reOrderLevel" required>
                                   </div>
                                 </div>
