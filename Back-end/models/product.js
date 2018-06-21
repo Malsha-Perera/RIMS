@@ -11,7 +11,7 @@ const ImSchema= mongoose.Schema({
     },
     unitCost:{
         type:Number,
-        required:true,
+        //required:true,
     },
     foodCategory:{
         type:String,
