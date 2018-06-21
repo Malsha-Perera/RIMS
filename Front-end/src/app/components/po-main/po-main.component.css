@@ -68,3 +68,12 @@ body {
 @-webkit-keyframes pulsate {
   50% { color: #000; }
 }
+.icon-background {
+  color:  #99ccff;
+}
+.icon-backgrounds {
+  color: #ffc0c0;
+}
+.al{
+  margin-left: 100px;
+}
