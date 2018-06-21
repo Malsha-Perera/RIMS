@@ -9,6 +9,7 @@ const ImSchema= mongoose.Schema({
     },
     unitCost:{
         type:Number,
+
     },
     foodCategory:{
         type:String,

@@ -33,14 +33,39 @@ export class MenuComponent implements OnInit {
     this.productservice.getProducts()
       .subscribe(products=>{
         this.productList=products;
-        //console.log('product from productservice:'+this.productItemList[0].itemname);
+        //console.log('product from productservice:'+this.productItemList[0].productName);
       })
-      console.log(this.productList);
-      
-
-      
+      console.log(this.productList);        
   }
+
+  setCode(){
+    this.productCode = this.productName.substring(0,2) + this.count;
+    
+  }
+  count =0;
+  addProduct(){
+    this.setCode();
+   this.count = this.count +1;
+    const newProduct = {
+      productName: this.productName,
+      productCode: this.productCode,
+      //unitCost:this.unitCost,
+      unitCost:100,
+      foodCategory:this.foodCategory,     
+    }
+    this.productservice.addProduct(newProduct)
+      .subscribe(item => {
+        this.product.push(item);
+        this.productservice.getProducts()
+          .subscribe(item =>
+            this.product = item);
+        this.getProducts();
+      });
+      this.closeFirstModal();
+  }
+
   setLists(){
+    this.getProducts();
     this.setMenuList=[];
     this.shortEatsList=[];
     this.dessertList=[];

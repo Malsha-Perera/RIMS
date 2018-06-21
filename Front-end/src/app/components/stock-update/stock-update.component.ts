@@ -3,6 +3,8 @@ import { templateJitUrl } from '@angular/compiler';
 import {Item} from '../product-item/product';
 import {DataService} from '../../services/data.service';
 import {NgForm} from '@angular/forms';
+import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
+//import { SweetAlertService } from 'angular-sweetalert-service';
 
 
 
@@ -20,12 +22,13 @@ export class StockUpdateComponent implements OnInit {
   itemname: String;
   itemitem: Item;
   itemCode: String;
-  quantity: number;
-  unitCost: number;
+  quantity: Number;
+  unitCost: Number;
   description: String;
   selectedItem: Item;
   _id: number;
   latestUpdate: Date;
+  alerts: any[] = [];
 
   constructor(private dataservice: DataService) { }
 
@@ -85,12 +88,22 @@ export class StockUpdateComponent implements OnInit {
           this.addToStock(this.productItemList[i], this.quantity, this.unitCost, this.latestUpdate);
           this.getItems();
           // tslint:disable-next-line:max-line-length
-          alert(this.productItemList[i].itemname + ' prevails in ' + this.productItemList[i].quantity + ' ' + this.productItemList[i].unitScale + ' quantity in the stock.' );
+          //alert(this.productItemList[i].itemname + ' prevails in ' + this.productItemList[i].quantity + ' ' + this.productItemList[i].unitScale + ' quantity in the stock.' );
           console.log(this.productItemList[i]);
-
+          this.updatedAlert(this.productItemList[i].itemname);
         }
       }
 
+  }
+  updatedAlert(name): void {
+    this.alerts.push({
+      type: 'success',
+      msg: name + ' stock updated successfully' ,
+      timeout: 5000
+    });
+  }
+  onClosed(dismissedAlert: AlertComponent): void {
+    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
   ngOnInit() {

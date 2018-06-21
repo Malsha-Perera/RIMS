@@ -17,13 +17,13 @@ export class ProductService {
   /*
   getproductByCode(productCode) {
     return this.http.get('http://localhost:3000/product/' + productCode).map(res => res.json());
-  }
+  }*/
   addProduct(newProduct) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/product', newProduct, {headers: headers}).map(res => res.json());
   }
-
+/*
   deleteProduct(id) {
     return this.http.delete('http://localhost:3000/product/' + id)
       .map(res => res.json());
