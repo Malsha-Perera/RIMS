@@ -4,6 +4,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SetRolComponent } from './set-rol/set-rol.component';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
+import { Chart } from 'chart.js';
 
 import { ItemDetailService } from '../../../services/itemDetailService/item-detail.service';
 import { Item } from '../../../models/item-detail.model';
@@ -18,7 +19,7 @@ import { ItemDetailPipe } from '../../../pipes/item-detail.pipe';
 export class ItemDetailComponent implements OnInit {
 
   @ViewChild(SetRolComponent) child;
-
+  chart = [];
   public modalRef: BsModalRef;
   searchText = '';
   items: Item[];
@@ -119,6 +120,26 @@ export class ItemDetailComponent implements OnInit {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
+  this.chart = new Chart('canvas', {
+    type: 'bar',
+    data: {
+      labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
+      datasets: [
+        {
+          label: 'Population (millions)',
+          backgroundColor: ['#3e95cd', '#8e5ea2','#3cba9f','#e8c3b9','#c45850'],
+          data: [2478, 5267, 734,784,433]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Predicted world population (millions) in 2050'
+      }
+    }
+  });
 
 
 }
