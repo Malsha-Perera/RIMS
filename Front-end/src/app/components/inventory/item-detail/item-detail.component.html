@@ -1,5 +1,23 @@
 <hr>
 <div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <a [routerLink]="['stockupdate']">
+        <div class="info-box" tooltip="to update stock click here">
+            <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">STOCK UPDATE</span>
+              <i class="fas fa-hand-point-right fa-4x"></i>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+      </a>
+
+          <!-- /.info-box -->
+      </div>
+  </div>
+
     <div *ngFor="let alert of alerts">
       <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
     </div>
@@ -13,7 +31,7 @@
       <hr>
 
       <div class="row">
-            <div class="col-sm">
+            <div class="col-sm-12">
             <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
                   <thead class="">
                   <tr>
@@ -28,7 +46,7 @@
                   </thead>
                   <tbody class="text-center">
                   <tr *ngFor=" let item of items | itemFilter:searchText">
-                        <td>{{item._id}}</td>
+                        <td>{{item.itemCode}}</td>
                         <td>{{item.itemname}}</td>
                         <td>{{item.category}}</td>
                         <td>{{item.unitScale}}</td>
@@ -39,16 +57,16 @@
                         </td>
                         <td class="text-right">{{item.quantity}}</td>
                         <td>
-                              <button class='btn btn-info' (click)="onEdit(item) ; openModal(template)">
-                              <i class="fa fa-edit" aria-hidden="true"></i>Edit
+                              <button class='btn btn-info' (click)="onEdit(item) ; openModal(template)" tooltip="edit">
+                              <i class="fa fa-edit" aria-hidden="true"></i>
                               </button>
 
-                              <button class='btn btn-danger' (click)="onDelete(item._id, itemDetailForm)">
-                              <i class='fa fa-trash fa-lg'></i>Delete
+                              <button class='btn btn-danger' (click)="onDelete(item._id, itemDetailForm)" tooltip="delete">
+                              <i class='fa fa-trash fa-lg'></i>
                               </button>
 
                               <button class='btn btn-success'>
-                              <i class="fas fa-align-justify"></i>View
+                              <i class="fas fa-align-justify"></i>
                               </button>
                         </td>
                         </tr>
@@ -179,9 +197,9 @@
                   <!--Modal for the edit re oder level-->
                   <ng-template #template2>
                     <div class="modal-header">
-                          <h4 class="modal-title pull-left" id="myModalLabel"><i class="fas fa-caret-square-down fa-2x"></i><label> Add Item Here</label></h4>
+                          <h4 class="modal-title pull-left" id="myModalLabel"><i class="fas fa-caret-square-down fa-2x"></i><label>New Re Order Level</label></h4>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                                <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                           </button>
                     </div>
                     <!--modal body-->
@@ -199,7 +217,7 @@
 
                                 <div class="form-group row">
                                   <label class="col-sm-4 control-label">New Re Order Level:</label>
-                                  <div class="col-sm-8">
+                                  <div class="col-sm-4">
                                     <input class="form-control" type="text" name="reOrderLevel" value="" id="reOrderLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.reOrderLevel" required>
                                   </div>
                                 </div>

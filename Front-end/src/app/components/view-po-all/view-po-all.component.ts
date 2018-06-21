@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {Po}from './cpo';
+//import {Po}from './vpa';
+import {Po}from'../create-po/cpo'
 import {poItem}from '../po-list/Po-item';
 import {DataService} from "../../services/po.service";
-//import {DDataService} from "../../services/data.service";
-
 
 @Component({
-  selector: 'app-create-po',
-  templateUrl: './create-po.component.html',
-  styleUrls: ['./create-po.component.css'],
+  selector: 'app-view-po-all',
+  templateUrl: './view-po-all.component.html',
+  styleUrls: ['./view-po-all.component.css'],
   providers:[DataService],
-  // providers:[DDataService],
 })
-export class CreatePoComponent implements OnInit {
+export class ViewPoAllComponent implements OnInit {
+
   PoList:Po[]=[];
   PurchaseOrder:Po[]=[];
   productitem:poItem[]=[];
@@ -34,8 +33,8 @@ export class CreatePoComponent implements OnInit {
 
   getPo(){
     this.dataservice.getPo()
-      .subscribe(po=>{
-        this.PoList=po;
+      .subscribe(pos=>{
+        this.PoList=pos;
         //console.log('data from dataservice:'+this.productItemList[0].itemname);
       })
 
@@ -73,7 +72,6 @@ export class CreatePoComponent implements OnInit {
         this.dataservice.getPo()
           .subscribe(PurchaseOrder =>
             this.PurchaseOrder = PurchaseOrder);
-        this.clearpo();
         this.getPo();
       });
 
@@ -137,21 +135,11 @@ export class CreatePoComponent implements OnInit {
 
 
   }
-  clearpo(){
-      this.vendor=null,
-      this.poNo=null,
-      this.description=null,
-      this.comments=null;
-       this.itemname=null,
-      this.quantity=null,
-      this.unitPr=null,
-      this.total=null;
-
-  }
 
 
   ngOnInit() {
     this.getItems();
+    this.getPo();
 
   }
 

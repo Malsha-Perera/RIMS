@@ -1,0 +1,38 @@
+
+
+
+<div class="container" >
+  <br>
+  <br>
+  <h2 class="page-header">Purchase Orders</h2>
+  <br><br>
+
+
+  <div class="row">
+    <div class="col-sm">
+      <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
+        <thead class="">
+        <tr>
+          <th>Vendor Name</th>
+          <th>Po No</th>
+          <th>Description</th>
+          <th>Comments</th>
+
+
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        <tr *ngFor="let po of PoList" class="">
+          <td>{{po.vendor}}</td>
+          <td>{{po.poNo}}</td>
+          <td>{{po.description}}</td>
+          <td>{{po.comments}}</td>
+
+
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>

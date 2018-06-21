@@ -45,10 +45,13 @@
           <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>Menu Cost</a></li>
         </ul>
       </li>
-      <li>
+      <li class="treeview">
         <a href="" [routerLink]="['items']">
           <i class="fa fa-line-chart"></i> <span>Inventory</span>
         </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['stockupdate']"><i class="fa fa-circle-o"></i>Stock Update</a></li>
+        </ul>
       </li>
 
       <li class="treeview">
@@ -78,12 +81,14 @@
           <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i>Purchase Order Status</a></li>
           <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i>Order Requisition</a></li>
           <li><a href="" [routerLink]="['po']"><i class="fa fa-circle-o"></i>Purchase Order </a></li>
+          <li><a href="" [routerLink]="['pitem']"><i class="fa fa-circle-o"></i>Purchase Order Item List</a></li>
+          <li><a href="" [routerLink]="['vpa']"><i class="fa fa-circle-o"></i> View Purchase Orders</a></li>
           <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Good Received Note</a></li>
         </ul>
       </li>
 
       <li class="treeview">
-        <a href="#">
+        <a href="#" [routerLink]="['sales']" >
           <i class="fa fa-shopping-cart"></i> <span>Sale</span>
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -107,7 +112,7 @@
       </li>
 
       <li class="treeview">
-        <a href="#">
+        <a href="#" [routerLink]="['customers']">
           <i class="fa fa-user-plus"></i> <span>Customers</span>
         </a>
       </li>

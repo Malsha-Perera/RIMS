@@ -27,19 +27,29 @@ import { AddRecipieComponent } from './components/add-recipie/add-recipie.compon
 import { ItemDetailComponent } from './components/inventory/item-detail/item-detail.component';
 import { ItemDetailPipe } from './pipes/item-detail.pipe';
 import { SetRolComponent } from './components/inventory/item-detail/set-rol/set-rol.component';
+import { CustomerComponent } from './components/customer/customer.component';
+import { SalesComponent } from './components/sales/sales.component';
+import { PoListComponent } from './components/po-list/po-list.component';
+import {DDataService} from "./services/po-list.service";
+import { ViewPoAllComponent } from './components/view-po-all/view-po-all.component';
 
 const appRoutes: Routes = [
   {path: 'item', component: ProductItemComponent},
   {path: 'po', component: PoMainComponent},
   {path: '', component: AppcontentComponent},
-  {path: 'cpo', component: CreatePoComponent},
-  {path: 'vpo', component: ViewPoComponent},
+  {path: 'po/cpo', component: CreatePoComponent},
+  {path: 'po/vpo', component: ViewPoComponent},
   {path: 'menu/recipie', component: RecipieComponent},
   {path: 'menu', component: MenuComponent},
   {path: 'uc', component: UnitCostComponent},
+  {path: 'items/stockupdate', component: StockUpdateComponent},
   {path: 'stockupdate', component: StockUpdateComponent},
   {path: 'addrecipie', component: AddRecipieComponent},
-  {path: 'items', component: ItemDetailComponent}
+  {path: 'items', component: ItemDetailComponent},
+  {path: 'sales', component: SalesComponent},
+  {path: 'customers', component: CustomerComponent},
+  {path: 'pitem', component: PoListComponent},
+  {path: 'vpa', component: ViewPoAllComponent},
 
     ];
 
@@ -65,6 +75,10 @@ const appRoutes: Routes = [
     ItemDetailComponent,
     ItemDetailPipe,
     SetRolComponent,
+    CustomerComponent,
+    SalesComponent,
+    PoListComponent,
+    ViewPoAllComponent,
 
   ],
   imports: [
@@ -76,7 +90,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [DataService],
+  providers: [DataService,DDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
