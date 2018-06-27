@@ -57,7 +57,7 @@ router.get('/:productCode', (req, res, next) => {
     //updating data
 
 router.put('/:id',(req,res,next) =>{
-    Item.findOneAndUpdate({_id:req.params.id},{
+    Product.findOneAndUpdate({_id:req.params.id},{
         $set:{
             productName:req.body.productName,
            ProductCode:req.body.ProductCode,
@@ -77,7 +77,7 @@ router.put('/:id',(req,res,next) =>{
 });
     //deleting data
 router.delete('/:id',function(req,res,next) {
-    Item.remove({_id:req.params.id},function (err,result) {
+    Product.remove({_id:req.params.id},function (err,result) {
         if (err){
             res.json(err);
         }
