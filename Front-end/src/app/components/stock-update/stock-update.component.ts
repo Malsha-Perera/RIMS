@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { templateJitUrl } from '@angular/compiler';
 import {Item} from '../product-item/product';
 import {DataService} from '../../services/data.service';
 import {NgForm} from '@angular/forms';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
+import { NgOnChangesFeature } from '@angular/core/src/render3';
+import { OnChange } from 'ngx-bootstrap';
 //import { SweetAlertService } from 'angular-sweetalert-service';
 
 
@@ -29,6 +31,7 @@ export class StockUpdateComponent implements OnInit {
   _id: number;
   latestUpdate: Date;
   alerts: any[] = [];
+  public tempArray =[];
 
   constructor(private dataservice: DataService) { }
 
@@ -68,6 +71,7 @@ export class StockUpdateComponent implements OnInit {
   }
 
   getItembyCode(form1: NgForm, form2: NgForm ) {
+    OnChange();
     this.latestUpdate = form1.value.latestUpdate;
     this.itemCode = form1.value.itemCode;
     this.quantity = form2.value.quantity;
