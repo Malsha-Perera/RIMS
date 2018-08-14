@@ -4,7 +4,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SetRolComponent } from './set-rol/set-rol.component';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
-import { Chart } from 'chart.js';
+//import { Chart } from 'chart.js';
 
 import { ItemDetailService } from '../../../services/itemDetailService/item-detail.service';
 import { Item } from '../../../models/item-detail.model';
@@ -120,7 +120,7 @@ export class ItemDetailComponent implements OnInit {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
-  this.chart = new Chart('canvas', {
+  /*this.chart = new Chart('canvas', {
     type: 'bar',
     data: {
       labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
@@ -139,7 +139,7 @@ export class ItemDetailComponent implements OnInit {
         text: 'Predicted world population (millions) in 2050'
       }
     }
-  });
+  });*/
 
 
 }

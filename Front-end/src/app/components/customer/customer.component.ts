@@ -3,6 +3,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Customer } from '../../services/customers';
 import { CustomerService  } from '../../services/customer.service';
+import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class CustomerComponent implements OnInit {
   public modalRef: BsModalRef;
   CustomerList: Customer[] = [];
   selectedCustomer: Customer;
+  alerts: any[] = [];
 
   constructor(
     private customerService: CustomerService, public modalService: BsModalService
@@ -40,8 +42,12 @@ export class CustomerComponent implements OnInit {
           }
         }
       }
+      this.modalRef.hide();
+      this.getCustomers();
     }
+   
   );
+ 
 
   }
 
@@ -60,8 +66,29 @@ export class CustomerComponent implements OnInit {
     };
     this.customerService.updateCustomer(newCustomer).subscribe(result => {
       console.log('Item Updated' + result);
-
+      this.modalRef.hide();
+      this.getCustomers();
     });
+  }
+
+  updateCustomerAlert(): void {
+    this.alerts.push({
+      type: 'success',
+      msg: `Customer is updated successfully! (added: ${new Date().toLocaleTimeString()})`,
+      timeout: 3000
+    });
+  }
+
+  deleteCustomerAlert(): void {
+    this.alerts.push({
+      type: 'success',
+      msg: `Customer is deleteted successfully! (added: ${new Date().toLocaleTimeString()})`,
+      timeout: 3000
+    });
+  }
+
+  onClosed(dismissedAlert: AlertComponent): void {
+    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
 

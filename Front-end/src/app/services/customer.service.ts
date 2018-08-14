@@ -9,15 +9,15 @@ export class CustomerService {
 
 
   getCustomer() {
-    return this.http.get('http://localhost:3000/customs').map(res => res.json());
+    return this.http.get('http://localhost:3000/sales/customs').map(res => res.json());
   }
   deleteCustomer(id) {
-    return this.http.delete('http://localhost:3000/custom/' + id).map(res => res.json());
+    return this.http.delete('http://localhost:3000/sales/custom/' + id).map(res => res.json());
   }
   updateCustomer(newCustomer) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/custom/' + newCustomer._id, newCustomer, {headers: headers}).map(res => res.json());
+    return this.http.put('http://localhost:3000/sales/custom/' + newCustomer._id, newCustomer, {headers: headers}).map(res => res.json());
   }
 
 }

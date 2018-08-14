@@ -9,6 +9,14 @@ const salesItemSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    category:{
+        type:String,
+        required:true
+    },
+    date:{
+        type:String,
+        required:true
+    },
     quantity:{
         type:String,
         required:true
