@@ -94,34 +94,71 @@
                   <div class="form-group row">
                         <label class="col-sm-3 control-label" style="margin-left: -120px">Custome Id :</label>
                         <div class="col-sm-9">
-                              <input class="form-control" type="text" name="customer_id" ngModel required>
+                              <input class="form-control" type="text" name="customer_id" ngModel #customer_id="ngModel" required>
+                        </div>
+                  </div>
+                  <div *ngIf="customer_id?.touched">
+                        <div *ngIf="customer_id.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 35px;font-size: 12pt">
+                              Customer_id is Required!
                         </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-3 control-label" style="margin-left: -120px">Customer Name :</label>
                     <div class="col-sm-9">
-                          <input class="form-control" type="text" name="customer_name" ngModel required>
+                          <input class="form-control" type="text" name="customer_name" ngModel #customer_name="ngModel" required pattern="[a-zA-Z][a-zA-Z]+">
                     </div>
                   </div>
+                  <div *ngIf="customer_name?.touched">
+                              <div *ngIf="customer_name.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 35px;font-size: 12pt">
+                                    Customer Name is Required!
+                              </div>
+                              <div *ngIf="customer_name.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 35px;font-size: 12pt">
+                                    Invalid Customer name!
+                              </div>
+                  </div>
+                 
                  
                   <div class="form-group row">
                     <label class="col-sm-3 control-label" style="margin-left: -120px">Mobile :</label>
                     <div class="col-sm-9">
-                          <input class="form-control" type="text" name="mobile" ngModel>
+                          <input class="form-control" type="text" name="mobile" ngModel #mobile="ngModel" required maxlength="10" minlength="10" pattern="[0-9]*">
                     </div>
                   </div>
+                  <div *ngIf="mobile?.touched">
+                              <div *ngIf="mobile.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 35px;font-size: 12pt">
+                                    Mobile No is Required!
+                              </div>
+                              <div *ngIf="mobile.errors?.pattern || mobile.errors?.minlength"  class="alert alert-danger" style="margin-left: 188px;width:890px;height: 35px;font-size: 12pt">
+                                    Invalid Mobile No!
+                              </div>
+                  </div>
+                 
                   <div class="form-group row">
                     <label class="col-sm-3 control-label" style="margin-left: -120px">Address :</label>
                     <div class="col-sm-9">
-                          <input class="form-control" type="text" name="address" ngModel>
+                          <input class="form-control" type="text" name="address" ngModel #address="ngModel" required>
                     </div>
                   </div>
+                  <div *ngIf="address?.touched">
+                              <div *ngIf="address.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 35px;font-size: 12pt">
+                                    Address is Required!
+                              </div>
+                  </div>
+                 
                   <div class="form-group row">
                     <label class="col-sm-3 control-label" style="margin-left: -120px">Email Addess :</label>
                     <div class="col-sm-9">
-                          <input class="form-control" type="text" name="email_address" ngModel>
+                          <input class="form-control" type="text" name="email_address" ngModel #email_address="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                     </div>
                    </div>
+                   <div *ngIf="email_address?.touched">
+                              <div *ngIf="email_address.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 35px;font-size: 12pt">
+                                    Email Address is Required!
+                              </div>
+                              <div *ngIf="email_address.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 35px;font-size: 12pt">
+                                    Invalid Email Address!
+                              </div>
+                  </div>
                  
                   
               
@@ -163,7 +200,7 @@
                           <div class="form-group row">
                               <label class="col-sm-3 control-label">Date:</label>
                               <div class="col-sm-9">
-                                    <input style="width: 230px" class="form-control" type="date" name="date" ngModel value="">
+                                    <input style="width: 230px" class="form-control" type="date" name="date" ngModel required>
                               </div>
                           </div>
                       <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
@@ -181,18 +218,18 @@
                             </thead>
                             <tbody>
                               <tr>
-                                <td><input type="text" name="product_id" ngModel></td>
-                                <td><input type="text" name="product_name" ngModel></td>
+                                <td><input type="text" name="product_id" ngModel required></td>
+                                <td><input type="text" name="product_name" ngModel required></td>
                                 <td> 
-                                      <select class="form-control" type="text" id="category" name="category" ngModel>
+                                      <select class="form-control" type="text" id="category" name="category" ngModel required>
                                           <option>Rice</option>
                                           <option>Vegitable</option>
                                           <option>Fruite</option>
                                       </select>
                                 </td>
-                                <td><input type="text" name="quantity" ngModel></td>
-                                <td><input type="text" name="weight" ngModel></td>
-                                <td><input type="text" name="price" ngModel></td>
+                                <td><input type="text" name="quantity" ngModel required></td>
+                                <td><input type="text" name="weight" ngModel required></td>
+                                <td><input type="text" name="price" ngModel required></td>
                                 <td><button type="button" class="btn btn-primary">Add</button></td>
                                 
                                
@@ -201,7 +238,7 @@
                             </tbody>
           
                       </table>
-                      <button type="submit" class="btn btn-primary" (click)="addSalesItemCustomerAlert()">Submit</button>&nbsp;
+                      <button type="submit" class="btn btn-primary" (click)="addSalesItemCustomerAlert()" [disabled]="itemForm.invalid">Submit</button>&nbsp;
                       <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                       <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">Reset</button>
                       

@@ -6,6 +6,7 @@ import { Customer } from '../../services/customers';
 import { ItemService } from '../../services/item.service';
 import { CustomerComponent } from '../customer/customer.component';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
+import { FormGroup,FormControl,Validators } from '@angular/forms';
 
 
 
@@ -50,6 +51,16 @@ export class SalesComponent implements OnInit {
     this.ItemList = items;
   });
 }
+
+addItemForm:FormGroup = new FormGroup({
+  customer_id:new FormControl(null,[Validators.required]),
+  customer_name:new FormControl(null,Validators.required),
+  mobile:new FormControl(null,Validators.required),
+  address:new FormControl(null,Validators.required),
+  email_address:new FormControl(null,[Validators.email,Validators.required]),
+})
+
+
   addItem(form) {
     const newCustomer: Customer = {
       customer_id: form.value.customer_id,
