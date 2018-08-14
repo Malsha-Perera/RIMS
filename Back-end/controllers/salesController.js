@@ -36,9 +36,10 @@ router.post('/item',function(req,res,next){
         product_name:req.body.product_name,
         category:req.body.category,
         date:req.body.date,
+        unit_scale:req.body.unit_scale,
         quantity:req.body.quantity,
-        weight:req.body.weight,
-        price:req.body.price
+        price:req.body.price,
+        total_price:req.body.total_price
     })
     console.log(newItem);
     newItem.save(function(err,item){
@@ -71,9 +72,10 @@ router.put('/item/:id',function(req,res,next){
             product_name:req.body.product_name,
             category:req.body.category,
             date:req.body.date,
+            unit_scale:req.body.unit_scale,
             quantity:req.body.quantity,
-            weight:req.body.weight,
-            price:req.body.price
+            price:req.body.price,
+            total_price:req.body.total_price
         };
         SalesItem.findByIdAndUpdate(req.params.id,{$set:items},{new:true},function(err,item){
             if(err){

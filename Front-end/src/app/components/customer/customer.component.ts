@@ -42,14 +42,16 @@ export class CustomerComponent implements OnInit {
           }
         }
       }
-      this.modalRef.hide();
       this.getCustomers();
+     
     }
    
   );
+  
  
-
+ 
   }
+  
 
   showEditCustomer(customers) {
     this.selectedCustomer = customers;

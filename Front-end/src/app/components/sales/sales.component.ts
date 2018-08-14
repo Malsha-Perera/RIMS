@@ -32,6 +32,12 @@ export class SalesComponent implements OnInit {
   customerDetails: any;
   productDeatails: any;
 
+  price:any;
+  quantity:any;
+  total:any;
+
+  
+
   public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-md' }); // {3}
   }
@@ -52,16 +58,26 @@ export class SalesComponent implements OnInit {
   });
 }
 
-addItemForm:FormGroup = new FormGroup({
-  customer_id:new FormControl(null,[Validators.required]),
-  customer_name:new FormControl(null,Validators.required),
-  mobile:new FormControl(null,Validators.required),
-  address:new FormControl(null,Validators.required),
-  email_address:new FormControl(null,[Validators.email,Validators.required]),
-})
+
 
 
   addItem(form) {
+   
+    this.price=form.value.price;
+    this.quantity=form.value.quantity;
+    this.total=this.price*this.quantity;
+    console.log(this.total);
+
+    const newItem: Item = {
+      product_id: form.value.product_id,
+      product_name: form.value.product_name,
+      category:form.value.category,
+      date: form.value.date,
+      unit_scale: form.value.unit_scale,
+      quantity: form.value.quantity,
+      price: form.value.price,
+      total_price:this.total
+    };
     const newCustomer: Customer = {
       customer_id: form.value.customer_id,
       customer_name: form.value.customer_name,
@@ -70,15 +86,6 @@ addItemForm:FormGroup = new FormGroup({
       email_address: form.value.email_address
     };
 
-    const newItem: Item = {
-      product_id: form.value.product_id,
-      product_name: form.value.product_name,
-      category:form.value.category,
-      date: form.value.date,
-      quantity: form.value.quantity,
-      weight: form.value.weight,
-      price: form.value.price
-    };
 
     this.itemService.addItem(newItem).subscribe(items => {
       this.getItems();
@@ -117,8 +124,9 @@ addItemForm:FormGroup = new FormGroup({
       category:form.value.category,
       date: form.value.date,
       quantity: form.value.quantity,
-      weight: form.value.weight,
-      price: form.value.price
+      unit_scale: form.value.unit_scale,
+      price: form.value.price,
+      total_price:form.value.total_price
     };
     this.itemService.updateItems(newItem).subscribe(result => {
       console.log('Item is Updated' + result);

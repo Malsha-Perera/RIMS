@@ -3,7 +3,7 @@
       <alert style="text-align: center" [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
 </div>
 <div class="container">
-  <h1 style="font-size: 40pt;text-align: center;color: black"><b>Product Details</b></h1>
+  <h1 style="font-size: 40pt;text-align: center;color: black"><b>Sales Product Details</b></h1>
     
     <div class="row" >
           <div class="col-sm-4"></div>
@@ -23,9 +23,10 @@
                     <th>Product Name</th>
                     <th>Category</th>
                     <th>Date</th>
+                    <th>Unit Scale</th>
                     <th>Quantity</th>
-                    <th>Weight</th>
-                    <th>Price (Rs)</th>  
+                    <th>Price (Rs)</th> 
+                    <th>Total Price</th> 
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -35,10 +36,11 @@
                       <td>{{item.product_name}}</td>
                       <td>{{item.category}}</td>
                       <td>{{item.date}}</td>
+                      <td>{{item.unit_scale}}</td>
                       <td>{{item.quantity}}</td>
-                      <td>{{item.weight}}</td>
                       <td>{{item.price}}</td>
-                      <td>tyuii</td>
+                      <td>{{item.total_price}}</td>
+                     
                       
                       
           
@@ -178,7 +180,7 @@
                 <div class="col-sm-2" >
                 </div>
                 <div class="col-sm-8">
-                    <h4 class="modal-title pull-center" id="myModalLabel"><br><i class="fas fa-plus-square fa-3x"></i><label id="modId"> Add New Product Details</label></h4>
+                    <h4 class="modal-title pull-center" id="myModalLabel"><br><i class="fas fa-plus-square fa-3x"></i><label id="modId"> Add New Sales Product Details</label></h4>
                 </div>
                 <div class="col-sm-2">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -209,9 +211,10 @@
                               <th>Product Id</th>
                               <th>Product Name</th>
                               <th>Category</th>
-                              <th>Quantity (kg)</th>
-                              <th>Weight In Kg</th>
+                              <th>Unit Scale</th>
+                              <th>Quantity</th>
                               <th>Price (Rs)</th>  
+                              <th>Total Price</th>
                               
                              
                             </tr>
@@ -227,9 +230,16 @@
                                           <option>Fruite</option>
                                       </select>
                                 </td>
+                                <td> 
+                                    <select class="form-control" type="text" id="unit_scale" name="unit_scale" ngModel required>
+                                          <option>Packet</option>
+                                          <option>Liter</option>
+                                          <option>Other</option>
+                                    </select>
+                                </td>
                                 <td><input type="text" name="quantity" ngModel required></td>
-                                <td><input type="text" name="weight" ngModel required></td>
                                 <td><input type="text" name="price" ngModel required></td>
+                                <td><input type="text" name="total_price" ngModel value="55"></td>
                                 <td><button type="button" class="btn btn-primary">Add</button></td>
                                 
                                
@@ -272,7 +282,7 @@
         <div class="col-sm-2" >
         </div>
         <div class="col-sm-8">
-            <h4 class="modal-title pull-center" id="myModalLabel"><br><i class="fas fa-plus-square fa-3x"></i><label id="modId"> Edit Product Details</label></h4>
+            <h4 class="modal-title pull-center" id="myModalLabel"><br><i class="fas fa-plus-square fa-3x"></i><label id="modId"> Edit Sales Product Details</label></h4>
         </div>
         <div class="col-sm-2">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -339,6 +349,17 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-sm-3 control-label" style="margin-left: -120px">Unit Scale:</label>
+                        <div class="col-sm-9">
+                              <select class="form-control" type="text" id="unit_scale" name="unit_scale" [ngModel]="selectedItem.unit_scale" required>
+                                    <option>Packet</option>
+                                    <option>Liter</option>
+                                    <option>Other</option>
+                              </select>
+                        </div>
+                     </div>
+
+                    <div class="form-group row">
                       <label class="col-sm-3 control-label" style="margin-left: -120px">Quantity :</label>
                       <div class="col-sm-9">
                             <input class="form-control" type="text" name="quantity" [ngModel]="selectedItem.quantity" required #quantity="ngModel" pattern="[0-9]*">
@@ -353,20 +374,7 @@
                               </div>
                   </div>
 
-                    <div class="form-group row">
-                      <label class="col-sm-3 control-label" style="margin-left: -120px">Weight :</label>
-                      <div class="col-sm-9">
-                            <input class="form-control" type="text" name="weight" [ngModel]="selectedItem.weight" required #weight="ngModel" pattern="[0-9]*">
-                      </div>
-                     </div>
-                     <div *ngIf="weight?.touched">
-                              <div *ngIf="weight.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
-                                    Weight is Required!
-                              </div>
-                              <div *ngIf="weight.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt" >
-                                    Invalid Weight!
-                              </div>
-                  </div>
+                   
 
                      <div class="form-group row">
                         <label class="col-sm-3 control-label" style="margin-left: -120px">Price :</label>
@@ -382,6 +390,13 @@
                                     Invalid Price!
                               </div>
                   </div>
+                  <div class="form-group row">
+                              <label class="col-sm-3 control-label" style="margin-left: -120px">Total Price :</label>
+                              <div class="col-sm-9">
+                                    <input class="form-control" type="text" name="total_price" [ngModel]="selectedItem.total_price" required #total_price="ngModel" pattern="[0-9]*">
+                              </div>
+                  </div>
+                           
                      
                    
                     

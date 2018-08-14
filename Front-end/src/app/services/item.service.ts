@@ -36,7 +36,7 @@ export class ItemService {
   addCustomer(newCustomer){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/custom',newCustomer,{headers:headers}).map(res=>res.json());
+    return this.http.post('http://localhost:3000/sales/custom',newCustomer,{headers:headers}).map(res=>res.json());
     
   }
 

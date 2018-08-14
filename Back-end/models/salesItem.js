@@ -17,15 +17,19 @@ const salesItemSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    unit_scale:{
+        type:String,
+        required:true
+    },
     quantity:{
         type:String,
         required:true
     },
-    weight:{
+    price:{
         type:String,
         required:true
     },
-    price:{
+    total_price:{
         type:String,
         required:true
     }
