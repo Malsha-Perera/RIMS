@@ -292,15 +292,29 @@
                     <div class="form-group row">
                           <label class="col-sm-3 control-label" style="margin-left: -120px">Product Id :</label>
                           <div class="col-sm-9">
-                                <input class="form-control" type="text" name="product_id"  [ngModel]="selectedItem.product_id" required>
+                                <input class="form-control" type="text" name="product_id"  [ngModel]="selectedItem.product_id" required #product_id="ngModel">
                           </div>
                     </div>
+                    <div *ngIf="product_id?.touched">
+                              <div *ngIf="product_id.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Product Id is Required!
+                              </div>
+                    </div>
+                 
                     <div class="form-group row">
                       <label class="col-sm-3 control-label" style="margin-left: -120px">Product Name :</label>
                       <div class="col-sm-9">
-                            <input class="form-control" type="text" name="product_name"  [ngModel]="selectedItem.product_name" required>
+                            <input class="form-control" type="text" name="product_name"  [ngModel]="selectedItem.product_name" required #product_name="ngModel" pattern="[a-zA-Z][a-zA-Z]+">
                       </div>
                     </div>
+                    <div *ngIf="product_name?.touched">
+                              <div *ngIf="product_name.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Product Name is Required!
+                              </div>
+                              <div *ngIf="product_name.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Invalid Product Name!
+                              </div>
+                  </div>
                    
                     <div class="form-group row">
                         <label class="col-sm-3 control-label" style="margin-left: -120px">Category:</label>
@@ -315,28 +329,59 @@
                   <div class="form-group row">
                         <label class="col-sm-3 control-label" style="margin-left: -120px">Date :</label>
                         <div class="col-sm-9">
-                              <input class="form-control" type="date" name="date" [ngModel]="selectedItem.date">
+                              <input class="form-control" type="date" name="date" [ngModel]="selectedItem.date" required #date="ngModel">
                         </div>
-                      </div>
+                  </div>
+                  <div *ngIf="date?.touched">
+                              <div *ngIf="date.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Date id is Required!
+                              </div>
+                    </div>
+
                     <div class="form-group row">
                       <label class="col-sm-3 control-label" style="margin-left: -120px">Quantity :</label>
                       <div class="col-sm-9">
-                            <input class="form-control" type="text" name="quantity" [ngModel]="selectedItem.quantity">
+                            <input class="form-control" type="text" name="quantity" [ngModel]="selectedItem.quantity" required #quantity="ngModel" pattern="[0-9]*">
                       </div>
                     </div>
+                    <div *ngIf="quantity?.touched">
+                              <div *ngIf="quantity.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Quantity is Required!
+                              </div>
+                              <div *ngIf="quantity.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Invalid Quantity!
+                              </div>
+                  </div>
+
                     <div class="form-group row">
                       <label class="col-sm-3 control-label" style="margin-left: -120px">Weight :</label>
                       <div class="col-sm-9">
-                            <input class="form-control" type="text" name="weight" [ngModel]="selectedItem.weight">
+                            <input class="form-control" type="text" name="weight" [ngModel]="selectedItem.weight" required #weight="ngModel" pattern="[0-9]*">
                       </div>
                      </div>
+                     <div *ngIf="weight?.touched">
+                              <div *ngIf="weight.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Weight is Required!
+                              </div>
+                              <div *ngIf="weight.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt" >
+                                    Invalid Weight!
+                              </div>
+                  </div>
 
                      <div class="form-group row">
                         <label class="col-sm-3 control-label" style="margin-left: -120px">Price :</label>
                         <div class="col-sm-9">
-                              <input class="form-control" type="text" name="price" [ngModel]="selectedItem.price">
+                              <input class="form-control" type="text" name="price" [ngModel]="selectedItem.price" required #price="ngModel" pattern="[0-9]*">
                         </div>
                      </div>
+                     <div *ngIf="price?.touched">
+                              <div *ngIf="price.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Price No is Required!
+                              </div>
+                              <div *ngIf="price.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Invalid Price!
+                              </div>
+                  </div>
                      
                    
                     
@@ -345,7 +390,7 @@
                     <div class="form-group">
                           <div class="col-sm-offset-3 col-sm-9">
                                 
-                              <button type="submit" class="btn btn-primary" (click)="updateSalesItemAlert()">Submit</button>&nbsp;  
+                              <button type="submit" class="btn btn-primary" (click)="updateSalesItemAlert()" [disabled]="updateForm.invalid">Submit</button>&nbsp;  
                               <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                               <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">Reset</button>
                               
