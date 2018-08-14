@@ -1,4 +1,7 @@
 <hr>
+<div *ngFor="let alert of alerts">
+      <alert style="text-align: center" [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+</div>
 <div class="container">
   <h1 style="font-size: 40pt;text-align: center;color: black"><b>Product Details</b></h1>
     
@@ -39,7 +42,7 @@
                       
                       
           
-                        <button class='btn btn-danger' (click)=" deleteItems(item._id)">
+                        <button class='btn btn-danger' (click)="deleteItems(item._id);deleteSalesItemAlert()">
                         <i class='fa fa-trash fa-lg'></i>Delete
                         </button>
           
@@ -198,7 +201,7 @@
                             </tbody>
           
                       </table>
-                      <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+                      <button type="submit" class="btn btn-primary" (click)="addSalesItemCustomerAlert()">Submit</button>&nbsp;
                       <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                       <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">Reset</button>
                       
@@ -305,7 +308,7 @@
                     <div class="form-group">
                           <div class="col-sm-offset-3 col-sm-9">
                                 
-                              <button type="submit" class="btn btn-primary" (click)="modalRef.hide()">Submit</button>&nbsp;  
+                              <button type="submit" class="btn btn-primary" (click)="updateSalesItemAlert()">Submit</button>&nbsp;  
                               <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                               <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">Reset</button>
                               

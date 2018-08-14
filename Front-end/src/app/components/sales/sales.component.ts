@@ -5,6 +5,7 @@ import { Item } from '../../services/item';
 import { Customer } from '../../services/customers';
 import { ItemService } from '../../services/item.service';
 import { CustomerComponent } from '../customer/customer.component';
+import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 
 
 
@@ -18,6 +19,7 @@ export class SalesComponent implements OnInit {
 
   constructor(public modalService: BsModalService, private itemService: ItemService) { }
   public modalRef: BsModalRef;
+  alerts: any[] = [];
 
   private ArrayList: Array<any> = [];
   private newAttribute: any = {};
@@ -113,6 +115,35 @@ export class SalesComponent implements OnInit {
       this.modalRef.hide();
     });
   }
+
+  addSalesItemCustomerAlert(): void {
+    this.alerts.push({
+      type: 'success',
+      msg: `Sales Items and Customer are added successfully! (added: ${new Date().toLocaleTimeString()})`,
+      timeout: 3000
+    });
+  }
+
+  updateSalesItemAlert(): void {
+    this.alerts.push({
+      type: 'success',
+      msg: `Sales Items is updated successfully! (added: ${new Date().toLocaleTimeString()})`,
+      timeout: 3000
+    });
+  }
+
+  deleteSalesItemAlert(): void {
+    this.alerts.push({
+      type: 'success',
+      msg: `Sales Items is deleted successfully! (added: ${new Date().toLocaleTimeString()})`,
+      timeout: 3000
+    });
+  }
+
+  onClosed(dismissedAlert: AlertComponent): void {
+    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
+  }
+
 
   ngOnInit() {
     this.getItems();
