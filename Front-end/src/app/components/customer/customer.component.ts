@@ -40,8 +40,12 @@ export class CustomerComponent implements OnInit {
           }
         }
       }
+      this.modalRef.hide();
+      this.getCustomers();
     }
+   
   );
+ 
 
   }
 
@@ -60,7 +64,8 @@ export class CustomerComponent implements OnInit {
     };
     this.customerService.updateCustomer(newCustomer).subscribe(result => {
       console.log('Item Updated' + result);
-
+      this.modalRef.hide();
+      this.getCustomers();
     });
   }
 
