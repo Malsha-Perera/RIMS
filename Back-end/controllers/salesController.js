@@ -34,6 +34,8 @@ router.post('/item',function(req,res,next){
     let newItem = new SalesItem({
         product_id:req.body.product_id,
         product_name:req.body.product_name,
+        category:req.body.category,
+        date:req.body.date,
         quantity:req.body.quantity,
         weight:req.body.weight,
         price:req.body.price
@@ -67,6 +69,8 @@ router.put('/item/:id',function(req,res,next){
         var items ={
             product_id:req.body.product_id,
             product_name:req.body.product_name,
+            category:req.body.category,
+            date:req.body.date,
             quantity:req.body.quantity,
             weight:req.body.weight,
             price:req.body.price
@@ -145,6 +149,7 @@ router.put('/item/:id',function(req,res,next){
     var items ={
         product_id:req.body.product_id,
         product_name:req.body.product_name,
+        date:req.body.date,
         quantity:req.body.quantity,
         weight:req.body.weight,
         price:req.body.price

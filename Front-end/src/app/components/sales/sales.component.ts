@@ -60,20 +60,23 @@ export class SalesComponent implements OnInit {
     const newItem: Item = {
       product_id: form.value.product_id,
       product_name: form.value.product_name,
+      category:form.value.category,
+      date: form.value.date,
       quantity: form.value.quantity,
       weight: form.value.weight,
       price: form.value.price
     };
 
     this.itemService.addItem(newItem).subscribe(items => {
-
+      this.getItems();
     });
+   
 
     this.itemService.addCustomer(newCustomer).subscribe(customers => {
       });
 
     this.modalRef.hide();
-    this.getItems();
+    
   }
 
   deleteItems(id) {
@@ -98,6 +101,8 @@ export class SalesComponent implements OnInit {
       _id: this.selectedItem._id,
       product_id: form.value.product_id,
       product_name: form.value.product_name,
+      category:form.value.category,
+      date: form.value.date,
       quantity: form.value.quantity,
       weight: form.value.weight,
       price: form.value.price

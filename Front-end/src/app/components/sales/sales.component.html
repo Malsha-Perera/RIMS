@@ -19,8 +19,9 @@
                     <th>Product Id</th>
                     <th>Product Name</th>
                     <th>Category</th>
+                    <th>Date</th>
                     <th>Quantity</th>
-                    <th>Weight In Kg</th>
+                    <th>Weight</th>
                     <th>Price (Rs)</th>  
                     <th>Action</th>
                   </tr>
@@ -29,6 +30,8 @@
                     <tr *ngFor = "let item of ItemList">
                       <td>{{item.product_id}}</td>
                       <td>{{item.product_name}}</td>
+                      <td>{{item.category}}</td>
+                      <td>{{item.date}}</td>
                       <td>{{item.quantity}}</td>
                       <td>{{item.weight}}</td>
                       <td>{{item.price}}</td>
@@ -63,7 +66,7 @@
 
 
 <ng-template #template>
-  <div style="width: 1200px;margin-left: -199px">
+  <div style="width: 1200px;margin-left: -199px;">
   <div class="row">
     <div class="modal-header col-sm">
       <div class="col-sm-2" >
@@ -157,7 +160,7 @@
                           <div class="form-group row">
                               <label class="col-sm-3 control-label">Date:</label>
                               <div class="col-sm-9">
-                                    <input style="width: 230px" class="form-control" type="date" name="date" value="">
+                                    <input style="width: 230px" class="form-control" type="date" name="date" ngModel value="">
                               </div>
                           </div>
                       <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
@@ -177,7 +180,13 @@
                               <tr>
                                 <td><input type="text" name="product_id" ngModel></td>
                                 <td><input type="text" name="product_name" ngModel></td>
-                                <td><input type="text" name="category" ngModel></td>
+                                <td> 
+                                      <select class="form-control" type="text" id="category" name="category" ngModel>
+                                          <option>Rice</option>
+                                          <option>Vegitable</option>
+                                          <option>Fruite</option>
+                                      </select>
+                                </td>
                                 <td><input type="text" name="quantity" ngModel></td>
                                 <td><input type="text" name="weight" ngModel></td>
                                 <td><input type="text" name="price" ngModel></td>
@@ -256,17 +265,23 @@
                     <div class="form-group row">
                         <label class="col-sm-3 control-label" style="margin-left: -120px">Category:</label>
                         <div class="col-sm-9">
-                                    <select class="form-control" type="text" id="category" name="category">
+                                    <select class="form-control" type="text" id="category" name="category" [ngModel]="selectedItem.category">
                                           <option>Rice</option>
                                           <option>Vegitable</option>
                                           <option>Fruite</option>
                                     </select>
                         </div>
                   </div>
+                  <div class="form-group row">
+                        <label class="col-sm-3 control-label" style="margin-left: -120px">Date :</label>
+                        <div class="col-sm-9">
+                              <input class="form-control" type="date" name="date" [ngModel]="selectedItem.date">
+                        </div>
+                      </div>
                     <div class="form-group row">
                       <label class="col-sm-3 control-label" style="margin-left: -120px">Quantity :</label>
                       <div class="col-sm-9">
-                            <input class="form-control" type="text" nname="quantity" [ngModel]="selectedItem.quantity">
+                            <input class="form-control" type="text" name="quantity" [ngModel]="selectedItem.quantity">
                       </div>
                     </div>
                     <div class="form-group row">
