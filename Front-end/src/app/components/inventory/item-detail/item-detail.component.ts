@@ -4,7 +4,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SetRolComponent } from './set-rol/set-rol.component';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
-//import { Chart } from 'chart.js';
+import { Chart } from 'chart.js';
 
 import { ItemDetailService } from '../../../services/itemDetailService/item-detail.service';
 import { Item } from '../../../models/item-detail.model';
@@ -35,7 +35,7 @@ export class ItemDetailComponent implements OnInit {
     this.modalRef = this.modalService.show(template, {class: 'modal-md' }); // {3}
   }
   public openSetROLModal(template2: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template2, {class: 'modal-md' }); // {3}
+    this.modalRef = this.modalService.show(template2, {class: 'modal-sm' }); // {3}
   }
   closeFirstModal() {
     this.modalRef.hide();
