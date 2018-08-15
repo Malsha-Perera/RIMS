@@ -8,6 +8,7 @@ import { Chart } from 'chart.js';
 
 import { ItemDetailService } from '../../../services/itemDetailService/item-detail.service';
 import { Item } from '../../../models/item-detail.model';
+import { IssueItem } from '../../../models/issueItem';
 import { ItemDetailPipe } from '../../../pipes/item-detail.pipe';
 
 @Component({
@@ -24,11 +25,14 @@ export class ItemDetailComponent implements OnInit {
   searchText = '';
   items: Item[];
   alerts: any[] = [];
+  issueOne: IssueItem;
+  newQuantity;
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
 
   ngOnInit() {
     this.resetForm();
     this.refreshItemList();
+    this.resetIssueItem();
   }
   // method for open modal
   public openModal(template: TemplateRef<any>) {
@@ -116,10 +120,37 @@ export class ItemDetailComponent implements OnInit {
     });
   }
 
+  /*-----------------------------------issue an item-----------------------------------------------------------------------------------*/
+
   onClosed(dismissedAlert: AlertComponent): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
+  openIssueModal(template3: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template3, {class: 'modal-sm' });
+  }
+
+  resetIssueItem() {
+    this.issueOne = {
+      itemCode: '',
+      itemQuantity: null
+    };
+  }
+
+  issueItem(item: Item): any {
+    this.issueOne.itemCode = item.itemCode;
+    this.issueOne.itemQuantity = item.quantity;
+    // console.log(this.issueOne);
+  }
+
+  setIssueItem() {
+    this.issueOne.itemQuantity = this.issueOne.itemQuantity - this.newQuantity;
+    // console.log(this.issueOne);
+    this.itemDetailService.putIssueItem(this.issueOne).subscribe((res) => {
+      this.refreshItemList();
+      this.resetIssueItem();
+    });
+  }
   /*this.chart = new Chart('canvas', {
     type: 'bar',
     data: {
