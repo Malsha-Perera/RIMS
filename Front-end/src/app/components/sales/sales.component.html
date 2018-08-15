@@ -3,7 +3,7 @@
       <alert style="text-align: center" [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
 </div>
 <div class="container">
-  <h1 style="font-size: 40pt;text-align: center;color: black"><b>Product Details</b></h1>
+  <h1 style="font-size: 40pt;text-align: center;color: black"><b>Sales Product Details</b></h1>
     
     <div class="row" >
           <div class="col-sm-4"></div>
@@ -23,9 +23,10 @@
                     <th>Product Name</th>
                     <th>Category</th>
                     <th>Date</th>
+                    <th>Unit Scale</th>
                     <th>Quantity</th>
-                    <th>Weight</th>
-                    <th>Price (Rs)</th>  
+                    <th>Price (Rs)</th> 
+                    <th>Total Price</th> 
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -35,10 +36,11 @@
                       <td>{{item.product_name}}</td>
                       <td>{{item.category}}</td>
                       <td>{{item.date}}</td>
+                      <td>{{item.unit_scale}}</td>
                       <td>{{item.quantity}}</td>
-                      <td>{{item.weight}}</td>
                       <td>{{item.price}}</td>
-                      <td>tyuii</td>
+                      <td>{{item.total_price}}</td>
+                     
                       
                       
           
@@ -94,34 +96,71 @@
                   <div class="form-group row">
                         <label class="col-sm-3 control-label" style="margin-left: -120px">Custome Id :</label>
                         <div class="col-sm-9">
-                              <input class="form-control" type="text" name="customer_id" ngModel required>
+                              <input class="form-control" type="text" name="customer_id" ngModel #customer_id="ngModel" required>
+                        </div>
+                  </div>
+                  <div *ngIf="customer_id?.touched">
+                        <div *ngIf="customer_id.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                              Customer_id is Required!
                         </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-3 control-label" style="margin-left: -120px">Customer Name :</label>
                     <div class="col-sm-9">
-                          <input class="form-control" type="text" name="customer_name" ngModel required>
+                          <input class="form-control" type="text" name="customer_name" ngModel #customer_name="ngModel" required pattern="[a-zA-Z][a-zA-Z]+">
                     </div>
                   </div>
+                  <div *ngIf="customer_name?.touched">
+                              <div *ngIf="customer_name.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Customer Name is Required!
+                              </div>
+                              <div *ngIf="customer_name.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Invalid Customer name!
+                              </div>
+                  </div>
+                 
                  
                   <div class="form-group row">
                     <label class="col-sm-3 control-label" style="margin-left: -120px">Mobile :</label>
                     <div class="col-sm-9">
-                          <input class="form-control" type="text" name="mobile" ngModel>
+                          <input class="form-control" type="text" name="mobile" ngModel #mobile="ngModel" required maxlength="10" minlength="10" pattern="[0-9]*">
                     </div>
                   </div>
+                  <div *ngIf="mobile?.touched">
+                              <div *ngIf="mobile.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Mobile No is Required!
+                              </div>
+                              <div *ngIf="mobile.errors?.pattern || mobile.errors?.minlength"  class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Invalid Mobile No!
+                              </div>
+                  </div>
+                 
                   <div class="form-group row">
                     <label class="col-sm-3 control-label" style="margin-left: -120px">Address :</label>
                     <div class="col-sm-9">
-                          <input class="form-control" type="text" name="address" ngModel>
+                          <input class="form-control" type="text" name="address" ngModel #address="ngModel" required>
                     </div>
                   </div>
+                  <div *ngIf="address?.touched">
+                              <div *ngIf="address.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Address is Required!
+                              </div>
+                  </div>
+                 
                   <div class="form-group row">
                     <label class="col-sm-3 control-label" style="margin-left: -120px">Email Addess :</label>
                     <div class="col-sm-9">
-                          <input class="form-control" type="text" name="email_address" ngModel>
+                          <input class="form-control" type="text" name="email_address" ngModel #email_address="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                     </div>
                    </div>
+                   <div *ngIf="email_address?.touched">
+                              <div *ngIf="email_address.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Email Address is Required!
+                              </div>
+                              <div *ngIf="email_address.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Invalid Email Address!
+                              </div>
+                  </div>
                  
                   
               
@@ -141,7 +180,7 @@
                 <div class="col-sm-2" >
                 </div>
                 <div class="col-sm-8">
-                    <h4 class="modal-title pull-center" id="myModalLabel"><br><i class="fas fa-plus-square fa-3x"></i><label id="modId"> Add New Product Details</label></h4>
+                    <h4 class="modal-title pull-center" id="myModalLabel"><br><i class="fas fa-plus-square fa-3x"></i><label id="modId"> Add New Sales Product Details</label></h4>
                 </div>
                 <div class="col-sm-2">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -163,7 +202,7 @@
                           <div class="form-group row">
                               <label class="col-sm-3 control-label">Date:</label>
                               <div class="col-sm-9">
-                                    <input style="width: 230px" class="form-control" type="date" name="date" ngModel value="">
+                                    <input style="width: 230px" class="form-control" type="date" name="date" ngModel required>
                               </div>
                           </div>
                       <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
@@ -172,27 +211,35 @@
                               <th>Product Id</th>
                               <th>Product Name</th>
                               <th>Category</th>
-                              <th>Quantity (kg)</th>
-                              <th>Weight In Kg</th>
+                              <th>Unit Scale</th>
+                              <th>Quantity</th>
                               <th>Price (Rs)</th>  
+                              <th>Total Price</th>
                               
                              
                             </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td><input type="text" name="product_id" ngModel></td>
-                                <td><input type="text" name="product_name" ngModel></td>
+                                <td><input type="text" name="product_id" ngModel required></td>
+                                <td><input type="text" name="product_name" ngModel required></td>
                                 <td> 
-                                      <select class="form-control" type="text" id="category" name="category" ngModel>
+                                      <select class="form-control" type="text" id="category" name="category" ngModel required>
                                           <option>Rice</option>
                                           <option>Vegitable</option>
                                           <option>Fruite</option>
                                       </select>
                                 </td>
-                                <td><input type="text" name="quantity" ngModel></td>
-                                <td><input type="text" name="weight" ngModel></td>
-                                <td><input type="text" name="price" ngModel></td>
+                                <td> 
+                                    <select class="form-control" type="text" id="unit_scale" name="unit_scale" ngModel required>
+                                          <option>Packet</option>
+                                          <option>Liter</option>
+                                          <option>Other</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" name="quantity" ngModel required></td>
+                                <td><input type="text" name="price" ngModel required></td>
+                                <td><input type="text" name="total_price" ngModel value="55"></td>
                                 <td><button type="button" class="btn btn-primary">Add</button></td>
                                 
                                
@@ -201,7 +248,7 @@
                             </tbody>
           
                       </table>
-                      <button type="submit" class="btn btn-primary" (click)="addSalesItemCustomerAlert()">Submit</button>&nbsp;
+                      <button type="submit" class="btn btn-primary" (click)="addSalesItemCustomerAlert()" [disabled]="itemForm.invalid">Submit</button>&nbsp;
                       <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                       <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">Reset</button>
                       
@@ -235,7 +282,7 @@
         <div class="col-sm-2" >
         </div>
         <div class="col-sm-8">
-            <h4 class="modal-title pull-center" id="myModalLabel"><br><i class="fas fa-plus-square fa-3x"></i><label id="modId"> Edit Product Details</label></h4>
+            <h4 class="modal-title pull-center" id="myModalLabel"><br><i class="fas fa-plus-square fa-3x"></i><label id="modId"> Edit Sales Product Details</label></h4>
         </div>
         <div class="col-sm-2">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -255,15 +302,29 @@
                     <div class="form-group row">
                           <label class="col-sm-3 control-label" style="margin-left: -120px">Product Id :</label>
                           <div class="col-sm-9">
-                                <input class="form-control" type="text" name="product_id"  [ngModel]="selectedItem.product_id" required>
+                                <input class="form-control" type="text" name="product_id"  [ngModel]="selectedItem.product_id" required #product_id="ngModel">
                           </div>
                     </div>
+                    <div *ngIf="product_id?.touched">
+                              <div *ngIf="product_id.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Product Id is Required!
+                              </div>
+                    </div>
+                 
                     <div class="form-group row">
                       <label class="col-sm-3 control-label" style="margin-left: -120px">Product Name :</label>
                       <div class="col-sm-9">
-                            <input class="form-control" type="text" name="product_name"  [ngModel]="selectedItem.product_name" required>
+                            <input class="form-control" type="text" name="product_name"  [ngModel]="selectedItem.product_name" required #product_name="ngModel" pattern="[a-zA-Z][a-zA-Z]+">
                       </div>
                     </div>
+                    <div *ngIf="product_name?.touched">
+                              <div *ngIf="product_name.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Product Name is Required!
+                              </div>
+                              <div *ngIf="product_name.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Invalid Product Name!
+                              </div>
+                  </div>
                    
                     <div class="form-group row">
                         <label class="col-sm-3 control-label" style="margin-left: -120px">Category:</label>
@@ -278,28 +339,64 @@
                   <div class="form-group row">
                         <label class="col-sm-3 control-label" style="margin-left: -120px">Date :</label>
                         <div class="col-sm-9">
-                              <input class="form-control" type="date" name="date" [ngModel]="selectedItem.date">
+                              <input class="form-control" type="date" name="date" [ngModel]="selectedItem.date" required #date="ngModel">
                         </div>
-                      </div>
+                  </div>
+                  <div *ngIf="date?.touched">
+                              <div *ngIf="date.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Date id is Required!
+                              </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 control-label" style="margin-left: -120px">Unit Scale:</label>
+                        <div class="col-sm-9">
+                              <select class="form-control" type="text" id="unit_scale" name="unit_scale" [ngModel]="selectedItem.unit_scale" required>
+                                    <option>Packet</option>
+                                    <option>Liter</option>
+                                    <option>Other</option>
+                              </select>
+                        </div>
+                     </div>
+
                     <div class="form-group row">
                       <label class="col-sm-3 control-label" style="margin-left: -120px">Quantity :</label>
                       <div class="col-sm-9">
-                            <input class="form-control" type="text" name="quantity" [ngModel]="selectedItem.quantity">
+                            <input class="form-control" type="text" name="quantity" [ngModel]="selectedItem.quantity" required #quantity="ngModel" pattern="[0-9]*">
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label class="col-sm-3 control-label" style="margin-left: -120px">Weight :</label>
-                      <div class="col-sm-9">
-                            <input class="form-control" type="text" name="weight" [ngModel]="selectedItem.weight">
-                      </div>
-                     </div>
+                    <div *ngIf="quantity?.touched">
+                              <div *ngIf="quantity.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Quantity is Required!
+                              </div>
+                              <div *ngIf="quantity.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Invalid Quantity!
+                              </div>
+                  </div>
+
+                   
 
                      <div class="form-group row">
                         <label class="col-sm-3 control-label" style="margin-left: -120px">Price :</label>
                         <div class="col-sm-9">
-                              <input class="form-control" type="text" name="price" [ngModel]="selectedItem.price">
+                              <input class="form-control" type="text" name="price" [ngModel]="selectedItem.price" required #price="ngModel" pattern="[0-9]*">
                         </div>
                      </div>
+                     <div *ngIf="price?.touched">
+                              <div *ngIf="price.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Price No is Required!
+                              </div>
+                              <div *ngIf="price.errors?.pattern" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
+                                    Invalid Price!
+                              </div>
+                  </div>
+                  <div class="form-group row">
+                              <label class="col-sm-3 control-label" style="margin-left: -120px">Total Price :</label>
+                              <div class="col-sm-9">
+                                    <input class="form-control" type="text" name="total_price" [ngModel]="selectedItem.total_price" required #total_price="ngModel" pattern="[0-9]*">
+                              </div>
+                  </div>
+                           
                      
                    
                     
@@ -308,7 +405,7 @@
                     <div class="form-group">
                           <div class="col-sm-offset-3 col-sm-9">
                                 
-                              <button type="submit" class="btn btn-primary" (click)="updateSalesItemAlert()">Submit</button>&nbsp;  
+                              <button type="submit" class="btn btn-primary" (click)="updateSalesItemAlert()" [disabled]="updateForm.invalid">Submit</button>&nbsp;  
                               <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                               <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">Reset</button>
                               

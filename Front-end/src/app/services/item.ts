@@ -4,7 +4,8 @@ export class Item{
     product_name:string;
     category:string;
     date:String;
+    unit_scale:string;
     quantity:string;
-    weight:string;
     price:string;
+    total_price:string;
 }
