@@ -30,8 +30,9 @@ import { SetRolComponent } from './components/inventory/item-detail/set-rol/set-
 import { CustomerComponent } from './components/customer/customer.component';
 import { SalesComponent } from './components/sales/sales.component';
 import { PoListComponent } from './components/po-list/po-list.component';
-import {DDataService} from "./services/po-list.service";
+import {DDataService} from './services/po-list.service';
 import { ViewPoAllComponent } from './components/view-po-all/view-po-all.component';
+import { StockIssueComponent } from './components/inventory/stock-issue/stock-issue.component';
 
 const appRoutes: Routes = [
   {path: 'item', component: ProductItemComponent},
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
   {path: 'customers', component: CustomerComponent},
   {path: 'pitem', component: PoListComponent},
   {path: 'vpa', component: ViewPoAllComponent},
+  {path: 'items/stockIssue', component: StockIssueComponent}
 
     ];
 
@@ -79,6 +81,7 @@ const appRoutes: Routes = [
     SalesComponent,
     PoListComponent,
     ViewPoAllComponent,
+    StockIssueComponent,
 
   ],
   imports: [
@@ -90,7 +93,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [DataService,DDataService],
+  providers: [DataService, DDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
