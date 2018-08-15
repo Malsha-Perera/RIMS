@@ -6,7 +6,7 @@ var path = require('path');
 var app = express();
 
 const route = require('./controllers/route');
-const route_1 = require('./controllers/inventoryController');
+const inventory_route = require('./controllers/inventoryController');
 const route_2 = require('./controllers/recipieController');
 const route_3 = require('./controllers/productController');
 const route_4 = require('./controllers/salesController');
@@ -17,7 +17,7 @@ app.use(cors({ origin: 'http://localhost:4200'}));
 app.use(bodyparser.json());
 app.use('/api',route);
 app.use('/recipie',route_2);
-app.use('/items', route_1);
+app.use('/items', inventory_route);
 app.use('/product', route_3);
 app.use('/sales',route_4);
 app.use('/api/p',Po_route);
