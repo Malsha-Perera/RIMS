@@ -39,4 +39,7 @@ export class ItemDetailService {
     });
   }
 
+  putIssueItem(issueItem) {
+    return this.http.put(this.baseURL + `/${issueItem.itemCode}`, issueItem);
+  }
 }
