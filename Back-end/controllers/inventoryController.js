@@ -105,9 +105,9 @@ router.put('/issuing/:itemCode', (req , res) => {
    else{
       Item.findOneAndUpdate({itemCode:req.params.itemCode},{$set: {quantity:req.body.itemQuantity}},(err,docs) => {
          if(err) {
-            return res.status(200).send(err);
+            return res.status(200).send({m: 'error'});
          }
-         return res.status(200).send(docs);
+         return res.status(200).send({m: 'success'});
       })
    }
 })
