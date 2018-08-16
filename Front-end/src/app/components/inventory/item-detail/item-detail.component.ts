@@ -10,6 +10,7 @@ import { ItemDetailService } from '../../../services/itemDetailService/item-deta
 import { Item } from '../../../models/item-detail.model';
 import { IssueItem } from '../../../models/issueItem';
 import { ItemDetailPipe } from '../../../pipes/item-detail.pipe';
+import { isNumber } from 'util';
 
 @Component({
   selector: 'app-item-detail',
@@ -24,7 +25,7 @@ export class ItemDetailComponent implements OnInit {
   public modalRef: BsModalRef;
   searchText = '';
   items: Item[];
-  alerts: any[] = [];
+  alerts: any[] = [{}];
   issueOne: IssueItem;
   newQuantity;
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
@@ -154,11 +155,56 @@ export class ItemDetailComponent implements OnInit {
 
   // confirm issue item //
   setIssueItem() {
-    this.issueOne.itemQuantity = this.issueOne.itemQuantity - this.newQuantity;
-    // console.log(this.issueOne);
-    this.itemDetailService.putIssueItem(this.issueOne).subscribe((res) => {
-      this.refreshItemList();
+    // check input issue quantity is valid type //
+    if (!isNumber(this.newQuantity)) {
+
+      this.addIssueError2();
       this.resetIssueItem();
+
+    } else {
+      if (this.newQuantity > this.issueOne.itemQuantity || this.newQuantity == null) {
+        this.addIssueError1();
+        this.resetIssueItem();
+      } else {
+        this.issueOne.itemQuantity = this.issueOne.itemQuantity - this.newQuantity;
+      // console.log(this.issueOne);
+        this.itemDetailService.putIssueItem(this.issueOne).subscribe((res) => {
+          if (res['m'] === 'error') {
+            this.addIssueError1();
+            this.resetIssueItem();
+          }
+          if (res['m'] === 'success') {
+            this.addIssueSuccess();
+            this.refreshItemList();
+            this.resetIssueItem();
+          }
+          // console.log(response['m']);
+        });
+      }
+    }
+  }
+
+  addIssueSuccess(): void {
+    this.alerts.push({
+      type: 'success',
+      msg: '<strong>Well done!</strong> Issuing Success',
+      timeout: 4000
+    });
+  }
+
+  addIssueError1(): void {
+    this.alerts.push({
+      type: 'danger',
+      msg: 'Quantity must be Less Than Current Quantity',
+      timeout: 3000
+    });
+  }
+
+  addIssueError2() {
+    this.alerts.push({
+      type: 'danger',
+      msg: 'Quantity Must Be A Number',
+      timeout: 3000
     });
   }
 

@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import { AppBootstrapModule } from './app-bootstrap.module';
+import { chart } from 'chart.js';
 
 
 
