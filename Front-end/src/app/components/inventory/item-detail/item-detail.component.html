@@ -39,60 +39,67 @@
 
   <hr>
 
-  <div class="row">
+  <div class="row margintop20px paddingtopbottom15px whitebackground">
     <div class="col-sm-12">
-      <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
-        <thead class="">
-          <tr>
-            <th>Item Code</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Unit</th>
-            <th>ROL</th>
-            <th>Quantity</th>
-            <th>Actions</th>
-            <th>Issue</th>
-          </tr>
-        </thead>
-        <tbody class="text-center">
-          <tr *ngFor=" let item of items | itemFilter:searchText">
-            <td>{{item.itemCode}}</td>
-            <td>{{item.itemname}}</td>
-            <td>{{item.category}}</td>
-            <td>{{item.unitScale}}</td>
-            <td class="text-right">{{item.reOrderLevel}}
-              <button type="button" class='btn btn-light-blue'(click)="onEdit1(item) ; openSetROLModal(template2)" tooltip="edit re-order level">
-              <i class="fa fa-edit" aria-hidden="true"></i>
-              </button>
-            </td>
-            <td class="text-center">{{item.quantity}}</td>
-            <td>
-              <button class='btn btn-info' (click)="onEdit(item) ; openModal(template)" tooltip="edit">
-              <i class="fa fa-edit" aria-hidden="true"></i>
-              </button>
+      <div class="table-responsive">
+        <table class="table table-hover " [mfData]="items" #mf="mfDataTable" [mfRowsOnPage]="4">
+            <thead>
+              <tr>
+                <th style="width:10px;max-width:10px;">#</th>
+                <th><mfDefaultSorter by="itemCode">Item Code</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="itemname">Name</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="category">Category</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="unitScale">Unit</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="reOrderLevel">ReOrderLevel</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="quantity">Quantity</mfDefaultSorter></th>
+                <th>Actions</th>
+                <th>Issue</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor=" let item of mf.data; let i = index;">
+                <td scope="row">{{i+1}}</td>
+                <td>{{item.itemCode}}</td>
+                <td>{{item.itemname}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.unitScale}}</td>
+                <td class="text-right">{{item.reOrderLevel}}
+                  <button type="button" class='btn btn-light-blue'(click)="onEdit1(item) ; openSetROLModal(template2)" tooltip="edit re-order level">
+                  <i class="fa fa-edit" aria-hidden="true"></i>
+                  </button>
+                </td>
+                <td class="text-center">{{item.quantity}}</td>
+                <td>
+                  <button class='btn btn-info' (click)="onEdit(item) ; openModal(template)" tooltip="edit">
+                  <i class="fa fa-edit" aria-hidden="true"></i>
+                  </button>
 
-              <button class='btn btn-danger' (click)="onDelete(item._id, itemDetailForm)" tooltip="delete">
-              <i class='fa fa-trash fa-lg'></i>
-              </button>
+                  <button class='btn btn-danger' (click)="onDelete(item._id, itemDetailForm)" tooltip="delete">
+                  <i class='fa fa-trash fa-lg'></i>
+                  </button>
 
-              <button class='btn btn-success'>
-              <i class="fas fa-align-justify"></i>
-              </button>
-            </td>
-            <td>
-              <button class='btn btn-default' id="issueBtn" (click)="issueItem(item); openIssueModal(template3)" tooltip="">
-                <i class="fa fa-cart-arrow-down"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                  <button class='btn btn-success'>
+                  <i class="fas fa-align-justify"></i>
+                  </button>
+                </td>
+                <td>
+                  <button class='btn btn-default' id="issueBtn" (click)="issueItem(item); openIssueModal(template3)" tooltip="">
+                    <i class="fa fa-cart-arrow-down"></i>
+                  </button>
+                </td>
+              </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <mfBootstrapPaginator ></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
       <button class='btn btn-success' id="mybutton" (click)="openModal(template)"><i class='fa fa-plus-square fa-lg'></i></button>
-      <script>
-        $(document).ready(function() {
-          $('#mytable').DataTable();
-      });
-      </script>
     <!-- Modal for the add Item-->
       <ng-template #template>
         <div class="row">
