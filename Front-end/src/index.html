@@ -28,7 +28,7 @@
         cols += '<td><input type="text" class="form-control" name="name' + counter + '"/></td>';
         cols += '<td><input type="number" class="form-control" name="mail' + counter + '"/></td>';
         cols += '<td><input type="number" class="form-control" name="phone' + counter + '"/></td>';
-        
+
         cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete" data-toggle="tooltip" title="Delete Row"><i class="fa fa-close"></i></button></td>';
         newRow.append(cols);
         $("table.order-list").append(newRow);
@@ -52,8 +52,8 @@
     console.log(sumQVal);
     document.getElementById("unitCost").value = avgVal;
     document.getElementById("quantity").value = sumQVal;
-    
-    
+
+
   }
 
 
@@ -62,4 +62,5 @@
 </body>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </html>

@@ -156,13 +156,13 @@ export class ItemDetailComponent implements OnInit {
   // confirm issue item //
   setIssueItem() {
     // check input issue quantity is valid type //
-    if (!isNumber(this.newQuantity)) {
+    if (isNaN(this.newQuantity)) {
 
       this.addIssueError2();
       this.resetIssueItem();
 
     } else {
-      if (this.newQuantity > this.issueOne.itemQuantity || this.newQuantity == null) {
+      if ((this.newQuantity > this.issueOne.itemQuantity) || (this.newQuantity == null)) {
         this.addIssueError1();
         this.resetIssueItem();
       } else {
@@ -187,7 +187,7 @@ export class ItemDetailComponent implements OnInit {
   addIssueSuccess(): void {
     this.alerts.push({
       type: 'success',
-      msg: '<strong>Well done!</strong> Issuing Success',
+      msg: 'Well done! Issuing Success',
       timeout: 4000
     });
   }
@@ -200,7 +200,7 @@ export class ItemDetailComponent implements OnInit {
     });
   }
 
-  addIssueError2() {
+  addIssueError2(): void {
     this.alerts.push({
       type: 'danger',
       msg: 'Quantity Must Be A Number',

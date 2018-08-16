@@ -23,6 +23,7 @@
     "@angular/router": "^5.2.0",
     "angular-sweetalert-service": "^2.0.2",
     "bootstrap": "^3.3.7",
+    "canvasjs": "^1.8.1",
     "chart.js": "^2.7.2",
     "core-js": "^2.4.1",
     "ng-sweet-alert": "^1.0.11",
