@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import { AppBootstrapModule } from './app-bootstrap.module';
 import { chart } from 'chart.js';
-
+import { DataTableModule } from 'angular2-datatable';
 
 
 import { AppComponent } from './app.component';
@@ -91,7 +91,8 @@ const appRoutes: Routes = [
     HttpModule,
     FormsModule,
     AppBootstrapModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    DataTableModule
 
   ],
   providers: [DataService, DDataService],

@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { Item } from '../../models/item-detail.model';
+import { IssueItem } from '../../models/issueItem';
 
 @Injectable()
 export class ItemDetailService {
@@ -13,8 +14,10 @@ export class ItemDetailService {
   selectedItem: Item;
   oldItems: Item[];
   sortItems: Item[];
+  issueItems: IssueItem;
   readonly baseURL = 'http://localhost:3000/items';
   readonly issueBaseURL = 'http://localhost:3000/items/issuing';
+  readonly issueBaseURL1 = 'http://localhost:3000/items/issuing/issuing';
 
   constructor(private http: HttpClient) { }
 
@@ -38,6 +41,14 @@ export class ItemDetailService {
     this.getItemList().subscribe((res) => {
       this.oldItems = res as Item[];
     });
+  }
+
+  postIssueItem(issuedItem) {
+    return this.http.post(this.issueBaseURL, issuedItem);
+  }
+
+  getIssuedItems() {
+    return this.http.get(this.issueBaseURL1);
   }
 
   putIssueItem(issueItem) {
