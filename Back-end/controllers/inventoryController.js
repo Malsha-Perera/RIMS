@@ -3,6 +3,7 @@ var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
 var Item = require('../models/productItem');
+var IssueItem = require('../models/issueItem')
 
 router.get('/', (req, res) => {
    Item.find((err, docs) => {
@@ -110,5 +111,34 @@ router.put('/issuing/:itemCode', (req , res) => {
          return res.status(200).send({m: 'success'});
       })
    }
+})
+
+router.post('/issuing/', (req,res) => {
+   var issue_Item = new IssueItem({
+      issueItemCode: req.body.itemCode,
+      issueItemName: req.body.itemName,
+      issueItemQuantity: req.body.itemQuantity
+   });
+   issue_Item.save((err, result) => {
+      if(!err) {
+         res.send({m: 'success'});
+      }
+      else{
+         // console.log(err);
+         res.send({m: 'error'});
+      }
+   });
+});
+
+router.get('/issuing/issuing', (req, res) => {
+   IssueItem.find((err, docs) => {
+      if(!err) {
+         res.send(docs);
+      }
+      else {
+         res.send({m: 'Error Retriving Issued Items'})
+      }
+
+   })
 })
 module.exports = router;

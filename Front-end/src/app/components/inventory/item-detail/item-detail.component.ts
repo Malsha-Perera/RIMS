@@ -27,6 +27,7 @@ export class ItemDetailComponent implements OnInit {
   items: Item[];
   alerts: any[] = [{}];
   issueOne: IssueItem;
+  issuedItem: IssueItem;
   newQuantity;
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
 
@@ -34,6 +35,7 @@ export class ItemDetailComponent implements OnInit {
     this.resetForm();
     this.refreshItemList();
     this.resetIssueItem();
+    this.resetIssuedItem();
   }
   // method for open modal
   public openModal(template: TemplateRef<any>) {
@@ -140,17 +142,30 @@ export class ItemDetailComponent implements OnInit {
   // reset the issue object and newQuantity after issuing process complete  //
   resetIssueItem() {
     this.issueOne = {
+      itemName: '',
       itemCode: '',
       itemQuantity: null
     };
     this.newQuantity = null;
   }
 
+  resetIssuedItem() {
+    this.issuedItem = {
+      itemName: '',
+      itemCode: '',
+      itemQuantity: null
+    };
+  }
+
   // assign values to issue object properties //
   issueItem(item: Item): any {
+    this.issueOne.itemName = item.itemname;
     this.issueOne.itemCode = item.itemCode;
     this.issueOne.itemQuantity = item.quantity;
     // console.log(this.issueOne);
+    this.issuedItem.itemCode = item.itemCode;
+    this.issuedItem.itemName = item.itemname;
+    // this.itemDetailService.issueItems = this.issueOne;
   }
 
   // confirm issue item //
@@ -167,6 +182,18 @@ export class ItemDetailComponent implements OnInit {
         this.resetIssueItem();
       } else {
         this.issueOne.itemQuantity = this.issueOne.itemQuantity - this.newQuantity;
+        this.issuedItem.itemQuantity = this.newQuantity;
+
+        this.itemDetailService.postIssueItem(this.issuedItem).subscribe((res) => {
+          if (res['m'] === 'error') {
+            this.addIssueError1();
+            this.resetIssuedItem();
+          }
+          if (res['m'] === 'success') {
+            this.addIssueSuccess();
+            this.resetIssuedItem();
+          }
+        });
       // console.log(this.issueOne);
         this.itemDetailService.putIssueItem(this.issueOne).subscribe((res) => {
           if (res['m'] === 'error') {
