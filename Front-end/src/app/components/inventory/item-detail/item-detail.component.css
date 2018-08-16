@@ -1,17 +1,28 @@
 
-tbody {
-  font-size: 125%;
-  /*font-family: Times, Times New Roman, Georgia, serif;*/
+/*tbody {
+  font-size: 20px;
+  background-color: rgb(179, 179, 179);
 }
 th {
-  /*font-family:Georgia, 'Times New Roman', Times, serif;*/
-  font-size:100%;
+  width: 60px;
+  max-width: 60px;
+  font-size:20px;
   text-align: center;
-  text-transform: uppercase;
-  background-color: #7cc7f3;
+  background-color: #ffffff;
 }
 th,td {
   vertical-align: middle;
+}*/
+th {
+  width: 60px;
+  max-width: 60px;
+  font-size: 18px;
+  text-align: center;
+  background-color: rgb(212, 209, 209);
+}
+tbody {
+  font-size: 15px;
+  background-color: white;
 }
 
 .modal-header {
