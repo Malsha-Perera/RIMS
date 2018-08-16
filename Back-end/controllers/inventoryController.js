@@ -99,11 +99,11 @@ router.delete('/:id', (req, res) => {
 })
 
 router.put('/issuing/:itemCode', (req , res) => {
-   if(itemCode == null) {
+   if(req.params.itemCode == '') {
       res.send('invalid Item Code');
    }
    else{
-      Item.findOneAndUpdate({itemCode:itemCode},{$set: {quantity:req.body.itemQuantity}},(err,docs) => {
+      Item.findOneAndUpdate({itemCode:req.params.itemCode},{$set: {quantity:req.body.itemQuantity}},(err,docs) => {
          if(err) {
             return res.status(200).send(err);
          }

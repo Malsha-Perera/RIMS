@@ -120,34 +120,39 @@ export class ItemDetailComponent implements OnInit {
     });
   }
 
-  /*-----------------------------------issue an item-----------------------------------------------------------------------------------*/
-
   onClosed(dismissedAlert: AlertComponent): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
+/*---------------------starting issue an item-----------------------------------------------------------------------------------*/
 
+  // open modal to enter the quantity of issue item //
   openIssueModal(template3: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template3, {class: 'modal-sm' });
   }
 
+  // close modal after issue an item //
   closeIssueModal() {
     this.modalRef.hide();
     this.modalRef = null;
   }
 
+  // reset the issue object and newQuantity after issuing process complete  //
   resetIssueItem() {
     this.issueOne = {
       itemCode: '',
       itemQuantity: null
     };
+    this.newQuantity = null;
   }
 
+  // assign values to issue object properties //
   issueItem(item: Item): any {
     this.issueOne.itemCode = item.itemCode;
     this.issueOne.itemQuantity = item.quantity;
     // console.log(this.issueOne);
   }
 
+  // confirm issue item //
   setIssueItem() {
     this.issueOne.itemQuantity = this.issueOne.itemQuantity - this.newQuantity;
     // console.log(this.issueOne);
@@ -156,6 +161,9 @@ export class ItemDetailComponent implements OnInit {
       this.resetIssueItem();
     });
   }
+
+  /*--------------------end of the issue an item process----------------------------------------- */
+
   /*this.chart = new Chart('canvas', {
     type: 'bar',
     data: {

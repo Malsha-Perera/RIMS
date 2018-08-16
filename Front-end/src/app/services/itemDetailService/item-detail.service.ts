@@ -14,6 +14,7 @@ export class ItemDetailService {
   oldItems: Item[];
   sortItems: Item[];
   readonly baseURL = 'http://localhost:3000/items';
+  readonly issueBaseURL = 'http://localhost:3000/items/issuing';
 
   constructor(private http: HttpClient) { }
 
@@ -40,6 +41,6 @@ export class ItemDetailService {
   }
 
   putIssueItem(issueItem) {
-    return this.http.put(this.baseURL + `/${issueItem.itemCode}`, issueItem);
+    return this.http.put(this.issueBaseURL + `/${issueItem.itemCode}`, issueItem);
   }
 }
