@@ -12,14 +12,16 @@
         </div>
       </a>
     </div>
+    <div class="col-md-3 col-sm-6 col-xs-12"></div>
+    <div class="col-md-3 col-sm-6 col-xs-12"></div>
     <!--to create a stock issue document-->
     <div class="col-md-3 col-sm-6 col-xs-12">
       <a [routerLink]="['stockIssue']">
         <div class="info-box" tooltip="to update stock click here">
-          <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
+          <span class="info-box-icon bg-yellow"><i class="fas fa-dolly-flatbed"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">STOCK UPDATE</span>
             <i class="fas fa-hand-point-right fa-4x"></i>
+            <span class="info-box-text">ISSUE STOCK</span>
           </div>
         </div>
       </a>
@@ -30,7 +32,9 @@
     <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
   </div>
   <div class="row">
-        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+          <button class='btn btn-outline-success' id="addNewItemBtn" (click)="openModal(template)">Add  <i class='fa fa-plus-square fa-lg'></i></button>
+        </div>
         <div class="input-group col-sm-4">
               <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
               <span class="input-group-addon"><i class="fas fa-search"></i></span>
@@ -60,31 +64,31 @@
               <tr *ngFor=" let item of mf.data; let i = index;">
                 <td scope="row">{{i+1}}</td>
                 <td>{{item.itemCode}}</td>
-                <td>{{item.itemname}}</td>
+                <td style="font-weight: 800">{{item.itemname}}</td>
                 <td>{{item.category}}</td>
                 <td>{{item.unitScale}}</td>
-                <td class="text-right">{{item.reOrderLevel}}
-                  <button type="button" class='btn btn-light-blue'(click)="onEdit1(item) ; openSetROLModal(template2)" tooltip="edit re-order level">
+                <td class="text-center" style="font-weight: 800">{{item.reOrderLevel}}
+                  <button type="button" class='btn btn-outline-info' id="editROLBtn" (click)="onEdit1(item) ; openSetROLModal(template2)" tooltip="edit re-order level">
                   <i class="fa fa-edit" aria-hidden="true"></i>
                   </button>
                 </td>
-                <td class="text-center">{{item.quantity}}</td>
+                <td class="text-center" style="font-weight: 800">{{item.quantity}}</td>
                 <td>
                   <button type="button" class='btn btn-outline-info' id="editItemBtn" (click)="onEdit(item) ; openModal(template)" tooltip="edit">Edit
-                  <!--i class="fa fa-edit" aria-hidden="true"></i-->
+                  <i class="fa fa-edit" aria-hidden="true"></i>
                   </button>
 
                   <button type="button" class='btn btn-outline-danger' id="deleteItemBtn" (click)="onDelete(item._id, itemDetailForm)" tooltip="delete">Delete
-                  <!--i class='fa fa-trash fa-lg'></i-->
+                  <i class='fa fa-trash fa-sm'></i>
                   </button>
 
-                  <button class='btn btn-success'>
+                  <button class='btn btn-outline-success' id="viewItemBtn">
                   <i class="fas fa-align-justify"></i>
                   </button>
                 </td>
                 <td>
-                  <button class='btn btn-default' id="issueBtn" (click)="issueItem(item); openIssueModal(template3)" tooltip="">
-                    <i class="fa fa-cart-arrow-down"></i>
+                  <button class='btn btn-outline-default' id="issueBtn" (click)="issueItem(item); openIssueModal(template3)" tooltip="">
+                    <i class="fa fa-cart-arrow-down fa-lg"></i>
                   </button>
                 </td>
               </tr>
@@ -99,7 +103,7 @@
         </table>
       </div>
 
-      <button class='btn btn-success' id="mybutton" (click)="openModal(template)"><i class='fa fa-plus-square fa-lg'></i></button>
+      <button class='btn btn-outline-success' id="addNewItemBtn" (click)="openModal(template)">Add  <i class='fa fa-plus-square fa-lg'></i></button>
     <!-- Modal for the add Item-->
       <ng-template #template>
         <div class="row">
