@@ -97,4 +97,18 @@ router.delete('/:id', (req, res) => {
       }
    })
 })
+
+router.put('/issuing/:itemCode', (req , res) => {
+   if(itemCode == null) {
+      res.send('invalid Item Code');
+   }
+   else{
+      Item.findOneAndUpdate({itemCode:itemCode},{$set: {quantity:req.body.itemQuantity}},(err,docs) => {
+         if(err) {
+            return res.status(200).send(err);
+         }
+         return res.status(200).send(docs);
+      })
+   }
+})
 module.exports = router;

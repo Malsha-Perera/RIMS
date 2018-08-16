@@ -130,6 +130,11 @@ export class ItemDetailComponent implements OnInit {
     this.modalRef = this.modalService.show(template3, {class: 'modal-sm' });
   }
 
+  closeIssueModal() {
+    this.modalRef.hide();
+    this.modalRef = null;
+  }
+
   resetIssueItem() {
     this.issueOne = {
       itemCode: '',
