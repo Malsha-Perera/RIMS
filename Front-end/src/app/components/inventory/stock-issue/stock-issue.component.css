@@ -1,8 +1,12 @@
 th {
-  font-size: 20px;
-  color: black;
+  width: 60px;
+  max-width: 60px;
+  font-size: 18px;
+  text-align: center;
+  background-color: rgb(212, 209, 209);
 }
-
 tbody {
-  font-size: 20px;
+  font-size: 15px;
+  background-color: white;
+  text-align: center;
 }
