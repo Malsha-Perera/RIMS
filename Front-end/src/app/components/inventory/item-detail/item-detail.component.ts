@@ -1,10 +1,10 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { NgForm, Validators, ValidationErrors,FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { NgForm, Validators, ValidationErrors, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SetRolComponent } from './set-rol/set-rol.component';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
-//import { Chart } from 'chart.js';
+// import { Chart } from 'chart.js';
 
 import { ItemDetailService } from '../../../services/itemDetailService/item-detail.service';
 import { Item } from '../../../models/item-detail.model';
@@ -282,4 +282,3 @@ export class ItemDetailComponent implements OnInit {
 
 
 }
-

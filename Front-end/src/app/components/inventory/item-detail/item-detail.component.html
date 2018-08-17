@@ -34,13 +34,16 @@
     <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)" style="text-align: center; font-size:25px;">{{ alert.msg }}</alert>
   </div>
   <div class="row">
-        <div class="col-sm-4">
-          <button class='btn btn-outline-success' id="addNewItemBtn" (click)="openModal(template)">Add  <i class='fa fa-plus-square fa-lg'></i></button>
-        </div>
-        <div class="input-group col-sm-4">
-              <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
-              <span class="input-group-addon"><i class="fas fa-search"></i></span>
-        </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="input-group">
+        <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
+        <span class="input-group-addon"><i class="fas fa-search fa-lg"></i></span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <button class='btn btn-outline-success' id="addNewItemBtn" (click)="openModal(template)">Add  <i class='fa fa-plus-square fa-lg'></i></button>
+    </div>
   </div>
 
   <hr>
@@ -330,4 +333,3 @@
     </div>
   </div>
 </div>
-
