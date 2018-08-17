@@ -11,6 +11,7 @@ import { Item } from '../../../models/item-detail.model';
 import { IssueItem } from '../../../models/issueItem';
 import { ItemDetailPipe } from '../../../pipes/item-detail.pipe';
 import { isNumber } from 'util';
+import { formArrayNameProvider } from '../../../../../node_modules/@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-item-detail',
@@ -25,11 +26,13 @@ export class ItemDetailComponent implements OnInit {
   public modalRef: BsModalRef;
   searchText = '';
   items: Item[];
+  itemIds: Item[];
   alerts: any[] = [{}];
   issueOne: IssueItem;
   issuedItem: IssueItem;
   deleteItemId;
   newQuantity;
+  bsValue = new Date();
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
 
   ngOnInit() {
@@ -38,6 +41,7 @@ export class ItemDetailComponent implements OnInit {
     this.resetIssueItem();
     this.resetIssuedItem();
     this.resetDeleteItemId();
+    // this.checkExistId();
   }
   // method for open modal
   public openModal(template: TemplateRef<any>) {
@@ -56,12 +60,49 @@ export class ItemDetailComponent implements OnInit {
     this.modalRef = null;
   }
 
+  /*---------------------start Add new Item Process or Update Existing Item------------------------------------------------ */
+  checkExistId(itemCode) {
+    // tslint:disable-next-line:prefer-const
+    let result: any = false;
+    this.itemDetailService.getItemList().subscribe((res) => {
+      this.itemIds = res as Item[];
+      // console.log(this.itemIds[0]);
+      // tslint:disable-next-line:prefer-const
+      let idArray: string[] = [];
+      let i = 0;
+      for ( i; i < this.itemIds.length; i++) {
+      idArray[i] = this.items[i].itemCode;
+      }
+
+      for (let j = 0; j < idArray.length; j++) {
+
+        if (itemCode === idArray[j]) {
+          result = false;
+        } else {
+          result = true;
+          continue;
+        }
+
+      }
+    });
+
+    return result;
+  }
+
   onSubmit(form: NgForm) {
     if (form.value._id === '') {
-      this.itemDetailService.postItem(form.value).subscribe((res) => {
-        this.resetForm(form);
-        this.refreshItemList();
-      });
+      const res = this.checkExistId(form.value.itemCode);
+        if (res === true) {
+          this.itemDetailService.postItem(form.value).subscribe((response) => {
+            this.addItemAlert();
+            this.resetForm(form);
+            this.refreshItemList();
+          });
+        } else {
+          // console.log('invalid submit');
+          this.wrongInputItemCodeAlert();
+          this.resetForm(form);
+        }
     } else {
       this.itemDetailService.putItem(form.value).subscribe((res) => {
         this.resetForm(form);
@@ -69,6 +110,7 @@ export class ItemDetailComponent implements OnInit {
       });
     }
   }
+  /*-------------------------------------End Item Adding Process--------------------------------- */
 
   refreshItemList() {
     this.itemDetailService.getItemList().subscribe((res) => {
@@ -141,6 +183,14 @@ export class ItemDetailComponent implements OnInit {
     this.alerts.push({
       type: 'success',
       msg: `Item is added successfully! (added: ${new Date().toLocaleTimeString()})`,
+      timeout: 3000
+    });
+  }
+
+  wrongInputItemCodeAlert(): void {
+    this.alerts.push({
+      type: 'danger',
+      msg: `Entered ItemCode should be unique`,
       timeout: 3000
     });
   }
