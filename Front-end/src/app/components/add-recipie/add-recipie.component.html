@@ -1,4 +1,4 @@
-<br><br>
+<!--
 <div class="container-fluid">
 
   <form #itemForm = "ngForm" class="form-horizontal">
@@ -54,4 +54,79 @@
       <button type="submit" onclick="getSum()" class="btn btn-success"data-toggle="tooltip" title="Calculate average unit price"><i class="fa fa-location-arrow"></i></button>
     </div>
   </div>
+
 </div>
+-->
+<hr>
+<div class="container">
+  
+
+  <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+  </div>
+  
+<br><br>
+  
+  <div class="form-group">
+    <label class="control-label col-sm-2" >Recipie Code:</label>
+    <div class="col-sm-6">
+      <input type="text" name="recipieName" [(ngModel)]="recipieCode" class="form-control" placeholder="Recipie Name" >
+    </div>  
+  </div>
+  <br><br>
+<br>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" >Product Name:</label>
+  <div class="col-sm-6">
+    <input type="text" name="recipieName" [(ngModel)]="productName" class="form-control" placeholder="Recipie Name" >
+  </div>  
+</div>
+<br><br>
+<br>
+
+ 
+<br><br>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
+        <thead class="">
+          <tr>
+            
+            <th>Ingredient</th>
+            <th>Quantity</th>
+            <th>Unit Cost</th>       
+            <th>Actions</th>
+            
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr *ngFor=" let ing of ingredient; let i =index" >
+            <td>{{ing}}</td>
+            <td>{{quantity[i]}}</td>
+            <td>{{unitCost[i]}}</td>          
+            <td>
+              <button class='btn btn-info'  tooltip="edit">
+              <i class="fa fa-edit" aria-hidden="true"></i>
+              </button>
+
+              <button class='btn btn-danger'  tooltip="delete">
+              <i class='fa fa-trash fa-lg'></i>
+              </button>
+
+              <button class='btn btn-success'>
+              <i class="fas fa-align-justify"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class='btn btn-success' id="mybutton" ><i class='fa fa-plus-square fa-lg'></i></button>
+      
+    
+    </div>
+  </div>
+      
+</div>
+
+
