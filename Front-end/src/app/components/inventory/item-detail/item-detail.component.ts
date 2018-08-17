@@ -28,6 +28,7 @@ export class ItemDetailComponent implements OnInit {
   alerts: any[] = [{}];
   issueOne: IssueItem;
   issuedItem: IssueItem;
+  deleteItemId;
   newQuantity;
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
 
@@ -36,6 +37,7 @@ export class ItemDetailComponent implements OnInit {
     this.refreshItemList();
     this.resetIssueItem();
     this.resetIssuedItem();
+    this.resetDeleteItemId();
   }
   // method for open modal
   public openModal(template: TemplateRef<any>) {
@@ -82,15 +84,35 @@ export class ItemDetailComponent implements OnInit {
     this.itemDetailService.selectedItem = item;
   }
 
-  onDelete(_id: string, form: NgForm) {
-    if (confirm('Are You Sure to delete this record ?') === true) {
-      this.itemDetailService.deleteItemDetail(_id).subscribe((res) => {
-        this.refreshItemList();
-        this.resetForm(form);
-      });
-    }
+  /*------------Delete Item Process----------------------------- */
+
+  openConfirmDeleteModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm' });
   }
 
+  closeConfirmDeleteModal() {
+    this.modalRef.hide();
+    this.modalRef = null;
+    this.refreshItemList();
+    this.resetDeleteItemId();
+  }
+
+  setDeleteItem(itemId) {
+    this.deleteItemId = itemId;
+  }
+  onDelete(form: NgForm) {
+
+      this.itemDetailService.deleteItemDetail(this.deleteItemId).subscribe((res) => {
+        this.refreshItemList();
+        this.resetDeleteItemId();
+        this.resetForm(form);
+      });
+  }
+
+  resetDeleteItemId() {
+    this.deleteItemId = '';
+  }
+  /*--------------------------End Delete Item Process */
   resetForm(form?: NgForm) {
 
     if (form) {
