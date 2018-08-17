@@ -45,6 +45,7 @@ const appRoutes: Routes = [
   {path: 'uc', component: UnitCostComponent},
   {path: 'items/stockupdate', component: StockUpdateComponent},
   {path: 'stockupdate', component: StockUpdateComponent},
+  {path: 'menu/addrecipie', component: AddRecipieComponent},
   {path: 'addrecipie', component: AddRecipieComponent},
   {path: 'items', component: ItemDetailComponent},
   {path: 'sales', component: SalesComponent},

@@ -10,7 +10,15 @@ const ImSchema= mongoose.Schema({
         required:true,      
     },
     ingredient:{
-        type:String,
+        type:Array,
+        required:true,
+    },
+    quantity:{
+        type:Array,
+        required:true,
+    },
+    unitCost:{
+        type:Array,
         required:true,
     },
     cost:{
