@@ -4,6 +4,8 @@ import {ProductService} from "../../services/product.service";
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import {Globals} from '../../globals/globals';
 
 @Component({
   selector: 'app-menu',
@@ -27,7 +29,7 @@ export class MenuComponent implements OnInit {
   foodCategory:String;
   public modalRef: BsModalRef;
 
-  constructor(private productservice:ProductService, public modalService: BsModalService) { }
+  constructor(private productservice:ProductService, public modalService: BsModalService,private router: Router) { }
 
   getProducts(){
     this.productservice.getProducts()
@@ -62,6 +64,14 @@ export class MenuComponent implements OnInit {
         this.getProducts();
       });
       this.closeFirstModal();
+  }
+
+  createRecipe(){
+    this.router.navigateByUrl('/addrecipie');
+    Globals.recipeCode = "ro1";
+    Globals.productName = "Rolls"
+    console.log(Globals.recipeCode);
+    this.closeFirstModal();
   }
 
   setLists(){
