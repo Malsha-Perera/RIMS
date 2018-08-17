@@ -5,6 +5,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationModule } from 'ngx-bootstrap';
 import { AlertModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
@@ -13,9 +14,10 @@ import { AlertModule } from 'ngx-bootstrap';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     PaginationModule.forRoot(),
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
-  exports: [BsDropdownModule, TooltipModule, ModalModule, PaginationModule, AlertModule],
+  exports: [BsDropdownModule, TooltipModule, ModalModule, PaginationModule, AlertModule, BsDatepickerModule],
   declarations: []
 })
 export class AppBootstrapModule { }

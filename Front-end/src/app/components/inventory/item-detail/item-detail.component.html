@@ -51,7 +51,7 @@
   <div class="row margintop20px paddingtopbottom15px whitebackground">
     <div class="col-sm-12">
       <div class="table-responsive">
-        <table class="table table-hover " [mfData]="items" #mf="mfDataTable" [mfRowsOnPage]="4">
+        <table class="table table-hover " [mfData]="items" #mf="mfDataTable" [mfRowsOnPage]="10">
             <thead>
               <tr>
                 <th style="width:10px;max-width:10px;">#</th>
@@ -192,7 +192,7 @@
                     <div class="col-sm-6">
                       <label>Latest Update Date:</label>
                       <div>
-                        <input class="form-control" type="date" name="latestUpdate" value="" id="date" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate">
+                        <input class="form-control" type="date" name="latestUpdate"  #latestUpdate="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate">
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -236,7 +236,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-4">
-                      <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemDetailForm.form.valid" (click)="modalRef.hide() ; addItemAlert()">Save Item</button>
+                      <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemDetailForm.form.valid" (click)="modalRef.hide()">Save Item</button>
                     </div>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
