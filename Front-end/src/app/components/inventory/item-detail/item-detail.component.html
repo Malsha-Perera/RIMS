@@ -1,7 +1,8 @@
 <hr>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="row" style="margin: auto">
+    <div class="col-md-1"></div>
+    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
       <a [routerLink]="['stockupdate']">
         <div class="info-box" tooltip="to update stock click here">
           <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
@@ -12,8 +13,8 @@
         </div>
       </a>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12"></div>
-    <div class="col-md-3 col-sm-6 col-xs-12"></div>
+    <div class="col-md-4"></div>
+
     <!--to create a stock issue document-->
     <div class="col-md-3 col-sm-6 col-xs-12">
       <a [routerLink]="['stockIssue']">
@@ -26,6 +27,7 @@
         </div>
       </a>
     </div>
+    <div class="col-md-1"></div>
   </div>
 
   <div *ngFor="let alert of alerts">
@@ -122,15 +124,18 @@
 
                   <div class="form-group row">
                     <div class="col-sm-6">
-                      <label> Item Name:</label>
+                      <label> Item Name:<span style="color: red; font-size: 15px;">*</span></label>
                       <div>
-                        <input class="form-control" type="text" name="itemname" value="" id="name" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemname" placeholder="Item Name" required>
+                        <input class="form-control" type="text" name="itemname" value="" id="name" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemname" placeholder="Item Name (ex:Potato)" required="required" autocomplete="off" autocapitalize="words">
+                          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                            <div  [hidden]="!name.errors.required"> Name is required</div>
+                          </div>
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <label>Item Code:</label>
+                      <label>Item Code:<span style="color: red">*</span></label>
                       <div>
-                        <input class="form-control" type="text" name="itemCode" value="" id="itemcode" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode" placeholder="Itme Code" required>
+                        <input class="form-control" type="text" name="itemCode" value="" id="itemcode" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode" placeholder="Itme Code" required minlength="3" maxlength="3" autocomplete="off">
                       </div>
                     </div>
                   </div>
@@ -150,7 +155,7 @@
                     <div class="col-sm-3">
                       <label>Quantity:</label>
                       <div>
-                        <input class="form-control" type="text" name="quantity" value="" id="quantity" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.quantity" placeholder="Quantity Of Item">
+                        <input class="form-control" type="text" name="quantity" value="" id="quantity" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.quantity" placeholder="Quantity Of Item" autocomplete="off">
                       </div>
                     </div>
                     <div class="col-sm-3">
@@ -170,7 +175,7 @@
                     <div class="col-sm-10">
                       <label>Description:</label>
                       <div>
-                        <input class="form-control" type="text" name="description" value="" id="descripiton" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.description" placeholder="More About New Item">
+                        <input class="form-control" type="text" name="description" value="" id="descripiton" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.description" placeholder="More About New Item" autocomplete="off">
                       </div>
                     </div>
                   </div>
@@ -187,7 +192,7 @@
                     <div class="col-sm-6">
                       <label>UnitCost:</label>
                       <div>
-                        <input class="form-control" type="text" name="unitCost" value="" id="unitCost" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitCost" placeholder="Unit Cost Of the Item">
+                        <input class="form-control" type="text" name="unitCost" value="" id="unitCost" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitCost" placeholder="Unit Cost Of the Item" autocomplete="off">
                       </div>
                     </div>
                   </div>
@@ -198,19 +203,19 @@
                     <div class="col-sm-4">
                       <label>Minimum Level:</label>
                       <div>
-                        <input class="form-control" type="text" name="minimumLevel" value="" id="minimumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.minimumLevel" placeholder="Minimum Level">
+                        <input class="form-control" type="text" name="minimumLevel" value="" id="minimumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.minimumLevel" placeholder="Minimum Level" autocomplete="off">
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <label>Re Order Level:</label>
                       <div>
-                        <input class="form-control" type="text" name="reOrderLevel" value="" id="reOrderLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.reOrderLevel" placeholder="Re-Order Level">
+                        <input class="form-control" type="text" name="reOrderLevel" value="" id="reOrderLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.reOrderLevel" placeholder="Re-Order Level" autocomplete="off">
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <label>Maximum Level:</label>
                       <div>
-                        <input class="form-control" type="text" name="maximumLevel" value="" id="maximumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.maximumLevel" placeholder="Maximum Level">
+                        <input class="form-control" type="text" name="maximumLevel" value="" id="maximumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.maximumLevel" placeholder="Maximum Level" autocomplete="off">
                       </div>
                     </div>
                   </div>
@@ -225,12 +230,12 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-4">
-                      <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemForm.valid" (click)="modalRef.hide() ; addItemAlert()">Save Item</button>
+                      <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemDetailForm.form.valid" (click)="modalRef.hide() ; addItemAlert()">Save Item</button>
                     </div>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
                       <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>
-                      <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="resetForm(itemDetailForm)">Reset</button>
+                      <button type="button" class="btn btn-warning" id="resetbutton" data-toggle="modal" data-target="#myModal" (click)="resetForm(itemDetailForm)">Reset</button>
                     </div>
                   </div>
               </form>
