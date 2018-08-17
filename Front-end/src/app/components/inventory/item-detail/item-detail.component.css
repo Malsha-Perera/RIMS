@@ -152,3 +152,10 @@ input:required:focus {
 input:required:hover {
   opacity: 1;
 }
+
+.tooltip .tooltiptext {
+    width: 120px;
+    bottom: 100%;
+    left: 50%; 
+    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
