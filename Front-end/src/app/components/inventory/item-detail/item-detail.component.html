@@ -29,7 +29,7 @@
   </div>
 
   <div *ngFor="let alert of alerts">
-    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)" style="text-align: center; font-size:25px;">{{ alert.msg }}</alert>
   </div>
   <div class="row">
         <div class="col-sm-4">
@@ -78,7 +78,7 @@
                   <i class="fa fa-edit" aria-hidden="true"></i>
                   </button>
 
-                  <button type="button" class='btn btn-outline-danger' id="deleteItemBtn" (click)="onDelete(item._id, itemDetailForm)" tooltip="delete">Delete
+                  <button type="button" class='btn btn-outline-danger' id="deleteItemBtn" (click)="setDeleteItem(item._id);openConfirmDeleteModal(templateConfirmD)" tooltip="delete">Delete
                   <i class='fa fa-trash fa-sm'></i>
                   </button>
 
@@ -236,6 +236,27 @@
               </form>
             </div>
           </div>
+      </ng-template>
+
+      <!--Modal for confirming the delete item-->
+      <ng-template #templateConfirmD id="confirmDeleteModal">
+        <div class="modal-body" id="confirmModalBody">
+          <div class="row">
+            <span style="color: tomato;"><i class="far fa-question-circle fa-5x"></i></span>
+          </div>
+          <div class="row" style="text-align: center">
+            <h3>Are You Sure ?</h3>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <button class='btn btn-success' type="button" (click)="onDelete(itemDetailForm); closeConfirmDeleteModal()">Confirm</button>
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+              <button type="button" class='btn btn-warning' (click)="closeConfirmDeleteModal()">Cancel</button>
+            </div>
+          </div>
+        </div>
       </ng-template>
 
           <!--Modal for the edit re oder level-->

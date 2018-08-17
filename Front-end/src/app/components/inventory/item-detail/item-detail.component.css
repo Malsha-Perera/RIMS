@@ -87,6 +87,10 @@ tbody {
   /*font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;*/
 }
 
+#confirmModalBody {
+  text-align: center;
+}
+
 .info-box.icon {
   background-color: #7cc7f3;
 }
