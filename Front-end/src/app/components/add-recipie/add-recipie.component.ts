@@ -76,13 +76,13 @@ export class AddRecipieComponent implements OnInit {
 
     if (form.value._id === '') {
       this.recipieService.addRecipe(this.myRecipie).subscribe((res) => {
-        this.resetForm(form);
-        this.refreshRecipieList();
+        
+        //this.refreshRecipieList();
       });
     } else {
       this.recipieService.updateRecipe(this.myRecipie).subscribe((res) => {
-        this.resetForm(form);
-        this.refreshRecipieList();
+       
+        //this.refreshRecipieList();
       });
     }
   }
