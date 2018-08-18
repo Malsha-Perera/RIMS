@@ -31,6 +31,7 @@ export class ItemDetailComponent implements OnInit {
   issueOne: IssueItem;
   issuedItem: IssueItem;
   deleteItemId;
+  viewItem: Item;
   newQuantity;
   bsValue = new Date();
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
@@ -127,6 +128,36 @@ export class ItemDetailComponent implements OnInit {
 
   onEdit1(item: Item) {
     this.itemDetailService.selectedItem = item;
+  }
+  /*-----------------------viewItem Process------------------------------- */
+  public openViewItemModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template); // {3}
+  }
+  closeViewModal() {
+    this.modalRef.hide();
+    this.modalRef = null;
+  }
+  onView(item: Item) {
+    this.viewItem = item;
+  }
+
+  resetViewItem() {
+    this.viewItem = {
+      _id: '',
+    itemname: '',
+    itemCode: '',
+    category: 'ND',
+    quantity: 0,
+    description: '',
+    unitCost: 0,
+    latestUpdate: null,
+    unitScale: 'ND',
+    minimumLevel: 0,
+    reOrderLevel: 50,
+    maximumLevel: 0,
+    date: null
+
+    };
   }
 
   /*------------Delete Item Process----------------------------- */
@@ -276,7 +307,7 @@ export class ItemDetailComponent implements OnInit {
             this.resetIssueItem();
           }
           if (res['m'] === 'success') {
-            this.addIssueSuccess();
+            // this.addIssueSuccess();
             this.refreshItemList();
             this.resetIssueItem();
           }

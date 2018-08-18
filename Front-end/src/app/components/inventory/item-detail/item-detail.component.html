@@ -87,7 +87,7 @@
                   <i class='fa fa-trash fa-sm'></i>
                   </button>
 
-                  <button class='btn btn-outline-success' id="viewItemBtn">
+                  <button type="button" class='btn btn-outline-success' id="viewItemBtn" (click)="onView(item); openViewItemModal(templateViewItemModal)">
                   <i class="fas fa-align-justify"></i>
                   </button>
                 </td>
@@ -327,6 +327,62 @@
             <div class="row">
               <div class="col-sm-8"></div>
               <button type="button" class="btn btn-warning" (click)="setIssueItem() ; closeIssueModal()">Issue</button>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template #templateViewItemModal>
+          <div class="modal-header" id="viewModal">
+            <h3>{{viewItem.itemname}}</h3>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <div class="row" style="text-align: center">
+                  <div class="col-md-6">
+                    <label>Item Code:</label>
+                    <input type="text" value="{{viewItem.itemCode}}" readonly="true">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Item Category:</label>
+                    <input type="text" value="{{viewItem.category}}" readonly="true">
+                  </div>
+                </div>
+                <br>
+                <div class="row" style="text-align: center">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+                    <label>Description:</label>
+                    <input type="text" value="{{viewItem.description}}" readonly="true">
+                  </div>
+                </div>
+                <br>
+                <div class="row" style="text-align: center">
+                  <div class="col-md-6">
+                    <label>Latest Update Date:</label>
+                    <input type="text" value="{{viewItem.latestUpdate}}" readonly="true">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Item Quantity:</label>
+                    <input type="text" value="{{viewItem.quantity}}  {{viewItem.unitScale}}" readonly="true">
+                  </div>
+                </div>
+                <br>
+                <div class="row" style="text-align: center">
+                  <div class="col-md-4">
+                    <label>Minimum Level:</label>
+                    <input type="text" style="width: 75px" value="{{viewItem.minimumLevel}} {{viewItem.unitScale}}" readonly="true">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Re Order Level:</label>
+                    <input type="text" style="width: 75px" value="{{viewItem.reOrderLevel}} {{viewItem.unitScale}}" readonly="true">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Maximum Level:</label>
+                    <input type="text" style="width: 75px" value="{{viewItem.maximumLevel}} {{viewItem.unitScale}}" readonly="true">
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </ng-template>
