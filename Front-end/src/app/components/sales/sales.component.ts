@@ -99,6 +99,11 @@ export class SalesComponent implements OnInit {
     
   }
 
+  sumItem(){
+    this.total;
+    console.log(this.total);
+  }
+
   deleteItems(id) {
     this.itemService.deleteItems(id).subscribe(data => {
       console.log(data);
