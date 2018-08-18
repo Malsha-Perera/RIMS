@@ -1,0 +1,135 @@
+
+/*tbody {
+  font-size: 20px;
+  background-color: rgb(179, 179, 179);
+}
+th {
+  width: 60px;
+  max-width: 60px;
+  font-size:20px;
+  text-align: center;
+  background-color: #ffffff;
+}
+th,td {
+  vertical-align: middle;
+}*/
+th {
+    width: 60px;
+    max-width: 60px;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgb(212, 209, 209);
+  }
+  tbody {
+    font-size: 16px;
+    background-color: white;
+  }
+  
+  #editItemBtn {
+    background-color: rgba(49, 122, 151, 0.685);
+    border-color: rgba(20, 87, 114, 0.685);
+    color: rgba(3, 3, 3, 0.685);
+  }
+  #deleteItemBtn {
+    background-color: rgba(179, 13, 13, 0.685);
+    border-color: rgba(124, 12, 12, 0.685);
+    color: rgb(255, 255, 255);
+  }
+  #viewItemBtn {
+    background-color: rgba(10, 90, 24, 0.685);
+    color: white;
+  }
+  #editROLBtn {
+    background-color: rgba(102, 109, 112, 0.685);
+    color: white;
+  }
+  #issueBtn {
+    background-color: rgba(36, 96, 119, 0.685);
+    color: white;
+    width: 75px;
+  }
+  #addNewItemBtn {
+    background-color: rgb(7, 107, 7);
+    width: 75px;
+    height: 40px;
+    color: white;
+  }
+  .btn.btn-outline-info:hover {
+    box-shadow: 0 12px 16px 0 rgba(10, 10, 10, 0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+  }
+  
+  .btn.btn-outline-danger:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+  }
+  
+  .btn.btn-outline-success:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+  .btn.btn-outline-default:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+  
+  .modal-header {
+    background-color: #6499c2;
+    /*color: white;*/
+    text-align: center;
+  }
+  
+  #modId {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 150%;
+  }
+  
+  
+  .modal-body {
+    background-color: #c8d2da;
+    /*font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;*/
+  }
+  
+  #confirmModalBody {
+    text-align: center;
+  }
+  
+  .info-box.icon {
+    background-color: #7cc7f3;
+  }
+  #rolModal {
+    border-radius: 25px;
+    -webkit-border-radius: 25px !important;
+    -moz-border-radius: 25px !important;
+    border-radius: 25px !important;
+  }
+  #rolSubmitBtn,#newItemSaveBtn {
+    border-color: rgb(16, 46, 16);
+  }
+  
+  #rolInputField {
+    border-radius: 10px;
+    border-color: #5d809b;
+    text-align: center;
+    font-size: 25px;
+    width: 100px;
+  }
+  
+  input, select {
+    border-radius: 5px;
+    border-color: #5d809b;
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  label {
+    font-size: 15px;
+  }
+  
+  #issueBtn {
+    background-color: #5d809b;
+    color: white;
+  }
+  
+  #issueInputField {
+    width: 100px;
+    text-align: center;
+  }
+  
