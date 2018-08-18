@@ -39,7 +39,7 @@ tbody {
 #editItemBtn {
   background-color: rgba(49, 122, 151, 0.685);
   border-color: rgba(20, 87, 114, 0.685);
-  color: rgba(3, 3, 3, 0.685);
+  color: rgb(255, 255, 255);
 }
 #deleteItemBtn {
   background-color: rgba(179, 13, 13, 0.685);
