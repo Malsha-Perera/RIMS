@@ -57,6 +57,7 @@
                 <th style="width:10px;max-width:10px;">#</th>
                 <th><mfDefaultSorter by="itemCode">Item Code</mfDefaultSorter></th>
                 <th><mfDefaultSorter by="itemname">Name</mfDefaultSorter></th>
+                <th><mfDefaultSorter>Status</mfDefaultSorter></th>
                 <th><mfDefaultSorter by="category">Category</mfDefaultSorter></th>
                 <th><mfDefaultSorter by="unitScale">Unit</mfDefaultSorter></th>
                 <th><mfDefaultSorter by="reOrderLevel">ReOrderLevel</mfDefaultSorter></th>
@@ -66,10 +67,11 @@
               </tr>
             </thead>
             <tbody class="text-center">
-              <tr *ngFor=" let item of mf.data | itemFilter:searchText; let i = index;">
+              <tr *ngFor=" let item of mf.data | itemFilter:searchText; let i = index;" [style.border-color] = "item.quantity > item.reOrderLevel ? 'MediumSeaGreen' : 'salmon'">
                 <td scope="row">{{i+1}}</td>
                 <td>{{item.itemCode}}</td>
                 <td style="font-weight: 800">{{item.itemname}}</td>
+                <td><i class="fas fa-exclamation fa-lg" style="color: red" [style.display]="item.reOrderLevel > item.quantity ? '' : 'none'"></i><i class="fas fa-check fa-lg" style="color: green" [style.display]="item.reOrderLevel > item.quantity ? 'none' : ''"></i></td>
                 <td>{{item.category}}</td>
                 <td>{{item.unitScale}}</td>
                 <td class="text-center" style="font-weight: 800">{{item.reOrderLevel}}
