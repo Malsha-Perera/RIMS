@@ -1,4 +1,10 @@
 
+h2{
+  font-weight: bold;
+  font-size: 40px;
+}
+
+
 /* froms*/
 
 fieldset{
@@ -49,9 +55,7 @@ h2{
     font-size: 16px;
     cursor: pointer;
 }
-span{
-	float:right;
-}
+
 div.a {
     border: 1px solid black;
     margin: 20px ;
@@ -225,7 +229,47 @@ th {
     width: 100px;
     text-align: center;
   }
+  .panel-title{
+    font-size: 20px;
+    
+  }
+  .panel-title:hover{
+    font-weight: bold; 
+    color: #fff;
+    text-shadow:
+    -1px -1px 0 #00f,
+    1px -1px 0 #00f,
+    -1px 1px 0 #00f,
+    1px 1px 0 #00f;  
+    
+  }
   
+  
+  #panel1{
+    background-color:#DC143C;
+    max-width: 700px;
+    min-height: 20px;
+   
+
+  }
+  #panel2{
+    background-color:#FF69B4;
+  }
+  #panel3{
+    background-color:#FFD700;
+  }
+  #panel4{
+    background-color:#4682B4;
+  }
+  #panel5{
+    background-color:#32CD32;
+  }
+  #panel6{
+    background-color:#BC8F8F;
+  }
+  #panel7{
+    background-color:#DA70D6;
+  }
   
 
 
