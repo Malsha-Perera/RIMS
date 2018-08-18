@@ -61,37 +61,40 @@ export class ItemDetailComponent implements OnInit {
   }
 
   /*---------------------start Add new Item Process or Update Existing Item------------------------------------------------ */
-  checkExistId(itemCode) {
+  checkExistId(itemCode: string): boolean {
     // tslint:disable-next-line:prefer-const
-    let result: any = false;
-    this.itemDetailService.getItemList().subscribe((res) => {
+    let result = true;
+    /*this.itemDetailService.getItemList().subscribe((res) => {
       this.itemIds = res as Item[];
-      // console.log(this.itemIds[0]);
-      // tslint:disable-next-line:prefer-const
-      let idArray: string[] = [];
-      let i = 0;
-      for ( i; i < this.itemIds.length; i++) {
-      idArray[i] = this.items[i].itemCode;
+    }); */
+    // console.log(this.itemIds[0]);
+    this.itemIds = this.items;
+    // tslint:disable-next-line:prefer-const
+    let idArray: string[] = [];
+    let i = 0;
+    for ( i; i < this.itemIds.length; i++) {
+    idArray[i] = this.items[i].itemCode;
+    // console.log(idArray[i]);
+    }
+
+    for (let j = 0; j < idArray.length; j++) {
+      // console.log(idArray[j]);
+      // console.log(itemCode);
+      if (itemCode === idArray[j]) {
+        result =  false;
+      } else {
+        continue;
       }
 
-      for (let j = 0; j < idArray.length; j++) {
-
-        if (itemCode === idArray[j]) {
-          result = false;
-        } else {
-          result = true;
-          continue;
-        }
-
-      }
-    });
-
+    }
     return result;
   }
 
   onSubmit(form: NgForm) {
     if (form.value._id === '') {
-      const res = this.checkExistId(form.value.itemCode);
+      let res: boolean;
+      res = this.checkExistId(form.value.itemCode);
+      console.log(res);
         if (res === true) {
           this.itemDetailService.postItem(form.value).subscribe((response) => {
             this.addItemAlert();
@@ -101,7 +104,7 @@ export class ItemDetailComponent implements OnInit {
         } else {
           // console.log('invalid submit');
           this.wrongInputItemCodeAlert();
-          this.resetForm(form);
+          // this.resetForm(form);
         }
     } else {
       this.itemDetailService.putItem(form.value).subscribe((res) => {
@@ -164,15 +167,15 @@ export class ItemDetailComponent implements OnInit {
       _id: '',
     itemname: '',
     itemCode: '',
-    category: '',
-    quantity: null,
+    category: 'ND',
+    quantity: 0,
     description: '',
-    unitCost: null,
+    unitCost: 0,
     latestUpdate: null,
-    unitScale: '',
-    minimumLevel: null,
-    reOrderLevel: null,
-    maximumLevel: null,
+    unitScale: 'ND',
+    minimumLevel: 0,
+    reOrderLevel: 50,
+    maximumLevel: 0,
     date: null
 
     };
