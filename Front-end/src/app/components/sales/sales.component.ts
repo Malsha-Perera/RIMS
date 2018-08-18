@@ -16,7 +16,17 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
   styleUrls: ['./sales.component.css'],
   providers: [ItemService]
 })
+
 export class SalesComponent implements OnInit {
+
+  public product_id;
+  public product_name;
+  public category;
+  public date;
+  public unit_scale;
+  public qty1;
+  public price1;
+  public tot_price1;
 
   constructor(public modalService: BsModalService, private itemService: ItemService) { }
   public modalRef: BsModalRef;
@@ -26,6 +36,15 @@ export class SalesComponent implements OnInit {
   private newAttribute: any = {};
 
   ItemList: Item[] = [];
+  //CustomerList: Customer[] = [];
+  CustomerList: Customer[]=[];
+  ProductList: Item[] = [];
+
+  ItemArray:Item[] = [];
+
+  
+  
+
   selectedItem: Item;
   toggleForm = false;
 
@@ -35,6 +54,19 @@ export class SalesComponent implements OnInit {
   price:any;
   quantity:any;
   total:any;
+  
+
+  public calcTotPrice() {
+    this.tot_price1 = this.qty1 * this.price1;
+    console.log("calcTot Triggered");
+    console.log(this.tot_price1);
+    console.log(this.qty1);
+    console.log(this.price1);
+
+  }
+
+  
+
 
   
 
@@ -44,6 +76,10 @@ export class SalesComponent implements OnInit {
 
   public openEditModal(template1: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template1, {class: 'modal-md' }); // {3}
+  }
+
+  public openInvoiceModal(template2: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template2, {class: 'modal-md' }); // {3}
   }
 
   getItems() {
@@ -61,6 +97,8 @@ export class SalesComponent implements OnInit {
 
 
 
+
+
   addItem(form) {
    
     this.price=form.value.price;
@@ -69,6 +107,7 @@ export class SalesComponent implements OnInit {
     console.log(this.total);
 
     const newItem: Item = {
+
       product_id: form.value.product_id,
       product_name: form.value.product_name,
       category:form.value.category,
@@ -86,6 +125,10 @@ export class SalesComponent implements OnInit {
       email_address: form.value.email_address
     };
 
+ this.CustomerList.push(newCustomer);
+ this.ProductList.push(newItem);
+
+ 
 
     this.itemService.addItem(newItem).subscribe(items => {
       this.getItems();
@@ -167,6 +210,19 @@ export class SalesComponent implements OnInit {
   onClosed(dismissedAlert: AlertComponent): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
+
+  
+deleteFieldValue(index) {
+  this.ArrayList.splice(index, 1);
+}
+addFieldValue() {
+  this.ArrayList.push(this.newAttribute);
+  console.log(this.newAttribute);
+
+
+  this.newAttribute = {};
+}
+
 
 
   ngOnInit() {
