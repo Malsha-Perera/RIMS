@@ -176,3 +176,22 @@ input:required:hover {
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
 }
+
+.card {
+  border-color: #152425;
+}
+
+.card-body input {
+  text-align: center;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: #5d809b;
+  height: 35px;
+  font-size: 18px;
+  color: #122635;
+  background-color: rgb(196, 194, 194);
+}
+
+#viewModal {
+  background-color: #5d809b;
+}
