@@ -17,7 +17,7 @@ export class RecipieService {
   getRecipeFromCode(recipieCode) {
     return this.http.get('http://localhost:3000/recipie/'+recipieCode).map(res => res.json());
   }
-  addRecipe(recipe :Recipie) {
+  addRecipe(Recipie) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/recipie/', Recipie, {headers: headers}).map(res => res.json());
