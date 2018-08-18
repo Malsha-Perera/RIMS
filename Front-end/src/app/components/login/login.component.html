@@ -1,0 +1,61 @@
+<div class="limiter">
+		<div class="container-login100" style="background-image: url('../assets/img/po.jpg');">
+			
+			<div class="wrap-login100">
+					
+					<div style="text-align: center;font-size: 15pt" class="alert alert-danger" role="alert">
+							{{successMessage}}
+						</div>
+					
+	
+				<form style="width: 100%" [formGroup]="loginForm">
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Welcome
+					</span>
+
+					<div class="wrap-input100">
+            <label style="color: white;font-size: 13pt" class="fa fa-user">&nbsp;Email :</label>
+						<input class="input100" type="text" formControlName="email" placeholder="Username">
+						<span *ngIf="isValid('email')" class="alert alert-danger" role="alert" style="font-size:13pt">Email is Required</span>
+          </div>
+
+					<div class="wrap-input100">
+            <label style="color: white;font-size: 13pt" class="fa fa-user">&nbsp;Password : </label>
+						<input class="input100" type="password" formControlName="password" placeholder="Password">
+						<span *ngIf="isValid('password')" class="alert alert-danger" role="alert" style="font-size:13pt">Password is required</span>
+          </div>
+          
+
+					<div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<label class="label-checkbox100" for="ckb1">
+							Remember me
+						</label>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" (click)="login()">
+                Sign In
+            </button>
+            <button class="login100-form-btn" (click)="moveToRegister()">
+                Register
+              </button>
+					</div>
+
+					<div class="text-center p-t-90">
+						<a class="txt1" href="#">
+							Forgot Password?
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
