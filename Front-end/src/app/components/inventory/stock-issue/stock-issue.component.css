@@ -34,3 +34,9 @@ tbody {
   background-color: white;
   text-align: center;
 }
+.btn.btn-outline-info:hover {
+  box-shadow: 0 12px 16px 0 rgba(23, 109, 180, 0.24), 0 17px 50px 0 rgba(21, 80, 146, 0.5);
+}
+#stockBreadCrumBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(5, 107, 31, 0.24), 0 17px 50px 0 rgba(8, 122, 46, 0.767);
+}
