@@ -1,4 +1,9 @@
-<hr>
+<div>
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['']">Home</a></li>
+    <li><a [routerLink]="['items']">Inventory</a></li>
+  </ol>
+</div>
 <div class="container-fluid">
   <div class="row" style="margin: auto">
     <div class="col-md-1"></div>
@@ -60,7 +65,7 @@
                 <th><mfDefaultSorter>Status</mfDefaultSorter></th>
                 <th><mfDefaultSorter by="category">Category</mfDefaultSorter></th>
                 <th><mfDefaultSorter by="unitScale">Unit</mfDefaultSorter></th>
-                <th><mfDefaultSorter by="reOrderLevel">ReOrderLevel</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="reOrderLevel">ROL</mfDefaultSorter></th>
                 <th><mfDefaultSorter by="quantity">Quantity</mfDefaultSorter></th>
                 <th>Actions</th>
                 <th>Issue</th>

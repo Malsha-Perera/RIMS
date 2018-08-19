@@ -7,7 +7,11 @@ import {Routes, RouterModule} from '@angular/router';
 import { AppBootstrapModule } from './app-bootstrap.module';
 import { chart } from 'chart.js';
 import { DataTableModule } from 'angular2-datatable';
-
+import { FusionChartsModule } from 'angular-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Column2D from 'fusioncharts/viz/column2d';
+import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';
+import GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel';
 
 import { AppComponent } from './app.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
@@ -58,7 +62,7 @@ const appRoutes: Routes = [
     ];
 
 
-
+FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, GammelTheme);
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +97,8 @@ const appRoutes: Routes = [
     FormsModule,
     AppBootstrapModule,
     RouterModule.forRoot(appRoutes),
-    DataTableModule
+    DataTableModule,
+    FusionChartsModule
 
   ],
   providers: [DataService, DDataService],
