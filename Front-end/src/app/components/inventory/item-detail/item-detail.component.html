@@ -75,7 +75,7 @@
                 <td>{{item.category}}</td>
                 <td>{{item.unitScale}}</td>
                 <td class="text-center" style="font-weight: 800">{{item.reOrderLevel}}
-                  <button type="button" class='btn btn-outline-info' id="editROLBtn" (click)="onEdit1(item) ; openSetROLModal(template2)" tooltip="edit re-order level">
+                  <button type="button" class='btn btn-outline-info' id="editROLBtn" (click)="onEditROLGetItem(item.itemCode) ; openSetROLModal(templateEditROL)" tooltip="edit re-order level">
                   <i class="fa fa-edit" aria-hidden="true"></i>
                   </button>
                 </td>
@@ -94,7 +94,7 @@
                   </button>
                 </td>
                 <td>
-                  <button class='btn btn-outline-default' id="issueBtn" (click)="issueItem(item); openIssueModal(template3)" tooltip="">
+                  <button class='btn btn-outline-default' id="issueBtn" (click)="issueItem(item); openIssueModal(templateIssueItemModal)" tooltip="">
                     <i class="fa fa-cart-arrow-down fa-lg"></i>
                   </button>
                 </td>
@@ -272,8 +272,8 @@
         </div>
       </ng-template>
 
-          <!--Modal for the edit re oder level-->
-      <ng-template #template2 id="rolModal">
+      <!--//////////Modal for the edit re oder level//////////////-->
+      <ng-template #templateEditROL id="rolModal">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
@@ -282,40 +282,24 @@
         </div>
               <!--modal body-->
         <div class="modal-body">
-              <form class="form-horizontal" #setROLForm = "ngForm" (ngSubmit)="onSubmit(setROLForm)">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem._id">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.category">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.quantity">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.description">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitScale">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitCost">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.minimumLevel">
-
-                    <div class="form-group row">
-                      <!--label class="col-sm-4 control-label">New Re Order Level:</label-->
-                      <div class="col-sm-4"></div>
-                      <div class="col-sm-4">
-                        <input class="form-control" type="text" name="reOrderLevel" value="" id="rolInputField" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.reOrderLevel" required>
-                      </div>
-                      <div class="col-sm-4"></div>
-                    </div>
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.maximumLevel">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.date">
-
-                    <div class="form-group row">
-                      <div class="col-sm-4"></div>
-                      <div class="col">
-                        <button type="submit" class="btn btn-success" id="rolSubmitBtn" [disabled]="!itemForm.valid" (click)="modalRef.hide() ;">Submit</button>
-                        <button type="submit" class="btn btn-default" id="rolCancelBtn" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>
-                      </div>
-                    </div>
-                </form>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+              <input type="text" name="editRol" value="" id="rolInputField" #editROL="ngModel" [(ngModel)]="newROL" required>
             </div>
+            <div class="col-sm-4"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+              <button type="button" class="btn btn-success" id="rolSaveBtn" (click)="onEditROL() ; closeSetRolModal()">Set New</button>
+              <button type="button" class="btn btn-default" id="rolCancelBtn" (click)="closeSetRolModal()">Cancel</button>
+            </div>
+          </div>
+        </div>
       </ng-template>
 
-      <ng-template #template3>
+      <ng-template #templateIssueItemModal>
           <div class="modal-header">
             <h4 class="modal-title pull-center">Enter Issue Amount</h4>
           </div>
