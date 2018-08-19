@@ -18,6 +18,7 @@ export class ItemDetailService {
   readonly baseURL = 'http://localhost:3000/items';
   readonly issueBaseURL = 'http://localhost:3000/items/issuing';
   readonly issueBaseURL1 = 'http://localhost:3000/items/issuing/issuing';
+  readonly editROLBaseURL = 'http://localhost:3000/items/editRol';
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +32,11 @@ export class ItemDetailService {
 
   putItem(item: Item) {
     return this.http.put(this.baseURL + `/${item._id}`, item);
+  }
+
+  editROL(itemCode: string, newROL: number) {
+
+    return this.http.put(this.editROLBaseURL + `/${itemCode}`, {newRol: newROL});
   }
 
   deleteItemDetail(_id: string) {

@@ -32,7 +32,6 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
    var item = new Item ({
-      
       itemname: req.body.itemname,
       itemCode: req.body.itemCode,
       category: req.body.category,
@@ -61,7 +60,6 @@ router.put('/:id', (req, res) => {
       return res.status(400).send('No record with given id : ${req.params.id} ');
    }
    var item = {
-      
       itemname: req.body.itemname,
       itemCode: req.body.itemCode,
       category: req.body.category,
@@ -97,6 +95,25 @@ router.delete('/:id', (req, res) => {
          console.log('Error in Deleting Items :' + JSON.stringify(err, undefined, 2));
       }
    })
+});
+
+//-----------------------------Edit Re Order Level within new Re Order Level---------------------------------//
+router.put('/editRol/:itemCode', (req, res) => {
+   console.log(req.params.itemCode);
+   console.log(req.params.newRol);
+   if(req.params.itemCode !== '') {
+      Item.findOneAndUpdate({itemCode:req.params.itemCode},{$set: {reOrderLevel:req.body.newRol}}, (err,docs) => {
+         if(err) {
+            return res.status(200).send({m: 'error'});
+         }
+         else {
+            return res.status(200).send({m: 'success'});
+         }
+      });
+   }
+   else {
+      res.send('invalid Item Code');
+   }
 })
 
 router.put('/issuing/:itemCode', (req , res) => {

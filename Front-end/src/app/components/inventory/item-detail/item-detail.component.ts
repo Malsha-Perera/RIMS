@@ -33,6 +33,8 @@ export class ItemDetailComponent implements OnInit {
   deleteItemId;
   viewItem: Item;
   newQuantity;
+  editRolId;
+  newROL;
   bsValue = new Date();
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
 
@@ -43,20 +45,13 @@ export class ItemDetailComponent implements OnInit {
     this.resetIssuedItem();
     this.resetDeleteItemId();
     // this.checkExistId();
+    this.resetEditRol();
   }
   // method for open modal
   public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-md' }); // {3}
   }
-  public openSetROLModal(template2: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template2, {class: 'modal-sm' }); // {3}
-  }
   closeFirstModal() {
-    this.modalRef.hide();
-    this.modalRef = null;
-  }
-
-  closeSetROLModal() {
     this.modalRef.hide();
     this.modalRef = null;
   }
@@ -125,10 +120,40 @@ export class ItemDetailComponent implements OnInit {
   onEdit(item: Item) {
     this.itemDetailService.selectedItem = item;
   }
+  /*-----------------------Edit Re Order Level------------------------------*/
 
-  onEdit1(item: Item) {
-    this.itemDetailService.selectedItem = item;
+  onEditROLGetItem(itemCode: string) {
+    this.editRolId = itemCode;
   }
+
+  openSetROLModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template); // {3}
+  }
+  closeSetRolModal() {
+    this.modalRef.hide();
+    this.modalRef = null;
+  }
+
+  onEditROL() {
+    console.log(this.newROL);
+    console.log(this.editRolId);
+    this.itemDetailService.editROL(this.editRolId, this.newROL).subscribe((res) => {
+      if (res['m'] === 'success') {
+        console.log(res);
+        this.addItemAlert();
+        this.refreshItemList();
+        this.resetEditRol();
+
+      }
+    });
+  }
+
+  resetEditRol() {
+    this.editRolId = '';
+    this.newROL = null;
+  }
+  /*------------------------End Of the edit Rol Process---------------------- */
+
   /*-----------------------viewItem Process------------------------------- */
   public openViewItemModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template); // {3}
@@ -143,7 +168,7 @@ export class ItemDetailComponent implements OnInit {
 
   resetViewItem() {
     this.viewItem = {
-      _id: '',
+    _id: '',
     itemname: '',
     itemCode: '',
     category: 'ND',
