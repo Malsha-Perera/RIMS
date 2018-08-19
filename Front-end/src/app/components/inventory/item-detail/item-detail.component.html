@@ -74,9 +74,10 @@
                 <td><i class="fas fa-exclamation fa-lg" style="color: red" [style.display]="item.reOrderLevel > item.quantity ? '' : 'none'"></i><i class="fas fa-check fa-lg" style="color: green" [style.display]="item.reOrderLevel > item.quantity ? 'none' : ''"></i></td>
                 <td>{{item.category}}</td>
                 <td>{{item.unitScale}}</td>
-                <td class="text-center" style="font-weight: 800; cursor: pointer;" (click)="onEditROLGetItem(item.itemCode) ;openSetROLModal(templateEditROL)">{{item.reOrderLevel}} <i class="fas fa-pencil-alt fa-sm" aria-hidden="true"></i>
-                  <!--button type="button" class='btn btn-outline-info' id="editROLBtn" (click)="onEditROLGetItem(item.itemCode) ; openSetROLModal(templateEditROL)" tooltip="edit re-order level">
-                  </button-->
+                <td class="text-center" style="font-weight: 800">{{item.reOrderLevel}}
+                  <button type="button" class='btn btn-outline-info' id="editROLBtn" (click)="onEditROLGetItem(item.itemCode) ; openSetROLModal(templateEditROL)" tooltip="edit re-order level">
+                  <i class="fa fa-edit" aria-hidden="true"></i>
+                  </button>
                 </td>
                 <td class="text-center" style="font-weight: 800">{{item.quantity}}</td>
                 <td>
@@ -277,7 +278,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title pull-center" id="myModalLabel"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i><br><label>New Re Order Level</label></h4>
+          <h3 class="modal-title pull-center" id="myModalLabel"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i><br><label>New Re Order Level</label></h3>
         </div>
               <!--modal body-->
         <div class="modal-body">
@@ -288,10 +289,9 @@
             </div>
             <div class="col-sm-4"></div>
           </div>
-          <br>
           <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-8">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
               <button type="button" class="btn btn-success" id="rolSaveBtn" (click)="onEditROL() ; closeSetRolModal()">Set New</button>
               <button type="button" class="btn btn-default" id="rolCancelBtn" (click)="closeSetRolModal()">Cancel</button>
             </div>
@@ -300,28 +300,22 @@
       </ng-template>
 
       <ng-template #templateIssueItemModal>
-        <div class="modal-header">
-          <h4 class="modal-title pull-center">Enter Issue Amount</h4>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-sm-12">
-              <label style="text-align: center">{{issueOne.itemName}} :</label>
-              <input type="text" id="issueInputField" name="quantity" #quantity="ngModel" [(ngModel)]="newQuantity" placeholder="">
+          <div class="modal-header">
+            <h4 class="modal-title pull-center">Enter Issue Amount</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-4">
+                <input type="text" id="issueInputField" name="quantity" #quantity="ngModel" [(ngModel)]="newQuantity">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8"></div>
+              <button type="button" class="btn btn-warning" (click)="setIssueItem() ; closeIssueModal()">Issue</button>
             </div>
           </div>
-          <br>
-          <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-4">
-              <button type="button" class="btn btn-success" id="issueConfirmBtn" (click)="setIssueItem() ; closeIssueModal()" [style.display]="newQuantity > 0 ? '' : 'none'">Confirm</button>
-            </div>
-            <div class="col-sm-4">
-              <button type="button" class="btn btn-warning" id="issueCancelBtn" (click)="closeIssueModal()">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </ng-template>
+        </ng-template>
 
         <ng-template #templateViewItemModal>
           <div class="modal-header" id="viewModal">

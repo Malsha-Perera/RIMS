@@ -127,7 +127,7 @@ export class ItemDetailComponent implements OnInit {
   }
 
   openSetROLModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm' }); // {3}
+    this.modalRef = this.modalService.show(template); // {3}
   }
   closeSetRolModal() {
     this.modalRef.hide();
@@ -268,7 +268,6 @@ export class ItemDetailComponent implements OnInit {
   closeIssueModal() {
     this.modalRef.hide();
     this.modalRef = null;
-    this.resetIssueItem();
   }
 
   // reset the issue object and newQuantity after issuing process complete  //
