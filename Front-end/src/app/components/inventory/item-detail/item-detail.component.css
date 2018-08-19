@@ -114,9 +114,15 @@ tbody {
 #rolSaveBtn,#newItemSaveBtn {
   border-color: rgb(16, 46, 16);
 }
+#rolCancelBtn {
+  background-color: rgb(226, 116, 37);
+  color: white;
+  border: 1px solid;
+  border-color: black;
+}
 
 #rolInputField {
-  border-radius: 10px;
+  border-radius: 5px;
   border-color: #5d809b;
   text-align: center;
   font-size: 25px;
@@ -134,6 +140,17 @@ input, select {
 label {
   font-size: 15px;
 }
+#issueConfirmBtn {
+  border: 1px solid;
+  background-color: green;
+  border-color: black;
+}
+#issueCancelBtn {
+  background-color: rgb(226, 116, 37);
+  color: white;
+  border: 1px solid;
+  border-color: black;
+}
 
 #issueBtn {
   background-color: #5d809b;
@@ -143,6 +160,11 @@ label {
 #issueInputField {
   width: 100px;
   text-align: center;
+  border-radius: 5px;
+  border-color: #5d809b;
+  text-align: center;
+  font-size: 25px;
+  width: 100px;
 }
 /*input:required {
   box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85);
