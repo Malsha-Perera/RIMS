@@ -59,7 +59,7 @@ router.post('/',function(req,res,next){
 //updating data
 
 router.put('/:id',(req,res,next) =>{
-    Item.findOneAndUpdate({_id:req.params.id},{
+    Recipie.update({_id:req.params.id},{
         $set:{
             productName:req.body.productName,
             recipieCode:req.body.recipieCode,
@@ -79,6 +79,7 @@ router.put('/:id',(req,res,next) =>{
         
     })
 });
+
     //deleting data
 router.delete('/:id',function(req,res,next) {
     Item.remove({_id:req.params.id},function (err,result) {

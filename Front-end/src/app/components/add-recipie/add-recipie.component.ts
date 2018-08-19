@@ -8,6 +8,7 @@ import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 
 import { RecipieService } from '../../services/recipie.service';
 import { Recipie } from '../../models/recipie';
+
 import {Globals} from '../../globals/globals';
 
 
@@ -24,13 +25,16 @@ export class AddRecipieComponent implements OnInit {
   recipieList: Recipie[]=[];
   newRecipieList: Recipie[]=[];
   newRecipies:Recipie[]=[];
+  myRecipie:Recipie;
   alerts: any[] = [];
   selectedRecipie:Recipie;
   recipieCode: String;
   productName: String;
-  ingredient: [{}];
-  quantity:[{}];
-  unitCost:[{}];
+  ingredient= [];
+  quantity=[];
+  unitCost=[];
+  
+  
   
 
   constructor(public recipieService: RecipieService, public modalService: BsModalService) { }
@@ -59,15 +63,26 @@ export class AddRecipieComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    //this.myRecipie._id="5b77ccb187243520acb904f8";
+    this.myRecipie.recipieCode = form.value.recipieCode;
+    this.myRecipie.productName = form.value.productName;
+    this.myRecipie.ingredient = this.ingredient;
+    this.myRecipie.quantity = this.quantity;
+    this.myRecipie.unitCost = this.unitCost;
+    this.myRecipie.cost = 7777777;
+    console.log("Horeey" + this.myRecipie.ingredient);
+    console.log("Horeey" + this.myRecipie.recipieCode);
+    console.log("Horeey" + this.myRecipie.cost);
+
     if (form.value._id === '') {
-      this.recipieService.addRecipe(form.value).subscribe((res) => {
-        this.resetForm(form);
-        this.refreshRecipieList();
+      this.recipieService.addRecipe(this.myRecipie).subscribe((res) => {
+        
+        //this.refreshRecipieList();
       });
     } else {
-      this.recipieService.updateRecipe(form.value).subscribe((res) => {
-        this.resetForm(form);
-        this.refreshRecipieList();
+      this.recipieService.updateRecipe(this.myRecipie).subscribe((res) => {
+       
+        //this.refreshRecipieList();
       });
     }
   }
@@ -107,6 +122,14 @@ export class AddRecipieComponent implements OnInit {
     }
   }
 
+  public addToArray(form: NgForm){
+    
+    this.ingredient.push(form.value.ingredientName);
+    this.quantity.push(form.value.quantityinScale);
+    console.log(this.ingredient);
+    this.modalRef.hide();
+  }
+
   onEdit(Recipie:Recipie) {
     this.selectedRecipie = Recipie;
   }
@@ -137,6 +160,17 @@ export class AddRecipieComponent implements OnInit {
       cost:null,
     
     };
+    this.myRecipie = {
+      _id:'',
+      productName: '',
+      recipieCode: '',      
+      ingredient:[{}],
+      quantity:[{}],
+      unitCost:[{}],
+      cost:null,
+    
+    };
+       
 
   }
 
