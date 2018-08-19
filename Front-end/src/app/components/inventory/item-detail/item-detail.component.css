@@ -82,7 +82,6 @@ tbody {
 
 .modal-header {
   background-color: #a6c8e2;
-  /*color: white;*/
   text-align: center;
 }
 
@@ -95,7 +94,6 @@ tbody {
 
 .modal-body {
   background-color: #eaecee;
-  /*font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;*/
 }
 
 #confirmModalBody {
@@ -105,12 +103,7 @@ tbody {
 .info-box.icon {
   background-color: #7cc7f3;
 }
-/*#rolModal {
-  border-radius: 25px;
-  -webkit-border-radius: 25px !important;
-  -moz-border-radius: 25px !important;
-  border-radius: 25px !important;
-}*/
+
 #rolSaveBtn,#newItemSaveBtn {
   border-color: rgb(16, 46, 16);
 }
