@@ -5,6 +5,10 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var Item = require('../models/productItem');
 var IssueItem = require('../models/issueItem')
 
+function capitalizeFirstLetter(string) {
+   return string[0].toUpperCase() + string.slice(1).toLowerCase();
+}
+
 router.get('/', (req, res) => {
    Item.find((err, docs) => {
       if(!err){
@@ -32,7 +36,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
    var item = new Item ({
-      itemname: req.body.itemname,
+      itemname: capitalizeFirstLetter(req.body.itemname.trim()),
       itemCode: req.body.itemCode,
       category: req.body.category,
       quantity: req.body.quantity,

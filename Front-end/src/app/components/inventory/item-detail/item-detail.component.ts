@@ -6,6 +6,7 @@ import { SetRolComponent } from './set-rol/set-rol.component';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 import {  } from '../../../pipes/item-detail.pipe';
 // import { Chart } from 'chart.js';
+import swal from 'sweetalert2';
 
 import { ItemDetailService } from '../../../services/itemDetailService/item-detail.service';
 import { Item } from '../../../models/item-detail.model';
@@ -23,11 +24,12 @@ import { formArrayNameProvider } from '../../../../../node_modules/@angular/form
 export class ItemDetailComponent implements OnInit {
 
   @ViewChild(SetRolComponent) child;
+  altertMsg = '';
   chart = [];
   public modalRef: BsModalRef;
   searchText = '';
   items: Item[];
-  itemIds: Item[];
+  itemNames: Item[];
   alerts: any[] = [{}];
   issueOne: IssueItem;
   issuedItem: IssueItem;
@@ -56,28 +58,33 @@ export class ItemDetailComponent implements OnInit {
     this.modalRef.hide();
     this.modalRef = null;
   }
+  capitalizeFirstLetter(string): string {
+    return string[0].toUpperCase() + string.slice(1).toLowerCase();
+ }
 
   /*---------------------start Add new Item Process or Update Existing Item------------------------------------------------ */
-  checkExistId(itemCode: string): boolean {
+  checkExistId(itemname: string): boolean {
     // tslint:disable-next-line:prefer-const
     let result = true;
     /*this.itemDetailService.getItemList().subscribe((res) => {
       this.itemIds = res as Item[];
     }); */
     // console.log(this.itemIds[0]);
-    this.itemIds = this.items;
+    this.itemNames = this.items;
     // tslint:disable-next-line:prefer-const
-    let idArray: string[] = [];
+    let nameArray: string[] = [];
     let i = 0;
-    for ( i; i < this.itemIds.length; i++) {
-    idArray[i] = this.items[i].itemCode;
+    for ( i; i < this.itemNames.length; i++) {
+    nameArray[i] = this.items[i].itemname;
     // console.log(idArray[i]);
     }
 
-    for (let j = 0; j < idArray.length; j++) {
+    for (let j = 0; j < nameArray.length; j++) {
       // console.log(idArray[j]);
       // console.log(itemCode);
-      if (itemCode === idArray[j]) {
+      // tslint:disable-next-line:prefer-const
+      let name = this.capitalizeFirstLetter(itemname);
+      if (name === nameArray[j]) {
         result =  false;
       } else {
         continue;
@@ -90,17 +97,24 @@ export class ItemDetailComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.value._id === '') {
       let res: boolean;
-      res = this.checkExistId(form.value.itemCode);
+      res = this.checkExistId(form.value.itemname);
       console.log(res);
         if (res === true) {
           this.itemDetailService.postItem(form.value).subscribe((response) => {
-            this.addItemAlert();
+            // this.addItemAlert();
+            swal('New Item Added', this.altertMsg, 'success');
             this.resetForm(form);
             this.refreshItemList();
+            this.closeFirstModal();
           });
         } else {
+          swal({
+            type: 'error',
+            title: 'Entered Item Name is already exists!',
+            text: 'Item Name Should be Unique',
+          });
           // console.log('invalid submit');
-          this.wrongInputItemCodeAlert();
+          // this.wrongInputItemCodeAlert();
           // this.resetForm(form);
         }
     } else {
@@ -140,8 +154,13 @@ export class ItemDetailComponent implements OnInit {
     console.log(this.editRolId);
     this.itemDetailService.editROL(this.editRolId, this.newROL).subscribe((res) => {
       if (res['m'] === 'success') {
-        console.log(res);
-        this.addItemAlert();
+        // console.log(res);
+        // this.addItemAlert();
+        swal({
+          type: 'success',
+          title: 'Changes save Success!',
+          text: 'Re Order Level',
+        });
         this.refreshItemList();
         this.resetEditRol();
 
@@ -202,9 +221,15 @@ export class ItemDetailComponent implements OnInit {
   setDeleteItem(itemId) {
     this.deleteItemId = itemId;
   }
+
   onDelete(form: NgForm) {
 
       this.itemDetailService.deleteItemDetail(this.deleteItemId).subscribe((res) => {
+        swal({
+          type: 'success',
+          title: 'Item Remove Success!',
+          text: '',
+        });
         this.refreshItemList();
         this.resetDeleteItemId();
         this.resetForm(form);
@@ -306,12 +331,22 @@ export class ItemDetailComponent implements OnInit {
     // check input issue quantity is valid type //
     if (isNaN(this.newQuantity)) {
 
-      this.addIssueError2();
+      // this.addIssueError2();
+      swal({
+        type: 'error',
+        title: 'Invalid Issue Quantity!',
+        text: '',
+      });
       this.resetIssueItem();
 
     } else {
       if ((this.newQuantity > this.issueOne.itemQuantity) || (this.newQuantity == null)) {
-        this.addIssueError1();
+        // this.addIssueError1();
+        swal({
+          type: 'error',
+          title: 'This Amount Cannot be issue!',
+          text: 'Please Enter Correct Amount',
+        });
         this.resetIssueItem();
       } else {
         this.issueOne.itemQuantity = this.issueOne.itemQuantity - this.newQuantity;
@@ -319,11 +354,16 @@ export class ItemDetailComponent implements OnInit {
 
         this.itemDetailService.postIssueItem(this.issuedItem).subscribe((res) => {
           if (res['m'] === 'error') {
-            this.addIssueError1();
+            // this.addIssueError1();
             this.resetIssuedItem();
           }
           if (res['m'] === 'success') {
-            this.addIssueSuccess();
+            // this.addIssueSuccess();
+            swal({
+              type: 'success',
+              title: 'Changes save Success!',
+              text: '',
+            });
             this.resetIssuedItem();
           }
         });
@@ -370,26 +410,7 @@ export class ItemDetailComponent implements OnInit {
 
   /*--------------------end of the issue an item process----------------------------------------- */
 
-  /*this.chart = new Chart('canvas', {
-    type: 'bar',
-    data: {
-      labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
-      datasets: [
-        {
-          label: 'Population (millions)',
-          backgroundColor: ['#3e95cd', '#8e5ea2','#3cba9f','#e8c3b9','#c45850'],
-          data: [2478, 5267, 734,784,433]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Predicted world population (millions) in 2050'
-      }
-    }
-  });*/
+  sortItemList() {
 
-
+  }
 }

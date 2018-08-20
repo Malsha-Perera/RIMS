@@ -4,36 +4,86 @@
     <li><a routerLink="/items" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Inventory</button></a></li>
   </ol>
 </div>
+
 <div class="container-fluid">
   <div class="row" style="margin: auto">
-    <div class="col-md-1"></div>
-    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
-      <a [routerLink]="['stockupdate']">
-        <div class="info-box" tooltip="to update stock click here">
-          <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text">STOCK UPDATE</span>
-            <i class="fas fa-hand-point-right fa-4x"></i>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-md-4"></div>
 
-    <!--to create a stock issue document-->
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <a [routerLink]="['stockIssue']">
-        <div class="info-box" tooltip="to update stock click here">
-          <span class="info-box-icon bg-yellow"><i class="fas fa-dolly-flatbed"></i></span>
-          <div class="info-box-content">
-            <i class="fas fa-hand-point-right fa-4x"></i>
-            <span class="info-box-text">ISSUE STOCK</span>
-          </div>
-        </div>
-      </a>
-    </div>
     <div class="col-md-1"></div>
+      <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
+        <a [routerLink]="['stockupdate']">
+          <button class="btn btn-primary" style="font-size: 20px; text-align: center">
+            Stock Update
+            <i class="fas fa-hand-point-right fa-lg"></i>
+          </button>
+        </a>
+      </div>
+
+      <div class="col-md-4"></div>
+
+      <!--to create a stock issue document-->
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <a [routerLink]="['stockIssue']">
+          <button class="btn btn-primary" style="font-size: 20px; text-align: center">
+            Stock Issue
+            <i class="fas fa-hand-point-right fa-lg"></i>
+          </button>
+        </a>
+      </div>
+
+      <div class="col-md-1"></div>
+    </div>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
+        <a>
+          <div class="info-box bg-red" tooltip="to update stock click here" style="width: 200px; height:30px">
+            <span class="info-box-icon bg-red"><i class="fas fa-warehouse"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"></span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
+        <a>
+          <div class="info-box" tooltip="to update stock click here" style="width: 200px; height:30px">
+            <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
+            <!--div class="info-box-content">
+              <span class="info-box-text">STOCK UPDATE</span>
+              <i class="fas fa-hand-point-right fa-4x"></i>
+            </div-->
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
+        <a>
+          <div class="info-box" tooltip="to update stock click here" style="width: 200px; height:30px">
+            <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
+            <!--div class="info-box-content">
+              <span class="info-box-text">STOCK UPDATE</span>
+              <i class="fas fa-hand-point-right fa-4x"></i>
+            </div-->
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
+        <a>
+          <div class="info-box" tooltip="to update stock click here" style="width: 200px; height:30px">
+            <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
+            <!--div class="info-box-content">
+              <span class="info-box-text">STOCK UPDATE</span>
+              <i class="fas fa-hand-point-right fa-4x"></i>
+            </div-->
+          </div>
+        </a>
+      </div>
   </div>
+</div>
+
+<div class="container-fluid">
 
   <div *ngFor="let alert of alerts">
     <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)" style="text-align: center; font-size:25px;">{{ alert.msg }}</alert>
@@ -241,7 +291,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-4">
-                      <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemDetailForm.form.valid" (click)="modalRef.hide()">Save Item</button>
+                      <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemDetailForm.form.valid">Save Item</button>
                     </div>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
