@@ -44,7 +44,7 @@ import { PoListComponent } from './components/po-list/po-list.component';
 import {DDataService} from './services/po-list.service';
 import { ViewPoAllComponent } from './components/view-po-all/view-po-all.component';
 
-import{RegisterComponent} from './components/register/register.component';
+import {RegisterComponent} from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 
 
@@ -70,10 +70,9 @@ const appRoutes: Routes = [
   {path: 'pitem', component: PoListComponent},
   {path: 'vpa', component: ViewPoAllComponent},
 
-  {path:'register',component:RegisterComponent},
-  {path:'login',component:LoginComponent},
-  {path:'header',component:AppheaderComponent}
-
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'header', component: AppheaderComponent},
   {path: 'items/stockIssue', component: StockIssueComponent}
 
 
@@ -107,8 +106,7 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, Gam
     ViewPoAllComponent,
 
     RegisterComponent,
-    LoginComponent
-
+    LoginComponent,
     StockIssueComponent,
 
 
@@ -126,7 +124,7 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, Gam
 
   ],
 
-  providers: [DataService,DDataService,RegisterService],
+  providers: [DataService, DDataService, RegisterService],
 
 
   bootstrap: [AppComponent]

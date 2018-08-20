@@ -4,11 +4,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SetRolComponent } from './set-rol/set-rol.component';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
-
-//import { Chart } from 'chart.js';
-
 import {  } from '../../../pipes/item-detail.pipe';
-//import { Chart } from 'chart.js';
 import swal from 'sweetalert2';
 
 
