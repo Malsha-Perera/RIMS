@@ -1,15 +1,15 @@
 export class Item {
-  _id: String;
-  itemname: String;
-  itemCode: String;
-  category: String;
-  quantity: Number;
-  description: String;
-  unitCost: Number;
-  latestUpdate: Date;
-  unitScale: String;
-  minimumLevel: Number;
-  reOrderLevel: Number;
-  maximumLevel: Number;
+  _id: string;
+  itemname: string;
+  itemCode: string;
+  category: string;
+  quantity: number;
+  description: string;
+  unitCost: number;
+  latestUpdate: number;
+  unitScale: string;
+  minimumLevel: number;
+  reOrderLevel: number;
+  maximumLevel: number;
   date: Date;
 }

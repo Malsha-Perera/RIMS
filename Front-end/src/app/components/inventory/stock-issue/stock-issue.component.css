@@ -1,0 +1,42 @@
+table {
+  border-collapse: collapse;
+}
+th,td {
+  border-bottom: 1px solid rgb(88, 99, 156);
+  padding: 10px;
+}
+/*th {
+  width: 60px;
+  max-width: 60px;
+  font-size: 18px;
+  text-align: center;
+  background-color: rgb(212, 209, 209);
+}
+tbody {
+  font-size: 16px;
+  background-color: white;
+  text-align: center;
+}*/
+
+th {
+  width: 60px;
+  max-width: 60px;
+  font-size: 18px;
+  text-align: center;
+  background-color: rgb(212, 209, 209);
+  border: 10px;
+  border-color: #5d809b;
+  border-top: solid;
+  border-bottom: solid
+}
+tbody {
+  font-size: 16px;
+  background-color: white;
+  text-align: center;
+}
+.btn.btn-outline-info:hover {
+  box-shadow: 0 12px 16px 0 rgba(23, 109, 180, 0.24), 0 17px 50px 0 rgba(21, 80, 146, 0.5);
+}
+#stockBreadCrumBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(5, 107, 31, 0.24), 0 17px 50px 0 rgba(8, 122, 46, 0.767);
+}

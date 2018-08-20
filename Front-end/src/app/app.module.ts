@@ -5,8 +5,18 @@ import {HttpModule} from '@angular/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import { AppBootstrapModule } from './app-bootstrap.module';
+
 import { RegisterService } from './services/register.service';
 
+
+
+import { chart } from 'chart.js';
+import { DataTableModule } from 'angular2-datatable';
+import { FusionChartsModule } from 'angular-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Column2D from 'fusioncharts/viz/column2d';
+import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';
+import GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel';
 
 
 import { AppComponent } from './app.component';
@@ -31,10 +41,14 @@ import { SetRolComponent } from './components/inventory/item-detail/set-rol/set-
 import { CustomerComponent } from './components/customer/customer.component';
 import { SalesComponent } from './components/sales/sales.component';
 import { PoListComponent } from './components/po-list/po-list.component';
-import {DDataService} from "./services/po-list.service";
+import {DDataService} from './services/po-list.service';
 import { ViewPoAllComponent } from './components/view-po-all/view-po-all.component';
+
 import{RegisterComponent} from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+
+
+import { StockIssueComponent } from './components/inventory/stock-issue/stock-issue.component';
 
 
 const appRoutes: Routes = [
@@ -48,20 +62,25 @@ const appRoutes: Routes = [
   {path: 'uc', component: UnitCostComponent},
   {path: 'items/stockupdate', component: StockUpdateComponent},
   {path: 'stockupdate', component: StockUpdateComponent},
+  {path: 'menu/addrecipie', component: AddRecipieComponent},
   {path: 'addrecipie', component: AddRecipieComponent},
   {path: 'items', component: ItemDetailComponent},
   {path: 'sales', component: SalesComponent},
   {path: 'customers', component: CustomerComponent},
   {path: 'pitem', component: PoListComponent},
   {path: 'vpa', component: ViewPoAllComponent},
+
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   {path:'header',component:AppheaderComponent}
 
+  {path: 'items/stockIssue', component: StockIssueComponent}
+
+
     ];
 
 
-
+FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, GammelTheme);
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,8 +105,12 @@ const appRoutes: Routes = [
     SalesComponent,
     PoListComponent,
     ViewPoAllComponent,
+
     RegisterComponent,
     LoginComponent
+
+    StockIssueComponent,
+
 
   ],
   imports: [
@@ -97,10 +120,15 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     AppBootstrapModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    DataTableModule,
+    FusionChartsModule
 
   ],
+
   providers: [DataService,DDataService,RegisterService],
+
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

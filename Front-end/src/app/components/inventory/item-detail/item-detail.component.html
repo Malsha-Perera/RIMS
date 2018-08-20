@@ -1,84 +1,169 @@
-<hr>
+<div>
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['']" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Home</button></a></li>
+    <li><a routerLink="/items" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Inventory</button></a></li>
+  </ol>
+</div>
+
+<div class="container-fluid">
+  <div class="row" style="margin: auto">
+
+    <div class="col-md-1"></div>
+      <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
+        <a [routerLink]="['stockupdate']">
+          <button class="btn btn-primary" style="font-size: 20px; text-align: center">
+            Stock Update
+            <i class="fas fa-hand-point-right fa-lg"></i>
+          </button>
+        </a>
+      </div>
+
+      <div class="col-md-4"></div>
+
+      <!--to create a stock issue document-->
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <a [routerLink]="['stockIssue']">
+          <button class="btn btn-primary" style="font-size: 20px; text-align: center">
+            Stock Issue
+            <i class="fas fa-hand-point-right fa-lg"></i>
+          </button>
+        </a>
+      </div>
+
+      <div class="col-md-1"></div>
+    </div>
+</div>
+<br>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <a [routerLink]="['stockupdate']">
-        <div class="info-box" tooltip="to update stock click here">
-          <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text">STOCK UPDATE</span>
-            <i class="fas fa-hand-point-right fa-4x"></i>
+    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
+        <a>
+          <div class="info-box bg-red" tooltip="to update stock click here" style="width: 200px; height:30px">
+            <span class="info-box-icon bg-red"><i class="fas fa-warehouse"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"></span>
+            </div>
           </div>
-          <!-- /.info-box-content -->
-        </div>
-      </a>
-
-          <!-- /.info-box -->
-    </div>
+        </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
+        <a>
+          <div class="info-box" tooltip="to update stock click here" style="width: 200px; height:30px">
+            <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
+            <!--div class="info-box-content">
+              <span class="info-box-text">STOCK UPDATE</span>
+              <i class="fas fa-hand-point-right fa-4x"></i>
+            </div-->
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
+        <a>
+          <div class="info-box" tooltip="to update stock click here" style="width: 200px; height:30px">
+            <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
+            <!--div class="info-box-content">
+              <span class="info-box-text">STOCK UPDATE</span>
+              <i class="fas fa-hand-point-right fa-4x"></i>
+            </div-->
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
+        <a>
+          <div class="info-box" tooltip="to update stock click here" style="width: 200px; height:30px">
+            <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
+            <!--div class="info-box-content">
+              <span class="info-box-text">STOCK UPDATE</span>
+              <i class="fas fa-hand-point-right fa-4x"></i>
+            </div-->
+          </div>
+        </a>
+      </div>
   </div>
+</div>
+
+<div class="container-fluid">
 
   <div *ngFor="let alert of alerts">
-    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)" style="text-align: center; font-size:25px;">{{ alert.msg }}</alert>
   </div>
   <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="input-group col-sm-4">
-              <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
-              <span class="input-group-addon"><i class="fas fa-search"></i></span>
-        </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="input-group">
+        <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
+        <span class="input-group-addon"><i class="fas fa-search fa-lg"></i></span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <button class='btn btn-outline-success' id="addNewItemBtn" (click)="openModal(template)">Add  <i class='fa fa-plus-square fa-lg'></i></button>
+    </div>
   </div>
 
   <hr>
 
-  <div class="row">
+  <div class="row margintop20px paddingtopbottom15px whitebackground">
     <div class="col-sm-12">
-      <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
-        <thead class="">
-          <tr>
-            <th>Item Code</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Unit</th>
-            <th>ROL</th>
-            <th>Quantity</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody class="text-center">
-          <tr *ngFor=" let item of items | itemFilter:searchText">
-            <td>{{item.itemCode}}</td>
-            <td>{{item.itemname}}</td>
-            <td>{{item.category}}</td>
-            <td>{{item.unitScale}}</td>
-            <td class="text-right">{{item.reOrderLevel}}
-              <button type="button" class='btn btn-light-blue'(click)="onEdit1(item) ; openSetROLModal(template2)" tooltip="edit re-order level">
-              <i class="fa fa-edit" aria-hidden="true"></i>
-              </button>
-            </td>
-            <td class="text-right">{{item.quantity}}</td>
-            <td>
-              <button class='btn btn-info' (click)="onEdit(item) ; openModal(template)" tooltip="edit">
-              <i class="fa fa-edit" aria-hidden="true"></i>
-              </button>
+      <div class="table-responsive">
+        <table class="table table-hover " [mfData]="items" #mf="mfDataTable" [mfRowsOnPage]="10">
+            <thead>
+              <tr>
+                <th style="width:10px;max-width:10px;">#</th>
+                <th><mfDefaultSorter by="itemCode">Item Code</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="itemname">Name</mfDefaultSorter></th>
+                <th><mfDefaultSorter>Status</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="category">Category</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="unitScale">Unit</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="reOrderLevel">ROL</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="quantity">Quantity</mfDefaultSorter></th>
+                <th>Actions</th>
+                <th>Issue</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor=" let item of mf.data | itemFilter:searchText; let i = index;" [style.border-color] = "item.quantity > item.reOrderLevel ? 'MediumSeaGreen' : 'salmon'">
+                <td scope="row">{{i+1}}</td>
+                <td>{{item.itemCode}}</td>
+                <td style="font-weight: 800">{{item.itemname}}</td>
+                <td><i class="fas fa-exclamation fa-lg" style="color: red" [style.display]="item.reOrderLevel > item.quantity ? '' : 'none'"></i><i class="fas fa-check fa-lg" style="color: green" [style.display]="item.reOrderLevel > item.quantity ? 'none' : ''"></i></td>
+                <td>{{item.category}}</td>
+                <td>{{item.unitScale}}</td>
+                <td class="text-center" style="font-weight: 800; cursor: pointer;" (click)="onEditROLGetItem(item.itemCode) ;openSetROLModal(templateEditROL)">{{item.reOrderLevel}} <i class="fas fa-pencil-alt fa-sm" aria-hidden="true"></i>
+                  <!--button type="button" class='btn btn-outline-info' id="editROLBtn" (click)="onEditROLGetItem(item.itemCode) ; openSetROLModal(templateEditROL)" tooltip="edit re-order level">
+                  </button-->
+                <td class="text-center" style="font-weight: 800">{{item.quantity}}</td>
+                <td>
+                  <button type="button" class='btn btn-outline-info' id="editItemBtn" (click)="onEdit(item) ; openModal(template)" tooltip="edit">Edit
+                  <i class="fa fa-edit" aria-hidden="true"></i>
+                  </button>
 
-              <button class='btn btn-danger' (click)="onDelete(item._id, itemDetailForm)" tooltip="delete">
-              <i class='fa fa-trash fa-lg'></i>
-              </button>
+                  <button type="button" class='btn btn-outline-danger' id="deleteItemBtn" (click)="setDeleteItem(item._id);openConfirmDeleteModal(templateConfirmD)" tooltip="delete">Delete
+                  <i class='fa fa-trash fa-sm'></i>
+                  </button>
 
-              <button class='btn btn-success'>
-              <i class="fas fa-align-justify"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <button class='btn btn-success' id="mybutton" (click)="openModal(template)"><i class='fa fa-plus-square fa-lg'></i></button>
-      <script>
-        $(document).ready(function() {
-          $('#mytable').DataTable();
-      });
-      </script>
+                  <button type="button" class='btn btn-outline-success' id="viewItemBtn" (click)="onView(item); openViewItemModal(templateViewItemModal)">
+                  <i class="fas fa-align-justify"></i>
+                  </button>
+                </td>
+                <td>
+                  <button class='btn btn-outline-default' id="issueBtn" (click)="issueItem(item); openIssueModal(templateIssueItemModal)" tooltip="">
+                    <i class="fa fa-cart-arrow-down fa-lg"></i>
+                  </button>
+                </td>
+              </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <mfBootstrapPaginator ></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <button class='btn btn-outline-success' id="addNewItemBtn" (click)="openModal(template)">Add  <i class='fa fa-plus-square fa-lg'></i></button>
     <!-- Modal for the add Item-->
       <ng-template #template>
         <div class="row">
@@ -97,15 +182,21 @@
 
                   <div class="form-group row">
                     <div class="col-sm-6">
-                      <label> Item Name:</label>
+                      <label> Item Name:<span style="color: red; font-size: 15px;">*</span></label>
                       <div>
-                        <input class="form-control" type="text" name="itemname" value="" id="name" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemname" placeholder="Item Name" required>
+                        <input class="form-control" type="text" name="itemname" value="" id="name" #itemname="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemname" placeholder="Item Name (ex:Potato)" required="required" autocomplete="off" autocapitalize="words">
+                          <div *ngIf="itemname.invalid && (itemname.dirty || itemname.touched)" class="alert alert-danger">
+                            <div  [hidden]="!name.errors.required"> Name is required</div>
+                          </div>
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <label>Item Code:</label>
+                      <label>Item Code:<span style="color: red">*</span></label>
                       <div>
-                        <input class="form-control" type="text" name="itemCode" value="" id="itemcode" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode" placeholder="Itme Code" required>
+                        <input class="form-control" type="text" name="itemCode" value="" id="itemcode" #itemCode="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode" placeholder="Itme Code" required minlength="3" maxlength="3" autocomplete="off">
+                          <div *ngIf="itemCode.invalid && (itemCode.dirty || itemCode.touched)" class="alert alert-danger">
+                            <div  [hidden]="!itemCode.errors.required"> Item is required</div>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -125,7 +216,7 @@
                     <div class="col-sm-3">
                       <label>Quantity:</label>
                       <div>
-                        <input class="form-control" type="text" name="quantity" value="" id="quantity" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.quantity" placeholder="Quantity Of Item">
+                        <input class="form-control" type="text" name="quantity" value="" id="quantity" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.quantity" placeholder="Quantity Of Item" autocomplete="off">
                       </div>
                     </div>
                     <div class="col-sm-3">
@@ -145,7 +236,7 @@
                     <div class="col-sm-10">
                       <label>Description:</label>
                       <div>
-                        <input class="form-control" type="text" name="description" value="" id="descripiton" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.description" placeholder="More About New Item">
+                        <input class="form-control" type="text" name="description" value="" id="descripiton" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.description" placeholder="More About New Item" autocomplete="off">
                       </div>
                     </div>
                   </div>
@@ -156,13 +247,13 @@
                     <div class="col-sm-6">
                       <label>Latest Update Date:</label>
                       <div>
-                        <input class="form-control" type="date" name="latestUpdate" value="" id="date" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate">
+                        <input class="form-control" type="date" name="latestUpdate"  #latestUpdate="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <label>UnitCost:</label>
                       <div>
-                        <input class="form-control" type="text" name="unitCost" value="" id="unitCost" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitCost" placeholder="Unit Cost Of the Item">
+                        <input class="form-control" type="text" name="unitCost" value="" id="unitCost" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitCost" placeholder="Unit Cost Of the Item" autocomplete="off">
                       </div>
                     </div>
                   </div>
@@ -173,19 +264,19 @@
                     <div class="col-sm-4">
                       <label>Minimum Level:</label>
                       <div>
-                        <input class="form-control" type="text" name="minimumLevel" value="" id="minimumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.minimumLevel" placeholder="Minimum Level">
+                        <input class="form-control" type="text" name="minimumLevel" value="" id="minimumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.minimumLevel" placeholder="Minimum Level" autocomplete="off">
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <label>Re Order Level:</label>
                       <div>
-                        <input class="form-control" type="text" name="reOrderLevel" value="" id="reOrderLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.reOrderLevel" placeholder="Re-Order Level">
+                        <input class="form-control" type="text" name="reOrderLevel" value="" id="reOrderLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.reOrderLevel" placeholder="Re-Order Level" autocomplete="off">
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <label>Maximum Level:</label>
                       <div>
-                        <input class="form-control" type="text" name="maximumLevel" value="" id="maximumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.maximumLevel" placeholder="Maximum Level">
+                        <input class="form-control" type="text" name="maximumLevel" value="" id="maximumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.maximumLevel" placeholder="Maximum Level" autocomplete="off">
                       </div>
                     </div>
                   </div>
@@ -200,12 +291,12 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-4">
-                      <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemForm.valid" (click)="modalRef.hide() ; addItemAlert()">Save Item</button>
+                      <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemDetailForm.form.valid">Save Item</button>
                     </div>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
-                      <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>
-                      <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="resetForm(itemDetailForm)">Reset</button>
+                      <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide(); resetForm(itemDetailForm)">Cancel</button>
+                      <button type="button" class="btn btn-warning" id="resetbutton" data-toggle="modal" data-target="#myModal" (click)="resetForm(itemDetailForm)">Reset</button>
                     </div>
                   </div>
               </form>
@@ -213,50 +304,137 @@
           </div>
       </ng-template>
 
-          <!--Modal for the edit re oder level-->
-      <ng-template #template2 id="rolModal">
+      <!--Modal for confirming the delete item-->
+      <ng-template #templateConfirmD id="confirmDeleteModal">
+        <div class="modal-body" id="confirmModalBody">
+          <div class="row">
+            <span style="color: tomato;"><i class="far fa-question-circle fa-5x"></i></span>
+          </div>
+          <div class="row" style="text-align: center">
+            <h3>Are You Sure ?</h3>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <button class='btn btn-success' type="button" (click)="onDelete(itemDetailForm); closeConfirmDeleteModal()">Confirm</button>
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+              <button type="button" class='btn btn-warning' (click)="closeConfirmDeleteModal()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <!--//////////Modal for the edit re oder level//////////////-->
+      <ng-template #templateEditROL id="rolModal">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h3 class="modal-title pull-center" id="myModalLabel"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i><br><label>New Re Order Level</label></h3>
+          <h4 class="modal-title pull-center" id="myModalLabel"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i><br><label>New Re Order Level</label></h4>
         </div>
               <!--modal body-->
         <div class="modal-body">
-              <form class="form-horizontal" #setROLForm = "ngForm" (ngSubmit)="onSubmit(setROLForm)">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem._id">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.category">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.quantity">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.description">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitScale">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitCost">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.minimumLevel">
-
-                    <div class="form-group row">
-                      <!--label class="col-sm-4 control-label">New Re Order Level:</label-->
-                      <div class="col-sm-4"></div>
-                      <div class="col-sm-4">
-                        <input class="form-control" type="text" name="reOrderLevel" value="" id="rolInputField" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.reOrderLevel" required>
-                      </div>
-                      <div class="col-sm-4"></div>
-                    </div>
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.maximumLevel">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem.date">
-
-                    <div class="form-group row">
-                      <div class="col-sm-4"></div>
-                      <div class="col">
-                        <button type="submit" class="btn btn-success" id="rolSubmitBtn" [disabled]="!itemForm.valid" (click)="modalRef.hide() ;">Submit</button>
-                        <button type="submit" class="btn btn-default" id="rolCancelBtn" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>
-                      </div>
-                    </div>
-                </form>
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+              <label>{{editRolId}}</label>
+              <input type="text" name="editRol" value="" id="rolInputField" #editROL="ngModel" [(ngModel)]="newROL" required>
             </div>
+            <div class="col-sm-4"></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+              <button type="button" class="btn btn-success" id="rolSaveBtn" (click)="onEditROL() ; closeSetRolModal()">Set New</button>
+            </div>
+            <div class="col-sm-4">
+            <button type="button" class="btn btn-default" id="rolCancelBtn" (click)="closeSetRolModal()">Cancel</button>
+            </div>
+          </div>
+        </div>
       </ng-template>
-  </div>
-  </div>
-      <app-set-rol></app-set-rol>
-</div>
 
+      <ng-template #templateIssueItemModal>
+        <div class="modal-header">
+          <h4 class="modal-title pull-center">Enter Issue Amount</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <label style="text-align: center">{{issueOne.itemName}} :</label>
+              <input type="text" id="issueInputField" name="quantity" #quantity="ngModel" [(ngModel)]="newQuantity" placeholder="">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+              <button type="button" class="btn btn-success" id="issueConfirmBtn" (click)="setIssueItem() ; closeIssueModal()" [style.display]="newQuantity > 0 ? '' : 'none'">Confirm</button>
+            </div>
+            <div class="col-sm-4">
+              <button type="button" class="btn btn-warning" id="issueCancelBtn" (click)="closeIssueModal()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+        <ng-template #templateViewItemModal>
+          <div class="modal-header" id="viewModal">
+            <h3>{{viewItem.itemname}}</h3>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <div class="row" style="text-align: center">
+                  <div class="col-md-6">
+                    <label>Item Code:</label>
+                    <input type="text" value="{{viewItem.itemCode}}" readonly="true">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Item Category:</label>
+                    <input type="text" value="{{viewItem.category}}" readonly="true">
+                  </div>
+                </div>
+                <br>
+                <div class="row" style="text-align: center">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+                    <label>Description:</label>
+                    <input type="text" value="{{viewItem.description}}" readonly="true">
+                  </div>
+                </div>
+                <br>
+                <div class="row" style="text-align: center">
+                  <div class="col-md-6">
+                    <label>Latest Update Date:</label>
+                    <input type="text" value="{{viewItem.latestUpdate}}" readonly="true">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Item Quantity:</label>
+                    <input type="text" value="{{viewItem.quantity}}  {{viewItem.unitScale}}" readonly="true">
+                  </div>
+                </div>
+                <br>
+                <div class="row" style="text-align: center">
+                  <div class="col-md-4">
+                    <label>Minimum Level:</label>
+                    <input type="text" style="width: 75px" value="{{viewItem.minimumLevel}} {{viewItem.unitScale}}" readonly="true">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Re Order Level:</label>
+                    <input type="text" style="width: 75px" value="{{viewItem.reOrderLevel}} {{viewItem.unitScale}}" readonly="true">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Maximum Level:</label>
+                    <input type="text" style="width: 75px" value="{{viewItem.maximumLevel}} {{viewItem.unitScale}}" readonly="true">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+    </div>
+  </div>
+</div>

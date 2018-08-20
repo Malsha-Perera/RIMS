@@ -1,32 +1,36 @@
 import { Injectable } from '@angular/core';
 import {Http, Response, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Recipie } from '../models/recipie';
+//import { Recipie } from '../components/recipie/recipie';
 
 @Injectable()
 export class RecipieService {
 
+  
+
   constructor(private http: Http) { }
 
-  getRecipies() {
+  getRecipes() {
     return this.http.get('http://localhost:3000/recipie/').map(res => res.json());
   }
-  getItem(recipieCode) {
+  getRecipeFromCode(recipieCode) {
     return this.http.get('http://localhost:3000/recipie/'+recipieCode).map(res => res.json());
   }
-  addProductItem(newItem) {
+  addRecipe(Recipie) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/recipie/', newItem, {headers: headers}).map(res => res.json());
+    return this.http.post('http://localhost:3000/recipie/', Recipie, {headers: headers}).map(res => res.json());
   }
 
-  deleteproduct(id) {
+  deleteRecipe(id) {
     return this.http.delete('http://localhost:3000/recipie/' + id)
       .map(res => res.json());
   }
-  updateproduct(newRecipie) {
+  updateRecipe(newRecipie) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/recipie/' + newRecipie._id, newRecipie, {headers: headers}).map(res => res.json());
+    return this.http.put('http://localhost:3000/recipie/' + newRecipie.recipieCode, newRecipie, {headers: headers}).map(res => res.json());
 
 
 

@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { Item } from '../../models/item-detail.model';
+import { IssueItem } from '../../models/issueItem';
 
 @Injectable()
 export class ItemDetailService {
@@ -13,7 +14,11 @@ export class ItemDetailService {
   selectedItem: Item;
   oldItems: Item[];
   sortItems: Item[];
+  issueItems: IssueItem;
   readonly baseURL = 'http://localhost:3000/items';
+  readonly issueBaseURL = 'http://localhost:3000/items/issuing';
+  readonly issueBaseURL1 = 'http://localhost:3000/items/issuing/issuing';
+  readonly editROLBaseURL = 'http://localhost:3000/items/editRol';
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +34,11 @@ export class ItemDetailService {
     return this.http.put(this.baseURL + `/${item._id}`, item);
   }
 
+  editROL(itemCode: string, newROL: number) {
+
+    return this.http.put(this.editROLBaseURL + `/${itemCode}`, {newRol: newROL});
+  }
+
   deleteItemDetail(_id: string) {
     return this.http.delete(this.baseURL + `/${_id}`);
   }
@@ -39,4 +49,15 @@ export class ItemDetailService {
     });
   }
 
+  postIssueItem(issuedItem) {
+    return this.http.post(this.issueBaseURL, issuedItem);
+  }
+
+  getIssuedItems() {
+    return this.http.get(this.issueBaseURL1);
+  }
+
+  putIssueItem(issueItem) {
+    return this.http.put(this.issueBaseURL + `/${issueItem.itemCode}`, issueItem);
+  }
 }

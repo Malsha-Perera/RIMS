@@ -5,7 +5,7 @@ const ImSchema= mongoose.Schema({
         type:String,
     },
     itemCode:{
-        type:String,      
+        type:String,
     },
     category: {
         type: String
@@ -18,27 +18,25 @@ const ImSchema= mongoose.Schema({
     },
     unitCost:{
 
-        type:Number,         
+        type:Number,
     },
-    
+
     latestUpdate:{
         type:Date,
-        
     },
     unitScale:{
-        type:String,          
+        type:String,
     },
-    minimumLevel: { 
-        type: Number 
+    minimumLevel: {
+        type: Number
     },
-    reOrderLevel:{ 
-        type: Number 
+    reOrderLevel:{
+        type: Number
     },
     maximumLevel: {
-         type: Number 
+        type: Number
     },
     date: {
-
         type: Date
     }
 

@@ -1,0 +1,41 @@
+<div class="row">
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['']" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Home</button></a></li>
+    <li><a routerLink="/items" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Inventory</button></a></li>
+    <li class="active" style="font-size: 20px"><button type="button" id="stockBreadCrumBtn"class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(6, 95, 43)">StockIssue</button></li>
+  </ol>
+</div>
+<div class="container-fluid">
+  <div class="row margintop20px paddingtopbottom15px whitebackground">
+    <div class="col-sm-12">
+      <div class="table-responsive">
+        <table class="table  table-hover " [mfData]="issuedItems" #mf="mfDataTable" [mfRowsOnPage]="10">
+          <thead>
+            <tr>
+              <th style="width:10px;max-width:10px;">#</th>
+              <th><mfDefaultSorter by="issueItemCode">Code</mfDefaultSorter></th>
+              <th><mfDefaultSorter by="issueItemName">Name</mfDefaultSorter></th>
+              <th><mfDefaultSorter by="issueItemQuantity">Quantity</mfDefaultSorter></th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of mf.data; let i = index;">
+                  <td scope="row">{{i+1}}</td>
+                  <td>{{item.issueItemCode}}</td>
+                  <td style="font-weight: 800">{{item.issueItemName}}</td>
+                  <td style="font-weight: 800">{{item.issueItemQuantity}}</td>
+              </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                  <mfBootstrapPaginator ></mfBootstrapPaginator>
+              </td>
+            </tr>
+            </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

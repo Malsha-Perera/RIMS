@@ -8,7 +8,7 @@ const Recipie = require('../models/recipie');
 
 //retrieving data from database
 router.get('/',function(req,res,next){
-    Item.find(function (err,recipie) {
+    Recipie.find(function (err,recipie) {
         if (err) {
             res.json(err);
         }
@@ -32,37 +32,41 @@ router.get('/:recipieCode', (req, res, next) => {
     });
 });
 
-    //inserting data
-    router.post('/',function(req,res,next){
-       let newRecipie=new Recipie({
-           productName:req.body.productName,
-           recipieCode:req.body.recipieCode,
-           ingredient:req.body.ingredient,
-           cost:req.body.cost,
-           
-       });
-        newRecipie.save(function (err,recipie) {
-            if (err) {
-                res.json(err);
-            }
-            else {
-                res.json({msg:'recipie added succesfully'});
-            }
+//inserting data
+router.post('/',function(req,res,next){
+    let newRecipie=new Recipie({
+        productName:req.body.productName,
+        recipieCode:req.body.recipieCode,
+        ingredient:req.body.ingredient,
+        quantity:req.body.quantity,
+        unitCost:req.body.unitCost,
+        cost:req.body.cost,
+        
+    });
+    newRecipie.save(function (err,recipie) {
+        if (err) {
+            res.json(err);
+        }
+        else {
+            res.json({msg:'recipie added succesfully'});
+        }
 
-        });
+    });
 
-        });
+    });
 
 
-    //updating data
+//updating data
 
-router.put('/:id',(req,res,next) =>{
-    Item.findOneAndUpdate({_id:req.params.id},{
+router.put('/:recipieCode',(req,res,next) =>{
+    Recipie.update({recipieCode:req.params.recipieCode},{
         $set:{
-            productName:req.body.productName,
-           recipieCode:req.body.recipieCode,
-           ingredient:req.body.ingredient,
-           cost:req.body.cost,
+            
+            
+            ingredient:req.body.ingredient,
+            quantity:req.body.quantity,
+            unitCost:req.body.unitCost,
+            cost:req.body.cost,
         }
 
     },function (err,result) {
@@ -75,6 +79,7 @@ router.put('/:id',(req,res,next) =>{
         
     })
 });
+
     //deleting data
 router.delete('/:id',function(req,res,next) {
     Item.remove({_id:req.params.id},function (err,result) {

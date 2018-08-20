@@ -1,4 +1,4 @@
-<br><br>
+<!--
 <div class="container-fluid">
 
   <form #itemForm = "ngForm" class="form-horizontal">
@@ -54,4 +54,178 @@
       <button type="submit" onclick="getSum()" class="btn btn-success"data-toggle="tooltip" title="Calculate average unit price"><i class="fa fa-location-arrow"></i></button>
     </div>
   </div>
+
 </div>
+-->
+<hr>
+<div class="container">
+  <form class="form-horizontal" #recipieForm = "ngForm" >
+    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="myRecipie._id">
+    <div *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div>
+  
+    <br><br>
+  
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Recipie Code:</label>
+      <div class="col-sm-6">
+        <input type="text" name="recipieCode" [(ngModel)]="recipieCode" class="form-control" value="" placeholder="Recipie Code" >
+      </div>  
+    </div>
+    <br><br><br>
+   
+
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Product Name:</label>
+      <div class="col-sm-6">
+        <input type="text" name="productName" [(ngModel)]="productName" class="form-control" placeholder="Product Name" >
+      </div>  
+    </div>
+    <br><br>
+    <br>
+
+ 
+    <br><br>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
+          <thead class="">
+            <tr>
+              
+              <th>Ingredient</th>
+              <th>Quantity</th>
+              <th>Unit Cost</th>       
+              <th>Actions</th>
+              
+            </tr>
+          </thead>
+          <tbody class="text-center">
+            <tr *ngFor=" let ing of ingredient; let i =index" >
+              <td>{{ing}}</td>
+              <td>{{quantity[i]}}</td>
+              <td>{{unitCost[i]}}</td>          
+              <td>
+                <button class='btn btn-info'  tooltip="edit" (click)="editThis(i, template2)">
+                <i class="fa fa-edit" aria-hidden="true"></i>
+                </button>
+
+                <button class='btn btn-danger'  tooltip="delete" (click)="deleteThis(i)">
+                <i class='fa fa-trash fa-lg'></i>
+                </button>
+
+                
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class='btn btn-success' id="mybutton"  (click)="openModal(template1)" ><i class='fa fa-plus-square fa-lg'></i></button>
+        <button type="submit" class='btn btn-success' id="mybutton" (click)="onSubmit(recipieForm)" >Update Recipe</button>
+        
+      
+      </div>
+    </div>
+  </form>  
+
+  <ng-template #template1>
+    <div class="row">
+      <div class="modal-header col-sm">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
+            <h4 class="modal-title pull-center" id="myModalLabel"><br><label id="modId"> Add New Ingredient</label></h4>
+        </div>
+        <div class="col-sm-2">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+          <i class="fas fa-window-close fa-2x"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <!--modal body-->
+<div class="row">
+<div class="modal-body">
+  <form class="form-horizontal" #ingreForm = "ngForm" >
+    
+    
+    <div class="form-group row">
+      <label class="col-sm-3 control-label">Ingredient :</label>
+      <div class="col-sm-9">
+            <input class="form-control" type="text" name="ingredientName" id="ingredientName" #name="ngModel" [(ngModel)]="ingredientName" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 control-label">Quantity in unit scale:</label>
+      <div class="col-sm-9">
+        <input class="form-control" type="number" name="quantityinScale"  [(ngModel)]="quantityinScale" required>
+      </div>
+    </div>
+    
+        
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <input type="submit" class="btn btn-success" value="ok" [disabled]="!ingreForm.valid" (click)="addToArray(ingreForm)">
+        <input type="submit" class="btn btn-warning" value="Cancel" (click)="modalRef.hide()">
+      </div>
+    </div>
+  </form>
+  </div>
+  </div>
+</ng-template>   
+<!-- end of modal --> 
+
+
+<ng-template #template2>
+  <div class="row">
+    <div class="modal-header col-sm">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-8">
+          <h4 class="modal-title pull-center" id="myModalLabel"><br><label id="modId"> Edit This Ingredient</label></h4>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <i class="fas fa-window-close fa-2x"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <!--modal body-->
+<div class="row">
+<div class="modal-body">
+<form class="form-horizontal" #ingreEditForm = "ngForm" >
+  
+  
+  <div class="form-group row">
+    <label class="col-sm-3 control-label">Ingredient :</label>
+    <div class="col-sm-9">
+          <input class="form-control" type="text" name="ingredientName2" id="ingredientName2" #name="ngModel" [(ngModel)]="ingredientName2" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 control-label">Quantity in unit scale:</label>
+    <div class="col-sm-9">
+      <input class="form-control" type="number" name="quantityinScale2"  [(ngModel)]="quantityinScale2" required>
+    </div>
+  </div>
+  
+      
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <input type="submit" class="btn btn-primary" value="Edit" [disabled]="!ingreForm.valid" (click)="editArray(ingreEditForm)">
+      <input type="submit" class="btn btn-warning" value="Cancel" (click)="modalRef.hide()">
+    </div>
+  </div>
+</form>
+</div>
+</div>
+</ng-template>   
+      
+</div>
+
+
