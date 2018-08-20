@@ -1,0 +1,55 @@
+<div class="limiter">
+		<div class="container-login100" style="background-image: url('../assets/img/po.jpg');">
+			<div class="wrap-login100">
+					
+				<form style="width: 100%" [formGroup]="myForm">
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Register Page
+					</span>
+
+					<div class="wrap-input100">
+            <label style="color: white;font-size: 13pt" class="fa fa-user">&nbsp;Email :</label>
+						<input class="input100" type="text" formControlName="email" placeholder="Email" id="email">
+						<span *ngIf="isValid('email')" class="alert alert-danger" role="alert" style="font-size:13pt">Email is Required</span>
+          </div>
+          <div class="wrap-input100">
+              <label style="color: white;font-size: 13pt" class="fa fa-user">&nbsp;Username :</label>
+              <input class="input100" type="text" formControlName="username" placeholder="Username" id="user">
+              <span *ngIf="isValid('username')" class="alert alert-danger" role="alert" style="font-size:13pt">Username is Required</span>
+            </div>
+
+					<div class="wrap-input100">
+            <label style="color: white;font-size: 13pt" class="fa fa-user">&nbsp;Password : </label>
+						<input class="input100" type="password" formControlName="password" placeholder="Password" id="pass" required>
+						<span *ngIf="isValid('password')" class="alert alert-danger" role="alert" style="font-size:13pt">Password is a mandatory field</span>
+          </div>
+          <div class="wrap-input100">
+              <label style="color: white;font-size: 13pt" class="fa fa-user">&nbsp;Confirm Password : </label>
+              <input class="input100" type="password" formControlName="cnfpass" placeholder="Re-enter Password" id="cnf" required>
+              <span *ngIf="isValid('cnfpass')" class="alert alert-danger" role="alert" style="font-size:13pt">Password and Confirm password should match</span>
+            </div>
+
+					
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" (click)="register()">
+                Register
+            </button>
+            <button class="login100-form-btn" (click)="moveToLogin()">
+                Login
+              </button>
+					</div>
+
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	
+	
