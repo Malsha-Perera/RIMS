@@ -12,24 +12,26 @@
     </div>
       <hr>
 
-      <div class="row">
+      <div class="row margintop20px paddingtopbottom15px whitebackground">
             <div class="col-sm">
-            <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
+            <table class="table table-hover table-striped table-condensed  table-sm" id="mytable" [mfData]="ItemList" #mf="mfDataTable" [mfRowsOnPage]="10">
                   <thead class="">
                   <tr style="background-color: #85B3E9">
-                    <th>Product Id</th>
-                    <th>Product Name</th>
-                    <th>Category</th>
-                    <th>Date</th>
-                    <th>Unit Scale</th>
-                    <th>Quantity</th>
-                    <th>Price (Rs)</th> 
-                    <th>Total Price</th> 
-                    <th>Action</th>
+                      <th style="width:10px;max-width:10px;">#</th>    
+                    <th><mfDefaultSorter by="customer_id">Product Id</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="customer_id">Product Name</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="customer_id">Category</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="customer_id">Date</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="customer_id">Unit Scale</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="customer_id">Quantity</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="customer_id">Price(Rs)</mfDefaultSorter></th> 
+                    <th><mfDefaultSorter by="customer_id">Total Price</mfDefaultSorter></th> 
+                    <th><mfDefaultSorter by="customer_id">Action</mfDefaultSorter></th>
                   </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor = "let item of ItemList">
+                    <tr *ngFor = "let item of mf.data;let i = index">
+                        <td scope="row">{{i+1}}</td>
                       <td class="text-center">{{item.product_id}}</td>
                       <td class="text-center">{{item.product_name}}</td>
                       <td class="text-center">{{item.category}}</td>
@@ -53,6 +55,13 @@
           
                     </tr>
                   </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="4">
+                        <mfBootstrapPaginator ></mfBootstrapPaginator>
+                      </td>
+                    </tr>
+                </tfoot>
 
             </table>
             
