@@ -186,19 +186,7 @@ router.get('/invoice',function(req,res,next){
 
 router.post('/invoice',function(req,res,next){
     let newInvoice = new SalesInvoice({
-        customer_id:req.body.customer_id,
-        customer_name:req.body.customer_name,
-        mobile:req.body.mobile,
-        address:req.body.address,
-        email_address:req.body.email_address,
-        product_id:req.body.product_id,
-        product_name:req.body.product_name,
-        category:req.body.category,
-        unit_scale:req.body.unit_scale,
-        quantity:req.body.quantity,
-        price:req.body.price,
-        total_price:req.body.total_price,
-        sub_total:req.body.sub_total,
+        
         tax:req.body.tax,
         total:req.body.total,
         com_name:req.body.com_name,
@@ -235,19 +223,7 @@ router.delete('/invoice/:id',function(req,res,next){
 
 router.put('/invoice/:id',function(req,res,next){
     var invoice ={
-        customer_id:req.body.customer_id,
-        customer_name:req.body.customer_name,
-        mobile:req.body.mobile,
-        address:req.body.address,
-        email_address:req.body.email_address,
-        product_id:req.body.product_id,
-        product_name:req.body.product_name,
-        category:req.body.category,
-        unit_scale:req.body.unit_scale,
-        quantity:req.body.quantity,
-        price:req.body.price,
-        total_price:req.body.total_price,
-        sub_total:req.body.sub_total,
+        
         tax:req.body.tax,
         total:req.body.total,
         com_name:req.body.com_name,

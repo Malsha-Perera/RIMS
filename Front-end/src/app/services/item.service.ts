@@ -40,4 +40,25 @@ export class ItemService {
     
   }
 
+
+  getInvoice(){
+    return this.http.get('http://localhost:3000/sales/invoice').map(res=>res.json());
+    
+  }
+
+
+  addInvoice(newInvoice){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/sales/invoice',newInvoice,{headers:headers}).map(res=>res.json());
+  }
+  deleteInvoice(id){
+    return this.http.delete('http://localhost:3000/sales/invoice/'+id).map(res=>res.json());
+  }
+  updateInvoice(newInvoice){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.put('http://localhost:3000/sales/invoice/'+newInvoice._id,newInvoice,{headers:headers}).map(res=>res.json());
+  }
+
 }
