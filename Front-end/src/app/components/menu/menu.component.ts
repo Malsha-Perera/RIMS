@@ -66,10 +66,11 @@ export class MenuComponent implements OnInit {
       this.closeFirstModal();
   }
 
-  createRecipe(){
+  createRecipe(productCode, productName){
     this.router.navigateByUrl('/addrecipie');
-    Globals.recipeCode = "ro1";
-    Globals.productName = "Rolls"
+    Globals.recipeCode = productCode;
+    Globals.productName = productName;
+    console.log("Product Name is "+ Globals.productName);
     console.log(Globals.recipeCode);
     this.closeFirstModal();
   }
