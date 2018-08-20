@@ -64,21 +64,15 @@
             <li class="footer"><a href="#">View all</a></li>
           </ul>
         </li>
-
-
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="../../assets/dist/img/man.png" class="user-image" alt="User Image">
             <span class="hidden-xs">{{username}}</span>
+            <button class="btn btn-warning" (click)="logout()" style="">Logout</button>
           </a>
-          <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="../../assets/dist/img/man.png" class="user-image" alt="User Image">
-            <button (click)="logout()">Logout</button>
-          </a>-->
         </li>
       </ul>
     </div>
-
   </nav>
 </header>
