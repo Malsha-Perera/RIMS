@@ -4,22 +4,26 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Customer } from '../../services/customers';
 import { CustomerService  } from '../../services/customer.service';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
+import { ItemService } from '../../services/item.service';
+import { Item } from '../../services/item';
+import Swal from 'sweetalert2';
 
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css'],
-  providers: [CustomerService]
+  providers: [CustomerService,ItemService]
 })
 export class CustomerComponent implements OnInit {
   public modalRef: BsModalRef;
   CustomerList: Customer[] = [];
+  ItemList:Item[]=[];
   selectedCustomer: Customer;
   alerts: any[] = [];
 
   constructor(
-    private customerService: CustomerService, public modalService: BsModalService
+    private customerService: CustomerService, public modalService: BsModalService,public itemService:ItemService
   ) { }
 
   public openEditModal(template1: TemplateRef<any>) {
@@ -32,9 +36,17 @@ export class CustomerComponent implements OnInit {
 
     });
   }
+
+  getItem(){
+    this.itemService.getItems().subscribe(items=>{
+      this.ItemList=items;
+    })
+  }
+
+  
+
   deleteCustomer(id) {
     this.customerService.deleteCustomer(id).subscribe(data => {
-      console.log(data);
       if (data.n === 1) {
         for (let i = 1; i < this.CustomerList.length; i++) {
           if (id === this.CustomerList[i]._id) {
@@ -42,6 +54,9 @@ export class CustomerComponent implements OnInit {
           }
         }
       }
+     
+
+
       this.getCustomers();
      
     }
@@ -67,6 +82,14 @@ export class CustomerComponent implements OnInit {
       email_address: form.value.email_address
     };
     this.customerService.updateCustomer(newCustomer).subscribe(result => {
+      Swal({
+        position: 'top',
+        title: 'Customer is succesfully updated!',
+        type: 'success',
+        text: '',
+        
+        
+      });
       console.log('Item Updated' + result);
       this.modalRef.hide();
       this.getCustomers();
@@ -97,6 +120,42 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit() {
     this.getCustomers();
+    //this.getItem();
   }
+
+  onAllerDeletet(id){
+    Swal({
+      position: 'top',
+      title: 'Are you sure?',
+      text: '',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        Swal(
+          
+          'Deleted!',
+          'Your imaginary file has been deleted.',
+          'success'
+        )
+        this.deleteCustomer(id)
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal(
+          
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+
+  }
+
+  
+
 
 }
