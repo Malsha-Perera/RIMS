@@ -12,6 +12,7 @@ const route_3 = require('./controllers/productController');
 const route_4 = require('./controllers/salesController');
 const Po_list=require('./controllers/Po_list');
 const Po_route=require('./controllers/Po_route');
+const route_5 = require('./controllers/usersController');
 //middleware
 app.use(cors({ origin: 'http://localhost:4200'}));
 app.use(bodyparser.json());
@@ -22,6 +23,7 @@ app.use('/product', route_3);
 app.use('/sales',route_4);
 app.use('/api/p',Po_route);
 app.use('/api/pi',Po_list);
+app.use('/register',route_5);
 
 //connect mongodb
 mongoose.connect('mongodb://localhost:27017/ims');

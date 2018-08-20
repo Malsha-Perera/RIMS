@@ -5,5 +5,4 @@ export class Customer {
     mobile: string;
     address: string;
     email_address: string;
-
 }

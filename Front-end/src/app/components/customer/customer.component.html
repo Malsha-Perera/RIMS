@@ -1,7 +1,5 @@
 <hr>
-<div *ngFor="let alert of alerts">
-            <alert style="text-align: center" [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
-          </div>
+
 <div class="container">
     <h1 style="font-size: 40pt;text-align: center;color: black"><b>Customer Details</b></h1>
     
@@ -30,7 +28,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor = "let customer of CustomerList">
-                        <td>1</td>
+                        <td>5</td>
                         <td>{{customer.customer_id}}</td>
                         <td>{{customer.customer_name}}</td>
                         <td>{{customer.mobile}}</td>
@@ -39,7 +37,7 @@
                       
                       
           
-                        <button class='btn btn-danger' (click)=" deleteCustomer(customer._id);deleteCustomerAlert()">
+                        <button class='btn btn-danger' (click)=" onAllerDeletet(customer._id)">
                         <i class='fa fa-trash fa-lg'></i>Delete
                         </button>
           
@@ -163,7 +161,7 @@
                     <div class="form-group">
                           <div class="col-sm-offset-3 col-sm-9">
                                 
-                              <button type="submit" class="btn btn-primary" (click)="updateCustomerAlert()" [disabled]="UpdateForm.invalid">Submit</button>&nbsp;  
+                              <button type="submit" class="btn btn-primary" [disabled]="UpdateForm.invalid">Submit</button>&nbsp;  
                               <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                               <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">Reset</button>
                               
