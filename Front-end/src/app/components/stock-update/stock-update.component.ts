@@ -6,7 +6,6 @@ import {NgForm} from '@angular/forms';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 import { NgOnChangesFeature } from '@angular/core/src/render3';
 import { OnChange } from 'ngx-bootstrap';
-//import { SweetAlertService } from 'angular-sweetalert-service';
 
 
 
@@ -45,8 +44,8 @@ export class StockUpdateComponent implements OnInit {
   }
 
 
-  addToStock(itemNew,quantity,unitCost,latestUpdate){ 
-  
+  addToStock(itemNew,quantity,unitCost,latestUpdate){
+
     let newItem = { //newItem:Item={}
       _id:itemNew._id,
       itemCode:itemNew.itemCode,
@@ -57,10 +56,10 @@ export class StockUpdateComponent implements OnInit {
       unitCost:unitCost,
       latestUpdate:latestUpdate,
 
-     };  
+     };
      this.stockItemList.push(newItem) ;
      console.log("stock list  : " + this.stockItemList );
-    
+
 
    this.dataservice.updateproduct(newItem)
       .subscribe(result => {
