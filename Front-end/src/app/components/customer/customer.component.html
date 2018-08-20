@@ -71,7 +71,7 @@
 </div>
 
 
-<ng-template #template1>
+<ng-template #template2>
     <div style="width: 1200px;margin-left: -199px">
     <div class="row">
       <div class="modal-header col-sm">
@@ -194,5 +194,139 @@
       </div>
     
   </ng-template>
+
+
+
+
+
+
+  <ng-template #template1>
+      <div class="row">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title pull-center" id="myModalLabel"><label id="modId"> Add New Item</label></h4>
+        </div>
+      </div>
+          <!--modal body-->
+        <div class="row">
+          <div class="modal-body">
+            <form #UpdateForm = "ngForm" (ngSubmit) = "updateCustomer(UpdateForm)" class="form-horizontal" >
+                  <input type="hidden" name="_id">    
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <label> Customer Name:<span style="color: red; font-size: 15px;">*</span></label>
+                    <div>
+                      <input class="form-control" type="text" name="customer_name"  [ngModel]="selectedCustomer.customer_name" required #customer_name="ngModel" pattern="[a-zA-Z][a-zA-Z]+"><br>
+                       
+                      <div *ngIf="customer_name?.touched">
+                        <div *ngIf="customer_name.errors?.required" class="alert alert-danger" style="font-size: 12pt">
+                              Customer Name is Required!
+                        </div>
+                        <div *ngIf="customer_name.errors?.pattern" class="alert alert-danger" style="font-size: 12pt">
+                              Invalid Customer Name!
+                        </div>
+                        
+                       </div>
+                    </div>
+  
+                   
+                  </div>
+                 
+                  
+                  <div class="col-sm-6">
+                    <label>Customer Id:<span style="color: red">*</span></label>
+                    <div>
+                      <input class="form-control" type="text" name="customer_id"  [ngModel]="selectedCustomer.customer_id" required #customer_id="ngModel"><br>
+                        
+                      <div *ngIf="customer_id?.touched">
+                        <div *ngIf="customer_id.errors?.required" class="alert alert-danger" style="font-size: 12pt">
+                              Customer Id is Required!
+                        </div>
+              </div>
+                    </div>
+                  </div>
+                 
+                </div>
+
+                <hr>
+                
+                 
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <label> Phone:<span style="color: red; font-size: 15px;">*</span></label>
+                    <div>
+                      <input class="form-control" type="text" name="mobile"  [ngModel]="selectedCustomer.mobile" required #mobile="ngModel" pattern="[0-9]*" maxlength="10" minlength="10"><br>
+                       
+                      <div *ngIf="mobile?.touched">
+                        <div *ngIf="mobile.errors?.required" class="alert alert-danger" style="font-size: 12pt">
+                              Phone no is Required!
+                        </div>
+                        <div *ngIf="mobile.errors?.pattern || mobile.errors?.minlength" class="alert alert-danger" style="font-size: 12pt">
+                              Invalid phone no!
+                        </div>
+                        
+                       </div>
+                    </div>
+  
+                   
+                  </div>
+                 
+                  
+                  <div class="col-sm-6">
+                    <label>Address:<span style="color: red">*</span></label>
+                    <div>
+                      <input class="form-control" type="text" name="address"  [ngModel]="selectedCustomer.address" required #address="ngModel"><br>
+                        
+                      <div *ngIf="address?.touched">
+                        <div *ngIf="address.errors?.required" class="alert alert-danger" style="font-size: 12pt">
+                              Address is Required!
+                        </div>
+              </div>
+                    </div>
+                  </div>
+                 
+                </div>
+  
+                <hr>
+  
+                <div class="form-group row">
+                    <div class="col-sm-5">
+                      <label>Email Address:</label>
+                      <div>
+                          <input class="form-control" type="email" name="email_address" [ngModel]="selectedCustomer.email_address" required #email_address="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"><br>
+                          <div *ngIf="email_address?.touched">
+                            <div *ngIf="email_address.errors?.required" class="alert alert-danger" style="font-size: 12pt">
+                                  Email Address is Required!
+                            </div>
+                            <div *ngIf="email_address.errors?.pattern" class="alert alert-danger" style="font-size: 12pt">
+                                  Invalid Email Address!
+                            </div>
+                       </div>
+                        </div>
+                    </div>
+                    </div>
+                   
+                   
+                     
+                  
+                  <hr>
+                 
+                
+                <div class="form-group row">
+                  <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success" id="newItemSaveBtn">Save Item</button>
+                  </div>
+                  <div class="col-sm-4"></div>
+                  <div class="col-sm-4">
+                    <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>
+                    <button type="button" class="btn btn-warning" id="resetbutton" data-toggle="modal" data-target="#myModal" >Reset</button>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+    </ng-template>
   
 

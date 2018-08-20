@@ -50,6 +50,8 @@ import { LoginComponent } from './components/login/login.component';
 
 import { StockIssueComponent } from './components/inventory/stock-issue/stock-issue.component';
 import { CustomerPipe } from './pipes/customer.pipe';
+import { SalesItemPipe } from './pipes/sales-item.pipe';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 
 const appRoutes: Routes = [
@@ -75,7 +77,8 @@ const appRoutes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'header',component:AppheaderComponent},
 
-  {path: 'items/stockIssue', component: StockIssueComponent}
+  {path: 'items/stockIssue', component: StockIssueComponent},
+  {path: 'invoice',component:InvoiceComponent}
 
 
     ];
@@ -113,6 +116,10 @@ const appRoutes: Routes = [
     StockIssueComponent,
 
     CustomerPipe,
+
+    SalesItemPipe,
+
+    InvoiceComponent,
 
 
   ],
