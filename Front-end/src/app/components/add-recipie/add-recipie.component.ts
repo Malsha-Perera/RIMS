@@ -37,6 +37,9 @@ export class AddRecipieComponent implements OnInit {
   quantity=[];
   unitCost=[];
   available:Boolean;
+  ingredientName2:String;
+  quantityinScale2:Number;
+  editIndex : number;
   
   
   
@@ -87,6 +90,43 @@ export class AddRecipieComponent implements OnInit {
       }
     }   
 
+  }
+
+  editThis(i, template: TemplateRef<any>){
+    this.editIndex = i;
+    this.ingredientName2 = this.ingredient[i];
+    this.quantityinScale2 = this.quantity[i];
+    this.openModal(template);
+
+  }
+
+  editArray(form: NgForm){
+    this.ingredient[this.editIndex] = form.value.ingredientName2;
+    this.quantity[this.editIndex] = form.value.quantityinScale2;
+    this.modalRef.hide();
+    
+  }
+  deleteThis(i){
+    swal({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.ingredient.splice(i ,1);
+        this.quantity.splice(i ,1);
+        
+        swal(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    });
   }
 
   onSubmit(form: NgForm) {
