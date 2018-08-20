@@ -7,6 +7,7 @@ import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 import { ItemService } from '../../services/item.service';
 import { Item } from '../../services/item';
 import Swal from 'sweetalert2';
+import { CustomerPipe } from '../../pipes/customer.pipe';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class CustomerComponent implements OnInit {
   ItemList:Item[]=[];
   selectedCustomer: Customer;
   alerts: any[] = [];
+  searchText = '';
 
   constructor(
     private customerService: CustomerService, public modalService: BsModalService,public itemService:ItemService

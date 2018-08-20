@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as Chart from 'chart.js';
+//import * as Chart from 'chart.js';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,8 +11,10 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
+  }
 
-    this.BarChart = new Chart('barChart', {
+   /* this.BarChart = new Chart('barChart', {
       type: 'bar',
       data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -54,5 +56,6 @@ export class DashboardComponent implements OnInit {
 
     });
   }
+  */
 
 }

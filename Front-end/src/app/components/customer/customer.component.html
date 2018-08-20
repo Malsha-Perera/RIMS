@@ -4,36 +4,40 @@
     <h1 style="font-size: 40pt;text-align: center;color: black"><b>Customer Details</b></h1>
     
     <div class="row">
-          <div class="col-sm-4"></div>
-          <div class="input-group col-sm-4">
-                <input type="text" class="form-control" id="searchTextId" name="searchText" placeholder="Search By Name">
-                <span class="input-group-addon"><i class="fas fa-search"></i></span>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div class="input-group">
+                <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
+                <span class="input-group-addon"><i class="fas fa-search fa-lg"></i></span>
+              </div>
+            </div>
+           
           </div>
-    </div>
       <hr>
 
       <div class="row">
             <div class="col-sm">
-            <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
+            <table class="table table-hover table-striped table-condensed  table-sm" id="mytable" [mfData]="CustomerList" #mf="mfDataTable" [mfRowsOnPage]="10">
                   <thead class="">
                   <tr style="background-color: #85B3E9">
-                    <th>Product Id</th>
-                    <th>Customer Id</th>
-                    <th>Customer Name</th>
-                    <th>Phone</th>
-                    <th>Address</th>
-                    <th>Email Addess</th>  
+                  <th style="width:10px;max-width:10px;">#</th>    
+                    
+                    <th><mfDefaultSorter by="customer_id">Customer Id</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="customer_name">Customer Name</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="mobile">Phone</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="address">Address</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="email_address">Email Address</mfDefaultSorter></th>  
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor = "let customer of CustomerList">
-                        <td>5</td>
-                        <td>{{customer.customer_id}}</td>
-                        <td>{{customer.customer_name}}</td>
-                        <td>{{customer.mobile}}</td>
-                        <td>{{customer.address}}</td>
-                        <td>{{customer.email_address}}</td>
+                    <tr *ngFor = "let customer of mf.data | customerFilter:searchText;let i = index">
+                        <td scope="row">{{i+1}}</td>
+                        <td class="text-center">{{customer.customer_id}}</td>
+                        <td class="text-center">{{customer.customer_name}}</td>
+                        <td class="text-center">{{customer.mobile}}</td>
+                        <td class="text-center">{{customer.address}}</td>
+                        <td class="text-center">{{customer.email_address}}</td>
                       
                       
           
@@ -48,6 +52,13 @@
           
                     </tr>
                   </tbody>
+                  <tfoot>
+                        <tr>
+                              <td colspan="4">
+                              <mfBootstrapPaginator ></mfBootstrapPaginator>
+                              </td>
+                        </tr>
+                  </tfoot>
 
             </table>
             
