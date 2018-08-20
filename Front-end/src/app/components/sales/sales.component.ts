@@ -7,6 +7,9 @@ import { ItemService } from '../../services/item.service';
 import { CustomerComponent } from '../customer/customer.component';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
+import { Invoice } from '../../services/invoice';
+import { InvoiceService } from '../../services/invoice.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -19,14 +22,16 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
 
 export class SalesComponent implements OnInit {
 
-  public product_id;
-  public product_name;
-  public category;
-  public date;
-  public unit_scale;
   public qty1;
   public price1;
   public tot_price1;
+  public tax1;
+  public total1;
+  public sub;
+
+  price:any;
+  quantity:any;
+  total_price:any;
 
   constructor(public modalService: BsModalService, private itemService: ItemService) { }
   public modalRef: BsModalRef;
@@ -36,6 +41,7 @@ export class SalesComponent implements OnInit {
   private newAttribute: any = {};
 
   ItemList: Item[] = [];
+  InvoiceList: Invoice[] = [];
   //CustomerList: Customer[] = [];
   CustomerList: Customer[]=[];
   ProductList: Item[] = [];
@@ -51,18 +57,18 @@ export class SalesComponent implements OnInit {
   customerDetails: any;
   productDeatails: any;
 
-  price:any;
-  quantity:any;
-  total:any;
+  
   
 
   public calcTotPrice() {
-    this.tot_price1 = this.qty1 * this.price1;
-    console.log("calcTot Triggered");
-    console.log(this.tot_price1);
-    console.log(this.qty1);
-    console.log(this.price1);
 
+    this.tot_price1 = this.qty1 * this.price1;
+  }
+
+  public calToTax(){
+    this.total1 = this.tax1 * this.tot_price1;
+    //this.total1 = this.tot_price1 - this.sub;
+   // console.log(this.total1);
   }
 
   
@@ -94,29 +100,44 @@ export class SalesComponent implements OnInit {
   });
 }
 
-
-
-
-
-
   addItem(form) {
+
+   // console.log(this.ArrayList);
+
+    
+//const myObjStr = JSON.stringify(this.ArrayList);
+//console.log(myObjStr);
+
+
+
+
+
+
+
+
+
+
+
    
     this.price=form.value.price;
     this.quantity=form.value.quantity;
-    this.total=this.price*this.quantity;
-    console.log(this.total);
+    this.total_price=this.price*this.quantity;
+    //console.log(this.total);
 
     const newItem: Item = {
-
+      
       product_id: form.value.product_id,
       product_name: form.value.product_name,
       category:form.value.category,
-      date: form.value.date,
+      date:form.value.date,
       unit_scale: form.value.unit_scale,
       quantity: form.value.quantity,
       price: form.value.price,
-      total_price:this.total
+      total_price:this.total_price
     };
+
+
+    
     const newCustomer: Customer = {
       customer_id: form.value.customer_id,
       customer_name: form.value.customer_name,
@@ -125,13 +146,22 @@ export class SalesComponent implements OnInit {
       email_address: form.value.email_address
     };
 
+
  this.CustomerList.push(newCustomer);
  this.ProductList.push(newItem);
 
  
-
     this.itemService.addItem(newItem).subscribe(items => {
+      //console.log(items);
       this.getItems();
+      Swal({
+        position: 'top',
+        title: 'Sales Item and Customer are succesfully added!',
+        type: 'success',
+        text: '',
+        
+        
+      });
     });
    
 
@@ -142,10 +172,7 @@ export class SalesComponent implements OnInit {
     
   }
 
-  sumItem(){
-    this.total;
-    console.log(this.total);
-  }
+  
 
   deleteItems(id) {
     this.itemService.deleteItems(id).subscribe(data => {
@@ -158,6 +185,7 @@ export class SalesComponent implements OnInit {
           }
         }
       }
+     
       this.getItems();
     });
   }
@@ -177,7 +205,14 @@ export class SalesComponent implements OnInit {
       total_price:form.value.total_price
     };
     this.itemService.updateItems(newItem).subscribe(result => {
-      console.log('Item is Updated' + result);
+      Swal({
+        position: 'top',
+        title: 'Sales Item is succesfully updated!',
+        type: 'success',
+        text: '',
+        
+        
+      });
       this.getItems();
       this.modalRef.hide();
     });
@@ -185,6 +220,7 @@ export class SalesComponent implements OnInit {
 
   addSalesItemCustomerAlert(): void {
     this.alerts.push({
+      
       type: 'success',
       msg: `Sales Items and Customer are added successfully! (added: ${new Date().toLocaleTimeString()})`,
       timeout: 3000
@@ -215,13 +251,51 @@ export class SalesComponent implements OnInit {
 deleteFieldValue(index) {
   this.ArrayList.splice(index, 1);
 }
+
 addFieldValue() {
   this.ArrayList.push(this.newAttribute);
-  console.log(this.newAttribute);
-
-
   this.newAttribute = {};
+ 
+  //console.log(this.ArrayList);
+
+
+  
+  
 }
+
+onAllertDeletet(id){
+  Swal({
+    position: 'top',
+    title: 'Are you sure?',
+    text: '',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, keep it'
+  }).then((result) => {
+    if (result.value) {
+      Swal(
+        
+        'Deleted!',
+        'Your imaginary file has been deleted.',
+        'success'
+      )
+      this.deleteItems(id)
+    // For more information about handling dismissals please visit
+    // https://sweetalert2.github.io/#handling-dismissals
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal(
+        
+        'Cancelled',
+        'Your imaginary file is safe :)',
+        'error'
+      )
+    }
+  })
+
+}
+
+
 
 
 

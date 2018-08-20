@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AbstractControl,FormGroup,FormControl,Validators} from '@angular/forms';
 import { RegisterService } from '../../services/register.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -32,8 +33,16 @@ export class LoginComponent implements OnInit {
     this._regservice.login(this.loginForm.value)
     .subscribe(
       data=>{
-        console.log(data);
+      
         localStorage.setItem('token',data.toString());
+        Swal({
+          position: 'top',
+          title: 'Registration is succesfully added!',
+          type: 'success',
+          text: '',
+          
+          
+        });
         this.router.navigate(['/']);
       },
       error=>{

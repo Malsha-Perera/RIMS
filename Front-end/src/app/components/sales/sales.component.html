@@ -1,7 +1,5 @@
 <hr>
-<div *ngFor="let alert of alerts">
-      <alert style="text-align: center" [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
-</div>
+
 <div class="container">
   <h1 style="font-size: 40pt;text-align: center;color: black"><b>Sales Product Details</b></h1>
     
@@ -44,7 +42,7 @@
                       
                       
           
-                        <button class='btn btn-danger' (click)="deleteItems(item._id);deleteSalesItemAlert()">
+                        <button class='btn btn-danger' (click)="onAllertDeletet(item._id)">
                         <i class='fa fa-trash fa-lg'></i>Delete
                         </button>
           
@@ -208,7 +206,7 @@
                               </div>
                           </div>
                       <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
-                            <thead class="">
+                            <thead>
                             <tr style="background-color: #85B3E9">
                               <th>Product Id</th>
                               <th>Product Name</th>
@@ -221,7 +219,7 @@
                              
                             </tr>
                             </thead>
-                           <!-- <tbody>
+                           <tbody>
                               <tr>
                                 <td><input type="text" name="product_id" [(ngModel)]="product_id" required></td>
                                 <td><input type="text" name="product_name" ngModel required></td>
@@ -245,40 +243,43 @@
                               
                                 
                                 <td><input type="number" name="total_price" [(ngModel)]="tot_price1"></td>
-                                <td><button type="button" class="btn btn-primary" (click) = "itemArray()">Add</button></td>
+                                
 
                                
                     
                               </tr>
-                            </tbody>-->
+                            </tbody>
 
-                            <tbody>
+
+                            <!--add item111111111111111111111111111111111111111111111111111111111111111111111111-->
+
+                         <!--   <tbody>
                               <tr *ngFor="let item of ArrayList; let i = index" class="bg-info" >
                                 <td>
-                                  <input class="form-control" type="text" name="product_id" />
+                                  <input [(ngModel)]="item.product_id" class="form-control" type="text" name="{{item.product_id}}"/>
                                 </td>
                                 <td>
-                                  <input class="form-control" type="text" name="product_name" />
+                                  <input [(ngModel)]="item.product_name" class="form-control" type="text" name="{{item.product_name}}"/>
                                 </td>
                                 <td>
-                                    <select class="form-control" type="text" id="category" name="category" required>
+                                    <select [(ngModel)]="item.category" class="form-control" type="text" id="category" name="category" name="{{item.category}}">
                                           <option>Rice</option>
                                           <option>Vegitable</option>
-                                          <option>Fruite</option>
+                                          <option>Fruit</option>
                                       </select>
                                 </td>
                                 <td>
-                                    <select class="form-control" type="text" id="unit_scale" name="unit_scale" required>
+                                    <select [(ngModel)]="item.unit_scale" class="form-control" type="text" id="unit_scale" name="{{item.unit_scale}}">
                                           <option>Packet</option>
                                           <option>Liter</option>
                                           <option>Other</option>
                                      </select>
                                 </td>
-                                <td><input class="form-control" type="number" name="quantity" [(ngModel)]="qty1" required></td>
-                                <td><input class="form-control" type="number" name="price" (keyup)="calcTotPrice()" [(ngModel)]="price1" required></td>
+                                <td><input [(ngModel)]="item.quantity" class="form-control" type="number" name="{{item.quantity}}" required></td>
+                                <td><input [(ngModel)]="item.price" class="form-control" type="number" name="{{item.price}}" (keyup)="calcTotPrice()"></td>
                               
                                 
-                                <td><input class="form-control" type="number" name="total_price" [(ngModel)]="tot_price1"></td>
+                                <td><input [(ngModel)]="item.total_price" class="form-control" type="number" name="{{item.total_price}}"></td>
                                 <td>
                                   <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">
                                     <i class="fa fa-remove" style="color:red"></i>
@@ -289,42 +290,40 @@
                           
                               <tr class="bg-dark">
                                 <td>
-                                  <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="product_id" name="product_id" />
+                                  <input class="form-control" type="text" name="product_id" [(ngModel)]="newAttribute.product_id" />
                                 </td>
                                 <td>
-                                  <input class="form-control" type="text" id="newAttributeQuantity" [(ngModel)]="product_name" name="product_name" />
+                                  <input class="form-control" type="text" name="product_name" [(ngModel)]="newAttribute.product_name"/>
                                 </td>
                                 <td>
-                                    <select class="form-control" type="text" id="category" name="category" [(ngModel)]="category" required>
+                                    <select class="form-control" type="text" id="category" name="category" [(ngModel)]="newAttribute.category">
                                           <option>Rice</option>
                                           <option>Vegitable</option>
-                                          <option>Fruite</option>
+                                          <option>Fruit</option>
                                       </select>
                                 </td>
-
                                 <td>
-                                    <select class="form-control" type="text" id="unit_scale" name="unit_scale" [(ngModel)]="unit_scale" required>
+                                    <select class="form-control" type="text" id="unit_scale" name="unit_scale" [(ngModel)]="newAttribute.unit_scale">
                                           <option>Packet</option>
                                           <option>Liter</option>
                                           <option>Other</option>
                                      </select>
                                 </td>
-
-                                <td><input class="form-control" type="number" name="quantity" required></td>
-                                <td><input class="form-control" type="number" name="price"  required></td>
+                                <td><input class="form-control" type="number" name="quantity" [(ngModel)]="newAttribute.quantity"></td>
+                                <td><input class="form-control" type="number" name="price" (keyup)="calcTotPrice()" [(ngModel)]="newAttribute.price"></td>
                               
                                 
-                                <td><input class="form-control" type="number" name="total_price"></td>
+                                <td><input class="form-control" type="number" name="total_price" [(ngModel)]="newAttribute.total_price"></td>
                                 <td>
                                   <button class="btn btn-default" type="button" (click)="addFieldValue()">
                                     <i class="fa fa-plus" style="color:green"></i>
                                   </button>
                                 </td>
                               </tr>
-                              </tbody>
+                              </tbody>-->
           
                       </table>
-                      <button type="submit" class="btn btn-primary" (click)="addSalesItemCustomerAlert()" [disabled]="itemForm.invalid">Submit</button>&nbsp;
+                      <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid">Submit</button>&nbsp;
                       <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                       <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">Reset</button>
                       
@@ -345,6 +344,9 @@
     
   
 </ng-template>
+
+
+<!--11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111-->
 
 
 
@@ -485,7 +487,7 @@
                     <div class="form-group">
                           <div class="col-sm-offset-3 col-sm-9">
                                 
-                              <button type="submit" class="btn btn-primary" (click)="updateSalesItemAlert()" [disabled]="updateForm.invalid">Submit</button>&nbsp;  
+                              <button type="submit" class="btn btn-primary" [disabled]="updateForm.invalid">Submit</button>&nbsp;  
                               <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                               <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">Reset</button>
                               
@@ -543,7 +545,7 @@
                   
                       <div class="form-group row">
                         <div class="col-sm-6">
-                          <input type="text" style="margin-left: 100px;font-size: 13pt" name="" placeholder="Company Name">
+                          <input type="text" style="margin-left: 100px;font-size: 13pt" name="com_name" placeholder="Company Name">
                          
                         </div>
                         <div class="col-sm-6">
@@ -554,14 +556,14 @@
 
                       <div class="form-group row">
                         <div class="col-sm-6">
-                          <textarea style="margin-left: 100px;font-size: 13pt;width: 230px;" name="" placeholder="Company Address"></textarea><br>
-                          <input type="text" style="margin-left: 100px;font-size: 13pt" name="" placeholder="Company Phone No"><br>
-                          <input type="text" style="margin-left: 100px;font-size: 13pt" name="" placeholder="Fax No">
+                          <textarea style="margin-left: 100px;font-size: 13pt;width: 230px;" name="com_address" placeholder="Company Address"></textarea><br>
+                          <input type="text" style="margin-left: 100px;font-size: 13pt" name="com_phone" placeholder="Company Phone No"><br>
+                          <input type="text" style="margin-left: 100px;font-size: 13pt" name="fax_no" placeholder="Fax No">
                          
                         </div>
                         <div class="col-sm-6">
-                          <label style="font-size: 13pt;margin-left: 350px">Invoice No :</label>&nbsp;&nbsp;<input style="width: 105px" type="text" name="" >
-                          <label style="font-size: 13pt;margin-left: 350px">Date :</label>&nbsp;&nbsp;<input type="date" name="">
+                          <label style="font-size: 13pt;margin-left: 350px">Invoice No :</label>&nbsp;&nbsp;<input style="width: 105px" type="text" name="invoice_no" >
+                          <label style="font-size: 13pt;margin-left: 350px">Date :</label>&nbsp;&nbsp;<input type="date" name="date">
                          
                         </div>
                       </div>
@@ -573,7 +575,7 @@
                                
                               </div>
                               <div class="col-sm-6">
-                               <textarea style="margin-left: -400px"></textarea>
+                               <textarea style="margin-left: -400px" name="comment"></textarea>
                                
                                
                               </div>
@@ -616,7 +618,7 @@
                                           </thead>
                                           <tbody>
                                             <tr *ngFor = "let item of ProductList">
-                                              <td class="text-center">{{item.product_id}}</td>
+                                              <td class="text-center" >{{item.product_id}}</td>
                                               <td class="text-center">{{item.product_name}}</td>
                                               <td class="text-center">{{item.category}}</td>
                                               <td class="text-center">{{item.unit_scale}}</td>
@@ -630,32 +632,32 @@
                                           </tbody>
                                         </table>
                                         <div class="form-group row">
-                                                <div class="col-sm-6">
-                                                  <label style="margin-left: 910px;font-size: 13pt;margin-top: -30px;width: 100px;"> Sub Total</label>
+                                                <div class="col-sm-6" >
+                                                  <label style="margin-left: 930px;font-size: 13pt;margin-top: -30px;width: 100px;"> Sub Total</label>
                                                 
                                                 </div>
-                                                <div class="col-sm-6">
-                                                 <input style="margin-left: 390px" type="text" name="">
+                                                <div class="col-sm-6" *ngFor = "let item of ProductList">
+                                                 <input style="margin-left: 400px;width: 180px" type="text" name="sub_total"  value="{{item.total_price}}">
                                                 
                                                 </div>
                                               </div>
                                               <div class="form-group row">
                                                       <div class="col-sm-6">
-                                                        <label style="margin-left: 940px;font-size: 13pt"> Tax</label>
+                                                        <label style="margin-left: 970px;font-size: 13pt"> Tax</label>
                                                       
                                                       </div>
                                                       <div class="col-sm-6">
-                                                       <input style="margin-left: 390px" type="text" name="">
+                                                       <input style="margin-left: 400px;width: 180px" type="text" name="tax" (keyup)="calToTax()" [(ngModel)]="tax1">
                                                       
                                                       </div>
                                                     </div>
                                                     <div class="form-group row">
                                                             <div class="col-sm-6">
-                                                              <label style="margin-left: 940px;font-size: 13pt">Total</label>
+                                                              <label style="margin-left: 960px;font-size: 13pt">Total</label>
                                                             
                                                             </div>
                                                             <div class="col-sm-6">
-                                                             <input style="margin-left: 390px" type="text" name="">
+                                                             <input style="margin-left: 400px;width: 180px" type="text" name="total" [(ngModel)]="total1">
                                                             
                                                             </div>
                                                           </div>
@@ -676,7 +678,7 @@
                       <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
                                   
-                                <button type="submit" class="btn btn-primary" (click)="updateSalesItemAlert()" [disabled]="updateForm.invalid">Submit</button>&nbsp;  
+                                <button type="submit" class="btn btn-primary">Submit</button>&nbsp;  
                                 <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                                 <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">PDF</button>
                                 

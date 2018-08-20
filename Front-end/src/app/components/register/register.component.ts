@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AbstractControl,FormGroup,FormControl,Validators} from '@angular/forms';
 import { RegisterService } from '../../services/register.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -57,9 +58,25 @@ export class RegisterComponent implements OnInit {
     this._regservice.submitRegister(this.myForm.value)
     .subscribe(
       data => {this.successMessage = 'Registration Success'
+      Swal({
+        position: 'top',
+        title: 'Registration is succesfully added!',
+        type: 'success',
+        text: '',
+        
+        
+      });
       this.router.navigate(['/login']);
     },
-      error => this.successMessage = 'Registration Not Success'
+      error => {this.successMessage = 'Registration Not Success'
+      Swal({
+        title: 'Registration is Not success!',
+        type: 'warning',
+        text: '',
+        
+        
+      });
+    }
     );
   }
   }
