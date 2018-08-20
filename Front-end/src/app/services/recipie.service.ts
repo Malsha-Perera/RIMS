@@ -30,7 +30,7 @@ export class RecipieService {
   updateRecipe(newRecipie) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/recipie/' + newRecipie._id, newRecipie, {headers: headers}).map(res => res.json());
+    return this.http.put('http://localhost:3000/recipie/' + newRecipie.recipieCode, newRecipie, {headers: headers}).map(res => res.json());
 
 
 

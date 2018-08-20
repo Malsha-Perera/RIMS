@@ -58,11 +58,11 @@ router.post('/',function(req,res,next){
 
 //updating data
 
-router.put('/:id',(req,res,next) =>{
-    Recipie.update({_id:req.params.id},{
+router.put('/:recipieCode',(req,res,next) =>{
+    Recipie.update({recipieCode:req.params.recipieCode},{
         $set:{
-            productName:req.body.productName,
-            recipieCode:req.body.recipieCode,
+            
+            
             ingredient:req.body.ingredient,
             quantity:req.body.quantity,
             unitCost:req.body.unitCost,

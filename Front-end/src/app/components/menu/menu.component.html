@@ -18,12 +18,12 @@
             
             <div class="info-box-content">
               <span class="info-box-text">SET MENU</span>
-              <i class="fas fa-hand-point-right fa-4x"></i>
+              <i class="fa fa-cutlery fa-4x"></i>
               <div id="collapse0" class="collapse in">
 
                 <div class="list-group">
                   <div *ngFor="let item of setMenuList" class="">
-                    <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
+                    <a (click)="createRecipe(item.productCode, item.productName)"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
                   </div> 
                   
                 </div>
@@ -42,12 +42,12 @@
             
             <div class="info-box-content">
               <span class="info-box-text">SHORT EATS</span>
-              <i class="fas fa-hand-point-right fa-4x"></i>
+              <i class="fas fa-stroopwafel fa-4x"></i>
               <div id="collapse1" class="collapse in">
 
                 <div class="list-group">
                   <div *ngFor="let item of shortEatsList" class="">
-                    <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
+                    <a (click)="createRecipe(item.productCode, item.productName)"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
                   </div> 
                   
                 </div>
@@ -64,12 +64,12 @@
               
               <div class="info-box-content">
                 <span class="info-box-text">DESSERTS</span>
-                <i class="fas fa-hand-point-right fa-4x"></i>
+                <i class="fa fa-glass-martini fa-4x"></i>
                 <div id="collapse2" class="collapse in">
   
                   <div class="list-group">
                     <div *ngFor="let item of dessertList" class="">
-                      <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
+                      <a (click)="createRecipe(item.productCode, item.productName)"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
                     </div> 
                     
                   </div>
@@ -88,12 +88,12 @@
             
             <div class="info-box-content">
               <span class="info-box-text">BEVERAGES</span>
-              <i class="fas fa-hand-point-right fa-4x"></i>
+              <i class="fas fa-beer fa-4x"></i>
               <div id="collapse3" class="collapse in">
 
                 <div class="list-group">
                   <div *ngFor="let item of beveragesList" class="">
-                    <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
+                    <a (click)="createRecipe(item.productCode, item.productName)"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
                   </div> 
                   
                 </div>
@@ -110,12 +110,12 @@
             
             <div class="info-box-content">
               <span class="info-box-text">SOUP</span>
-              <i class="fas fa-hand-point-right fa-4x"></i>
+              <i class="fas fa-coffee fa-4x"></i>
               <div id="collapse4" class="collapse in">
 
                 <div class="list-group">
                   <div *ngFor="let item of soupList" class="">
-                    <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
+                    <a (click)="createRecipe(item.productCode, item.productName)"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
                   </div> 
                   
                 </div>
@@ -132,12 +132,12 @@
               
               <div class="info-box-content">
                 <span class="info-box-text">SALADS</span>
-                <i class="fas fa-hand-point-right fa-4x"></i>
+                <i class="fas fa-leaf fa-4x"></i>
                 <div id="collapse6" class="collapse in">
   
                   <div class="list-group">
                     <div *ngFor="let item of saladList" class="">
-                      <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
+                      <a (click)="createRecipe(item.productCode, item.productName)" class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
                     </div> 
                     
                   </div>
@@ -156,12 +156,12 @@
             
             <div class="info-box-content">
               <span class="info-box-text">OTHER</span>
-              <i class="fas fa-hand-point-right fa-4x"></i>
+              <i class="fa fa-birthday-cake fa-4x"></i>
               <div id="collapse5" class="collapse in">
 
                 <div class="list-group">
                   <div *ngFor="let item of otherList" class="">
-                    <a href="" [routerLink]="['recipie']"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
+                    <a (click)="createRecipe(item.productCode, item.productName)"  class="list-group-item" data-toggle="tooltip" title="Click to view recipe">{{item.productName}}</a>
                   </div> 
 
                 </div>
@@ -336,13 +336,13 @@
     <!--modal body-->
 <div class="row">
 <div class="modal-body">
-  <form class="form-horizontal" >
+  <form class="form-horizontal" #productForm = "ngForm" >
     
     
     <div class="form-group row">
       <label class="col-sm-3 control-label">Date:</label>
       <div class="col-sm-9">
-            <input class="form-control" type="date" name="latestUpdate" value="" id="date" #name="ngModel" [(ngModel)]="date">
+            <input class="form-control" type="date" name="latestUpdate" value="" id="date" #name="ngModel" [(ngModel)]="date" required>
       </div>
     </div>
 
@@ -371,7 +371,7 @@
     <div class="form-group row">
       <label class="col-sm-3 control-label">Description:</label>
       <div class="col-sm-9">
-        <input class="form-control" type="text" name="description" id="descripiton"  [(ngModel)]="description">
+        <input class="form-control" type="text" name="description" id="descripiton"  [(ngModel)]="description" required>
       </div>
     </div>
         
@@ -379,8 +379,8 @@
         
     <div class="form-group">
       <div class="col-sm-offset-3 col-sm-9">
-        <input type="submit" class="btn btn-success" value="Add product" (click)="addProduct()">
-        <input type="submit" class="btn btn-warning" value="Create Recipe" (click)="createRecipe()">
+        <input type="submit" class="btn btn-success" value="Add product" [disabled]="!productForm.valid" (click)="addProduct()">
+        <!--<input type="submit" class="btn btn-warning" value="Create Recipe" (click)="createRecipe()">-->
       </div>
     </div>
   </form>
