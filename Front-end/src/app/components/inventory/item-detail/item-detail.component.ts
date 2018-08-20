@@ -5,10 +5,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SetRolComponent } from './set-rol/set-rol.component';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 
-//import { Chart } from 'chart.js';
+// import { Chart } from 'chart.js';
 
 import {  } from '../../../pipes/item-detail.pipe';
-//import { Chart } from 'chart.js';
+// import { Chart } from 'chart.js';
 import swal from 'sweetalert2';
 
 
@@ -64,7 +64,7 @@ export class ItemDetailComponent implements OnInit {
   }
   capitalizeFirstLetter(string): string {
     return string[0].toUpperCase() + string.slice(1).toLowerCase();
- }
+  }
 
   /*---------------------start Add new Item Process or Update Existing Item------------------------------------------------ */
   checkExistId(itemname: string): boolean {
@@ -135,8 +135,8 @@ export class ItemDetailComponent implements OnInit {
       this.items = res as Item[];
     });
   }
-
-  onEdit(item: Item) {
+  /*------------------------------Edit Item process------------------------------------------------------ */
+  onEditSet(item: Item) {
     this.itemDetailService.selectedItem = item;
   }
   /*-----------------------Edit Re Order Level------------------------------*/
