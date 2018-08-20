@@ -10,6 +10,7 @@ import { RecipieService } from '../../services/recipie.service';
 import { Recipie } from '../../models/recipie';
 
 import {Globals} from '../../globals/globals';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -23,7 +24,9 @@ export class AddRecipieComponent implements OnInit {
   public modalRef: BsModalRef;
   searchText = '';
   recipieList: Recipie[]=[];
+  allRecipieList: Recipie[]=[];
   newRecipieList: Recipie[]=[];
+  newRecipieList2: Recipie[]=[];
   newRecipies:Recipie[]=[];
   myRecipie:Recipie;
   alerts: any[] = [];
@@ -33,6 +36,7 @@ export class AddRecipieComponent implements OnInit {
   ingredient= [];
   quantity=[];
   unitCost=[];
+  available:Boolean;
   
   
   
@@ -62,7 +66,31 @@ export class AddRecipieComponent implements OnInit {
     this.modalRef = null;
   }
 
+  checkRecipeCodeAvailable(recipeCode){
+    this.recipieService.getRecipes().subscribe((res) => {
+      
+      this.allRecipieList = res as Recipie[];
+      localStorage.setItem("recipieKey1",JSON.stringify(this.allRecipieList));
+              
+      
+    });
+    console.log(this.allRecipieList);
+    this.newRecipieList2= JSON.parse(localStorage.getItem("recipieKey1"));
+    console.log(this.newRecipieList2);
+    for (var i=0; i<this.newRecipieList2.length; i++){
+      if (this.newRecipieList2[i].recipieCode == recipeCode){
+        this.available = true;
+        return;
+      }
+      else{
+        this.available = false;
+      }
+    }   
+
+  }
+
   onSubmit(form: NgForm) {
+    this.checkRecipeCodeAvailable(form.value.recipieCode);
     //this.myRecipie._id="5b77ccb187243520acb904f8";
     this.myRecipie.recipieCode = form.value.recipieCode;
     this.myRecipie.productName = form.value.productName;
@@ -73,17 +101,27 @@ export class AddRecipieComponent implements OnInit {
     console.log("Horeey" + this.myRecipie.ingredient);
     console.log("Horeey" + this.myRecipie.recipieCode);
     console.log("Horeey" + this.myRecipie.cost);
-
-    if (form.value._id === '') {
-      this.recipieService.addRecipe(this.myRecipie).subscribe((res) => {
-        
-        //this.refreshRecipieList();
+//if recipe code is new
+    if (this.available == false) {
+      this.recipieService.addRecipe(this.myRecipie).subscribe((res) => {        
+        this.refreshRecipieList();
+        swal(
+          'Recipe added successfully!',
+          form.value.productName,                  
+          'success'
+        );
       });
+      
     } else {
-      this.recipieService.updateRecipe(this.myRecipie).subscribe((res) => {
-       
-        //this.refreshRecipieList();
+      this.recipieService.updateRecipe(this.myRecipie).subscribe((res) => {        
+        this.refreshRecipieList();
+        swal(
+          'Recipe changes saved!',
+          form.value.productName,                    
+          'success'
+        );
       });
+      
     }
   }
 
@@ -104,7 +142,14 @@ export class AddRecipieComponent implements OnInit {
       console.log(this.ingredient);
       console.log(this.quantity);
       
-    });   
+    }); 
+    this.recipieService.getRecipes().subscribe((res) => {
+      
+      this.allRecipieList = res as Recipie[];
+      localStorage.setItem("recipieKey1",JSON.stringify(this.allRecipieList));
+              
+      
+    });  
 
     
   }
