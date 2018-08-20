@@ -1,10 +1,5 @@
 
 <div class="a">
-  <br><br>
-  <div *ngFor="let alert of alerts">
-    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
-  </div>
-  <br><br>
 <div class="container-fluid">
 
 <form #itemForm1 = "ngForm" class="form-horizontal">
@@ -12,7 +7,7 @@
   <div class="form-group">
       <label class="control-label col-sm-2" >Stock Update on:</label>
     <div class="col-sm-6">
-      <input type="date" name="latestUpdate" [(ngModel)]="latestUpdate" class="form-control"  >
+      <input  class="form-control" type="date" name="latestUpdate" [(ngModel)]="latestUpdate">
     </div>
   </div>
 
@@ -96,7 +91,7 @@
   <div class="col-sm-offset-7 col-sm-8">
     <button type="submit" (click)="getItembyCode(itemForm1,itemForm2 )" class="btn btn-success"data-toggle="tooltip" title="Add this item to the list"><i class="fa fa-plus"></i></button>
   </div>
-</form> 
+</form>
 
 </div>
 
