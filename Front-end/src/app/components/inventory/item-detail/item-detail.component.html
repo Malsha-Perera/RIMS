@@ -1,18 +1,22 @@
+<!--route implementation-->
+<!----------------------------------begin----------------------------------->
 <div>
   <ol class="breadcrumb">
     <li><a [routerLink]="['']" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Home</button></a></li>
     <li><a routerLink="/items" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Inventory</button></a></li>
   </ol>
 </div>
+<!-----------------------------------end--------------------------------------->
 
+<!----------------------------------begin container div------------------------->
 <div class="container-fluid">
+  <!--begin first row div-->
   <div class="row" style="margin: auto">
 
     <div class="col-md-1"></div>
       <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
         <a [routerLink]="['stockupdate']">
-          <button class="btn btn-primary" style="font-size: 20px; text-align: center">
-            Stock Update
+          <button class="btn btn-primary" style="font-size: 20px; text-align: center"> Stock Update
             <i class="fas fa-hand-point-right fa-lg"></i>
           </button>
         </a>
@@ -31,10 +35,14 @@
       </div>
 
       <div class="col-md-1"></div>
+
     </div>
+    <!--end first row div-->
 </div>
+<!--------------------------------end container div--------------------------->
 <br>
 
+<!--------------------------------begin container div-------------------------->
 <div class="container">
   <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
@@ -51,10 +59,6 @@
         <a>
           <div class="info-box" tooltip="to update stock click here" style="width: 200px; height:30px">
             <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
-            <!--div class="info-box-content">
-              <span class="info-box-text">STOCK UPDATE</span>
-              <i class="fas fa-hand-point-right fa-4x"></i>
-            </div-->
           </div>
         </a>
       </div>
@@ -62,10 +66,6 @@
         <a>
           <div class="info-box" tooltip="to update stock click here" style="width: 200px; height:30px">
             <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
-            <!--div class="info-box-content">
-              <span class="info-box-text">STOCK UPDATE</span>
-              <i class="fas fa-hand-point-right fa-4x"></i>
-            </div-->
           </div>
         </a>
       </div>
@@ -73,36 +73,37 @@
         <a>
           <div class="info-box" tooltip="to update stock click here" style="width: 200px; height:30px">
             <span class="info-box-icon bg-yellow"><i class="fas fa-warehouse"></i></span>
-            <!--div class="info-box-content">
-              <span class="info-box-text">STOCK UPDATE</span>
-              <i class="fas fa-hand-point-right fa-4x"></i>
-            </div-->
           </div>
         </a>
       </div>
   </div>
 </div>
+<!----------------------------------end container div---------------------------------------------->
 
+<!----------------------------------begin container div-------------------------------------------->
 <div class="container-fluid">
 
-  <div *ngFor="let alert of alerts">
-    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)" style="text-align: center; font-size:25px;">{{ alert.msg }}</alert>
-  </div>
+  <!--begin row div-->
   <div class="row">
+
     <div class="col-md-4"></div>
+
     <div class="col-md-4">
       <div class="input-group">
         <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
         <span class="input-group-addon"><i class="fas fa-search fa-lg"></i></span>
       </div>
     </div>
+
     <div class="col-md-4">
       <button class='btn btn-outline-success' id="addNewItemBtn" (click)="openModal(template)">Add  <i class='fa fa-plus-square fa-lg'></i></button>
     </div>
+
   </div>
+  <!--end row div-->
 
   <hr>
-
+  <!--begin row div-->
   <div class="row margintop20px paddingtopbottom15px whitebackground">
     <div class="col-sm-12">
       <div class="table-responsive">
@@ -164,8 +165,10 @@
       </div>
 
       <button class='btn btn-outline-success' id="addNewItemBtn" (click)="openModal(template)">Add  <i class='fa fa-plus-square fa-lg'></i></button>
-    <!-- Modal for the add Item-->
+
+    <!------------------------------- Modal for the add Item---------------------------------------------------->
       <ng-template #template>
+
         <div class="row">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
@@ -174,13 +177,17 @@
             <h4 class="modal-title pull-center" id="myModalLabel"><label id="modId"> Add New Item</label></h4>
           </div>
         </div>
-            <!--modal body-->
+        <!--modal body-->
           <div class="row">
-            <div class="modal-body">
-              <form class="form-horizontal" #itemDetailForm = "ngForm" (ngSubmit)="onSubmit(itemDetailForm)">
-                  <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem._id">
 
+            <div class="modal-body">
+              <!--begin form tag------------------------------------------------------------------------------------------------------->
+              <form class="form-horizontal" #itemDetailForm = "ngForm" (ngSubmit)="onSubmit(itemDetailForm)">
+
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem._id">
+                  <!--begin row div--------------------------------------------------------------->
                   <div class="form-group row">
+
                     <div class="col-sm-6">
                       <label> Item Name:<span style="color: red; font-size: 15px;">*</span></label>
                       <div>
@@ -190,6 +197,7 @@
                           </div>
                       </div>
                     </div>
+
                     <div class="col-sm-6">
                       <label>Item Code:<span style="color: red">*</span></label>
                       <div>
@@ -199,9 +207,14 @@
                           </div>
                       </div>
                     </div>
+
                   </div>
+                  <!--end row div-------------------------------------------------------------->
+
                   <hr>
+                  <!--begin row div-------------------------------------------------------------->
                   <div class="form-group row">
+
                     <div class="col-sm-6">
                       <label>Category:</label>
                       <div>
@@ -213,12 +226,14 @@
                         </select>
                       </div>
                     </div>
+
                     <div class="col-sm-3">
                       <label>Quantity:</label>
                       <div>
                         <input class="form-control" type="text" name="quantity" value="" id="quantity" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.quantity" placeholder="Quantity Of Item" autocomplete="off">
                       </div>
                     </div>
+
                     <div class="col-sm-3">
                       <label>UnitScale:</label>
                       <div>
@@ -229,21 +244,31 @@
                         </select>
                       </div>
                     </div>
+
                   </div>
+                  <!--end row div------------------------------------------------------------------>
+
                   <hr>
+
+                  <!--begin row div------------------------------------------------------------------>
                   <!--description of the new Item-->
                   <div class="form-group row">
+
                     <div class="col-sm-10">
                       <label>Description:</label>
                       <div>
                         <input class="form-control" type="text" name="description" value="" id="descripiton" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.description" placeholder="More About New Item" autocomplete="off">
                       </div>
                     </div>
+
                   </div>
+                  <!--end row div----------------------------------------------------------------------->
 
                   <hr>
 
+                  <!--begin row div---------------------------------------------------------------------->
                   <div class="form-group row">
+
                     <div class="col-sm-6">
                       <label>Latest Update Date:</label>
                       <div>
@@ -251,17 +276,22 @@
                         <!--input class="form-control" type="text"  bsDatepicker #dp="bsDatepicker" [bsValue]="bsValue" name="latestUpdatedate" [(ngModel)]="itemDetailService.selectedItem.latestUpdate"-->
                       </div>
                     </div>
+
                     <div class="col-sm-6">
                       <label>UnitCost:</label>
                       <div>
                         <input class="form-control" type="text" name="unitCost" value="" id="unitCost" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitCost" placeholder="Unit Cost Of the Item" autocomplete="off">
                       </div>
                     </div>
+
                   </div>
+                  <!--end row div-->
 
                   <hr>
 
+                  <!--begin row div------------------------------------------------------------------->
                   <div class="form-group row">
+
                     <div class="col-sm-4">
                       <label>Minimum Level:</label>
                       <div>
@@ -280,9 +310,13 @@
                         <input class="form-control" type="text" name="maximumLevel" value="" id="maximumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.maximumLevel" placeholder="Maximum Level" autocomplete="off">
                       </div>
                     </div>
-                  </div>
 
+                  </div>
+                  <!--end row div-------------------------------------------------------------------->
+
+                  <!--begin row div------------------------------------------------------------------>
                   <div class="form-group row">
+
                     <div class="col-sm-10">
                       <label>Date:</label>
                       <div>
@@ -291,7 +325,11 @@
                       </div>
                     </div>
                   </div>
+                  <!--end row div------------------------------------------------------------------>
+
+                  <!--begin row div------------------------------------------------------------------>
                   <div class="form-group row">
+
                     <div class="col-sm-4">
                       <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemDetailForm.form.valid">Save Item</button>
                     </div>
@@ -301,7 +339,9 @@
                       <button type="button" class="btn btn-warning" id="resetbutton" data-toggle="modal" data-target="#myModal" (click)="resetForm(itemDetailForm)">Reset</button>
                     </div>
                   </div>
+                  <!--end row div------------------------------------------------------------------>
               </form>
+              <!--end form tag-------------------------------------------------------------------------------------->
             </div>
           </div>
       </ng-template>
@@ -467,7 +507,7 @@
         </div>
       </ng-template>
 
-      <!--//////////Modal for the edit re oder level//////////////-->
+      <!----------------------------Modal for the edit re oder level---------------------------------->
       <ng-template #templateEditROL id="rolModal">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">

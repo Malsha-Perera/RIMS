@@ -60,3 +60,12 @@ label {
 .btn.btn-outline-default:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
 }
+#stockUpdateBreadCrumbBtn:hover{
+  box-shadow: 0 12px 16px 0 rgba(9, 138, 20, 0.432), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
+#inventoryBreadCrumbBtn:hover{
+  box-shadow: 0 12px 16px 0 rgba(28, 103, 201, 0.432), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
+#dashBoardBreadCrumbBtn:hover{
+  box-shadow: 0 12px 16px 0 rgba(27, 116, 199, 0.432), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
