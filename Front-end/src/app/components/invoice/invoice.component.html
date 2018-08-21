@@ -45,14 +45,18 @@
                       <td style="font-size: 11pt" class="text-center">{{invoice.invoice_no}}</td>
                       <td style="font-size: 11pt" class="text-center">{{invoice.date}}</td>
                       
-                     
+                     <td>
                       
                       
           
                         <button class='btn btn-danger' (click)="onAllerDeletet(invoice._id)">
                         <i class='fa fa-trash fa-lg'></i>Delete
                         </button>
-          
+
+</td>
+
+                        
+                        
                        
                      
           
@@ -67,6 +71,12 @@
                 </tfoot>
 
             </table>
+
+
+            <button class='btn btn-success' (click)="download()">
+              PDF
+              </button>
+
            
            
             </div>

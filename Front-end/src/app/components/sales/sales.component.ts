@@ -146,6 +146,7 @@ export class SalesComponent implements OnInit {
         title: 'Sales Item and Customer are succesfully added!',
         type: 'success',
         text: '',
+        timer: 1500
         
         
       });
@@ -197,6 +198,7 @@ export class SalesComponent implements OnInit {
         title: 'Sales Item is succesfully updated!',
         type: 'success',
         text: '',
+        timer: 1500
         
         
       });
@@ -261,22 +263,28 @@ onAllertDeletet(id){
     cancelButtonText: 'No, keep it'
   }).then((result) => {
     if (result.value) {
-      Swal(
+      Swal({
+        position: 'top',
+        title: 'Sales Item is succesfully deleted!',
+        type: 'warning',
+        text: '',
+        timer: 1500
         
-        'Deleted!',
-        'Your imaginary file has been deleted.',
-        'success'
-      )
+        
+      });
       this.deleteItems(id)
     // For more information about handling dismissals please visit
     // https://sweetalert2.github.io/#handling-dismissals
     } else if (result.dismiss === Swal.DismissReason.cancel) {
-      Swal(
+      Swal({
+        position: 'top',
+        title: 'Sales Item data is safe!',
+        type: 'success',
+        text: '',
+        timer: 1500
         
-        'Cancelled',
-        'Your imaginary file is safe :)',
-        'error'
-      )
+        
+      });
     }
   })
 
@@ -320,6 +328,7 @@ onAllertDeletet(id){
         title: 'Invoice succesfully added!',
         type: 'success',
         text: '',
+        timer: 1300
         
         
       });

@@ -4,6 +4,8 @@ import { InvoiceService } from '../../services/invoice.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import Swal from 'sweetalert2';
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: 'app-invoice',
@@ -88,5 +90,22 @@ this.getInvoice();
   ngOnInit() {
     this.getInvoice();
   }
+
+
+
+  download() {
+
+    const doc = new jsPDF();
+     const col = ['company Address', 'Company Name'];
+     doc.page = 1;
+     const rows = [];
+     this.InvoiceList.forEach(user => {
+      const temp = [user.com_address, user.com_name];
+      rows.push(temp);
+  });
+  doc.autoTable(col, rows, { startY: 20 });
+  doc.text('User Collections', 10, 10);
+  doc.save('user_collections.pdf');
+}
 
 }

@@ -89,6 +89,7 @@ export class CustomerComponent implements OnInit {
         title: 'Customer is succesfully updated!',
         type: 'success',
         text: '',
+        timer: 1500
         
         
       });
@@ -136,22 +137,28 @@ export class CustomerComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value) {
-        Swal(
+        Swal({
+          position: 'top',
+          title: 'Customer is succesfully deleted!',
+          type: 'warning',
+          text: '',
+          timer: 1500
           
-          'Deleted!',
-          'Your imaginary file has been deleted.',
-          'success'
-        )
+          
+        });
         this.deleteCustomer(id)
       // For more information about handling dismissals please visit
       // https://sweetalert2.github.io/#handling-dismissals
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal(
+        Swal({
+          position: 'top',
+          title: 'Customer data is safe!',
+          type: 'warning',
+          text: '',
+          timer: 1500
           
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
-        )
+          
+        });
       }
     })
 

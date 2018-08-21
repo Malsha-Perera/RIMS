@@ -1,4 +1,220 @@
 
+
+/*tbody {
+  font-size: 20px;
+  background-color: rgb(179, 179, 179);
+}
+th {
+  width: 60px;
+  max-width: 60px;
+  font-size:20px;
+  text-align: center;
+  background-color: #ffffff;
+}
+th,td {
+  vertical-align: middle;
+}*/
+table {
+  border-collapse: collapse;
+}
+th,td {
+  border-bottom: 1px solid rgb(88, 99, 156);
+  padding: 10px;
+}
+th {
+  width: 60px;
+  max-width: 60px;
+  font-size: 18px;
+  text-align: center;
+  background-color: rgb(212, 209, 209);
+  border: 10px;
+  border-color: #5d809b;
+  border-top: solid;
+  border-bottom: solid
+}
+tbody {
+  font-size: 16px;
+  background-color: white;
+}
+
+#editItemBtn {
+  background-color: rgba(49, 122, 151, 0.685);
+  border-color: rgba(20, 87, 114, 0.685);
+  color: rgb(255, 255, 255);
+}
+#deleteItemBtn {
+  background-color: rgba(179, 13, 13, 0.685);
+  border-color: rgba(124, 12, 12, 0.685);
+  color: rgb(255, 255, 255);
+}
+#viewItemBtn {
+  background-color: rgba(10, 90, 24, 0.685);
+  color: white;
+}
+#editROLBtn {
+  background-color: rgba(102, 109, 112, 0.685);
+  color: white;
+}
+#issueBtn {
+  background-color: rgba(36, 96, 119, 0.685);
+  color: white;
+  width: 75px;
+}
+#addNewItemBtn {
+  background-color: rgb(7, 107, 7);
+  width: 75px;
+  height: 40px;
+  color: white;
+}
+.btn.btn-outline-info:hover {
+  box-shadow: 0 12px 16px 0 rgba(10, 10, 10, 0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
+
+.btn.btn-outline-danger:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
+
+.btn.btn-outline-success:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.btn.btn-outline-default:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.modal-header {
+  background-color: #a6c8e2;
+  text-align: center;
+}
+
+#modId {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  font-size: 150%;
+}
+
+
+.modal-body {
+  background-color: #eaecee;
+}
+
+#confirmModalBody {
+  text-align: center;
+}
+
+.info-box.icon {
+  background-color: #7cc7f3;
+}
+
+#rolSaveBtn,#newItemSaveBtn {
+  border-color: rgb(16, 46, 16);
+}
+#rolCancelBtn {
+  background-color: rgb(226, 116, 37);
+  color: white;
+  border: 1px solid;
+  border-color: black;
+}
+
+#rolInputField {
+  border-radius: 5px;
+  border-color: #5d809b;
+  text-align: center;
+  font-size: 25px;
+  width: 100px;
+}
+
+input, select {
+  border-radius: 5px;
+  border-color: #5d809b;
+  height: 35px;
+  font-size: 18px;
+  background-color: rgb(248, 247, 244);
+}
+
+label {
+  font-size: 15px;
+}
+#issueConfirmBtn {
+  border: 1px solid;
+  background-color: green;
+  border-color: black;
+}
+#issueCancelBtn {
+  background-color: rgb(226, 116, 37);
+  color: white;
+  border: 1px solid;
+  border-color: black;
+}
+
+#issueBtn {
+  background-color: #5d809b;
+  color: white;
+}
+
+#issueInputField {
+  width: 100px;
+  text-align: center;
+  border-radius: 5px;
+  border-color: #5d809b;
+  text-align: center;
+  font-size: 25px;
+  width: 100px;
+}
+/*input:required {
+  box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85);
+}
+
+/**
+ * style input elements that have a required
+ * attribute and a focus state
+ */
+input:required:focus {
+  border: 1px solid red;
+  outline: none;
+}
+
+/**
+ * style input elements that have a required
+ * attribute and a hover state
+ */
+input:required:hover {
+  opacity: 1;
+}
+
+.tooltip .tooltiptext {
+    width: 120px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+.input-group-addon {
+  border-color: #5d809b;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card {
+  border-color: #152425;
+}
+
+.card-body input {
+  text-align: center;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: #5d809b;
+  height: 35px;
+  font-size: 18px;
+  background-color: rgb(248, 247, 244);
+  color: #122635;
+  background-color: rgb(196, 194, 194);
+}
+
+#viewModal {
+  background-color: #a6c8e2;
+}
+
+
 tbody {
     font-size: 125%;
     font-family: Times, Times New Roman, Georgia, serif;
@@ -31,4 +247,7 @@ tbody {
     background-color: #c8d2da;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
+
+
+  
   

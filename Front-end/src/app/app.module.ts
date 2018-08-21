@@ -12,7 +12,7 @@ import { RegisterService } from './services/register.service';
 
 //import { chart } from 'chart.js';
 import { DataTableModule } from 'angular2-datatable';
-// import { FusionChartsModule } from 'angular-fusioncharts';
+ import { FusionChartsModule } from 'angular-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
 import Column2D from 'fusioncharts/viz/column2d';
 import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';
@@ -84,7 +84,7 @@ const appRoutes: Routes = [
     ];
 
 
-// FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, GammelTheme);
+ FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, GammelTheme);
 @NgModule({
   declarations: [
     AppComponent,
@@ -132,7 +132,7 @@ const appRoutes: Routes = [
     AppBootstrapModule,
     RouterModule.forRoot(appRoutes),
     DataTableModule,
-    //FusionChartsModule
+    FusionChartsModule
 
   ],
 
