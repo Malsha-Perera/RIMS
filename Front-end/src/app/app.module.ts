@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import { AppBootstrapModule } from './app-bootstrap.module';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
 import { RegisterService } from './services/register.service';
 
@@ -44,7 +45,7 @@ import { PoListComponent } from './components/po-list/po-list.component';
 import {DDataService} from './services/po-list.service';
 import { ViewPoAllComponent } from './components/view-po-all/view-po-all.component';
 
-import{RegisterComponent} from './components/register/register.component';
+import {RegisterComponent} from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 
 
@@ -72,13 +73,12 @@ const appRoutes: Routes = [
   {path: 'customers', component: CustomerComponent},
   {path: 'pitem', component: PoListComponent},
   {path: 'vpa', component: ViewPoAllComponent},
-
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   {path:'header',component:AppheaderComponent},
-
   {path: 'items/stockIssue', component: StockIssueComponent},
   {path: 'invoice',component:InvoiceComponent}
+
 
 
     ];
@@ -109,16 +109,11 @@ const appRoutes: Routes = [
     SalesComponent,
     PoListComponent,
     ViewPoAllComponent,
-
     RegisterComponent,
     LoginComponent,
-
     StockIssueComponent,
-
     CustomerPipe,
-
     SalesItemPipe,
-
     InvoiceComponent,
 
 
@@ -132,11 +127,13 @@ const appRoutes: Routes = [
     AppBootstrapModule,
     RouterModule.forRoot(appRoutes),
     DataTableModule,
-    //FusionChartsModule
+    FusionChartsModule,
+    AngularDateTimePickerModule,
+
 
   ],
 
-  providers: [DataService,DDataService,RegisterService],
+  providers: [DataService, DDataService, RegisterService],
 
 
   bootstrap: [AppComponent]

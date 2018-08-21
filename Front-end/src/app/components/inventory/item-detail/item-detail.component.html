@@ -134,7 +134,7 @@
                   </button-->
                 <td class="text-center" style="font-weight: 800">{{item.quantity}}</td>
                 <td>
-                  <button type="button" class='btn btn-outline-info' id="editItemBtn" (click)="onEdit(item) ; openModal(template)" tooltip="edit">Edit
+                  <button type="button" class='btn btn-outline-info' id="editItemBtn" (click)="onEditSet(item) ; openModal(EditItemtemplate)" tooltip="edit">Edit
                   <i class="fa fa-edit" aria-hidden="true"></i>
                   </button>
 
@@ -247,7 +247,8 @@
                     <div class="col-sm-6">
                       <label>Latest Update Date:</label>
                       <div>
-                        <input class="form-control" type="date" name="latestUpdate"  #latestUpdate="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate">
+                        <input type="text" placeholder="Datepicker" name="latestUpdatedate" class="form-control" [bsValue]="bsValue" bsDatepicker [(ngModel)]="itemDetailService.selectedItem.latestUpdate" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+                        <!--input class="form-control" type="text"  bsDatepicker #dp="bsDatepicker" [bsValue]="bsValue" name="latestUpdatedate" [(ngModel)]="itemDetailService.selectedItem.latestUpdate"-->
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -285,7 +286,8 @@
                     <div class="col-sm-10">
                       <label>Date:</label>
                       <div>
-                        <input class="form-control" type="date" name="date" value="" id="date" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.date">
+                        <!--angular2-date-picker name="date" [(ngModel)]="itemDetailService.selectedItem.date" [settings]="settings"></angular2-date-picker-->
+                        <input class="form-control" type="text"  value="" id="date" bsDatepicker #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.date">
                       </div>
                     </div>
                   </div>
@@ -303,6 +305,146 @@
             </div>
           </div>
       </ng-template>
+
+      <!------------------------------template for edit item-------------------------------------------------------------------------->
+      <ng-template #EditItemtemplate>
+        <div class="row">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title pull-center" id="myModalLabel"><label id="modId">Update Item</label></h4>
+          </div>
+        </div>
+              <!--modal body-->
+          <div class="row">
+            <div class="modal-body">
+              <form class="form-horizontal" #itemDetailForm = "ngForm" (ngSubmit)="onSubmit(itemDetailForm)">
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem._id">
+
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <label> Item Name:<span style="color: red; font-size: 15px;">*</span></label>
+                    <div>
+                      <input class="form-control" type="text" name="itemname" value="" id="name" #itemname="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemname" placeholder="Item Name (ex:Potato)" required="required" autocomplete="off" autocapitalize="words" readonly="true">
+                        <div *ngIf="itemname.invalid && (itemname.dirty || itemname.touched)" class="alert alert-danger">
+                          <div  [hidden]="!name.errors.required"> Name is required</div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label>Item Code:<span style="color: red">*</span></label>
+                    <div>
+                      <input class="form-control" type="text" name="itemCode" value="" id="itemcode" #itemCode="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode" placeholder="Itme Code" required minlength="3" maxlength="3" autocomplete="off" readonly="true">
+                        <div *ngIf="itemCode.invalid && (itemCode.dirty || itemCode.touched)" class="alert alert-danger">
+                          <div  [hidden]="!itemCode.errors.required"> Item is required</div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <label>Category:</label>
+                    <div>
+                      <select class="form-control" type="text" id="category" name="category" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.category" placeholder="Item Category">
+                        <option>Category</option>
+                        <option>Rice</option>
+                        <option>Vegetable</option>
+                        <option>Fruit</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Quantity:</label>
+                    <div>
+                      <input class="form-control" type="text" name="quantity" value="" id="quantity" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.quantity" placeholder="Quantity Of Item" autocomplete="off">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <label>UnitScale:</label>
+                    <div>
+                      <select class="form-control" type="text" name="unitScale" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitScale">
+                        <option>kg</option>
+                        <option>liter</option>
+                        <option>Bottles</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                  <!--description of the new Item-->
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <label>Description:</label>
+                    <div>
+                      <input class="form-control" type="text" name="description" value="" id="descripiton" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.description" placeholder="More About New Item" autocomplete="off">
+                    </div>
+                  </div>
+                </div>
+
+                <hr>
+
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <label>Latest Update Date:</label>
+                    <div>
+                      <input class="form-control" type="date" name="latestUpdate"  #latestUpdate="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate" readonly="true">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label>UnitCost:</label>
+                    <div>
+                      <input class="form-control" type="text" name="unitCost" value="" id="unitCost" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.unitCost" placeholder="Unit Cost Of the Item" autocomplete="off">
+                    </div>
+                  </div>
+                </div>
+
+                <hr>
+
+                <div class="form-group row">
+                  <div class="col-sm-4">
+                    <label>Minimum Level:</label>
+                    <div>
+                      <input class="form-control" type="text" name="minimumLevel" value="" id="minimumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.minimumLevel" placeholder="Minimum Level" autocomplete="off">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label>Re Order Level:</label>
+                    <div>
+                      <input class="form-control" type="text" name="reOrderLevel" value="" id="reOrderLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.reOrderLevel" placeholder="Re-Order Level" autocomplete="off">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label>Maximum Level:</label>
+                    <div>
+                      <input class="form-control" type="text" name="maximumLevel" value="" id="maximumLevel" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.maximumLevel" placeholder="Maximum Level" autocomplete="off">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <label>Date:</label>
+                    <div>
+                      <input class="form-control" type="date" name="date" value="" id="date" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.date" readonly="true">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemDetailForm.form.valid" (click)="modalRef.hide()">Save Item</button>
+                  </div>
+                  <div class="col-sm-4"></div>
+                  <div class="col-sm-4">
+                    <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide(); refreshItemList()">Cancel</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </ng-template>
 
       <!--Modal for confirming the delete item-->
       <ng-template #templateConfirmD id="confirmDeleteModal">
