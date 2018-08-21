@@ -6,14 +6,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import { AppBootstrapModule } from './app-bootstrap.module';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
-
 import { RegisterService } from './services/register.service';
-
-
-
-//import { chart } from 'chart.js';
 import { DataTableModule } from 'angular2-datatable';
-// import { FusionChartsModule } from 'angular-fusioncharts';
+import { FusionChartsModule } from 'angular-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
 import Column2D from 'fusioncharts/viz/column2d';
 import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';
@@ -44,11 +39,8 @@ import { SalesComponent } from './components/sales/sales.component';
 import { PoListComponent } from './components/po-list/po-list.component';
 import {DDataService} from './services/po-list.service';
 import { ViewPoAllComponent } from './components/view-po-all/view-po-all.component';
-
 import {RegisterComponent} from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-
-
 import { StockIssueComponent } from './components/inventory/stock-issue/stock-issue.component';
 import { CustomerPipe } from './pipes/customer.pipe';
 import { SalesItemPipe } from './pipes/sales-item.pipe';
@@ -84,7 +76,7 @@ const appRoutes: Routes = [
     ];
 
 
-// FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, GammelTheme);
+FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, GammelTheme);
 @NgModule({
   declarations: [
     AppComponent,
