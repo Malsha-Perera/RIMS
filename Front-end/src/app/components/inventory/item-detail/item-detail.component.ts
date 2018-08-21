@@ -43,6 +43,13 @@ export class ItemDetailComponent implements OnInit {
   editRolId;
   newROL;
   bsValue = new Date();
+  /*date: Date = new Date();
+    settings = {
+        bigBanner: true,
+        timePicker: false,
+        format: 'dd-MM-yyyy',
+        defaultOpen: true
+    }*/
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
 
   ngOnInit() {

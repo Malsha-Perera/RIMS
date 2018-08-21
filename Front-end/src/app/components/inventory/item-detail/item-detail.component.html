@@ -247,7 +247,8 @@
                     <div class="col-sm-6">
                       <label>Latest Update Date:</label>
                       <div>
-                        <input class="form-control" type="date" name="latestUpdate"  #latestUpdate="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate">
+                        <input type="text" placeholder="Datepicker" name="latestUpdatedate" class="form-control" [bsValue]="bsValue" bsDatepicker [(ngModel)]="itemDetailService.selectedItem.latestUpdate" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+                        <!--input class="form-control" type="text"  bsDatepicker #dp="bsDatepicker" [bsValue]="bsValue" name="latestUpdatedate" [(ngModel)]="itemDetailService.selectedItem.latestUpdate"-->
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -285,7 +286,8 @@
                     <div class="col-sm-10">
                       <label>Date:</label>
                       <div>
-                        <input class="form-control" type="date" name="date" value="" id="date" #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.date">
+                        <!--angular2-date-picker name="date" [(ngModel)]="itemDetailService.selectedItem.date" [settings]="settings"></angular2-date-picker-->
+                        <input class="form-control" type="text"  value="" id="date" bsDatepicker #name="ngModel" [(ngModel)]="itemDetailService.selectedItem.date">
                       </div>
                     </div>
                   </div>
@@ -436,7 +438,7 @@
                   </div>
                   <div class="col-sm-4"></div>
                   <div class="col-sm-4">
-                    <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide(); resetForm(itemDetailForm)">Cancel</button>
+                    <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide(); refreshItemList()">Cancel</button>
                   </div>
                 </div>
               </form>
