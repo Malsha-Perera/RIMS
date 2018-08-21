@@ -6,9 +6,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 
+import { ItemDetailService } from '../../services/itemDetailService/item-detail.service';
 import { RecipieService } from '../../services/recipie.service';
 import { Recipie } from '../../models/recipie';
-
+import { Item } from '../../models/item-detail.model';
 import {Globals} from '../../globals/globals';
 import swal from 'sweetalert2';
 
@@ -17,13 +18,14 @@ import swal from 'sweetalert2';
   selector: 'app-add-recipie',
   templateUrl: './add-recipie.component.html',
   styleUrls: ['./add-recipie.component.css'],
-  providers:[RecipieService],
+  providers:[RecipieService,ItemDetailService],
 })
 export class AddRecipieComponent implements OnInit {
 
   public modalRef: BsModalRef;
   searchText = '';
   recipieList: Recipie[]=[];
+  itemList: Item[]=[];
   allRecipieList: Recipie[]=[];
   newRecipieList: Recipie[]=[];
   newRecipieList2: Recipie[]=[];
@@ -40,11 +42,14 @@ export class AddRecipieComponent implements OnInit {
   ingredientName2:String;
   quantityinScale2:Number;
   editIndex : number;
+  itemNamex: String;
+  unitScalex:String;
+  unitCostx:number;
   
   
   
 
-  constructor(public recipieService: RecipieService, public modalService: BsModalService) { }
+  constructor(public recipieService: RecipieService, public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
 
   ngOnInit() {
     this.resetForm();
@@ -91,7 +96,7 @@ export class AddRecipieComponent implements OnInit {
     }   
 
   }
-
+  
   editThis(i, template: TemplateRef<any>){
     this.editIndex = i;
     this.ingredientName2 = this.ingredient[i];
@@ -211,6 +216,8 @@ export class AddRecipieComponent implements OnInit {
     
     this.ingredient.push(form.value.ingredientName);
     this.quantity.push(form.value.quantityinScale);
+    this.getUnitCost(form);
+    this.unitCost.push(this.unitCostx);
     console.log(this.ingredient);
     this.modalRef.hide();
   }
@@ -228,6 +235,36 @@ export class AddRecipieComponent implements OnInit {
         this.resetForm(form);
       });
     }
+  }
+
+  getItems(){
+    this.itemDetailService.getItemList().subscribe((res) => {      
+      this.itemList = res as Item[];
+      localStorage.setItem("itemKey",JSON.stringify(this.itemList));           
+      
+    });
+    this.itemList= JSON.parse(localStorage.getItem("itemKey"));
+  }
+
+  getUnitCost(form:NgForm){ 
+    this.getItems(); 
+    //console.log("sssssssss" + this.itemList);  
+    this.itemNamex =form.value.ingredientName;
+    for (var i=0; i<this.itemList.length; i++){
+      if (this.itemList[i].itemname == this.itemNamex){
+        this.unitCostx= this.itemList[i].unitCost;
+        this.unitScalex= this.itemList[i].unitScale;
+        console.log("unit Cost:" + this.unitCostx)
+        return;
+      }
+    }
+    swal(
+      'This item is not in stock!',
+      'Please add this item to the database first',                    
+      'error'
+    );
+    
+
   }
 
   resetForm(form?: NgForm) {
