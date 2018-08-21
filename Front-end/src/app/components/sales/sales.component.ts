@@ -10,6 +10,7 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { Invoice } from '../../services/invoice';
 import { InvoiceService } from '../../services/invoice.service';
 import Swal from 'sweetalert2';
+import { CustomerService } from '../../services/customer.service';
 
 
 
@@ -33,12 +34,13 @@ export class SalesComponent implements OnInit {
   quantity:any;
   total_price:any;
 
-  constructor(public modalService: BsModalService, private itemService: ItemService) { }
+  constructor(public modalService: BsModalService, public itemService: ItemService) { }
   public modalRef: BsModalRef;
   alerts: any[] = [];
 
   private ArrayList: Array<any> = [];
   private newAttribute: any = {};
+  
 
   ItemList: Item[] = [];
   InvoiceList: Invoice[] = [];
@@ -101,28 +103,9 @@ export class SalesComponent implements OnInit {
 }
 
   addItem(form) {
-
-   // console.log(this.ArrayList);
-
-    
-//const myObjStr = JSON.stringify(this.ArrayList);
-//console.log(myObjStr);
-
-
-
-
-
-
-
-
-
-
-
-   
     this.price=form.value.price;
     this.quantity=form.value.quantity;
     this.total_price=this.price*this.quantity;
-    //console.log(this.total);
 
     const newItem: Item = {
       
@@ -136,6 +119,9 @@ export class SalesComponent implements OnInit {
       total_price:this.total_price
     };
 
+    
+
+
 
     
     const newCustomer: Customer = {
@@ -145,6 +131,7 @@ export class SalesComponent implements OnInit {
       address: form.value.address,
       email_address: form.value.email_address
     };
+   
 
 
  this.CustomerList.push(newCustomer);
@@ -302,6 +289,47 @@ onAllertDeletet(id){
   ngOnInit() {
     this.getItems();
   }
+
+  addInvoice(form) {
+    
+    
+    const newInvoice: Invoice = {
+      
+      tax:form.value.tax,
+      total:form.value.total,
+      com_name:form.value.com_name,
+      com_address:form.value.com_address,
+      com_phone:form.value.com_phone,
+      fax_no:form.value.fax_no,
+      comments:form.value.comments,
+      invoice_no:form.value.invoice_no,
+      date:form.value.date
+
+     
+    };
+
+    console.log(newInvoice);
+
+   
+
+    this.itemService.addInvoice(newInvoice).subscribe(invoices => {
+
+    
+      Swal({
+        position: 'top',
+        title: 'Invoice succesfully added!',
+        type: 'success',
+        text: '',
+        
+        
+      });
+    });
+   
+    this.modalRef.hide();
+    
+  }
+
+
 
 
   }

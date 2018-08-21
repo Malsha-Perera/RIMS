@@ -1,59 +1,7 @@
 const mongoose = require('mongoose');
 
 const InvoiceSchema = mongoose.Schema({
-    customer_id:{
-        type:String,
-        require:true,
-    },
-    customer_name:{
-        type:String,
-        require:true
-    },
-    mobile:{
-        type:String,
-        require:true
-    },
-    address:{
-        type:String,
-        require:true
-    },
-    email_address:{
-        type:String,
-        require:true
-    },
-    product_id:{
-        type:String,
-        required:true
-    },
-    product_name:{
-        type:String,
-        required:true
-    },
-    category:{
-        type:String,
-        required:true
-    },
-    
-    unit_scale:{
-        type:String,
-        required:true
-    },
-    quantity:{
-        type:String,
-        required:true
-    },
-    price:{
-        type:String,
-        required:true
-    },
-    total_price:{
-        type:String,
-        required:true
-    },
-    sub_total:{
-        type:String,
-        required:true
-    },
+   
     tax:{
         type:String,
         required:true

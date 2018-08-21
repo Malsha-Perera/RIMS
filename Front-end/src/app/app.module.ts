@@ -11,9 +11,9 @@ import { RegisterService } from './services/register.service';
 
 
 
-import { chart } from 'chart.js';
+//import { chart } from 'chart.js';
 import { DataTableModule } from 'angular2-datatable';
-import { FusionChartsModule } from 'angular-fusioncharts';
+// import { FusionChartsModule } from 'angular-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
 import Column2D from 'fusioncharts/viz/column2d';
 import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';
@@ -50,6 +50,9 @@ import { LoginComponent } from './components/login/login.component';
 
 
 import { StockIssueComponent } from './components/inventory/stock-issue/stock-issue.component';
+import { CustomerPipe } from './pipes/customer.pipe';
+import { SalesItemPipe } from './pipes/sales-item.pipe';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 
 const appRoutes: Routes = [
@@ -70,17 +73,18 @@ const appRoutes: Routes = [
   {path: 'customers', component: CustomerComponent},
   {path: 'pitem', component: PoListComponent},
   {path: 'vpa', component: ViewPoAllComponent},
+  {path:'register',component:RegisterComponent},
+  {path:'login',component:LoginComponent},
+  {path:'header',component:AppheaderComponent},
+  {path: 'items/stockIssue', component: StockIssueComponent},
+  {path: 'invoice',component:InvoiceComponent}
 
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'header', component: AppheaderComponent},
-  {path: 'items/stockIssue', component: StockIssueComponent}
 
 
     ];
 
 
-FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, GammelTheme);
+// FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, GammelTheme);
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,6 +112,9 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, Gam
     RegisterComponent,
     LoginComponent,
     StockIssueComponent,
+    CustomerPipe,
+    SalesItemPipe,
+    InvoiceComponent,
 
 
   ],
@@ -122,6 +129,7 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, Gam
     DataTableModule,
     FusionChartsModule,
     AngularDateTimePickerModule,
+
 
   ],
 
