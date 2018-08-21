@@ -1,4 +1,5 @@
-
+<br>
+<br>
 <div class="a">
 <div class="container-fluid">
 
@@ -64,16 +65,14 @@
   &nbsp; &nbsp;
   <div class="col-sm-offset-7 col-sm-8">
 
-    <button id="addRow" type="submit" onclick="addRow()" class="btn btn-primary" data-toggle="tooltip" title="Add vendor"><i class="fa fa-plus"></i></button>
+    <button id="addRow" type="submit" onclick="addRow()" id="addBtn" class="btn btn-outline-success" data-toggle="tooltip" title="Add vendor"><i class="fa fa-plus"></i></button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
-    <button type="submit" onclick="getSum()" class="btn btn-success"data-toggle="tooltip" title="Calculate average unit price"><i class="fa fa-calculator"></i></button>
+    <button type="submit" onclick="getSum()" class="btn btn-outline-primary" id="calculateBtn" data-toggle="tooltip" title="Calculate average unit price">Calculate <i class="fa fa-calculator"></i></button>
   </div>
 </div>
 </div>
-
 <br><br>
-
 
 <div class="container-fluid">
 <form #itemForm2 = "ngForm" class="form-horizontal">
@@ -92,7 +91,7 @@
 
   <!--...!-->
   <div class="col-sm-offset-7 col-sm-8">
-    <button type="submit" (click)="getItembyCode(itemForm1,itemForm2 )" class="btn btn-success"data-toggle="tooltip" title="Add this item to the list"><i class="fa fa-plus"></i></button>
+    <button type="submit" (click)="getItembyCode(itemForm1,itemForm2 )" id="addBtn" class="btn btn-outline-success"data-toggle="tooltip" title="Add this item to the list">Add <i class="fa fa-plus fa-lg"></i></button>
   </div>
 </form>
 

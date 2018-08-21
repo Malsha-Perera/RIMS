@@ -7,17 +7,17 @@
         <label class="control-label col-sm-2" >Recipie name:</label>
       <div class="col-sm-6">
         <input type="text" name="recipieName" [(ngModel)]="recipieName" class="form-control" placeholder="Recipie Name" >
-      </div>  
-    </div> 
+      </div>
+    </div>
 
     <div class="form-group">
         <label class="control-label col-sm-2" >Date:</label>
       <div class="col-sm-6">
         <input type="date" name="addDate" [(ngModel)]="addDate" class="form-control"  placeholder="Enter Item Code">
-      </div>  
+      </div>
     </div>
   </form>
- </div>   
+ </div>
 
 
 <div class="container-fluid" >
@@ -40,23 +40,30 @@
           </td>
           <td class="col-sm-3">
               <input type="number" id="price"  class="form-control"/>
-          </td>            
+          </td>
           <td class="col-sm-2"><a class="deleteRow"></a></td>
         </tr>
       </tbody>
     </table>
-    &nbsp; &nbsp; 
+    &nbsp; &nbsp;
     <div class="col-sm-offset-7 col-sm-8">
-         
+
       <button id="addRow" type="submit" onclick="addRow()" class="btn btn-primary" data-toggle="tooltip" title="Add vendor"><i class="fa fa-plus"></i></button>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-        
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
       <button type="submit" onclick="getSum()" class="btn btn-success"data-toggle="tooltip" title="Calculate average unit price"><i class="fa fa-location-arrow"></i></button>
     </div>
   </div>
 
 </div>
 -->
+<div>
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['']" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Home</button></a></li>
+    <li><a routerLink="/menu" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Menu</button></a></li>
+    <li><a routerLink="/addrecipie" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Add Recipie</button></a></li>
+  </ol>
+</div>
 <hr>
 <div class="container">
   <form class="form-horizontal" #recipieForm = "ngForm" >
@@ -64,48 +71,48 @@
     <div *ngFor="let alert of alerts">
       <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
     </div>
-  
+
     <br><br>
-  
+
     <div class="form-group">
       <label class="control-label col-sm-2" >Recipie Code:</label>
       <div class="col-sm-6">
         <input type="text" name="recipieCode" [(ngModel)]="recipieCode" class="form-control" value="" placeholder="Recipie Code" >
-      </div>  
+      </div>
     </div>
     <br><br><br>
-   
+
 
 
     <div class="form-group">
       <label class="control-label col-sm-2" >Product Name:</label>
       <div class="col-sm-6">
         <input type="text" name="productName" [(ngModel)]="productName" class="form-control" placeholder="Product Name" >
-      </div>  
+      </div>
     </div>
     <br><br>
     <br>
 
- 
+
     <br><br>
     <div class="row">
       <div class="col-sm-12">
         <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
           <thead class="">
             <tr>
-              
+
               <th>Ingredient</th>
               <th>Quantity</th>
-              <th>Unit Cost</th>       
+              <th>Unit Cost</th>
               <th>Actions</th>
-              
+
             </tr>
           </thead>
           <tbody class="text-center">
             <tr *ngFor=" let ing of ingredient; let i =index" >
               <td>{{ing}}</td>
               <td>{{quantity[i]}}</td>
-              <td>{{unitCost[i]}}</td>          
+              <td>{{unitCost[i]}}</td>
               <td>
                 <button class='btn btn-info'  tooltip="edit" (click)="editThis(i, template2)">
                 <i class="fa fa-edit" aria-hidden="true"></i>
@@ -115,18 +122,18 @@
                 <i class='fa fa-trash fa-lg'></i>
                 </button>
 
-                
+
               </td>
             </tr>
           </tbody>
         </table>
         <button class='btn btn-success' id="mybutton"  (click)="openModal(template1)" ><i class='fa fa-plus-square fa-lg'></i></button>
         <button type="submit" class='btn btn-success' id="mybutton" (click)="onSubmit(recipieForm)" >Update Recipe</button>
-        
-      
+
+
       </div>
     </div>
-  </form>  
+  </form>
 
   <ng-template #template1>
     <div class="row">
@@ -148,8 +155,8 @@
 <div class="row">
 <div class="modal-body">
   <form class="form-horizontal" #ingreForm = "ngForm" >
-    
-    
+
+
     <div class="form-group row">
       <label class="col-sm-3 control-label">Ingredient :</label>
       <div class="col-sm-9">
@@ -163,8 +170,8 @@
         <input class="form-control" type="number" name="quantityinScale"  [(ngModel)]="quantityinScale" required>
       </div>
     </div>
-    
-        
+
+
     <div class="form-group">
       <div class="col-sm-offset-3 col-sm-9">
         <input type="submit" class="btn btn-success" value="ok" [disabled]="!ingreForm.valid" (click)="addToArray(ingreForm)">
@@ -174,8 +181,8 @@
   </form>
   </div>
   </div>
-</ng-template>   
-<!-- end of modal --> 
+</ng-template>
+<!-- end of modal -->
 
 
 <ng-template #template2>
@@ -198,8 +205,8 @@
 <div class="row">
 <div class="modal-body">
 <form class="form-horizontal" #ingreEditForm = "ngForm" >
-  
-  
+
+
   <div class="form-group row">
     <label class="col-sm-3 control-label">Ingredient :</label>
     <div class="col-sm-9">
@@ -213,8 +220,8 @@
       <input class="form-control" type="number" name="quantityinScale2"  [(ngModel)]="quantityinScale2" required>
     </div>
   </div>
-  
-      
+
+
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
       <input type="submit" class="btn btn-primary" value="Edit" [disabled]="!ingreForm.valid" (click)="editArray(ingreEditForm)">
@@ -224,8 +231,8 @@
 </form>
 </div>
 </div>
-</ng-template>   
-      
+</ng-template>
+
 </div>
 
 
