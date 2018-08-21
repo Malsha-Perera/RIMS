@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import { AppBootstrapModule } from './app-bootstrap.module';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
 import { RegisterService } from './services/register.service';
 
@@ -104,7 +105,6 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, Gam
     SalesComponent,
     PoListComponent,
     ViewPoAllComponent,
-
     RegisterComponent,
     LoginComponent,
     StockIssueComponent,
@@ -120,7 +120,8 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, Gam
     AppBootstrapModule,
     RouterModule.forRoot(appRoutes),
     DataTableModule,
-    FusionChartsModule
+    FusionChartsModule,
+    AngularDateTimePickerModule,
 
   ],
 
