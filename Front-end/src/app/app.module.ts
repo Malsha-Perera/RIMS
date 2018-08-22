@@ -10,8 +10,11 @@ import { RegisterService } from './services/register.service';
 import { DataTableModule } from 'angular2-datatable';
 import { FusionChartsModule } from 'angular-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
+//noinspection TypeScriptCheckImport
 import Column2D from 'fusioncharts/viz/column2d';
+//noinspection TypeScriptCheckImport
 import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';
+//noinspection TypeScriptCheckImport
 import GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel';
 
 
@@ -45,6 +48,8 @@ import { StockIssueComponent } from './components/inventory/stock-issue/stock-is
 import { CustomerPipe } from './pipes/customer.pipe';
 import { SalesItemPipe } from './pipes/sales-item.pipe';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { GrnComponent } from './components/grn/grn.component';
+import {GrnService}from './services/grn.service';
 
 
 const appRoutes: Routes = [
@@ -69,7 +74,8 @@ const appRoutes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'header',component:AppheaderComponent},
   {path: 'items/stockIssue', component: StockIssueComponent},
-  {path: 'invoice',component:InvoiceComponent}
+  {path: 'invoice',component:InvoiceComponent},
+  {path: 'GRN',component:GrnComponent}
 
 
 
@@ -107,6 +113,7 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, Gam
     CustomerPipe,
     SalesItemPipe,
     InvoiceComponent,
+    GrnComponent,
 
 
   ],
@@ -125,7 +132,7 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, FusionCharts, FusionTheme, Gam
 
   ],
 
-  providers: [DataService, DDataService, RegisterService],
+  providers: [DataService, DDataService, RegisterService, GrnService],
 
 
   bootstrap: [AppComponent]

@@ -1,0 +1,281 @@
+<hr>
+<h1 style="font-size: 40pt;text-align: center;color: black"><b>Good Received Note Details</b></h1>
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="input-group">
+      <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By ID">
+      <span class="input-group-addon"><i class="fas fa-search fa-lg"></i></span>
+    </div>
+  </div>
+
+</div>
+<hr>
+<div class="container">
+
+  <form >
+    <br>
+    <br>
+    <div class="container" >
+
+
+
+      <div class="row">
+        <div class="col-sm">
+          <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
+            <thead class="">
+            <tr>
+              <th>Po No</th>
+              <th>Date</th>
+              <!--<th>GRN No</th>-->
+
+
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <tr *ngFor="let po of GoodRN" class="">
+              <td>{{po.poNo}}</td>
+              <td>{{po.date}}</td>
+             <!-- <td>{{po.grnNo}}</td>-->
+
+
+
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <button class='btn btn-success' id="mybutton" (click)="openModal(template)"><i class='fa fa-plus-square fa-lg'></i></button>
+
+  </form>
+
+
+
+  <ng-template #template>
+    <div style="width: 1200px;margin-left: -199px;">
+      <div class="row">
+        <div class="modal-header col-sm">
+          <div class="col-sm-2" >
+          </div>
+          <div class="col-sm-8">
+            <h4 class="modal-title pull-center" id="myModalLabel"><br><label id="modId"> Add GRN</label></h4>
+          </div>
+          <div class="col-sm-2">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="fas fa-window-close fa-2x"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="modal-body" >
+          <form #itemForm = "ngForm" (ngSubmit) = "createGRN()" *ngIf="!toggleForm"  class="form-horizontal">
+            <input type="hidden" name="_id">
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label> PO NO:<span style="color: red; font-size: 15px;">*</span></label>
+                <div>
+                  <input class="form-control" type="text" name="poNo"  [(ngModel)]="poNo"required ><br>
+
+                  <div *ngIf="poNo.touched">
+                    <div *ngIf="poNo.errors?.required" class="alert alert-danger" style="font-size: 12pt">
+                      PO number is Required!
+                    </div>
+
+
+                  </div>
+                </div>
+
+
+              </div>
+
+
+              <div class="col-sm-6">
+                <label>Date:<span style="color: red">*</span></label>
+                <div>
+
+                  <input class="form-control"  type="date" name="date"  [(ngModel)]="date"required ><br>
+
+                  <div *ngIf="date?.touched">
+                    <div *ngIf="date.errors?.required" class="alert alert-danger" style="font-size: 12pt">
+                     Date is Required!
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+
+
+            <hr>
+
+
+
+
+
+
+
+
+
+            <div class="row">
+              <div class="modal-header col-sm">
+                <div class="col-sm-2" >
+                </div>
+                <div class="col-sm-8">
+                  <h4 class="modal-title pull-center" id="myModalLabel"><br><label id="modId"> Add Order Item Details</label></h4>
+                </div>
+                <div class="col-sm-2">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-window-close fa-2x"></i>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+<!--
+            <div class="container">
+
+
+              <hr>
+
+
+              <div class="row">
+                <div class="col-sm">
+
+                  <table class="table table-hover table-striped table-condensed  table-sm" id="mytable">
+                    <thead>
+                    <tr style="background-color: #85B3E9">
+                      <th>Product Id</th>
+                      <th>Product Name</th>
+                      <th>Category</th>
+                      <th>Unit Scale</th>
+                      <th>Quantity</th>
+                      <th>Price (Rs)</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td><input type="text" name="itemCode" [(ngModel)]="itemCode" required></td>
+                      <td><input type="text" name="itemname" [(ngModel)]="itemname" required></td>
+                      <td>
+                        <select class="form-control" type="text" id="category" name="category" [(ngModel)]="category" required>
+                          <option>Rice</option>
+                          <option>Vegitable</option>
+                          <option>Fruite</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-control" type="text" id="unit_scale" name="unit_scale" [(ngModel)]="unitScale" required>
+                          <option>Packet</option>
+                          <option>Liter</option>
+                          <option>Other</option>
+                        </select>
+                      </td>
+
+                      <td><input type="number" name="quantity" [(ngModel)]="quantity" required></td>
+                      <td><input type="number" name="price" (keyup)="calcTotPrice()" [(ngModel)]="unitCost" required></td>
+
+
+
+
+
+
+
+                    </tr>
+                    </tbody>
+
+
+
+
+
+
+                  </table>
+                  <button type="submit" class="btn btn-primary" (click)="addItem()" [disabled]="itemForm.invalid">Submit</button>&nbsp;
+                  <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>
+                  <button type="button" class="btn btn-warning" id="resetbutton" data-toggle="modal" data-target="#myModal" >Reset</button>
+
+
+                </div>
+              </div>
+
+
+            </div>
+
+
+<
+-->
+            <hr>
+            <br>
+            <form class="form-inline al">
+              <div class="form-group ">
+                <label  >Item</label>
+                <input type="text" [(ngModel)]="itemname" name="itemname" class="form-control sp als">
+              </div>
+
+              <div class="form-group ">
+                <label >Unit Price</label>
+                <input type="number"  [(ngModel)]="quantity" name="pQuantity" class="form-control als">
+              </div>
+              <div class="form-group ">
+                <label >qty</label>
+                <input type="number"  [(ngModel)]="unitCost" name="unitCost" class="form-control als">
+              </div>
+
+              <div class="form-group">
+                <button class="btn btn-default " id="#bt1"type="button" (click)="addItem()">
+                  <i class="fa fa-plus" style="color:green"></i>
+                </button>
+              </div>
+            </form>
+            <hr>
+            <hr>
+
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+
+
+                <button type="submit" style="float: left" class="btn btn-primary" >Submit</button>
+              </div>
+            </div>
+            <hr>
+            <hr>
+            <hr>
+
+
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </ng-template>
+
+
+
+</div>
+
+
