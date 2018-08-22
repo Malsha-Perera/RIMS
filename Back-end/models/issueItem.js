@@ -12,7 +12,7 @@ const IssueSchema = mongoose.Schema({
       type: Number
    },
    issueDate: {
-      type: Date
+      type: String
    }
 })
 
