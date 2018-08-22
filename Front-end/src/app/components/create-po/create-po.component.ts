@@ -3,6 +3,7 @@ import {Po}from './cpo';
 import {poItem}from '../po-list/Po-item';
 import {DataService} from "../../services/po.service";
 //import {DDataService} from "../../services/data.service";
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -101,6 +102,11 @@ export class CreatePoComponent implements OnInit {
         this.getItems()
 
       });
+    swal(
+      'Good job!',
+      'You clicked the Add button!',
+      'success'
+    );
 
   }
   deleteproduct(id) {
