@@ -1,5 +1,26 @@
-
-tbody {
+  table {
+    border-collapse: collapse;
+  }
+  th,td {
+    border-bottom: 1px solid rgb(88, 99, 156);
+    padding: 10px;
+  }
+  th {
+    width: 60px;
+    max-width: 60px;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgb(212, 209, 209);
+    border: 10px;
+    border-color: #5d809b;
+    border-top: solid;
+    border-bottom: solid
+  }
+  tbody {
+    font-size: 16px;
+    background-color: white;
+  }
+  /*tbody {
     font-size: 125%;
     font-family: Times, Times New Roman, Georgia, serif;
   }
@@ -12,23 +33,49 @@ tbody {
   }
   th,td {
     vertical-align: middle;
-  }
-  
+  }*/
+
   .modal-header {
     background-color: #5d809b;
     color: white;
     text-align: center;
   }
-  
+
   #modId {
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
     font-size: 150%;
   }
-  
-  
   .modal-body {
     background-color: #c8d2da;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
-  
+
+  input, select {
+    border-radius: 5px;
+    border-color: #5d809b;
+    height: 35px;
+    font-size: 18px;
+    background-color: rgb(248, 247, 244);
+  }
+
+  .input-group-addon {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-color: #5d809b;
+    height: 35px;
+    font-size: 18px;
+    background-color: rgb(248, 247, 244);
+  }
+
+  #mybutton {
+    width:100px;
+    background-color: rgb(19, 121, 19);
+    color: white;
+  }
+  #mybutton:hover {
+    border-color: white;
+  }
+  .btn.btn-outline-success:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }

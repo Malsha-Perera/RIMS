@@ -6,7 +6,7 @@
 </div>
 
 <div class="container">
-  <h1 style="font-size: 40pt;text-align: center;color: black"><b>Sales Product Details</b></h1>
+  <h1 style="font-size: 30pt;text-align: center;color: black; font-family: 'Times New Roman', Times, serif"><b>Sales Product Details</b></h1>
 
   <div class="row">
       <div class="col-md-4"></div>
@@ -48,19 +48,15 @@
                       <td class="text-center">{{item.quantity}}</td>
                       <td class="text-center">{{item.price}}</td>
                       <td class="text-center">{{item.total_price}}</td>
-
-
-
-
+                      <td>
                         <button class='btn btn-danger' (click)="onAllertDeletet(item._id)">
-                        <i class='fa fa-trash fa-lg'></i>Delete
+                          <i class='fa fa-trash fa-lg'></i>Delete
                         </button>
 
                         <button class='btn btn-success' id="mybutton" (click)="openEditModal(template1)" (click)="showEditForm(item)">
-                        <i class="fas fa-align-justify" ></i>View
+                          <i class="fas fa-align-justify" ></i>View
                         </button>
-
-
+                      </td>
                     </tr>
                   </tbody>
                   <tfoot>
@@ -73,9 +69,9 @@
 
             </table>
 
-            <button class='btn btn-success' id="mybutton" (click)="openModal(template)"><i class='fa fa-plus-square fa-lg'></i></button>
+            <button class='btn btn-outline-success' id="mybutton" (click)="openModal(template)">New Customer</button>
 
-            <button class='btn btn-success' id="mybutton" (click)="openInvoiceModal(template2)"><i class='fa fa-plus-square fa-lg'></i></button>
+            <button class='btn btn-outline-success' id="mybutton" (click)="openInvoiceModal(template2)">Add Invoice</button>
 
 
             </div>

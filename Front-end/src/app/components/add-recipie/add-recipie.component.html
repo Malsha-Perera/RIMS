@@ -113,7 +113,7 @@
               <th>Ingredient</th>
               <th>Quantity</th>
               <th>Unit Scale</th>
-              <th>Unit Cost(Rs.)</th>              
+              <th>Unit Cost(Rs.)</th>
               <th>Actions</th>
 
             </tr>
@@ -124,7 +124,7 @@
               <td>{{quantity[i]}}</td>
               <td>{{unitScale[i]}}</td>
               <td>{{unitCost[i]}}</td>
-              
+
               <td>
                 <button class='btn btn-info'  tooltip="edit" (click)="editThis(i, template2)">
                 <i class="fa fa-edit" aria-hidden="true"></i>
@@ -139,9 +139,9 @@
             </tr>
           </tbody>
         </table>
-        <button class='btn btn-success btn-lg' id="mybutton"  (click)="openModal(template1)" ><i class='fa fa-plus-square fa-lg'></i></button>
-        <button type="submit" class='btn btn-success btn-lg' id="mybutton" (click)="onSubmit(recipieForm)" > Save changes</button>
-        <button type="submit" class='btn btn-primary btn-lg' id="mybutton" (click)="getCost(template3)" > Get the Food Cost</button>
+        <button class='btn btn-outlie-success' id="addBtn"  (click)="openModal(template1)" ><i class='fa fa-plus-square fa-lg'>Add</i></button>
+        <button type="submit" class='btn btn-outline-success ' id="saveBtn" (click)="onSubmit(recipieForm)" > Save changes</button>
+        <button type="submit" class='btn btn-outline-primary ' id="getBtn" (click)="getCost(template3)" > Get the Food Cost</button>
 
       </div>
     </div>
@@ -186,8 +186,8 @@
 
     <div class="form-group">
       <div class="col-sm-offset-3 col-sm-9">
-        <input type="submit" class="btn btn-success" value="ok" [disabled]="!ingreForm.valid" (click)="addToArray(ingreForm)">
-        <input type="submit" class="btn btn-warning" value="Cancel" (click)="modalRef.hide()">
+        <button type="submit" class="btn btn-outline-success" id="okBtn" value="" [disabled]="!ingreForm.valid" (click)="addToArray(ingreForm)">OK</button>
+        <button type="button" class="btn btn-outline-warning" id="cancelBtn" value="" (click)="modalRef.hide()">Cancel</button>
       </div>
     </div>
   </form>
@@ -284,7 +284,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
-      
+
       <input type="submit" class="btn btn-success" value="ok" (click)="modalRef.hide()">
     </div>
   </div>

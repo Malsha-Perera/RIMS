@@ -51,6 +51,7 @@ h2{
 
   #modId {
     font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
   }
 
   .btn.btn-outline-info:hover {
@@ -121,5 +122,23 @@ h2{
     color: #5d809b;
   }
 
+  #addProductBtn {
+    color: white;
+    background-color: green;
+    border: 1px solid;
+  }
 
+  #addProductBtn:hover {
+    box-shadow: 0 12px 16px 0 rgba(66, 223, 46, 0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+  }
 
+  #cancelProductBtn {
+    color: white;
+    background-color: rgb(150, 153, 150);
+    border: 1px solid;
+    width:100px;
+  }
+
+  #cancelProductBtn:hover {
+    box-shadow: 0 12px 16px 0 rgba(32, 77, 88, 0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+  }

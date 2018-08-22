@@ -9,7 +9,7 @@
 <!--end-->
 <!--begin container-->
 <div class="container">
-    <h1 style="font-size: 40pt;text-align: center;color: black"><b>Customer Details</b></h1>
+    <h1 style="font-size: 35pt;text-align: center;color: black;font-family: serif"><b>Customer Details</b></h1>
 
     <div class="row">
       <div class="col-md-4"></div>
@@ -38,7 +38,7 @@
                     <th>Action</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody class="text-center">
                     <tr *ngFor = "let customer of mf.data | customerFilter:searchText;let i = index">
                         <td scope="row">{{i+1}}</td>
                         <td class="text-center">{{customer.customer_id}}</td>
@@ -46,26 +46,22 @@
                         <td class="text-center">{{customer.mobile}}</td>
                         <td class="text-center">{{customer.address}}</td>
                         <td class="text-center">{{customer.email_address}}</td>
-
-
-
-                        <button class='btn btn-danger' (click)=" onAllerDeletet(customer._id)">
-                        <i class='fa fa-trash fa-lg'></i>Delete
-                        </button>
-
-                        <button class='btn btn-success' (click)="showEditCustomer(customer)" (click)="openEditModal(template1)">
-                        <i class="fas fa-align-justify"></i>View
-                        </button>
-
-
+                        <td>
+                          <button class='btn btn-ouline-danger' id="deleteCustomerBtn" (click)=" onAllerDeletet(customer._id)">
+                            <i class='fa fa-trash fa-sm'></i>Delete
+                          </button>
+                          <button class='btn btn-outlie-success' id="viewCustomerBtn" (click)="showEditCustomer(customer)" (click)="openEditModal(template1)" tooltip="view Customer Details">
+                            <i class="fas fa-align-justify fa-sm"></i>
+                          </button>
+                        </td>
                     </tr>
                   </tbody>
                   <tfoot>
-                        <tr>
-                              <td colspan="4">
-                              <mfBootstrapPaginator ></mfBootstrapPaginator>
-                              </td>
-                        </tr>
+                    <tr>
+                      <td colspan="4">
+                      <mfBootstrapPaginator ></mfBootstrapPaginator>
+                      </td>
+                    </tr>
                   </tfoot>
 
             </table>
@@ -214,7 +210,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title pull-center" id="myModalLabel"><label id="modId"> Add New Item</label></h4>
+          <h4 class="modal-title pull-center" id="myModalLabel"><label id="modId">Customer Details</label></h4>
         </div>
       </div>
           <!--modal body-->

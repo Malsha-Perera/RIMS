@@ -72,7 +72,7 @@
     font-size: 20px;
     font-style: normal;
   }
-  
+
 /*tbody {
   font-size: 20px;
   background-color: rgb(179, 179, 179);
@@ -181,12 +181,66 @@ tbody {
 #rolSaveBtn,#newItemSaveBtn {
   border-color: rgb(16, 46, 16);
 }
-#rolCancelBtn {
-  background-color: rgb(226, 116, 37);
+#addBtn{
+  background-color: rgb(15, 114, 28);
   color: white;
   border: 1px solid;
-  border-color: black;
+  border-color: rgb(255, 252, 252);
+  width:100px;
+  height:40px;
+  border-radius: 5px;
 }
+#addBtn:hover{
+  box-shadow: 0 12px 16px 0 rgba(24, 151, 35, 0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
+
+#saveBtn{
+  background-color: rgb(15, 114, 28);
+  color: white;
+  border: 1px solid;
+  border-color: rgb(255, 252, 252);
+  width:100px;
+  height:40px;
+  border-radius: 5px;
+}
+#saveBtn:hover{
+  box-shadow: 0 12px 16px 0 rgba(24, 151, 35, 0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
+
+#getBtn{
+  width:130px;
+  height:40px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(11, 66, 150);
+  border: 1px solid;
+  border-color: rgb(255, 252, 252);
+}
+#getBtn:hover{
+  box-shadow: 0 12px 16px 0 rgba(16, 67, 175, 0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
+#cancelBtn {
+  background-color: rgb(184, 105, 14);
+  color: white;
+  border: 1px solid;
+  border-color: rgb(255, 252, 252);
+  width:100px;
+}
+#cancelBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(211, 94, 26, 0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
+
+#okBtn {
+  background-color: rgb(15, 114, 28);
+  color: white;
+  border: 1px solid;
+  border-color: rgb(255, 252, 252);
+  width:100px;
+}
+#okBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(24, 151, 35, 0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
+
 
 #rolInputField {
   border-radius: 5px;
@@ -201,7 +255,7 @@ input, select {
   border-color: #5d809b;
   height: 35px;
   font-size: 18px;
-  
+
 }
 
 label {
