@@ -38,6 +38,7 @@ export class AddRecipieComponent implements OnInit {
   ingredient= [];
   quantity=[];
   unitCost=[];
+  unitScale=[];
   available:Boolean;
   ingredientName2:String;
   quantityinScale2:Number;
@@ -55,6 +56,7 @@ export class AddRecipieComponent implements OnInit {
     this.resetForm();
     console.log("oninit");
     this.refreshRecipieList();
+    this.getItems();
     
   }
 
@@ -142,6 +144,7 @@ export class AddRecipieComponent implements OnInit {
     this.myRecipie.ingredient = this.ingredient;
     this.myRecipie.quantity = this.quantity;
     this.myRecipie.unitCost = this.unitCost;
+    this.myRecipie.unitScale = this.unitScale;
     this.myRecipie.cost = 7777777;
     console.log("Horeey" + this.myRecipie.ingredient);
     console.log("Horeey" + this.myRecipie.recipieCode);
@@ -207,6 +210,7 @@ export class AddRecipieComponent implements OnInit {
         this.ingredient = this.newRecipieList[i].ingredient;
         this.quantity =this.newRecipieList[i].quantity;
         this.unitCost = this.newRecipieList[i].unitCost;
+        this.unitScale = this.newRecipieList[i].unitScale;
         break;
       }
     }
@@ -216,8 +220,10 @@ export class AddRecipieComponent implements OnInit {
     
     this.ingredient.push(form.value.ingredientName);
     this.quantity.push(form.value.quantityinScale);
+    
     this.getUnitCost(form);
     this.unitCost.push(this.unitCostx);
+    this.unitScale.push(this.unitScalex);
     console.log(this.ingredient);
     this.modalRef.hide();
   }
@@ -279,6 +285,7 @@ export class AddRecipieComponent implements OnInit {
       ingredient:[{}],
       quantity:[{}],
       unitCost:[{}],
+      unitScale:[{}],
       cost:null,
     
     };
@@ -289,6 +296,7 @@ export class AddRecipieComponent implements OnInit {
       ingredient:[{}],
       quantity:[{}],
       unitCost:[{}],
+      unitScale:[{}],
       cost:null,
     
     };

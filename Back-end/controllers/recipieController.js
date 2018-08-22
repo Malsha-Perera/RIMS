@@ -40,6 +40,7 @@ router.post('/',function(req,res,next){
         ingredient:req.body.ingredient,
         quantity:req.body.quantity,
         unitCost:req.body.unitCost,
+        unitScale:req.body.unitScale,
         cost:req.body.cost,
         
     });
@@ -66,6 +67,7 @@ router.put('/:recipieCode',(req,res,next) =>{
             ingredient:req.body.ingredient,
             quantity:req.body.quantity,
             unitCost:req.body.unitCost,
+            unitScale:req.body.unitScale,
             cost:req.body.cost,
         }
 
