@@ -12,6 +12,7 @@ import { Recipie } from '../../models/recipie';
 import { Item } from '../../models/item-detail.model';
 import {Globals} from '../../globals/globals';
 import swal from 'sweetalert2';
+import {Ingre} from '../add-recipie/ingre'
 
 
 @Component({
@@ -30,7 +31,7 @@ export class AddRecipieComponent implements OnInit {
   newRecipieList: Recipie[]=[];
   newRecipieList2: Recipie[]=[];
   newRecipies:Recipie[]=[];
-  myRecipie:Recipie;
+  myRecipie:Recipie;  
   alerts: any[] = [];
   selectedRecipie:Recipie;
   recipieCode: String;
@@ -46,7 +47,10 @@ export class AddRecipieComponent implements OnInit {
   itemNamex: String;
   unitScalex:String;
   unitCostx:number;
-  
+  itemAvailable:Boolean;
+  foodCost:number;
+  salesPrice:number;
+  profitMargin:number;
   
   
 
@@ -107,12 +111,27 @@ export class AddRecipieComponent implements OnInit {
 
   }
 
+
+
   editArray(form: NgForm){
     this.ingredient[this.editIndex] = form.value.ingredientName2;
     this.quantity[this.editIndex] = form.value.quantityinScale2;
     this.modalRef.hide();
     
   }
+
+  getCost(template: TemplateRef<any>){
+    var count;
+    this.foodCost=0;
+    for (var i=0; i<this.ingredient.length; i++){
+     count =this.quantity[i]*this.unitCost[i];
+     this.foodCost= this.foodCost +count; 
+    }   
+
+    this.salesPrice =this.foodCost+(( this.foodCost* this.profitMargin)/100);
+    this.openModal(template);
+  }
+
   deleteThis(i){
     swal({
       title: 'Are you sure?',
@@ -126,6 +145,8 @@ export class AddRecipieComponent implements OnInit {
       if (result.value) {
         this.ingredient.splice(i ,1);
         this.quantity.splice(i ,1);
+        this.unitCost.splice(i ,1);
+        this.unitScale.splice(i ,1);
         
         swal(
           'Deleted!',
@@ -137,6 +158,8 @@ export class AddRecipieComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    this.profitMargin = form.value.profitMargin; 
+    //Globals.profitMargin = form.value.profitMargin;
     this.checkRecipeCodeAvailable(form.value.recipieCode);
     //this.myRecipie._id="5b77ccb187243520acb904f8";
     this.myRecipie.recipieCode = form.value.recipieCode;
@@ -181,6 +204,8 @@ export class AddRecipieComponent implements OnInit {
  public refreshRecipieList() {
    this.recipieCode = Globals.recipeCode;
    this.productName = Globals.productName;
+   this.profitMargin =Globals.profitMargin;
+   
     this.recipieService.getRecipeFromCode(Globals.recipeCode).subscribe((res) => {
       
       this.recipieList = res as Recipie[];
@@ -191,15 +216,11 @@ export class AddRecipieComponent implements OnInit {
       console.log(this.quantity);
       
     }); 
-    this.recipieService.getRecipes().subscribe((res) => {
-      
+    this.recipieService.getRecipes().subscribe((res) => {      
       this.allRecipieList = res as Recipie[];
-      localStorage.setItem("recipieKey1",JSON.stringify(this.allRecipieList));
-              
+      localStorage.setItem("recipieKey1",JSON.stringify(this.allRecipieList));           
       
-    });  
-
-    
+    });      
   }
 
   public getArrays(){
@@ -218,14 +239,23 @@ export class AddRecipieComponent implements OnInit {
 
   public addToArray(form: NgForm){
     
-    this.ingredient.push(form.value.ingredientName);
-    this.quantity.push(form.value.quantityinScale);
-    
     this.getUnitCost(form);
-    this.unitCost.push(this.unitCostx);
-    this.unitScale.push(this.unitScalex);
-    console.log(this.ingredient);
-    this.modalRef.hide();
+    if (this.itemAvailable == true){
+      this.ingredient.push(form.value.ingredientName);
+      this.quantity.push(form.value.quantityinScale);   
+      this.unitCost.push(this.unitCostx);
+      this.unitScale.push(this.unitScalex);
+      console.log(this.ingredient);
+      console.log(this.unitCost);
+      form.reset();
+      this.modalRef.hide();
+    }
+    else{
+      form.reset();
+      this.modalRef.hide();
+    }
+    
+    
   }
 
   onEdit(Recipie:Recipie) {
@@ -260,7 +290,8 @@ export class AddRecipieComponent implements OnInit {
       if (this.itemList[i].itemname == this.itemNamex){
         this.unitCostx= this.itemList[i].unitCost;
         this.unitScalex= this.itemList[i].unitScale;
-        console.log("unit Cost:" + this.unitCostx)
+        //console.log("unit Cost:" + this.unitCostx)
+        this.itemAvailable = true;
         return;
       }
     }
@@ -269,7 +300,7 @@ export class AddRecipieComponent implements OnInit {
       'Please add this item to the database first',                    
       'error'
     );
-    
+    this.itemAvailable = false;
 
   }
 
@@ -300,6 +331,7 @@ export class AddRecipieComponent implements OnInit {
       cost:null,
     
     };
+    
        
 
   }
