@@ -50,3 +50,32 @@
     background-color: #c8d2da;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
+
+  input, select {
+    border-radius: 5px;
+    border-color: #5d809b;
+    height: 35px;
+    font-size: 18px;
+    background-color: rgb(248, 247, 244);
+  }
+
+  .input-group-addon {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-color: #5d809b;
+    height: 35px;
+    font-size: 18px;
+    background-color: rgb(248, 247, 244);
+  }
+
+  #mybutton {
+    width:100px;
+    background-color: rgb(19, 121, 19);
+    color: white;
+  }
+  #mybutton:hover {
+    border-color: white;
+  }
+  .btn.btn-outline-success:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
