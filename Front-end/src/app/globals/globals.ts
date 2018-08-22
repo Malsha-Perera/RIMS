@@ -49,6 +49,7 @@ export class Globals{
     */
    static recipeCode = '';
    static productName= '';
+   static profitMargin = 20;
   
   
 }

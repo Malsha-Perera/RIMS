@@ -93,6 +93,15 @@
     <br><br>
     <br>
 
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Profit Margin (%): </label>
+      <div class="col-sm-6">
+        <input type="text" name="profitMargin" [(ngModel)]="profitMargin" class="form-control" placeholder="Profit Margin" >
+      </div>
+    </div>
+    <br><br>
+    <br>
+
 
     <br><br>
     <div class="row">
@@ -104,7 +113,7 @@
               <th>Ingredient</th>
               <th>Quantity</th>
               <th>Unit Scale</th>
-              <th>Unit Cost</th>              
+              <th>Unit Cost(Rs.)</th>              
               <th>Actions</th>
 
             </tr>
@@ -132,7 +141,7 @@
         </table>
         <button class='btn btn-success btn-lg' id="mybutton"  (click)="openModal(template1)" ><i class='fa fa-plus-square fa-lg'></i></button>
         <button type="submit" class='btn btn-success btn-lg' id="mybutton" (click)="onSubmit(recipieForm)" > Save changes</button>
-
+        <button type="submit" class='btn btn-primary btn-lg' id="mybutton" (click)="getCost(template3)" > Get the Food Cost</button>
 
       </div>
     </div>
@@ -229,6 +238,54 @@
     <div class="col-sm-offset-3 col-sm-9">
       <input type="submit" class="btn btn-primary" value="Edit" [disabled]="!ingreForm.valid" (click)="editArray(ingreEditForm)">
       <input type="submit" class="btn btn-warning" value="Cancel" (click)="modalRef.hide()">
+    </div>
+  </div>
+</form>
+</div>
+</div>
+</ng-template>
+
+<ng-template #template3>
+  <div class="row">
+    <div class="modal-header col-sm">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-8">
+          <h4 class="modal-title pull-center" id="myModalLabel"><br><label id="modId"> Food Cost</label></h4>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <i class="fas fa-window-close fa-2x"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <!--modal body-->
+<div class="row">
+<div class="modal-body">
+<form class="form-horizontal" #ingreEditForm = "ngForm" >
+
+
+  <div class="form-group row">
+    <label class="col-sm-3 control-label">Food Cost (Rs.) :</label>
+    <div class="col-sm-9">
+          <input class="form-control" type="number" name="foodCost" id="foodCost" #name="ngModel" [(ngModel)]="foodCost">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 control-label">Estimated Sales Price (Rs.) :</label>
+    <div class="col-sm-9">
+      <input class="form-control" type="number" name="salesPrice"  [(ngModel)]="salesPrice" >
+    </div>
+  </div>
+  <label>(Set a nearest value to the Estimated sales price to achieve estimated profit)</label>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      
+      <input type="submit" class="btn btn-success" value="ok" (click)="modalRef.hide()">
     </div>
   </div>
 </form>
