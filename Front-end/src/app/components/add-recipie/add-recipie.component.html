@@ -103,7 +103,8 @@
 
               <th>Ingredient</th>
               <th>Quantity</th>
-              <th>Unit Cost</th>
+              <th>Unit Scale</th>
+              <th>Unit Cost</th>              
               <th>Actions</th>
 
             </tr>
@@ -112,7 +113,9 @@
             <tr *ngFor=" let ing of ingredient; let i =index" >
               <td>{{ing}}</td>
               <td>{{quantity[i]}}</td>
+              <td>{{unitScale[i]}}</td>
               <td>{{unitCost[i]}}</td>
+              
               <td>
                 <button class='btn btn-info'  tooltip="edit" (click)="editThis(i, template2)">
                 <i class="fa fa-edit" aria-hidden="true"></i>

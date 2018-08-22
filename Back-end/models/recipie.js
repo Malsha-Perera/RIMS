@@ -21,6 +21,10 @@ const ImSchema= mongoose.Schema({
         type:Array,
         required:true,
     },
+    unitScale:{
+        type:Array,
+        required:true,
+    },
     cost:{
         type:Number,
         required:true,
