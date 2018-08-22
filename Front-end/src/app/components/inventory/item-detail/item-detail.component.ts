@@ -332,7 +332,7 @@ export class ItemDetailComponent implements OnInit {
       itemName: '',
       itemCode: '',
       itemQuantity: null,
-      date: null
+      date: ''
     };
     this.newQuantity = null;
   }
@@ -342,7 +342,7 @@ export class ItemDetailComponent implements OnInit {
       itemName: '',
       itemCode: '',
       itemQuantity: null,
-      date: null
+      date: ''
     };
   }
 
@@ -354,7 +354,7 @@ export class ItemDetailComponent implements OnInit {
     // console.log(this.issueOne);
     this.issuedItem.itemCode = item.itemCode;
     this.issuedItem.itemName = item.itemname;
-    this.issuedItem.date = this.today;
+    this.issuedItem.date = this.today.toDateString();
     // this.itemDetailService.issueItems = this.issueOne;
   }
 

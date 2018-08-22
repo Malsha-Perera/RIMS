@@ -17,7 +17,6 @@
               <th><mfDefaultSorter by="issueItemName">Name</mfDefaultSorter></th>
               <th><mfDefaultSorter by="issueItemQuantity">Quantity</mfDefaultSorter></th>
               <th><mfDefaultSorter by="issueDate">Issue Date</mfDefaultSorter></th>
-              <th><mfDefaultSorter by="issueDate">Issue Time</mfDefaultSorter></th>
             </tr>
           </thead>
           <tbody>
@@ -26,8 +25,7 @@
                   <td>{{item.issueItemCode}}</td>
                   <td style="font-weight: 800">{{item.issueItemName}}</td>
                   <td style="font-weight: 800">{{item.issueItemQuantity}}</td>
-                  <td style="font-weight: 800">{{item.issueDate.slice(0, 10)}}</td>
-                  <td style="font-weight: 800">{{item.issueDate.slice(0, 19)}}</td>
+                  <td style="font-weight: 800">{{item.issueDate.slice(0, 16)}}</td>
               </tr>
           </tbody>
           <tfoot>
@@ -42,6 +40,7 @@
     </div>
   </div>
 </div>
+<button type="button" class="btn btn-outline-default" (click)="setChartItems()">get</button>
 <div class="container">
     <fusioncharts
     width="800"
