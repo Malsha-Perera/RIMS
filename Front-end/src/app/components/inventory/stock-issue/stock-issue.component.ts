@@ -23,31 +23,21 @@ export class StockIssueComponent implements OnInit {
   ngOnInit() {
     this.refreshIssuedItemList();
     this.setDataSource();
-    // this.setChartItems();
   }
 
   refreshIssuedItemList() {
     this.itemDetailService.getIssuedItems().subscribe((res) => {
       this.issuedItems = res as IssueItem[];
       localStorage.setItem('issueItemkey', JSON.stringify(this.issuedItems));
-      // console.log(res);
-      // this.setChartItems();
     });
   }
 
-  /*getIssueItems() {
-    this.itemDetailService.getIssuedItems().subscribe((res) => {
-      this.issuesChartItems = res as IssueItem[];
-    });
-  }*/
 
   setChartItems() {
 
     // tslint:disable-next-line:prefer-const
     let today = this.date.toDateString();
     let d = '';
-    // console.log(today);
-    // console.log(this.issuedItems);
     this.newIssueItems = JSON.parse(localStorage.getItem('issueItemkey'));
     let i = 0;
     for ( i; i < this.newIssueItems.length; i++) {
@@ -61,13 +51,12 @@ export class StockIssueComponent implements OnInit {
         continue;
       }
     }
-    // console.log(this.todayIssueItems);
     this.dataSource = {
       chart: {
-          'caption': 'Items purchase in One Year [2017-18]',
-          'subCaption': 'In MMbbl = One Million barrels',
+          'caption': 'Items Issue on Today',
+          'subCaption': '',
           'xAxisName': 'Items',
-          'yAxisName': 'Purchases (Kg)',
+          'yAxisName': 'issues (Kg)',
           'numberSuffix': 'Kg',
           'theme': 'gammel',
       },
