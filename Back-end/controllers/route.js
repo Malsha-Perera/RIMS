@@ -33,15 +33,15 @@ router.get('/item/:itemCode', (req, res, next) => {
 
     //inserting data
     router.post('/item',function(req,res,next){
-       let newproduct=new Item({
-           itemname:req.body.itemname,
-           quantity:req.body.quantity,
-           description:req.body.description,
-           itemCode:req.body.itemCode,
-           unitCost:req.body.unitCost, 
-           unitScale:req.body.unitScale,          
+        let newproduct=new Item({
+            itemname:req.body.itemname,
+            quantity:req.body.quantity,
+            description:req.body.description,
+            itemCode:req.body.itemCode,
+            unitCost:req.body.unitCost,
+            unitScale:req.body.unitScale,
 
-       });
+        });
         newproduct.save(function (err,item) {
             if (err) {
                 res.json(err);
@@ -65,9 +65,9 @@ router.put('/item/:id',(req,res,next) =>{
             description:req.body.description,
             //thama me fields edit karanna deela nathi nisa hriyta balala fix karanna one
             itemCode:req.body.itemCode,
-            unitCost:req.body.unitCost, 
+            unitCost:req.body.unitCost,
             latestUpdate:req.body.latestUpdate,
-            //unitScale:req.body.unitScale,  
+            //unitScale:req.body.unitScale,
         }
 
     },function (err,result) {
@@ -77,7 +77,6 @@ router.put('/item/:id',(req,res,next) =>{
         else{
             res.json(result);
         }
-        
     })
 });
     //deleting data
