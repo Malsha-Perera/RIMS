@@ -45,13 +45,6 @@ export class ItemDetailComponent implements OnInit {
   bsValue = new Date();
   count;
   today = new Date();
-  /*date: Date = new Date();
-    settings = {
-        bigBanner: true,
-        timePicker: false,
-        format: 'dd-MM-yyyy',
-        defaultOpen: true
-    }*/
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
 
   ngOnInit() {
@@ -60,7 +53,6 @@ export class ItemDetailComponent implements OnInit {
     this.resetIssueItem();
     this.resetIssuedItem();
     this.resetDeleteItemId();
-    // this.checkExistId();
     this.resetEditRol();
   }
   // method for open modal
@@ -129,6 +121,7 @@ export class ItemDetailComponent implements OnInit {
           let resCode;
           resCode = this.setItemCode(form.value.itemname);
           form.value.itemCode = resCode;
+          form.value.date = this.today.toDateString();
           this.itemDetailService.postItem(form.value).subscribe((response) => {
             // this.addItemAlert();
             swal('New Item Added', this.altertMsg, 'success');
@@ -147,6 +140,7 @@ export class ItemDetailComponent implements OnInit {
           // this.resetForm(form);
         }
     } else {
+      form.value.date = this.today.toDateString();
       this.itemDetailService.putItem(form.value).subscribe((res) => {
         this.resetForm(form);
         this.refreshItemList();
@@ -224,12 +218,12 @@ export class ItemDetailComponent implements OnInit {
     quantity: 0,
     description: '',
     unitCost: 0,
-    latestUpdate: null,
+    latestUpdate: '',
     unitScale: 'ND',
     minimumLevel: 0,
     reOrderLevel: 50,
     maximumLevel: 0,
-    date: null
+    date: ''
 
     };
   }
@@ -282,12 +276,12 @@ export class ItemDetailComponent implements OnInit {
     quantity: 0,
     description: '',
     unitCost: 0,
-    latestUpdate: null,
+    latestUpdate: '',
     unitScale: 'ND',
     minimumLevel: 0,
     reOrderLevel: 50,
     maximumLevel: 0,
-    date: null
+    date: ''
 
     };
 

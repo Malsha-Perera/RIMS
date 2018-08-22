@@ -40,8 +40,14 @@
     </div>
   </div>
 </div>
-<button type="button" class="btn btn-outline-default" (click)="setChartItems()">get</button>
 <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+          <button type="button" class="btn btn-outline-info" id="getBtn" (click)="setChartItems()" style="width: 100px">get</button>
+      </div>
+    </div>
     <fusioncharts
     width="800"
     height="400"
