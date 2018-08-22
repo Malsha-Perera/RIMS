@@ -187,7 +187,7 @@
                 <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="itemDetailService.selectedItem._id">
                   <!--begin row div--------------------------------------------------------------->
                   <div class="form-group row">
-
+                    <div class="col-sm-3"></div>
                     <div class="col-sm-6">
                       <label> Item Name:<span style="color: red; font-size: 15px;">*</span></label>
                       <div>
@@ -198,12 +198,7 @@
                       </div>
                     </div>
 
-                    <div class="col-sm-6">
-                      <label>Item Code:<span style="color: red">*</span></label>
-                      <div>
-                        <input class="form-control" type="hidden" name="itemCode" value="" id="itemcode" #itemCode="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode" placeholder="Itme Code" autocomplete="off">
-                      </div>
-                    </div>
+                    <input class="form-control" type="hidden" name="itemCode" value="" id="itemcode" #itemCode="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode" placeholder="Itme Code" autocomplete="off">
 
                   </div>
                   <!--end row div-------------------------------------------------------------->
@@ -578,10 +573,13 @@
                 </div>
                 <br>
                 <div class="row" style="text-align: center">
-                  <div class="col-md-4"></div>
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <label>Description:</label>
                     <input type="text" value="{{viewItem.description}}" readonly="true">
+                  </div>
+                  <div class="col-md-6">
+                      <label>Unit Cost(per unit):</label>
+                      <input type="text" value="{{viewItem.unitCost}}.00 (RS)" readonly="true">
                   </div>
                 </div>
                 <br>

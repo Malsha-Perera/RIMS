@@ -9,13 +9,15 @@
   <div class="row margintop20px paddingtopbottom15px whitebackground">
     <div class="col-sm-12">
       <div class="table-responsive">
-        <table class="table  table-hover " [mfData]="issuedItems" #mf="mfDataTable" [mfRowsOnPage]="10">
+        <table class="table  table-hover " [mfData]="issuedItems" #mf="mfDataTable" [mfRowsOnPage]="20">
           <thead>
             <tr>
               <th style="width:10px;max-width:10px;">#</th>
               <th><mfDefaultSorter by="issueItemCode">Code</mfDefaultSorter></th>
               <th><mfDefaultSorter by="issueItemName">Name</mfDefaultSorter></th>
               <th><mfDefaultSorter by="issueItemQuantity">Quantity</mfDefaultSorter></th>
+              <th><mfDefaultSorter by="issueDate">Issue Date</mfDefaultSorter></th>
+              <th><mfDefaultSorter by="issueDate">Issue Time</mfDefaultSorter></th>
             </tr>
           </thead>
           <tbody>
@@ -24,6 +26,8 @@
                   <td>{{item.issueItemCode}}</td>
                   <td style="font-weight: 800">{{item.issueItemName}}</td>
                   <td style="font-weight: 800">{{item.issueItemQuantity}}</td>
+                  <td style="font-weight: 800">{{item.issueDate.slice(0, 10)}}</td>
+                  <td style="font-weight: 800">{{item.issueDate.slice(0, 19)}}</td>
               </tr>
           </tbody>
           <tfoot>
@@ -38,4 +42,12 @@
     </div>
   </div>
 </div>
+<div class="container">
+    <fusioncharts
+    width="800"
+    height="400"
+    type="Column2d"
+    [dataSource]="dataSource">
+  </fusioncharts>
+  </div>
 

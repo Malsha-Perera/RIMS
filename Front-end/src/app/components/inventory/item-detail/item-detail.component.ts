@@ -44,6 +44,7 @@ export class ItemDetailComponent implements OnInit {
   newROL;
   bsValue = new Date();
   count;
+  today = new Date();
   /*date: Date = new Date();
     settings = {
         bigBanner: true,
@@ -330,7 +331,8 @@ export class ItemDetailComponent implements OnInit {
     this.issueOne = {
       itemName: '',
       itemCode: '',
-      itemQuantity: null
+      itemQuantity: null,
+      date: null
     };
     this.newQuantity = null;
   }
@@ -339,7 +341,8 @@ export class ItemDetailComponent implements OnInit {
     this.issuedItem = {
       itemName: '',
       itemCode: '',
-      itemQuantity: null
+      itemQuantity: null,
+      date: null
     };
   }
 
@@ -351,6 +354,7 @@ export class ItemDetailComponent implements OnInit {
     // console.log(this.issueOne);
     this.issuedItem.itemCode = item.itemCode;
     this.issuedItem.itemName = item.itemname;
+    this.issuedItem.date = this.today;
     // this.itemDetailService.issueItems = this.issueOne;
   }
 
