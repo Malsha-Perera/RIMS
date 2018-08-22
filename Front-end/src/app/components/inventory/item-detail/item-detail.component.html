@@ -3,7 +3,7 @@
 <div>
   <ol class="breadcrumb">
     <li><a [routerLink]="['']" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Home</button></a></li>
-    <li><a routerLink="/items" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Inventory</button></a></li>
+    <li class="active" style="font-size: 20px"><button type="button" id="InventoryBreadCrumBtn"class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(6, 95, 43)">Inventory</button></li>
   </ol>
 </div>
 <!-----------------------------------end--------------------------------------->
@@ -16,7 +16,7 @@
     <div class="col-md-1"></div>
       <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
         <a [routerLink]="['stockupdate']">
-          <button class="btn btn-primary" style="font-size: 20px; text-align: center"> Stock Update
+          <button class="btn btn-primary" id="stockUpdateLinkBtn" style="font-size: 20px; text-align: center; border: 1px solid"> Stock Update
             <i class="fas fa-hand-point-right fa-lg"></i>
           </button>
         </a>
@@ -27,8 +27,7 @@
       <!--to create a stock issue document-->
       <div class="col-md-3 col-sm-6 col-xs-12">
         <a [routerLink]="['stockIssue']">
-          <button class="btn btn-primary" style="font-size: 20px; text-align: center">
-            Stock Issue
+          <button class="btn btn-primary" id="stockIssueLinkBtn" style="font-size: 20px; text-align: center; border: 1px solid">Stock Issue
             <i class="fas fa-hand-point-right fa-lg"></i>
           </button>
         </a>
@@ -135,20 +134,20 @@
                   </button-->
                 <td class="text-center" style="font-weight: 800">{{item.quantity}}</td>
                 <td>
-                  <button type="button" class='btn btn-outline-info' id="editItemBtn" (click)="onEditSet(item) ; openModal(EditItemtemplate)" tooltip="edit">Edit
+                  <button type="button" class='btn btn-outline-info' id="editItemBtn" (click)="onEditSet(item) ; openModal(EditItemtemplate)">Edit
                   <i class="fa fa-edit" aria-hidden="true"></i>
                   </button>
 
-                  <button type="button" class='btn btn-outline-danger' id="deleteItemBtn" (click)="setDeleteItem(item._id);openConfirmDeleteModal(templateConfirmD)" tooltip="delete">Delete
+                  <button type="button" class='btn btn-outline-danger' id="deleteItemBtn" (click)="setDeleteItem(item._id);openConfirmDeleteModal(templateConfirmD)">Delete
                   <i class='fa fa-trash fa-sm'></i>
                   </button>
 
-                  <button type="button" class='btn btn-outline-success' id="viewItemBtn" (click)="onView(item); openViewItemModal(templateViewItemModal)">
+                  <button type="button" class='btn btn-outline-success' id="viewItemBtn" (click)="onView(item); openViewItemModal(templateViewItemModal)" tooltip="View Item">
                   <i class="fas fa-align-justify"></i>
                   </button>
                 </td>
                 <td>
-                  <button class='btn btn-outline-default' id="issueBtn" (click)="issueItem(item); openIssueModal(templateIssueItemModal)" tooltip="">
+                  <button class='btn btn-outline-default' id="issueBtn" (click)="issueItem(item); openIssueModal(templateIssueItemModal)" tooltip="Issue Item">
                     <i class="fa fa-cart-arrow-down fa-lg"></i>
                   </button>
                 </td>
@@ -174,7 +173,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title pull-center" id="myModalLabel"><label id="modId"> Add New Item</label></h4>
+            <h4 class="modal-title pull-center" id="myModalLabel"><label id="modId" style="font-optical-sizing: 30px"> Add New Item</label></h4>
           </div>
         </div>
         <!--modal body-->
@@ -306,10 +305,10 @@
                     <div class="col-sm-4">
                       <button type="submit" class="btn btn-success" id="newItemSaveBtn" [disabled]="!itemDetailForm.form.valid">Save Item</button>
                     </div>
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4">
-                      <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide(); resetForm(itemDetailForm)">Cancel</button>
-                      <button type="button" class="btn btn-warning" id="resetbutton" data-toggle="modal" data-target="#myModal" (click)="resetForm(itemDetailForm)">Reset</button>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-5">
+                      <button type="button" class="btn btn-outline-default" id="newItemCancelBtn" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide(); resetForm(itemDetailForm)">Cancel</button>
+                      <button type="button" class="btn btn-outline-warning" id="newItemResetBtn" data-toggle="modal" data-target="#myModal" (click)="resetForm(itemDetailForm)">Reset</button>
                     </div>
                   </div>
                   <!--end row div------------------------------------------------------------------>
@@ -339,13 +338,13 @@
                   <div class="col-sm-6">
                     <label> Item Name:</label>
                     <div>
-                      <input class="form-control" type="text" name="itemname" value="" id="name" #itemname="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemname" placeholder="Item Name (ex:Potato)" required="required" autocomplete="off" autocapitalize="words" readonly="true" tooltip="you cannot edit Item Name">
+                      <input class="form-control" style="background-color:rgb(156, 130, 119); color: white;" type="text" name="itemname" value="" id="name" #itemname="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemname" placeholder="Item Name (ex:Potato)" required="required" autocomplete="off" autocapitalize="words" readonly="true" tooltip="you cannot edit Item Name">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <label>Item Code:</label>
                     <div>
-                      <input class="form-control" type="text" name="itemCode" value="" id="itemcode" #itemCode="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode" placeholder="Itme Code" required minlength="3" maxlength="3" autocomplete="off" readonly="true" tooltip="you cannot edit Item Code">
+                      <input class="form-control" style="background-color:rgb(156, 130, 119); color: white;" type="text" name="itemCode" value="" id="itemcode" #itemCode="ngModel" [(ngModel)]="itemDetailService.selectedItem.itemCode" placeholder="Itme Code" required minlength="3" maxlength="3" autocomplete="off" readonly="true" tooltip="you cannot edit Item Code">
                     </div>
                   </div>
                 </div>
@@ -397,7 +396,7 @@
                   <div class="col-sm-6">
                     <label>Latest Update Date:</label>
                     <div>
-                      <input class="form-control" type="text" name="latestUpdate" value="itemDetailService.selectedItem.latestUpdate"  #latestUpdate="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate" readonly="true">
+                      <input class="form-control" style="background-color:rgb(230, 130, 88); color: white;" type="text" name="latestUpdate" value="itemDetailService.selectedItem.latestUpdate"  #latestUpdate="ngModel" [(ngModel)]="itemDetailService.selectedItem.latestUpdate" readonly="true">
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -439,12 +438,12 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <div class="col-sm-4">
-                    <button type="submit" class="btn btn-success" id="newItemSaveBtn" (click)="modalRef.hide()">Save Item</button>
+                  <div class="col-sm-3">
+                    <button type="submit" class="btn btn-outline-success" id="newItemSaveBtn" (click)="modalRef.hide()">Save Item</button>
                   </div>
-                  <div class="col-sm-4"></div>
+                  <div class="col-sm-5"></div>
                   <div class="col-sm-4">
-                    <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide(); refreshItemList()">Cancel</button>
+                    <button type="submit" class="btn btn-outline-default" id="editItemCancelBtn" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide(); refreshItemList()">Cancel</button>
                   </div>
                 </div>
               </form>
@@ -479,14 +478,14 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title pull-center" id="myModalLabel"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i><br><label>New Re Order Level</label></h4>
+          <h4 class="modal-title pull-center" id="myModalLabel"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i><br><label style="font-size:20px; font-family: 'Times New Roman', Times, serif">New Re Order Level</label></h4>
         </div>
               <!--modal body-->
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-              <label>{{editRolId}}</label>
+              <label style="font-size:18px">{{editRolId}}:</label>
               <input type="text" name="editRol" value="" id="rolInputField" #editROL="ngModel" [(ngModel)]="newROL" required>
             </div>
             <div class="col-sm-4"></div>

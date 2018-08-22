@@ -1,18 +1,4 @@
 
-/*tbody {
-  font-size: 20px;
-  background-color: rgb(179, 179, 179);
-}
-th {
-  width: 60px;
-  max-width: 60px;
-  font-size:20px;
-  text-align: center;
-  background-color: #ffffff;
-}
-th,td {
-  vertical-align: middle;
-}*/
 table {
   border-collapse: collapse;
 }
@@ -60,11 +46,45 @@ tbody {
   width: 75px;
 }
 #addNewItemBtn {
-  background-color: rgb(7, 107, 7);
+  background-color: rgb(14, 150, 14);
+  color: white;
   width: 100px;
   height: 40px;
+}
+#addNewItemBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(59, 167, 73, 0.568), 0 17px 50px 0 rgba(0,0,0,0.5);
+  border-color: white;
+
+}
+
+#newItemSaveBtn {
+  width:100px;
+  background-color: rgb(14, 150, 14);
   color: white;
 }
+#newItemSaveBtn:hover {
+  border-color: white;
+}
+
+#newItemCancelBtn,#editItemCancelBtn {
+  width:100px;
+  background-color: rgba(122, 120, 120, 0.877);
+  color: white;
+}
+#newItemCancelBtn:hover,#editItemCancelBtn:hover {
+  border-color: white;
+}
+
+#newItemResetBtn {
+  width: 100px;
+  background-color: rgb(16, 121, 170);
+  color: white;
+}
+#newItemResetBtn:hover {
+  border-color: white;
+}
+
+
 .btn.btn-outline-info:hover {
   box-shadow: 0 12px 16px 0 rgba(10, 10, 10, 0.24), 0 17px 50px 0 rgba(0,0,0,0.5);
 }
@@ -79,6 +99,9 @@ tbody {
 .btn.btn-outline-default:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+.btn.btn-outline-warning:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
 .modal-header {
   background-color: #a6c8e2;
@@ -89,6 +112,7 @@ tbody {
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
   font-size: 150%;
+  border-color: white;
 }
 
 
@@ -218,4 +242,13 @@ input:required:hover {
 
 #viewModal {
   background-color: #a6c8e2;
+}
+#InventoryBreadCrumBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(5, 107, 31, 0.24), 0 17px 50px 0 rgba(8, 122, 46, 0.767);
+}
+
+#stockUpdateLinkBtn:hover, #stockIssueLinkBtn:hover {
+  background-color: rgb(28, 150, 167);
+  border-color: white;
+  box-shadow: 0 12px 16px 0 rgba(116, 50, 177, 0.24), 0 17px 50px 0 rgba(9, 67, 82, 0.767);
 }
