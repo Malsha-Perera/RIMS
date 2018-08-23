@@ -40,7 +40,7 @@ export class SalesComponent implements OnInit {
 
   private ArrayList: Array<any> = [];
   private newAttribute: any = {};
-  
+
 
   ItemList: Item[] = [];
   InvoiceList: Invoice[] = [];
@@ -50,8 +50,8 @@ export class SalesComponent implements OnInit {
 
   ItemArray:Item[] = [];
 
-  
-  
+
+
 
   selectedItem: Item;
   toggleForm = false;
@@ -59,8 +59,8 @@ export class SalesComponent implements OnInit {
   customerDetails: any;
   productDeatails: any;
 
-  
-  
+
+
 
   public calcTotPrice() {
 
@@ -73,10 +73,10 @@ export class SalesComponent implements OnInit {
    // console.log(this.total1);
   }
 
-  
 
 
-  
+
+
 
   public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-md' }); // {3}
@@ -108,7 +108,7 @@ export class SalesComponent implements OnInit {
     this.total_price=this.price*this.quantity;
 
     const newItem: Item = {
-      
+
       product_id: form.value.product_id,
       product_name: form.value.product_name,
       category:form.value.category,
@@ -119,11 +119,11 @@ export class SalesComponent implements OnInit {
       total_price:this.total_price
     };
 
-    
 
 
 
-    
+
+
     const newCustomer: Customer = {
       customer_id: form.value.customer_id,
       customer_name: form.value.customer_name,
@@ -131,13 +131,13 @@ export class SalesComponent implements OnInit {
       address: form.value.address,
       email_address: form.value.email_address
     };
-   
+
 
 
  this.CustomerList.push(newCustomer);
  this.ProductList.push(newItem);
 
- 
+
     this.itemService.addItem(newItem).subscribe(items => {
       //console.log(items);
       this.getItems();
@@ -146,20 +146,20 @@ export class SalesComponent implements OnInit {
         title: 'Sales Item and Customer are succesfully added!',
         type: 'success',
         text: '',
-        
-        
+
+
       });
     });
-   
+
 
     this.itemService.addCustomer(newCustomer).subscribe(customers => {
       });
 
     this.modalRef.hide();
-    
+
   }
 
-  
+
 
   deleteItems(id) {
     this.itemService.deleteItems(id).subscribe(data => {
@@ -172,7 +172,7 @@ export class SalesComponent implements OnInit {
           }
         }
       }
-     
+
       this.getItems();
     });
   }
@@ -197,8 +197,8 @@ export class SalesComponent implements OnInit {
         title: 'Sales Item is succesfully updated!',
         type: 'success',
         text: '',
-        
-        
+
+
       });
       this.getItems();
       this.modalRef.hide();
@@ -207,7 +207,7 @@ export class SalesComponent implements OnInit {
 
   addSalesItemCustomerAlert(): void {
     this.alerts.push({
-      
+
       type: 'success',
       msg: `Sales Items and Customer are added successfully! (added: ${new Date().toLocaleTimeString()})`,
       timeout: 3000
@@ -234,7 +234,7 @@ export class SalesComponent implements OnInit {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
-  
+
 deleteFieldValue(index) {
   this.ArrayList.splice(index, 1);
 }
@@ -242,12 +242,12 @@ deleteFieldValue(index) {
 addFieldValue() {
   this.ArrayList.push(this.newAttribute);
   this.newAttribute = {};
- 
+
   //console.log(this.ArrayList);
 
 
-  
-  
+
+
 }
 
 onAllertDeletet(id){
@@ -262,7 +262,7 @@ onAllertDeletet(id){
   }).then((result) => {
     if (result.value) {
       Swal(
-        
+
         'Deleted!',
         'Your imaginary file has been deleted.',
         'success'
@@ -272,7 +272,7 @@ onAllertDeletet(id){
     // https://sweetalert2.github.io/#handling-dismissals
     } else if (result.dismiss === Swal.DismissReason.cancel) {
       Swal(
-        
+
         'Cancelled',
         'Your imaginary file is safe :)',
         'error'
@@ -291,10 +291,10 @@ onAllertDeletet(id){
   }
 
   addInvoice(form) {
-    
-    
+
+
     const newInvoice: Invoice = {
-      
+
       tax:form.value.tax,
       total:form.value.total,
       com_name:form.value.com_name,
@@ -305,28 +305,28 @@ onAllertDeletet(id){
       invoice_no:form.value.invoice_no,
       date:form.value.date
 
-     
+
     };
 
     console.log(newInvoice);
 
-   
+
 
     this.itemService.addInvoice(newInvoice).subscribe(invoices => {
 
-    
+
       Swal({
         position: 'top',
         title: 'Invoice succesfully added!',
         type: 'success',
         text: '',
-        
-        
+
+
       });
     });
-   
+
     this.modalRef.hide();
-    
+
   }
 
 

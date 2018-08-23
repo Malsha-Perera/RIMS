@@ -147,6 +147,7 @@ export class ItemDetailComponent implements OnInit {
       });
     }
   }
+
   /*-------------------------------------End Item Adding Process--------------------------------- */
 
   refreshItemList() {
