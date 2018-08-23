@@ -17,8 +17,8 @@ export class AppcontentComponent implements OnInit {
   constructor() {
     this.dataSource = {
       chart: {
-          'caption': 'Items purchase in One Year [2017-18]',
-          'subCaption': 'In MMbbl = One Million barrels',
+          'caption': 'Sales in One Month',
+          'subCaption': '',
           'xAxisName': 'Items',
           'yAxisName': 'Purchases (Kg)',
           'numberSuffix': 'Kg',
@@ -26,28 +26,28 @@ export class AppcontentComponent implements OnInit {
       },
       // Chart Data
       'data': [{
-          'label': 'Venezuela',
+          'label': 'Rice',
           'value': '290'
       }, {
-          'label': 'Saudi',
+          'label': 'Buriyani',
           'value': '260'
       }, {
-          'label': 'Canada',
+          'label': 'Fruit Salad',
           'value': '180'
       }, {
-          'label': 'Iran',
+          'label': 'Rice & Curry',
           'value': '140'
       }, {
-          'label': 'Russia',
+          'label': 'Those',
           'value': '115'
       }, {
-          'label': 'UAE',
+          'label': 'Bread',
           'value': '100'
       }, {
-          'label': 'US',
+          'label': 'Cake',
           'value': '30'
       }, {
-          'label': 'China',
+          'label': 'Fruit Juice',
           'value': '30'
       }]
     };

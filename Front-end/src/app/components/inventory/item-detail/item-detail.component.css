@@ -154,7 +154,8 @@ input, select {
   background-color: rgb(248, 247, 244);
 }
 .input-group-addon {
-  border-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   border-color: #5d809b;
   height: 35px;
   font-size: 18px;

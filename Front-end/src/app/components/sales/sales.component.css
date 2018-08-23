@@ -1,4 +1,4 @@
-  table {
+  /*table {
     border-collapse: collapse;
   }
   th,td {
@@ -37,7 +37,7 @@
 
   .modal-header {
     background-color: #5d809b;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
   }
 
@@ -51,7 +51,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 
-  input, select {
+  /*input, select {
     border-radius: 5px;
     border-color: #5d809b;
     height: 35px;
@@ -66,7 +66,7 @@
     height: 35px;
     font-size: 18px;
     background-color: rgb(248, 247, 244);
-  }
+  }*/
 
   #mybutton {
     width:100px;
