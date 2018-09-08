@@ -1,2 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
+input:focus {
+  border-color: blue;
+  border: 2px solid;
+}
+button {
+  border-radius: 5px;
+}
+

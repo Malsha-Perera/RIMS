@@ -43,13 +43,8 @@ export class ItemDetailComponent implements OnInit {
   editRolId;
   newROL;
   bsValue = new Date();
-  /*date: Date = new Date();
-    settings = {
-        bigBanner: true,
-        timePicker: false,
-        format: 'dd-MM-yyyy',
-        defaultOpen: true
-    }*/
+  count;
+  today = new Date();
   constructor(public itemDetailService: ItemDetailService, public modalService: BsModalService) { }
 
   ngOnInit() {
@@ -58,7 +53,6 @@ export class ItemDetailComponent implements OnInit {
     this.resetIssueItem();
     this.resetIssuedItem();
     this.resetDeleteItemId();
-    // this.checkExistId();
     this.resetEditRol();
   }
   // method for open modal
@@ -69,32 +63,45 @@ export class ItemDetailComponent implements OnInit {
     this.modalRef.hide();
     this.modalRef = null;
   }
+
   capitalizeFirstLetter(string): string {
     return string[0].toUpperCase() + string.slice(1).toLowerCase();
   }
 
-  /*---------------------start Add new Item Process or Update Existing Item------------------------------------------------ */
-  checkExistId(itemname: string): boolean {
+  setItemCode(itemName: string): string {
+
+    this.count = 0;
     // tslint:disable-next-line:prefer-const
-    let result = true;
-    /*this.itemDetailService.getItemList().subscribe((res) => {
-      this.itemIds = res as Item[];
-    }); */
-    // console.log(this.itemIds[0]);
-    this.itemNames = this.items;
+    for ( let i = 0; i < this.items.length; i++) {
+      this.count++;
+    }
+    // this.itemCode = this.itemname.substring(0, 2) + this.count;
+    // tslint:disable-next-line:prefer-const
+    let code = itemName.substring(0, 2) + this.count;
+
+    return code;
+  }
+
+  /*---------------------start Add new Item Process or Update Existing Item------------------------------------------------ */
+  // to check new item name user input whether existing on database
+  checkExistId(itemname: string): boolean {
+
+    // tslint:disable-next-line:prefer-const
+    let result = true; // function return value
+
+    // this.itemNames = this.items;
     // tslint:disable-next-line:prefer-const
     let nameArray: string[] = [];
     let i = 0;
-    for ( i; i < this.itemNames.length; i++) {
+    for ( i; i < this.items.length; i++) {
     nameArray[i] = this.items[i].itemname;
-    // console.log(idArray[i]);
+
     }
 
     for (let j = 0; j < nameArray.length; j++) {
-      // console.log(idArray[j]);
-      // console.log(itemCode);
+
       // tslint:disable-next-line:prefer-const
-      let name = this.capitalizeFirstLetter(itemname);
+      let name = this.capitalizeFirstLetter(itemname.trim());
       if (name === nameArray[j]) {
         result =  false;
       } else {
@@ -109,8 +116,12 @@ export class ItemDetailComponent implements OnInit {
     if (form.value._id === '') {
       let res: boolean;
       res = this.checkExistId(form.value.itemname);
-      console.log(res);
+      // console.log(res);
         if (res === true) {
+          let resCode;
+          resCode = this.setItemCode(form.value.itemname);
+          form.value.itemCode = resCode;
+          form.value.date = this.today.toDateString();
           this.itemDetailService.postItem(form.value).subscribe((response) => {
             // this.addItemAlert();
             swal('New Item Added', this.altertMsg, 'success');
@@ -129,6 +140,7 @@ export class ItemDetailComponent implements OnInit {
           // this.resetForm(form);
         }
     } else {
+      form.value.date = this.today.toDateString();
       this.itemDetailService.putItem(form.value).subscribe((res) => {
         this.resetForm(form);
         this.refreshItemList();
@@ -207,12 +219,12 @@ export class ItemDetailComponent implements OnInit {
     quantity: 0,
     description: '',
     unitCost: 0,
-    latestUpdate: null,
+    latestUpdate: '',
     unitScale: 'ND',
     minimumLevel: 0,
     reOrderLevel: 50,
     maximumLevel: 0,
-    date: null
+    date: ''
 
     };
   }
@@ -265,12 +277,12 @@ export class ItemDetailComponent implements OnInit {
     quantity: 0,
     description: '',
     unitCost: 0,
-    latestUpdate: null,
+    latestUpdate: '',
     unitScale: 'ND',
     minimumLevel: 0,
     reOrderLevel: 50,
     maximumLevel: 0,
-    date: null
+    date: ''
 
     };
 
@@ -314,7 +326,8 @@ export class ItemDetailComponent implements OnInit {
     this.issueOne = {
       itemName: '',
       itemCode: '',
-      itemQuantity: null
+      itemQuantity: null,
+      date: ''
     };
     this.newQuantity = null;
   }
@@ -323,7 +336,8 @@ export class ItemDetailComponent implements OnInit {
     this.issuedItem = {
       itemName: '',
       itemCode: '',
-      itemQuantity: null
+      itemQuantity: null,
+      date: ''
     };
   }
 
@@ -335,6 +349,7 @@ export class ItemDetailComponent implements OnInit {
     // console.log(this.issueOne);
     this.issuedItem.itemCode = item.itemCode;
     this.issuedItem.itemName = item.itemname;
+    this.issuedItem.date = this.today.toDateString();
     // this.itemDetailService.issueItems = this.issueOne;
   }
 

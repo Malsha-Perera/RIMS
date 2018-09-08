@@ -1,5 +1,5 @@
 
-tbody {
+  /*tbody {
     font-size: 125%;
     font-family: Times, Times New Roman, Georgia, serif;
   }
@@ -12,23 +12,70 @@ tbody {
   }
   th,td {
     vertical-align: middle;
+  }*/
+  table {
+    border-collapse: collapse;
   }
-  
+  th,td {
+    border-bottom: 1px solid rgb(88, 99, 156);
+    padding: 10px;
+  }
+  th {
+    width: 60px;
+    max-width: 60px;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgb(212, 209, 209);
+    border: 10px;
+    border-color: #5d809b;
+    border-top: solid;
+    border-bottom: solid
+  }
+  tbody {
+    font-size: 16px;
+    background-color: white;
+  }
+
   .modal-header {
     background-color: #5d809b;
-    color: white;
+    color: rgb(5, 5, 5);
     text-align: center;
   }
-  
+
   #modId {
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
     font-size: 150%;
   }
-  
-  
+
   .modal-body {
     background-color: #c8d2da;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
-  
+  #deleteCustomerBtn {
+    background-color: rgba(179, 13, 13, 0.685);
+    border-color: rgba(255, 255, 255, 0.685);
+    color: rgb(255, 255, 255);
+  }
+  #viewCustomerBtn {
+    background-color: rgba(10, 90, 24, 0.685);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.685);
+  }
+
+  input, select {
+    border-radius: 5px;
+    border-color: #5d809b;
+    height: 35px;
+    font-size: 18px;
+    background-color: rgb(248, 247, 244);
+  }
+
+  .input-group-addon {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-color: #5d809b;
+    height: 35px;
+    font-size: 18px;
+    background-color: rgb(248, 247, 244);
+  }

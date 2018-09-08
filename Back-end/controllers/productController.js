@@ -34,13 +34,12 @@ router.get('/:productCode', (req, res, next) => {
 
     //inserting data
     router.post('/',function(req,res,next){
-       let newProduct=new Product({
-           productName:req.body.productName,
-           productCode:req.body.productCode,
-           unitCost:req.body.unitCost,
-           foodCategory:req.body.foodCategory,
-           
-       });
+        let newProduct=new Product({
+            productName:req.body.productName,
+            productCode:req.body.productCode,
+            unitCost:req.body.unitCost,
+            foodCategory:req.body.foodCategory,
+        });
         newProduct.save(function (err,Product) {
             if (err) {
                 res.json(err);
@@ -60,9 +59,9 @@ router.put('/:id',(req,res,next) =>{
     Product.findOneAndUpdate({_id:req.params.id},{
         $set:{
             productName:req.body.productName,
-           ProductCode:req.body.ProductCode,
-           unitCost:req.body.unitCost,
-           foodCategory:req.body.foodCategory,
+            ProductCode:req.body.ProductCode,
+            unitCost:req.body.unitCost,
+            foodCategory:req.body.foodCategory,
         }
 
     },function (err,result) {
@@ -72,7 +71,6 @@ router.put('/:id',(req,res,next) =>{
         else{
             res.json(result);
         }
-        
     })
 });
     //deleting data

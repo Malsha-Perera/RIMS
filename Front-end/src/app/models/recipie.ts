@@ -5,6 +5,7 @@ export class Recipie{
     ingredient=[];
     quantity=[];
     unitCost=[];
+    unitScale=[];
     cost:Number;
 }
 

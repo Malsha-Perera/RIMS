@@ -1,36 +1,44 @@
-<hr>
-
+<!------------------route implement------------------------->
+<!--begin-->
+<div>
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['']" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Home</button></a></li>
+    <li><a routerLink="/customers" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Customers</button></a></li>
+  </ol>
+</div>
+<!--end-->
+<!--begin container-->
 <div class="container">
-    <h1 style="font-size: 40pt;text-align: center;color: black"><b>Customer Details</b></h1>
-    
+    <h1 style="font-size: 35pt;text-align: center;color: black;font-family: serif"><b>Customer Details</b></h1>
+
     <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
-                <span class="input-group-addon"><i class="fas fa-search fa-lg"></i></span>
-              </div>
-            </div>
-           
-          </div>
-      <hr>
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="input-group">
+          <input type="text" class="form-control" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name">
+          <span class="input-group-addon"><i class="fas fa-search fa-lg"></i></span>
+        </div>
+      </div>
+    </div>
+
+    <hr>
 
       <div class="row margintop20px paddingtopbottom15px whitebackground">
-            <div class="col-sm">
+        <div class="col-sm">
             <table class="table table-hover table-striped table-condensed  table-sm" id="mytable" [mfData]="CustomerList" #mf="mfDataTable" [mfRowsOnPage]="10">
-                  <thead class="">
+                <thead class="">
                   <tr>
-                  <th style="width:10px;max-width:10px;">#</th>    
-                    
+                  <th style="width:10px;max-width:10px;">#</th>
+
                     <th><mfDefaultSorter by="customer_id">Customer Id</mfDefaultSorter></th>
                     <th><mfDefaultSorter by="customer_name">Customer Name</mfDefaultSorter></th>
                     <th><mfDefaultSorter by="mobile">Phone</mfDefaultSorter></th>
                     <th><mfDefaultSorter by="address">Address</mfDefaultSorter></th>
-                    <th><mfDefaultSorter by="email_address">Email Address</mfDefaultSorter></th>  
+                    <th><mfDefaultSorter by="email_address">Email Address</mfDefaultSorter></th>
                     <th>Action</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody class="text-center">
                     <tr *ngFor = "let customer of mf.data | customerFilter:searchText;let i = index">
                         <td scope="row">{{i+1}}</td>
                         <td class="text-center">{{customer.customer_id}}</td>
@@ -38,36 +46,32 @@
                         <td class="text-center">{{customer.mobile}}</td>
                         <td class="text-center">{{customer.address}}</td>
                         <td class="text-center">{{customer.email_address}}</td>
-                      
-                      
-          
-                        <button class='btn btn-danger' (click)=" onAllerDeletet(customer._id)">
-                        <i class='fa fa-trash fa-lg'></i>Delete
-                        </button>
-          
-                        <button class='btn btn-success' (click)="showEditCustomer(customer)" (click)="openEditModal(template1)">
-                        <i class="fas fa-align-justify"></i>View
-                        </button>
-                     
-          
+                        <td>
+                          <button class='btn btn-ouline-danger' id="deleteCustomerBtn" (click)=" onAllerDeletet(customer._id)">
+                            <i class='fa fa-trash fa-sm'></i>Delete
+                          </button>
+                          <button class='btn btn-outlie-success' id="viewCustomerBtn" (click)="showEditCustomer(customer)" (click)="openEditModal(template1)" tooltip="view Customer Details">
+                            <i class="fas fa-align-justify fa-sm"></i>
+                          </button>
+                        </td>
                     </tr>
                   </tbody>
                   <tfoot>
-                        <tr>
-                              <td colspan="4">
-                              <mfBootstrapPaginator ></mfBootstrapPaginator>
-                              </td>
-                        </tr>
+                    <tr>
+                      <td colspan="4">
+                      <mfBootstrapPaginator ></mfBootstrapPaginator>
+                      </td>
+                    </tr>
                   </tfoot>
 
             </table>
-            
-            
 
-           
+
+
+
             </div>
       </div>
-      
+
 </div>
 
 
@@ -85,16 +89,16 @@
           <i class="fas fa-window-close fa-2x"></i>
           </button>
         </div>
-  
+
       </div>
     </div>
         <!--modal body-->
         <div class="row" >
         <div class="modal-body" >
-            
+
               <form #UpdateForm = "ngForm" (ngSubmit) = "updateCustomer(UpdateForm)" class="form-horizontal" >
                     <input type="hidden" name="_id">
-  
+
                     <div class="form-group row">
                           <label class="col-sm-3 control-label" style="margin-left: -120px">Customer Id :</label>
                           <div class="col-sm-9">
@@ -120,8 +124,8 @@
                                     Invalid Customer name!
                               </div>
                   </div>
-                   
-                   
+
+
                     <div class="form-group row">
                       <label class="col-sm-3 control-label" style="margin-left: -120px">Mobile :</label>
                       <div class="col-sm-9">
@@ -142,7 +146,7 @@
                       <div class="col-sm-9">
                             <input class="form-control" type="text" name="address" [ngModel]="selectedCustomer.address" #address="ngModel" required>
                       </div>
-                  
+
                   </div>
                   <div *ngIf="address?.touched">
                               <div *ngIf="address.errors?.required" class="alert alert-danger" style="margin-left: 188px;width:890px;height: 45px;font-size: 12pt">
@@ -164,35 +168,35 @@
                                     Invalid Email Address!
                               </div>
                   </div>
-                     
-                   
-                    
-                
-                  
+
+
+
+
+
                     <div class="form-group">
                           <div class="col-sm-offset-3 col-sm-9">
-                                
-                              <button type="submit" class="btn btn-primary" [disabled]="UpdateForm.invalid">Submit</button>&nbsp;  
+
+                              <button type="submit" class="btn btn-primary" [disabled]="UpdateForm.invalid">Submit</button>&nbsp;
                               <button type="submit" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal" (click)="modalRef.hide()">Cancel</button>&nbsp;
                               <button type="button" class="btn btn-warning" id="cancelbutton" data-toggle="modal" data-target="#myModal">Reset</button>
-                              
-                  
+
+
                           </div>
                     </div>
-                    
-                   
-  
-              
-              
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
               </form>
         </div>
       </div>
       </div>
-    
+
   </ng-template>
 
 
@@ -206,20 +210,20 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title pull-center" id="myModalLabel"><label id="modId"> Add New Item</label></h4>
+          <h4 class="modal-title pull-center" id="myModalLabel"><label id="modId">Customer Details</label></h4>
         </div>
       </div>
           <!--modal body-->
         <div class="row">
           <div class="modal-body">
             <form #UpdateForm = "ngForm" (ngSubmit) = "updateCustomer(UpdateForm)" class="form-horizontal" >
-                  <input type="hidden" name="_id">    
+                  <input type="hidden" name="_id">
                 <div class="form-group row">
                   <div class="col-sm-6">
                     <label> Customer Name:<span style="color: red; font-size: 15px;">*</span></label>
                     <div>
                       <input class="form-control" type="text" name="customer_name"  [ngModel]="selectedCustomer.customer_name" required #customer_name="ngModel" pattern="[a-zA-Z][a-zA-Z]+"><br>
-                       
+
                       <div *ngIf="customer_name?.touched">
                         <div *ngIf="customer_name.errors?.required" class="alert alert-danger" style="font-size: 12pt">
                               Customer Name is Required!
@@ -227,19 +231,19 @@
                         <div *ngIf="customer_name.errors?.pattern" class="alert alert-danger" style="font-size: 12pt">
                               Invalid Customer Name!
                         </div>
-                        
+
                        </div>
                     </div>
-  
-                   
+
+
                   </div>
-                 
-                  
+
+
                   <div class="col-sm-6">
                     <label>Customer Id:<span style="color: red">*</span></label>
                     <div>
                       <input class="form-control" type="text" name="customer_id"  [ngModel]="selectedCustomer.customer_id" required #customer_id="ngModel"><br>
-                        
+
                       <div *ngIf="customer_id?.touched">
                         <div *ngIf="customer_id.errors?.required" class="alert alert-danger" style="font-size: 12pt">
                               Customer Id is Required!
@@ -247,18 +251,18 @@
               </div>
                     </div>
                   </div>
-                 
+
                 </div>
 
                 <hr>
-                
-                 
+
+
                 <div class="form-group row">
                   <div class="col-sm-6">
                     <label> Phone:<span style="color: red; font-size: 15px;">*</span></label>
                     <div>
                       <input class="form-control" type="text" name="mobile"  [ngModel]="selectedCustomer.mobile" required #mobile="ngModel" pattern="[0-9]*" maxlength="10" minlength="10"><br>
-                       
+
                       <div *ngIf="mobile?.touched">
                         <div *ngIf="mobile.errors?.required" class="alert alert-danger" style="font-size: 12pt">
                               Phone no is Required!
@@ -266,19 +270,19 @@
                         <div *ngIf="mobile.errors?.pattern || mobile.errors?.minlength" class="alert alert-danger" style="font-size: 12pt">
                               Invalid phone no!
                         </div>
-                        
+
                        </div>
                     </div>
-  
-                   
+
+
                   </div>
-                 
-                  
+
+
                   <div class="col-sm-6">
                     <label>Address:<span style="color: red">*</span></label>
                     <div>
                       <input class="form-control" type="text" name="address"  [ngModel]="selectedCustomer.address" required #address="ngModel"><br>
-                        
+
                       <div *ngIf="address?.touched">
                         <div *ngIf="address.errors?.required" class="alert alert-danger" style="font-size: 12pt">
                               Address is Required!
@@ -286,11 +290,11 @@
               </div>
                     </div>
                   </div>
-                 
+
                 </div>
-  
+
                 <hr>
-  
+
                 <div class="form-group row">
                     <div class="col-sm-5">
                       <label>Email Address:</label>
@@ -307,13 +311,13 @@
                         </div>
                     </div>
                     </div>
-                   
-                   
-                     
-                  
+
+
+
+
                   <hr>
-                 
-                
+
+
                 <div class="form-group row">
                   <div class="col-sm-4">
                     <button type="submit" class="btn btn-success" id="newItemSaveBtn">Save Item</button>
@@ -328,5 +332,5 @@
           </div>
         </div>
     </ng-template>
-  
+
 

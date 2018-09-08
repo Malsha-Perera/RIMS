@@ -1,8 +1,13 @@
-<hr>
+<div>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['']" style="font-size: 20px"><button type="button" class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(72, 120, 175)">Home</button></a></li>
+      <li class="active" style="font-size: 20px"><button type="button" id="InventoryBreadCrumBtn"class='btn btn-outline-info' style="border: 1px solid;border-color:rgb(6, 95, 43)">Sales</button></li>
+    </ol>
+</div>
 
 <div class="container">
-  <h1 style="font-size: 40pt;text-align: center;color: black"><b>Sales Invoice Details</b></h1>
-    
+  <h1 style="font-size: 35pt;text-align: center;color: black;font-family: serif"><b>Sales Invoice Details</b></h1>
+
   <div class="row">
       <div class="col-md-4"></div>
       <div class="col-md-4">
@@ -11,7 +16,7 @@
           <span class="input-group-addon"><i class="fas fa-search fa-lg"></i></span>
         </div>
       </div>
-     
+
     </div>
       <hr>
 
@@ -20,18 +25,18 @@
             <table class="table table-hover table-striped table-condensed  table-sm" id="mytable" [mfData]="InvoiceList" #mf="mfDataTable" [mfRowsOnPage]="10">
                   <thead class="">
                   <tr style="background-color: #85B3E9">
-                      <th style="width:10px;max-width:10px;">#</th>    
+                      <th style="width:10px;max-width:10px;">#</th>
                     <th style="font-size: 12pt"><mfDefaultSorter by="com_name">Company Name</mfDefaultSorter></th>
                     <th style="font-size: 12pt"><mfDefaultSorter by="com_address">Company Address</mfDefaultSorter></th>
                     <th style="font-size: 12pt"><mfDefaultSorter by="com_phone">Company Phone</mfDefaultSorter></th>
                     <th style="font-size: 12pt"><mfDefaultSorter by="fax_no">Fax</mfDefaultSorter></th>
                     <th style="font-size: 12pt"><mfDefaultSorter by="comments">Comment</mfDefaultSorter></th>
                     <th style="font-size: 12pt"><mfDefaultSorter by="invoice_no">Invoice No</mfDefaultSorter></th>
-                    <th style="font-size: 12pt"><mfDefaultSorter by="date">Date</mfDefaultSorter></th> 
+                    <th style="font-size: 12pt"><mfDefaultSorter by="date">Date</mfDefaultSorter></th>
                     <th style="font-size: 12pt">Action</th>
-                    
-                   
-                    
+
+
+
                   </tr>
                   </thead>
                   <tbody>
@@ -44,18 +49,18 @@
                       <td style="font-size: 11pt" class="text-center">{{invoice.comments}}</td>
                       <td style="font-size: 11pt" class="text-center">{{invoice.invoice_no}}</td>
                       <td style="font-size: 11pt" class="text-center">{{invoice.date}}</td>
-                      
-                     
-                      
-                      
-          
+
+
+
+
+
                         <button class='btn btn-danger' (click)="onAllerDeletet(invoice._id)">
                         <i class='fa fa-trash fa-lg'></i>Delete
                         </button>
-          
-                       
-                     
-          
+
+
+
+
                     </tr>
                   </tbody>
                   <tfoot>
@@ -67,9 +72,9 @@
                 </tfoot>
 
             </table>
-           
-           
+
+
             </div>
       </div>
-      
+
 </div>

@@ -6,10 +6,10 @@ export class Item {
   quantity: number;
   description: string;
   unitCost: number;
-  latestUpdate: number;
+  latestUpdate: string;
   unitScale: string;
   minimumLevel: number;
   reOrderLevel: number;
   maximumLevel: number;
-  date: Date;
+  date: string;
 }

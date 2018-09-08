@@ -18,7 +18,7 @@
 
       <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse0" (click)="setLists()">
-          <div class="info-box" tooltip="to update stock click here">
+          <div class="info-box" tooltip="Click to View the recipe per serve">
             <div class="info-box-content" style="text-align:center" id="cutleryIcon">
               <span class="info-box-text" >SET MENU</span>
               <span id="cutleryIcon"><i class="fa fa-cutlery fa-4x"></i></span>
@@ -41,7 +41,7 @@
 
       <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" (click)="setLists()">
-          <div class="info-box" tooltip="to update stock click here">
+          <div class="info-box" tooltip="Click to View the recipe per serve">
 
             <div class="info-box-content" id="stroopwafelIcon">
               <span class="info-box-text">SHORT EATS</span>
@@ -63,7 +63,7 @@
 
         <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" (click)="setLists()">
-            <div class="info-box" tooltip="to update stock click here">
+            <div class="info-box" tooltip="Click to View the recipe per serve">
 
               <div class="info-box-content" id="dessertsIcon">
                 <span class="info-box-text">DESSERTS</span>
@@ -87,7 +87,7 @@
 
       <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" (click)="setLists()">
-          <div class="info-box" tooltip="to update stock click here">
+          <div class="info-box" tooltip="Click to View the recipe per serve">
 
             <div class="info-box-content" id="beveragesIcon">
               <span class="info-box-text">BEVERAGES</span>
@@ -109,7 +109,7 @@
 
       <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" (click)="setLists()">
-          <div class="info-box" tooltip="to update stock click here">
+          <div class="info-box" tooltip="Click to View the recipe per serve">
 
             <div class="info-box-content" id="soupIcon">
               <span class="info-box-text">SOUP</span>
@@ -131,7 +131,7 @@
 
       <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse6" (click)="setLists()">
-            <div class="info-box" tooltip="to update stock click here">
+            <div class="info-box" tooltip="Click to View the recipe per serve">
 
               <div class="info-box-content" id="saladIcon">
                 <span class="info-box-text">SALADS</span>
@@ -155,7 +155,7 @@
 
       <div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" (click)="setLists()">
-          <div class="info-box" tooltip="to update stock click here">
+          <div class="info-box" tooltip="Click to View the recipe per serve">
 
             <div class="info-box-content" id="otherIcon">
               <span class="info-box-text">OTHER</span>
@@ -319,7 +319,7 @@
 
   </div>-->
 
- <!-- start of modal -->
+<!-- start of modal -->
   <ng-template #template>
     <div class="row">
       <div class="modal-header">
@@ -381,9 +381,17 @@
 
 
     <div class="form-group">
-      <div class="col-sm-offset-3 col-sm-9">
-        <input type="submit" class="btn btn-success" value="Add product" [disabled]="!productForm.valid" (click)="addProduct()">
-        <!--<input type="submit" class="btn btn-warning" value="Create Recipe" (click)="createRecipe()">-->
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-4">
+            <!--input type="submit" class="btn btn-success" value="Add product" [disabled]="!productForm.valid" (click)="addProduct()"-->
+            <button class="btn btn-outline-success" id="addProductBtn" type="submit" [disabled]="!productForm.valid" (click)="addProduct()">Add Product</button>
+            <!--<input type="submit" class="btn btn-warning" value="Create Recipe" (click)="createRecipe()">-->
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-4">
+            <button class="btn btn-outline-default" id="cancelProductBtn" type="button" (click)="modalRef.hide()">Cancel</button>
+          </div>
       </div>
     </div>
   </form>

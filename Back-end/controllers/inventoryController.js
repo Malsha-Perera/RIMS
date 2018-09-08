@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
       quantity: req.body.quantity,
       description: req.body.description,
       unitCost: req.body.unitCost,
-      latestUpdate: req.body.latestUpdate,
+      latestUpdate: req.body.date,
       unitScale: req.body.unitScale,
       minimumLevel: req.body.minimumLevel,
       reOrderLevel: req.body.reOrderLevel,
@@ -70,7 +70,7 @@ router.put('/:id', (req, res) => {
       quantity: req.body.quantity,
       description: req.body.description,
       unitCost: req.body.unitCost,
-      latestUpdate: req.body.latestUpdate,
+      latestUpdate: req.body.date,
       unitScale: req.body.unitScale,
       minimumLevel: req.body.minimumLevel,
       reOrderLevel: req.body.reOrderLevel,
@@ -138,7 +138,8 @@ router.post('/issuing/', (req,res) => {
    var issue_Item = new IssueItem({
       issueItemCode: req.body.itemCode,
       issueItemName: req.body.itemName,
-      issueItemQuantity: req.body.itemQuantity
+      issueItemQuantity: req.body.itemQuantity,
+      issueDate: req.body.date
    });
    issue_Item.save((err, result) => {
       if(!err) {

@@ -1,7 +1,7 @@
 const mongoose= require('mongoose');
 
 const IssueSchema = mongoose.Schema({
-   
+
    issueItemCode: {
       type: String
    },
@@ -10,6 +10,9 @@ const IssueSchema = mongoose.Schema({
    },
    issueItemQuantity: {
       type: Number
+   },
+   issueDate: {
+      type: String
    }
 })
 
